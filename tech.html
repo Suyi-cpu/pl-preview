@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>運作原理｜由幾何決定的物理 — Pürland 淨域未來</title>
+<meta name="description" content="Lifetune 的運作原理完整拆解：產品分層結構、4,084,101 個圓形共振器的矽晶芯片、繞射／共振／相位干涉／電荷重分佈四種物理交互作用，以及孤子態穩定的建模結論。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23144D43'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' text-anchor='middle' fill='%23cba654'%3EP%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pürland 淨域未來">
+<meta property="og:title" content="運作原理｜由幾何決定的物理 — Pürland 淨域未來">
+<meta property="og:description" content="繞射／共振／相位干涉／電荷重分佈四種物理交互作用，運行於同一枚被動元件。4,084,101 個圓形共振器，蝕刻寬約 0.2µm。">
+<meta property="og:image" content="https://suyi-cpu.github.io/pl-preview/assets/og-tech.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://www.purland.com.tw/pages/technology">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="運作原理｜由幾何決定的物理 — Pürland">
+<meta name="twitter:description" content="四種物理交互作用，運行於同一枚被動元件。">
+<meta name="twitter:image" content="https://suyi-cpu.github.io/pl-preview/assets/og-tech.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --page:#F7FAF6;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;
+  --ink-hi:#101614;--ink-mid:#3D4743;--ink-dim:#5C665F;--brand-teal:#367C78;
+  --acc-diffraction:#cba654;--acc-resonance:#66bfa1;--acc-phase:#459590;--acc-charge:#7ca5d5;
+  --line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);
+  --shadow-card:0 2px 16px -8px rgba(16,22,20,.06);
+  --hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);
+  --radius-xl:14px;--radius-lg:12px;--radius-md:10px;--radius-control:999px;
+  --font-ui:"Inter","Noto Sans TC",system-ui,sans-serif;
+  --font-display:"Noto Sans TC",sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--page);color:var(--ink-mid);font-family:var(--font-ui);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(102,191,161,.3)}
+img{max-width:100%;display:block}
+a{color:var(--brand-teal);text-decoration:none}
+:focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.deep :focus-visible{outline-color:#8FC7B4}
+.eyebrow{font-family:var(--font-mono);font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
+.sec-num{font-family:var(--font-mono);font-size:14px;letter-spacing:.16em;color:var(--ink-dim)}
+.sec-head .sec-num::before{content:"";display:inline-block;width:26px;height:2px;background:linear-gradient(120deg,#7ca5d5,#66bfa1);margin-right:10px;vertical-align:middle}
+h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+h1{font-weight:900;font-size:clamp(36px,5.4vw,60px);letter-spacing:.01em}
+h2{font-weight:900;font-size:clamp(24px,3.4vw,38px)}
+h3{font-weight:700;font-size:20px}
+.num{font-family:var(--font-mono)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:84px 0}
+.sec-head{display:flex;align-items:baseline;gap:16px;border-top:1px solid var(--line);padding-top:20px;margin-bottom:42px}
+.sec-head h2{flex:1}
+
+header{position:sticky;top:0;z-index:50;background:rgba(253,252,250,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-2)}
+.nav{display:flex;align-items:center;gap:28px;height:64px}
+.logo{font-family:var(--font-display);font-weight:900;font-size:21px;color:var(--ink-hi)}
+.logo small{font-weight:500;font-size:14px;color:var(--ink-dim);margin-left:8px}
+.nav-links{display:flex;gap:22px;margin-left:auto;align-items:center}
+.nav-links a{font-size:16px;font-weight:500;color:var(--ink-mid);transition:color .2s var(--ease)}
+.nav-links a:hover{color:var(--brand-teal)}
+.nav-cta{font-size:16px;font-weight:600;color:#fff!important;background:var(--ink-hi);padding:8px 18px;border-radius:var(--radius-control);transition:background .2s var(--ease)}
+.nav-cta:hover{background:var(--surface-deep)}
+/* mobile nav */
+.nav-burger{display:none;margin-left:auto;width:44px;height:44px;border:1px solid var(--line);border-radius:999px;background:transparent;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:0}
+.nav-burger span{display:block;width:18px;height:1.6px;background:var(--ink-hi);border-radius:2px;transition:transform .28s var(--ease),opacity .18s var(--ease)}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.6px) rotate(45deg)}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.6px) rotate(-45deg)}
+.nav-mobile{display:none;position:absolute;left:0;right:0;top:100%;background:rgba(247,250,246,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:6px 0 16px;box-shadow:0 24px 48px rgba(16,22,20,.1)}
+.nav-mobile a{display:block;padding:14px 24px;font-size:18px;font-weight:500;color:var(--ink-mid);border-top:1px solid var(--line-2)}
+.nav-mobile a:first-child{border-top:none}
+.nav-mobile a:hover{color:var(--brand-teal)}
+.nav-mobile .nav-mobile-cta{margin:16px 24px 0;padding:14px 20px;background:var(--ink-hi);color:#fff!important;border-radius:999px;text-align:center;font-weight:600;border-top:none}
+.nav-mobile .nav-mobile-cta:hover{background:var(--surface-deep)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:17px;font-weight:600;padding:12px 24px;border-radius:var(--radius-control);transition:all .25s var(--ease)}
+.btn-primary{background:var(--ink-hi);color:#fff}
+.btn-primary:hover{background:var(--surface-deep);transform:translateY(-2px)}
+.btn-ghost{border:1.5px solid var(--line);color:var(--ink-hi);background:transparent}
+.btn-ghost:hover{border-color:var(--ink-dim);transform:translateY(-2px)}
+
+/* hero */
+.hero{background:var(--hero-grad);padding:100px 0 84px;border-bottom:1px solid var(--line-2)}
+.hero h1{margin:20px 0 16px;max-width:720px}
+.hero p.lede{max-width:600px;font-size:19.5px}
+.hero-en{font-family:var(--font-mono);font-size:15px;letter-spacing:.16em;color:var(--ink-dim);margin-top:14px;text-transform:uppercase}
+.hero-visual{margin-top:52px;border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 18px 60px rgba(16,22,20,.08)}
+.hero-visual img{width:100%;height:auto;display:block}
+.hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+
+/* anatomy */
+.anatomy-svg{border:1px solid var(--line);border-radius:var(--radius-xl);overflow:hidden;background:var(--surface-white);box-shadow:var(--shadow-card)}
+.anatomy-svg img{width:100%;height:auto;display:block}
+.anatomy-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.anatomy-fig{background:var(--surface-white);border:1px solid var(--line);border-radius:var(--radius-xl);padding:36px;box-shadow:var(--shadow-card)}
+.layer-list{list-style:none}
+.layer-list li{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line-2);font-size:16.5px;line-height:1.7}
+.layer-list li:last-child{border-bottom:none}
+.layer-list .l-num{font-family:var(--font-mono);color:var(--brand-teal);flex-shrink:0;font-size:15px;padding-top:3px}
+.layer-list strong{color:var(--ink-hi);display:block;font-size:17.5px;margin-bottom:2px}
+
+/* chip stats */
+.deep{background:var(--surface-deep);color:#EAF3EF;padding:84px 0}
+.deep h2{color:#FFFFFF}
+.deep .eyebrow{color:#8FC7B4}
+.deep p.lede{max-width:640px;font-size:18px;color:#C4DCD2;margin-top:14px}
+.deep .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:40px}
+.deep .stats .s-num{font-family:var(--font-mono);font-size:26px;color:#FFFFFF}
+.deep .stats .s-label{font-size:15px;color:#9FB7B0;margin-top:4px;line-height:1.6}
+.chip-duo{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px}
+@media (max-width:840px){.chip-duo{grid-template-columns:1fr}}
+.deep .chip-img{margin-top:48px;border-radius:var(--radius-xl);overflow:hidden;border:1px solid rgba(242,238,228,.14);background:#FFF;text-align:center}
+.deep .chip-img img{max-width:400px;margin:36px auto 8px}
+.deep .chip-img figcaption{font-family:var(--font-mono);font-size:14px;letter-spacing:.16em;color:var(--ink-dim);text-transform:uppercase;padding:0 20px 26px}
+.deep .zoom-labels{position:relative;height:56px;margin-top:12px}
+.deep .zoom-labels span{position:absolute;top:0;transform:translateX(-50%);font-family:var(--font-mono);font-size:13.5px;letter-spacing:.08em;color:var(--ink-dim);white-space:nowrap;text-align:center;line-height:1.5}
+.deep .zoom-labels span small{display:block;font-size:12px;letter-spacing:.04em;color:var(--brand-teal);margin-top:3px}
+@media (max-width:520px){.deep .zoom-labels span{font-size:11px;letter-spacing:0}.deep .zoom-labels span small{font-size:9.5px}}
+.gold-note{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;margin-top:44px;padding-top:36px;border-top:1px solid rgba(242,238,228,.14);align-items:center}
+.gold-macro{border-radius:var(--radius-xl);overflow:hidden;border:1px solid rgba(242,238,228,.14)}
+.gold-macro img{width:100%;height:auto;display:block}
+.gold-macro figcaption{font-family:var(--font-mono);font-size:13.5px;letter-spacing:.12em;color:#8FC7B4;text-transform:uppercase;padding:12px 4px 0;text-align:center}
+.gold-text{display:flex;flex-direction:column;gap:28px}
+.gold-note .eyebrow{margin-bottom:12px}
+.gold-note p{font-size:16.5px;line-height:1.85;color:#C4DCD2}
+@media (max-width:840px){.gold-note{grid-template-columns:1fr;gap:28px}}
+.deep .quote{font-family:var(--font-display);font-weight:700;font-size:clamp(20px,2.8vw,28px);color:#F2EEE4;max-width:760px;line-height:1.55}
+.deep .q-src{font-family:var(--font-mono);font-size:14px;letter-spacing:.14em;color:#9FB7B0;margin-top:18px;text-transform:uppercase}
+
+/* physics full */
+/* 四種交互作用 · 編輯式逐條解說 */
+.phys-list{display:flex;flex-direction:column;border-bottom:1px solid var(--line)}
+.phys-row{display:grid;grid-template-columns:minmax(190px,.34fr) 1fr;gap:44px;padding:44px 0;border-top:1px solid var(--line);align-items:start}
+.phys-head{position:relative;padding-left:22px}
+.phys-head::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:3px;border-radius:2px;background:var(--pc)}
+.phys-kicker{font-family:var(--font-mono);font-size:13px;letter-spacing:.14em;color:var(--pc);text-transform:uppercase}
+.phys-head h3{font-size:27px;margin:12px 0 10px}
+.phys-tag{font-family:var(--font-mono);font-size:13px;letter-spacing:.04em;color:var(--ink-dim)}
+.phys-plain{font-size:17px;line-height:1.95;color:var(--ink-mid)}
+.phys-precise{margin-top:20px;background:none;border:0;box-shadow:none;border-radius:0;overflow:visible}
+.phys-precise[open]{border-left:0}
+.phys-precise summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:9px;font-family:var(--font-mono);font-size:13.5px;letter-spacing:.06em;color:var(--brand-teal);padding:4px 0;transition:color .2s var(--ease)}
+.phys-precise summary::-webkit-details-marker{display:none}
+.phys-precise summary::after{content:none}
+.phys-precise summary::before{content:"＋";font-size:16px;line-height:1;width:14px;text-align:center}
+.phys-precise[open] summary::before{content:"－"}
+.phys-precise summary:hover{color:var(--surface-deep)}
+.phys-precise .p-mech{font-size:15.5px;line-height:1.9;color:var(--ink-mid);margin-top:14px;padding:20px 22px;background:var(--page);border:1px solid var(--line-2);border-radius:12px}
+.phys-precise .pm-label{font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;color:var(--ink-dim);text-transform:uppercase;display:block;margin-bottom:9px}
+
+/* together flow */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:8px;border:1px solid var(--line);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-card)}
+.flow div{background:var(--surface);padding:26px 24px;border-right:1px solid var(--line-2);position:relative}
+.flow div:last-child{border-right:none}
+.flow .f-step{font-family:var(--font-mono);font-size:14px;letter-spacing:.16em;color:var(--brand-teal)}
+.flow h3{font-size:18px;margin:10px 0 6px}
+.flow p{font-size:15.5px;line-height:1.7}
+.flow-note{margin-top:28px;font-size:16.5px;color:var(--ink-mid);max-width:680px}
+.chain-lede{font-size:16.5px;color:var(--ink-mid);max-width:660px;margin-bottom:20px}
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:12px 14px;margin-bottom:8px}
+.chain-step{font-size:15.5px;color:var(--ink-mid);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:11px 22px;box-shadow:var(--shadow-card)}
+.chain-step b{color:var(--ink-hi);font-weight:800}
+.chain-arrow{font-family:var(--font-mono);font-weight:700;color:var(--brand-teal);font-size:18px}
+@media (max-width:520px){.chain-arrow{transform:rotate(90deg)}.chain{flex-direction:column;align-items:flex-start;gap:8px}}
+.invariants{margin-top:44px;border-top:1px solid var(--line);padding-top:36px}
+.invariants .inv-head p{font-size:17px;max-width:640px;margin-top:12px}
+.inv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:28px}
+.inv-grid>div{background:var(--surface-white);border:1px solid var(--line);border-radius:var(--radius-xl);padding:26px;box-shadow:var(--shadow-card)}
+.inv-num{font-family:var(--font-mono);font-size:28px;font-weight:600;color:var(--brand-teal);line-height:1}
+.inv-grid h3{margin:14px 0 6px;font-size:19px}
+.inv-grid p{font-size:16px;line-height:1.7}
+.inv-foot{margin-top:26px;font-size:16.5px;color:var(--ink-mid);max-width:720px;border-left:2px solid var(--brand-teal);padding-left:16px}
+@media (max-width:840px){.inv-grid{grid-template-columns:1fr}}
+
+/* range */
+.range-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.range-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-xl);padding:30px;box-shadow:var(--shadow-card)}
+.range-card h3{margin-bottom:12px}
+.range-card p{font-size:16.5px;line-height:1.8}
+.range-card ul{list-style:none;margin-top:14px}
+.range-card li{padding:10px 0;border-bottom:1px solid var(--line-2);font-size:16.5px;display:flex;gap:10px}
+.range-card li:last-child{border-bottom:none}
+.range-card li::before{content:"—";color:var(--brand-teal)}
+table.range{width:100%;border-collapse:collapse;margin-top:16px}
+table.range td,table.range th{padding:11px 4px;font-size:16px;text-align:left;border-bottom:1px solid var(--line-2)}
+table.range th{font-family:var(--font-mono);font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);font-weight:500}
+table.range td .num{font-size:17px;color:var(--ink-hi)}
+table.range tr:last-child td{border-bottom:none}
+.footnote{margin-top:22px;font-family:var(--font-mono);font-size:14px;letter-spacing:.12em;color:var(--ink-dim)}
+
+/* faq */
+.faq{max-width:760px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);margin-bottom:12px;box-shadow:var(--shadow-card);overflow:hidden}
+summary{cursor:pointer;padding:18px 22px;font-weight:600;color:var(--ink-hi);font-size:17.5px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--font-mono);font-size:20px;color:var(--ink-dim);transition:transform .25s var(--ease)}
+details[open] summary::after{transform:rotate(45deg);color:var(--brand-teal)}
+details[open]{border-left:3px solid var(--brand-teal)}
+details .a{padding:0 22px 20px;font-size:16.5px;line-height:1.8}
+
+/* cta */
+.cta-final{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-xl);box-shadow:var(--shadow-card);padding:60px 48px;text-align:center}
+.cta-final h2{max-width:560px;margin:14px auto 10px}
+.cta-final p{max-width:500px;margin:0 auto;font-size:17px}
+.cta-final .hero-ctas{justify-content:center;margin-top:28px}
+
+footer{border-top:1px solid var(--line);padding:40px 0 52px;font-size:15.5px;color:var(--ink-dim)}
+.foot{display:flex;gap:40px;flex-wrap:wrap;justify-content:space-between}
+.foot a{color:var(--ink-dim)}
+.foot a:hover{color:var(--brand-teal)}
+.foot-links{display:flex;gap:20px;flex-wrap:wrap}
+.foot-legal{margin-top:24px;font-size:14.5px;line-height:1.8;max-width:720px}
+
+html.js .reveal{opacity:0;transform:translateY(13px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+html.js .reveal.in{opacity:1;transform:none}
+
+@media (max-width:840px){
+  section{padding:58px 0}
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .nav-mobile.open{display:block}
+  .anatomy-grid{grid-template-columns:1fr;gap:30px}
+  .phys-row{grid-template-columns:1fr;gap:16px;padding:34px 0}
+  .phys-head h3{font-size:24px}
+  .flow{grid-template-columns:1fr;}
+  .flow div{border-right:none;border-bottom:1px solid var(--line-2)}
+  .flow div:last-child{border-bottom:none}
+  .range-grid{grid-template-columns:1fr}
+  .deep .stats{grid-template-columns:1fr 1fr}
+  .hero{padding:68px 0 56px}
+  .cta-final{padding:44px 24px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="index.html">Pürland<small>淨域未來</small></a>
+    <nav class="nav-links">
+      <a href="#chip">晶片結構</a>
+      <a href="#physics">四種交互作用</a>
+      <a href="#faq">技術問答</a>
+      <a href="research.html">研究與專利</a>
+      <a class="nav-cta" href="index.html#products">選擇產品</a>
+    </nav>
+    <button class="nav-burger" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="nav-mobile" id="mobile-menu" aria-label="主選單">
+    <a href="#chip">晶片結構</a>
+    <a href="#physics">四種交互作用</a>
+    <a href="#faq">技術問答</a>
+    <a href="research.html">研究與專利</a>
+    <a class="nav-mobile-cta" href="index.html#products">選擇產品</a>
+  </nav>
+</header>
+
+<!-- 01 · Hero -->
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow reveal">TECHNOLOGY · 運作原理</div>
+    <h1 class="reveal">雜亂的電磁波，<br>如何被調和成有序？</h1>
+    <p class="lede reveal">答案藏在幾何裡——一枚蝕刻了 4,084,101 個圓形共振器的矽晶片，以四種同時運作的物理交互作用，重新安排場的結構。這一頁把過程拆開給你看。</p>
+    <div class="hero-en reveal">Geometry-determined physics</div>
+    <div class="hero-ctas reveal">
+      <a class="btn btn-primary" href="#chip">從結構開始</a>
+      <a class="btn btn-ghost" href="https://lin.ee/0fagSFR">LINE 索取研究資料</a>
+    </div>
+    <figure class="hero-visual reveal">
+      <img src="assets/wave-summary-tech.svg" alt="調和過程圖解：左側雜亂波形進入，經蝕刻晶片的繞射、共振、相位干涉、電荷重分佈四種交互作用，右側輸出規律波形">
+    </figure>
+  </div>
+</div>
+
+<!-- 02 · 晶片（分層結構已併入本段末，作為「拉遠鏡頭」）-->
+<div class="deep" id="chip">
+  <div class="wrap">
+    <div class="eyebrow reveal">02 · 晶片結構</div>
+    <h2 class="reveal" style="margin-top:14px">電磁場物理學，<br>精工蝕刻於矽晶之上</h2>
+    <div class="gold-note reveal" style="margin-top:36px;padding-top:0;border-top:none">
+      <figure class="gold-macro">
+        <img src="assets/chip-gold-macro.jpg" alt="金共振天線微距照：金色環形蝕刻圖樣為共振天線，中央深色方塊為矽晶片，畫面另可見第二枚晶片" loading="lazy">
+        <figcaption>金共振天線與矽晶片 · 微距 · 畫面可見兩枚晶片</figcaption>
+      </figure>
+      <div class="gold-text">
+        <div>
+          <div class="eyebrow" style="color:var(--acc-diffraction)">金共振天線 · WHY GOLD</div>
+          <p>畫面中金色環形圖樣即為共振天線，以金浸製程鍍成。選用黃金是純工程考量：<strong style="color:#fff">導電性佳、電阻低</strong>，振動損耗少、效率高；且<strong style="color:#fff">不易氧化、耐久</strong>，能長時間維持穩定。當電磁波遇上金屬導線會產生<strong style="color:#fff">感應電流</strong>，電流再輻射出新的波，與原波干涉後使中央晶片附近的場增強——<strong style="color:#fff">但總能量不變</strong>，這也是它不影響訊號的原因之一。</p>
+        </div>
+        <div>
+          <div class="eyebrow" style="color:var(--acc-resonance)">晶片數量 · PER PRODUCT</div>
+          <p>中央深色方塊即為矽晶片——畫面右上另可見第二枚。不同產品搭載不同數量的共振晶片：<strong style="color:#fff">ONE、GO 各一片，FLEX、ZONE 各兩片，ZONE MAX 四片</strong>。晶片數量是各款涵蓋直徑不同的來源之一。</p>
+        </div>
+      </div>
+    </div>
+    <p class="lede reveal" style="margin-top:48px;padding-top:36px;border-top:1px solid rgba(242,238,228,.14)">Lifetune 的晶片與一般微處理器使用同等級的光刻設備製造，但目的完全不同：一般晶片用電路運算資訊；它以純幾何結構與環境電磁場交互作用。晶圓表面以自相似環形晶格圖樣蝕刻出環形溝槽——這個圖樣本身，就是全部的機制。</p>
+    <p class="lede reveal" style="margin-top:16px">0.2 微米的蝕刻精度，對應的是半導體業<strong style="color:#fff">自 1990 年代後期就成熟量產</strong>的製程節點（DUV 深紫外光刻）。換句話說，這不是實驗性工藝，而是經過數十年驗證、業界標準的製造技術。</p>
+    <div class="stats reveal">
+      <div><div class="s-num">4,084,101</div><div class="s-label">圓形共振器<br>單一晶片</div></div>
+      <div><div class="s-num">0.2 µm</div><div class="s-label">蝕刻狹縫寬度<br>約髮絲的 1/400</div></div>
+      <div><div class="s-num">0.6 µm</div><div class="s-label">溝槽深度<br>依原廠規格</div></div>
+      <div><div class="s-num">16S5G</div><div class="s-label">ONE 搭載晶片<br>FLEX/ZONE 為 64PS15G</div></div>
+    </div>
+    <div class="chip-duo reveal" style="grid-template-columns:1fr">
+      <figure class="chip-img" style="margin-top:0">
+        <img src="assets/chip-zoom-stages.png" alt="同一枚晶片的三個尺度：晶片實照放大至自相似環形晶格，再放大至微米級蝕刻結構" loading="lazy" style="max-width:100%;width:100%;margin:0;display:block">
+        <div class="zoom-labels" aria-hidden="true">
+          <span style="left:13.75%">01 · 晶片實照</span>
+          <span style="left:45%">02 · 自相似環形晶格 · 蝕刻溝槽</span>
+          <span style="left:79.2%">03 · 微米級蝕刻結構<small>溝槽寬 0.2 µm ≈ 髮絲的 1/400</small></span>
+        </div>
+      </figure>
+    </div>
+    <p class="lede reveal" id="anatomy" style="margin-top:52px;padding-top:36px;border-top:1px solid rgba(242,238,228,.14)">把鏡頭拉遠——這枚晶片，是這樣被包進整個裝置的：</p>
+    <figure class="anatomy-svg reveal" style="margin-top:24px;border-color:rgba(242,238,228,.14)">
+      <img src="assets/anatomy-diagram.svg" alt="Lifetune 分層結構分解圖：ENIG 印刷電路板、矽晶圓共振晶片、聚合物層、黏著層">
+    </figure>
+  </div>
+</div>
+
+<!-- 03 · 四種交互作用（完整版） -->
+<section id="physics">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03 · 四種交互作用</span>
+      <h2>四種教科書等級的物理，<br>同時運作於一枚晶片</h2>
+    </div>
+    <div class="phys-list">
+      <div class="phys-row reveal" style="--pc:var(--acc-diffraction)">
+        <div class="phys-head">
+          <div class="phys-kicker">01 · Diffraction</div>
+          <h3>繞射</h3>
+          <div class="phys-tag">類比 · 幾何迷宮</div>
+        </div>
+        <div class="phys-body">
+          <p class="phys-plain">晶片表面刻著微米級的幾何迷宮。環境裡的電磁波——不管是 5G、Wi-Fi 還是藍牙——一碰到這個結構，就像水流遇到岩石，自然彎折、擴散開來（這就是繞射）。原本集中在某個方向的場，被這道幾何攤開成更寬、更有秩序的分佈。而且圖樣在大大小小的尺度上重複，所以單單一枚晶片，就能同時對整個無線頻段作用。</p>
+          <details class="phys-precise">
+            <summary>精確原理定義</summary>
+            <div class="p-mech"><span class="pm-label">Diffraction · 精確原文</span>晶片表面的碎形圖樣是一組微米級的「障礙與開口陣列」。電磁波與它相遇時依幾何繞射，集中在特定方向的場能被重新分佈到更寬、更有組織的空間圖樣——如同光柵把白光展開成光譜。因為圖樣在多個尺度上自相似，單一元件就能對整個無線頻段同時作用。</div>
+          </details>
+        </div>
+      </div>
+      <div class="phys-row reveal" style="--pc:var(--acc-resonance)">
+        <div class="phys-head">
+          <div class="phys-kicker">02 · Resonance</div>
+          <h3>共振</h3>
+          <div class="phys-tag">類比 · 俄羅斯娃娃</div>
+        </div>
+        <div class="phys-body">
+          <p class="phys-plain">傳統天線很大，而且一支通常只對一種頻率有反應。這枚晶片把大大小小的碎形圖案，像俄羅斯娃娃一樣層層嵌套、微縮在表面——小圖案對應高頻、大圖案對應低頻。所以它不需要電力、也不需要切換，就能同時對生活裡各種頻率的電磁波產生共振、自動對上頻率。這也是為什麼碎形天線早就取代了伸縮天線，進到全球數十億支手機裡。</p>
+          <details class="phys-precise">
+            <summary>精確原理定義</summary>
+            <div class="p-mech"><span class="pm-label">Resonance · 精確原文</span>傳統天線只在一個長度對應的頻率上共振；碎形天線的圖樣在多尺度重複——小結構對高頻、大結構對低頻——因此單一元件同時對 ELF 到 WiFi、行動通訊、藍牙全頻段呈現共振回應，不需要調頻。這正是碎形天線取代伸縮天線、進入全球數十億支手機的同一個原理。</div>
+          </details>
+        </div>
+      </div>
+      <div class="phys-row reveal" style="--pc:var(--acc-phase)">
+        <div class="phys-head">
+          <div class="phys-kicker">03 · Phase Interference</div>
+          <h3>相位干涉</h3>
+          <div class="phys-tag">類比 · 降噪耳機</div>
+        </div>
+        <div class="phys-body">
+          <p class="phys-plain">你可能聽過主動降噪耳機：偵測到噪音，就發出一道反向聲波去中和它——這是為什麼可以降噪的原理。這枚晶片的結果類似：把雜亂的場梳理得更規律，但做法略有不同。它不插電、不偵測、也不發射任何反向訊號。它只用晶片上的幾何軌道，讓進來的波彼此疊加、重新排列成更有秩序的場型。降噪耳機靠「主動抵消」，它靠「被動的幾何」。</p>
+          <details class="phys-precise">
+            <summary>精確原理定義</summary>
+            <div class="p-mech"><span class="pm-label">Phase Interference · 精確原文</span>晶片經繞射與共振產生的結構化輸出場向外傳播，與環境中連續變動的場疊加——某些區域建設性干涉、某些區域破壞性干涉，淨效果是局部場型被重塑：變異性降低、相干性提高。這是純被動的過程：不感測、不主動發出抵銷訊號，輸出場的形狀完全由幾何決定。</div>
+          </details>
+        </div>
+      </div>
+      <div class="phys-row reveal" style="--pc:var(--acc-charge)">
+        <div class="phys-head">
+          <div class="phys-kicker">04 · Charge Redistribution</div>
+          <h3>電荷重分佈</h3>
+          <div class="phys-tag">類比 · 微地形導流</div>
+        </div>
+        <div class="phys-body">
+          <p class="phys-plain">最後一步發生在矽晶片本身。矽是半導體，對電場特別敏感。當環境的電磁場作用在晶片上，裡面的電荷會像聽到指揮一樣，在微米級的溝槽裡重新排列、形成電位差；累積到一定程度，電流就沿最短路徑流動，再感應出一道向外傳播的場。關鍵是：這道輸出場的形狀，完全由溝槽的幾何決定，跟原本那些雜亂電磁波長什麼樣子無關——所以不管環境多亂，輸出永遠是同一種規律結構。</p>
+          <details class="phys-precise">
+            <summary>精確原理定義</summary>
+            <div class="p-mech"><span class="pm-label">Charge Redistribution · 精確原文</span>環境電磁場對晶圓內的載流子施力，電荷在較薄的溝槽區域密集聚集；相鄰溝槽間形成電位差，達到臨界值時電流沿最短路徑流動，感應出向外傳播的電場——其特性由溝槽的碎形幾何決定，與入射場的特性無關。這與 MOS-FET 電晶體同源，是半導體物理的入門章節，應用於全新的幾何配置。</div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · 協同運作 -->
+<section id="together" style="background:var(--surface);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">04 · 會不會影響收訊</span>
+      <h2>調和場的結構，<br>不動訊號的強度</h2>
+    </div>
+    <p class="chain-lede reveal">前面四種交互作用不是各自獨立的步驟，而是一條鏈——同時運行於同一枚被動元件：</p>
+    <div class="chain reveal">
+      <span class="chain-step"><b>共振</b> · 耦合</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-step"><b>電荷重分佈</b> · 生成</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-step"><b>繞射</b> · 分佈</span>
+      <span class="chain-arrow">→</span>
+      <span class="chain-step"><b>相位干涉</b> · 重塑</span>
+    </div>
+    <p class="flow-note reveal">碎形幾何跨全頻段與環境電磁場耦合，驅動矽晶圓內的電荷生成結構化輸出場，再經繞射與相位干涉重塑局部場型。淨結果：裝置周圍的局部電磁環境比原本更相干、更有組織——「有組織」不是修辭，指的是輸出場呈規律交替的極大與極小分佈，形狀由晶片幾何決定。</p>
+
+    <div class="invariants reveal">
+      <div class="inv-head">
+        <p>那對你的手機呢？環境場的分佈改變後，接收器解碼所需的條件，沒有一項被破壞：</p>
+      </div>
+      <div class="inv-grid">
+        <div><div class="inv-num">01</div><h3>頻率不變</h3><p>繞射與干涉都是線性過程，不改變載波頻率——接收端仍鎖定在同一頻道。</p></div>
+        <div><div class="inv-num">02</div><h3>能量重新分佈，而非吸收</h3><p>干涉改變的是能量在空間中的分佈，總量不被吸收消耗——這正是它與「屏蔽／吸收」的根本差異，也是頻譜實測「場強空間重分佈」的物理含義。</p></div>
+        <div><div class="inv-num">03</div><h3>擾動小於日常環境</h3><p>一面牆、一隻手造成的多路徑相移，都遠大於一枚被動晶片；而現代接收器本來就靠導頻即時等化這類擾動——這是通訊系統的日常，不是例外。</p></div>
+      </div>
+      <p class="inv-foot">頻率沒變、能量沒被吸收、擾動又在接收器天生的處理範圍內——所以裝置照常連線運作。「屏蔽」與「吸收」靠削弱訊號達到效果；這項技術改變的是場的結構，不是訊號的強度。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 · 建模結論 -->
+<div class="deep" id="model">
+  <div class="wrap">
+    <div class="eyebrow reveal">05 · 建模結論 · SOLITON-LIKE STABILITY</div>
+    <p class="quote reveal" style="margin-top:20px">「無論邊界條件如何改變，穩態解都保持穩定、呈孤子態——輸出場的形狀，不取決於入射輻射的特性。」</p>
+    <p class="q-src reveal">二維與三維非穩態數學模型 · 6 mm 晶圓 · 2.4 GHz 入射條件</p>
+    <p class="lede reveal" style="margin-top:26px">白話說：不管環境場多混亂，這枚晶片輸出的場永遠長一個樣子——由它自己的幾何決定。這和石英振盪器是同一族原理：石英晶體以切割幾何決定輸出頻率，全世界每支手機、每台電腦裡都有一顆。相關建模與實驗發表於 2006–2022 年間的多篇論文，包括 Springer 出版的同行評審研究。</p>
+    <div class="hero-ctas reveal" style="margin-top:30px">
+      <a class="btn btn-ghost" style="border-color:rgba(242,238,228,.3);color:#F2EEE4;background:transparent" href="https://lin.ee/0fagSFR">LINE 索取完整建模文獻</a>
+    </div>
+  </div>
+</div>
+
+<!-- 07 · 有效範圍 -->
+<section id="range">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">06 · 有效範圍</span>
+      <h2>涵蓋直徑怎麼來的</h2>
+    </div>
+    <div class="range-grid">
+      <div class="range-card reveal">
+        <h3>由三個變數決定</h3>
+        <p>每款 Lifetune 的涵蓋直徑不是行銷數字，而是依物理變數計算的量值：</p>
+        <ul>
+          <li>天線的表面積</li>
+          <li>矽晶共振晶片的尺寸與數量</li>
+          <li>與場源的距離（強度隨距離遞減）</li>
+        </ul>
+        <p style="margin-top:14px">晶片越大、數量越多，輸出場延伸的範圍越廣——這就是系列間涵蓋直徑差異的全部原因。形態不同、情境不同，沒有等級之分。</p>
+      </div>
+      <div class="range-card reveal">
+        <h3>系列涵蓋直徑</h3>
+        <table class="range">
+          <thead><tr><th>系列</th><th>涵蓋直徑</th><th>共振晶片</th></tr></thead>
+          <tbody>
+            <tr><td>ONE</td><td><span class="num">5.6 m</span></td><td>1 片</td></tr>
+            <tr><td>GO</td><td><span class="num">9.8 m</span></td><td>1 片</td></tr>
+            <tr><td>FLEX</td><td><span class="num">12.8 m</span></td><td>2 片</td></tr>
+            <tr><td>ZONE</td><td><span class="num">28 m</span></td><td>2 片</td></tr>
+            <tr><td>ZONE MAX</td><td><span class="num">41.8 m</span></td><td>4 片</td></tr>
+          </tbody>
+        </table>
+        <p class="footnote">數值為開放空間涵蓋直徑 · 不分等級</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 · 技術問答 -->
+<section id="faq" style="background:var(--surface);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">07 · 技術問答</span>
+      <h2>深入一點的技術問題</h2>
+    </div>
+    <div class="faq">
+      <details class="reveal">
+        <summary>會影響 WiFi 或手機訊號強度嗎？</summary>
+        <div class="a">不會。晶片調整的是場的結構特性（相干性、偏振、干涉圖樣），不改變訊號振幅——手機正常連線、WiFi 正常廣播，對訊號強度零影響經獨立測試確認。</div>
+      </details>
+      <details class="reveal">
+        <summary>為什麼一定要用矽？</summary>
+        <div class="a">矽是半導體，載流子的活動性介於導體與絕緣體之間——剛好落在讓碎形幾何能驅動「一致且可控的電荷重分佈」的區間。導體反應太廣，會抹掉幾何精度；絕緣體完全不反應。矽的晶體結構同時為奈米級蝕刻圖樣提供了高度有序的載體。</div>
+      </details>
+      <details class="reveal">
+        <summary>碎形幾何是造型還是功能？</summary>
+        <div class="a">純功能。自相似圖樣在多尺度同時重複，讓單一小元件能：跨全頻段呈現共振回應、承接現代無線技術的完整頻率範圍、驅動精確分佈的電荷重分佈過程。非碎形的幾何只能對窄頻段作用，做不出這種寬頻多機制效果。</div>
+      </details>
+      <details class="reveal">
+        <summary>用 RF 電磁波檢測器測得到它的作用嗎？</summary>
+        <div class="a">測不到，而且這是預期中的結果——RF 檢測器量測的是場強度，而這項技術不改變強度，改變的是場的結構特性（相干性、偏振、干涉圖樣）。檢測器量的是另一個變數。能量測到變化的是頻譜分析儀這類設備，量的是場的空間分佈——量測紀錄見<a href="research.html#evidence">研究與專利頁的物理與工程驗證</a>。</div>
+      </details>
+      <details class="reveal">
+        <summary>需要電源嗎？會「用完」嗎？</summary>
+        <div class="a">不需要電源——它是被動元件，環境中存在電磁場即運作。作用來自晶片的物理幾何結構，所以也沒有「用完」的概念：結構保持完整，作用就持續。</div>
+      </details>
+      <details class="reveal">
+        <summary>這些原理有發表過嗎？</summary>
+        <div class="a">有。相關建模與實驗研究自 2006 年起發表於多篇期刊論文，包括 Springer Lecture Notes in Networks and Systems（2022，同行評審）；技術本身有美國專利 US12239835B2（2025 年授權）等多國專利。歡迎<a href="https://lin.ee/0fagSFR">用 LINE 索取文獻清單</a>自行查證。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 09 · CTA -->
+<section id="next">
+  <div class="wrap">
+    <div class="cta-final reveal">
+      <div class="eyebrow">09 · 下一步</div>
+      <h2>原理看完了，<br>選一個適合你的形態</h2>
+      <p>同一枚晶片技術、五種情境形態。依你的裝置、空間與移動習慣選擇。</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="index.html#products">依情境選擇產品</a>
+        <a class="btn btn-ghost" href="one.html">看 Lifetune ONE</a>
+        <a class="btn btn-ghost" href="https://lin.ee/0fagSFR">LINE 索取研究資料</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="logo">Pürland<small style="font-weight:500;font-size:14px;margin-left:8px">淨域未來</small></div>
+        <p style="margin-top:10px;max-width:320px">更純淨、有序、與科技共存的日常環境。</p>
+      </div>
+      <div class="foot-links">
+        <a href="index.html">首頁</a>
+        <a href="one.html">Lifetune ONE</a>
+        <a href="https://www.purland.com.tw/pages/about-us">品牌使命與精神</a>
+        <a href="https://www.purland.com.tw/pages/faq">常見問答</a>
+        <a href="mailto:contact@purland.com.tw">contact@purland.com.tw</a>
+      </div>
+    </div>
+    <p class="foot-legal">本頁說明之物理機制均以環境電磁場與電子設備為作用對象。本產品為貼附於電子設備之物理性環境優化裝置，非醫療器材，不涉及診斷、治療、減輕或預防疾病之用途。所載數值為開放空間涵蓋直徑，實際情形依環境而異。<br>© 2026 淨域未來有限公司 Pürland · 統編 93680657</p>
+  </div>
+</footer>
+
+<script>
+if(!location.search.includes('noanim')) document.documentElement.classList.add('js');
+const navBurger = document.querySelector('.nav-burger');
+const navMobile = document.querySelector('.nav-mobile');
+if(navBurger && navMobile){
+  const setMenu = (open)=>{
+    navMobile.classList.toggle('open',open);
+    navBurger.setAttribute('aria-expanded',String(open));
+    navBurger.setAttribute('aria-label',open?'關閉選單':'開啟選單');
+  };
+  navBurger.addEventListener('click',()=>setMenu(!navMobile.classList.contains('open')));
+  navMobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+}
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.05,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),2500);
+</script>
+</body>
+</html>
