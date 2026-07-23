@@ -745,7 +745,7 @@ if(heroCarousel){
     timer = null;
   };
   const startAuto = ()=>{
-    if(prefersReducedMotion || timer || userControlled) return;
+    if(timer || userControlled) return;
     heroCarousel.classList.remove('is-paused');
     timer = window.setInterval(()=>showSlide(activeIndex + 1),5000);
   };
