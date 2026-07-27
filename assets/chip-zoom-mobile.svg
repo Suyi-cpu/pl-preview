@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="3040" viewBox="0 0 750 1520" role="img" aria-labelledby="zt zd">
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="3110" viewBox="0 0 750 1555" role="img" aria-labelledby="zt zd">
   <title id="zt">Lifetune 晶片三段顯微放大</title>
   <desc id="zd">由上而下三段放大：晶片本體、自相似環形晶格、微米級蝕刻結構。</desc>
   <defs>
@@ -14,7 +14,7 @@
     <clipPath id="c3"><circle cx="375" cy="1186" r="216"/></clipPath>
   </defs>
 
-  <rect width="750" height="1520" fill="url(#zbg)"/>
+  <rect width="750" height="1555" fill="url(#zbg)"/>
 
   <!-- 光錐 1→2 -->
   <path d="M287 316L154 512H596L463 316Z" fill="url(#zcone)"/>
@@ -28,7 +28,7 @@
   </g>
   <g font-family="Noto Sans TC, PingFang TC, Microsoft JhengHei, sans-serif" text-anchor="middle">
     <text x="375" y="388" fill="#459590" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" letter-spacing="2.5">01</text>
-    <text x="375" y="420" fill="#101614" font-size="25" font-weight="900">晶片本體</text>
+    <text x="375" y="420" fill="#101614" font-size="25" font-weight="900">晶片實照</text>
   </g>
 
   <!-- 02 環形晶格 -->
@@ -39,7 +39,7 @@
   <g font-family="Noto Sans TC, PingFang TC, Microsoft JhengHei, sans-serif" text-anchor="middle">
     <text x="375" y="894" fill="#459590" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" letter-spacing="2.5">02</text>
     <text x="375" y="926" fill="#101614" font-size="25" font-weight="900">自相似環形晶格</text>
-    <text x="375" y="958" fill="#5C665F" font-size="19" font-weight="600">蝕刻溝槽紋理</text>
+    <text x="375" y="958" fill="#5C665F" font-size="19" font-weight="600">蝕刻溝槽</text>
   </g>
 
   <!-- 03 微米結構 -->
@@ -50,5 +50,6 @@
   <g font-family="Noto Sans TC, PingFang TC, Microsoft JhengHei, sans-serif" text-anchor="middle">
     <text x="375" y="1444" fill="#459590" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" letter-spacing="2.5">03</text>
     <text x="375" y="1476" fill="#101614" font-size="25" font-weight="900">微米級蝕刻結構</text>
+    <text x="375" y="1512" fill="#5C665F" font-size="19" font-weight="600">溝槽寬 0.2 µm ≈ 髮絲的 1/400</text>
   </g>
 </svg>
