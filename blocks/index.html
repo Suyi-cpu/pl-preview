@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Pürland 首頁程式碼｜貼進 Shopline 用</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#F4EFEA;color:#2B2722;font-family:"Noto Sans TC","PingFang TC",-apple-system,sans-serif;line-height:1.75;padding:32px 20px 80px}
+.wrap{max-width:860px;margin:0 auto}
+h1{font-size:26px;font-weight:700;margin-bottom:6px}
+.lede{color:#645B52;font-size:15.5px;margin-bottom:8px}
+.steps{background:#fff;border:1px solid rgba(16,22,20,.1);border-radius:14px;padding:20px 24px;margin:20px 0 28px;font-size:15px}
+.steps h3{font-size:16px;margin-bottom:10px}
+.steps ol{margin-left:20px}
+.steps li{margin-bottom:7px}
+.warn{background:#FFF6E5;border-left:3px solid #C9A24E;padding:12px 16px;border-radius:8px;margin-top:14px;font-size:14.5px}
+.card{background:#fff;border:1px solid rgba(16,22,20,.1);border-radius:14px;padding:22px 24px;margin-bottom:18px;box-shadow:0 2px 16px -8px rgba(16,22,20,.08)}
+.card-head{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:start}
+.num{font-family:ui-monospace,Menlo,monospace;font-size:15px;font-weight:600;background:#367C78;color:#fff;width:38px;height:38px;border-radius:10px;display:grid;place-items:center}
+h2{font-size:19px;font-weight:700}
+.desc{font-size:14.5px;color:#42403A;margin-top:3px}
+.where{font-size:13.5px;color:#645B52;margin-top:6px}
+.copy{background:#367C78;color:#fff;border:0;border-radius:999px;padding:12px 22px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .2s}
+.copy:hover{background:#144D43}
+.copy.done{background:#1D7A4F}
+details{margin-top:16px;border-top:1px solid rgba(16,22,20,.07);padding-top:12px}
+summary{cursor:pointer;font-size:13.5px;color:#645B52}
+pre{background:#1C1A17;color:#D8D2C8;padding:16px;border-radius:10px;margin-top:10px;overflow:auto;max-height:280px;font-size:11.5px;line-height:1.5;white-space:pre-wrap;word-break:break-all}
+@media(max-width:640px){.card-head{grid-template-columns:auto 1fr}.copy{grid-column:1/-1;width:100%;margin-top:10px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Pürland 首頁程式碼</h1>
+  <p class="lede">貼進 Shopline 後台用。按綠色按鈕複製，不用打開任何檔案。</p>
+
+  <div class="steps">
+    <h3>怎麼用</h3>
+    <ol>
+      <li>按下面的 <b>「複製這段程式碼」</b>（按鈕變綠色就是複製好了）</li>
+      <li>到 Shopline 後台 →「網店設計」→ 首頁</li>
+      <li>按 <b>「+ 元件」</b> → 選 <b>「客製化語法元件」</b></li>
+      <li>點進「語法」那個框，按 <b>Cmd + V</b> 貼上</li>
+      <li>按 <b>「儲存」</b>，然後用右上角 <b>「預覽商店」</b> 看效果</li>
+    </ol>
+    <div class="warn"><b>先不要按「發佈」。</b>儲存後先預覽確認沒問題，再決定要不要發佈上線。</div>
+  </div>
+
+  <article class="card">
+    <div class="card-head">
+      <span class="num">01</span>
+      <div>
+        <h2>Hero 輪播區</h2>
+        <p class="desc">首頁最上方：3 張輪播（不是阻擋而是調和／調和訊號保持連線／22 專利）＋下方信任數字列</p>
+        <p class="where"><b>位置：</b>放在「頁首」下方，第一個內容元件</p>
+      </div>
+      <button class="copy" data-target="code-01">複製這段程式碼</button>
+    </div>
+    <details>
+      <summary>看一眼程式碼（不用看也沒關係）</summary>
+      <pre id="code-01">&lt;div class=&quot;plx&quot;&gt;
+&lt;style&gt;
+.plx{--bg:#E7DBD8;--warm:#EFE6DF;--gold:#cba654;--white:#FFFFFF;--ink:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--teal:#367C78;--teal-deep:#144D43;--grad:#C9A24E;--hairline:rgba(16,22,20,.1);--hairline-soft:rgba(16,22,20,.06);--font-ui:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;--font-display:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);font-family:var(--font-ui);color:var(--ink-mid);font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--teal);text-decoration:none}
+.plx h1,.plx h2,.plx h3{font-family:var(--font-display);color:var(--ink);line-height:1.24}
+.plx h1{font-weight:700;font-size:clamp(32px,4.6vw,50px);letter-spacing:.005em}
+.plx .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1{font-weight:700;font-size:clamp(32px,4.6vw,50px);letter-spacing:.005em}
+.plx h2{font-weight:700;font-size:clamp(24px,3vw,34px)}
+.plx h3{font-weight:700;font-size:21px}
+.plx .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+.plx .btn{display:inline-flex;align-items:center;gap:8px;font-size:17.5px;font-weight:600;padding:14px 28px;border-radius:999px;transition:all .25s var(--ease)}
+.plx .btn-dark{background:var(--teal);color:#fff}
+.plx .btn-dark:hover{background:var(--teal-deep);transform:translateY(-2px)}
+.plx .btn-line{border:1.5px solid var(--hairline);color:var(--ink);background:transparent}
+.plx .btn-line:hover{border-color:var(--ink);transform:translateY(-2px)}
+.plx .plx-hero{position:relative;padding:32px 0 64px;background:linear-gradient(180deg,#EDE3DD 0%,#EAE0DA 60%,#E7DBD8 100%);overflow:hidden}
+.plx .plx-hero::before{content:&quot;&quot;;position:absolute;top:-240px;right:-180px;width:760px;height:760px;border-radius:50%;
+  background:radial-gradient(circle at 42% 42%,rgba(201,162,78,.16),rgba(69,149,144,.10) 48%,transparent 72%);
+  pointer-events:none;filter:blur(2px);}
+.plx .plx-hero::after{content:&quot;&quot;;position:absolute;bottom:-280px;left:-220px;width:660px;height:660px;border-radius:50%;
+  background:radial-gradient(circle at 60% 40%,rgba(69,149,144,.10),rgba(201,162,78,.10) 55%,transparent 70%);
+  pointer-events:none;}
+.plx .plx-hero .wrap{position:relative;z-index:1}
+.plx .plx-hero h1 em,.plx .pl-grad{font-style:normal;color:var(--teal)}
+.plx .plx-hero-ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.plx .pl-hero-carousel{position:relative;min-height:600px;border-radius:28px;overflow:hidden;background:#101614;box-shadow:0 28px 80px rgba(16,22,20,.12)}
+.plx .pl-hero-track{position:relative;min-height:600px}
+.plx .pl-hero-slide{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr);align-items:stretch;opacity:0;pointer-events:none;transition:opacity .7s var(--ease)}
+.plx .pl-hero-slide.is-active{opacity:1;pointer-events:auto;z-index:1}
+.plx .pl-hero-media{position:relative;min-height:600px;overflow:hidden;background:#101614}
+.plx .pl-hero-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.96) contrast(1.04)}
+.plx .pl-hero-media::after{content:&quot;&quot;;position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,22,20,.18),rgba(16,22,20,.02) 45%,rgba(16,22,20,.32))}
+.plx .pl-hero-slide:first-child .pl-hero-media::after{background:linear-gradient(90deg,rgba(16,22,20,.06),rgba(16,22,20,.26) 58%,rgba(16,22,20,.58))}
+.plx .pl-hero-copy{position:relative;display:flex;flex-direction:column;justify-content:center;padding:64px 58px;background:linear-gradient(135deg,rgba(247,242,237,.97),rgba(237,228,222,.93));border-left:1px solid rgba(255,255,255,.42)}
+.plx .pl-hero-kicker{font-family:var(--font-mono);font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.plx .pl-hero-copy h1{font-size:clamp(28px,3.8vw,42px);margin:20px 0 18px}
+.plx .pl-hero-copy p{font-size:19px;line-height:1.85;color:var(--ink-mid)}
+.plx .pl-hero-control{position:absolute;top:50%;z-index:5;width:42px;height:42px;border:1px solid rgba(255,255,255,.55);border-radius:999px;background:rgba(16,22,20,.28);color:#fff;font-size:24px;line-height:1;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(10px);transition:all .25s var(--ease)}
+.plx .pl-hero-control:hover{background:rgba(20,77,67,.72);transform:translateY(-50%) scale(1.04)}
+.plx .pl-hero-prev{left:18px;transform:translateY(-50%)}
+.plx .pl-hero-next{right:18px;transform:translateY(-50%)}
+.plx .pl-hero-dots{position:absolute;left:50%;bottom:22px;z-index:6;display:flex;gap:10px;transform:translateX(-50%);padding:8px 10px;border-radius:999px;background:rgba(16,22,20,.28);backdrop-filter:blur(10px)}
+.plx .pl-hero-dot{width:9px;height:9px;border:0;border-radius:999px;background:rgba(255,255,255,.54);cursor:pointer;transition:all .25s var(--ease)}
+.plx .pl-hero-dot.is-active{width:28px;background:rgba(255,255,255,.38);position:relative;overflow:hidden}
+.plx .pl-hero-dot.is-active::after{content:&quot;&quot;;position:absolute;inset:0;border-radius:999px;background:#fff;transform-origin:left;transform:scaleX(0);animation:dotFill 5s linear forwards}
+.plx .pl-hero-carousel.is-paused .pl-hero-dot.is-active::after{animation-play-state:paused}
+.plx .pl-hero-dot span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.plx .pl-hero-note{font-family:var(--font-mono);font-size:14.5px;letter-spacing:.14em;color:var(--ink-dim);margin-top:14px;text-transform:uppercase}
+.plx .trust{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:64px;background:var(--hairline-soft);border:1px solid var(--hairline-soft);border-radius:var(--radius);overflow:hidden;box-shadow:0 18px 60px rgba(16,22,20,.06)}
+.plx .trust::before{content:&quot;&quot;;position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);z-index:1}
+.plx .trust&gt;div{background:var(--white);padding:28px 26px 24px}
+.plx .trust .t-en{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;margin-bottom:12px}
+.plx .trust .t-num{font-family:var(--font-mono);font-size:30px;font-weight:600;color:var(--ink);line-height:1.1}
+.plx .trust .t-num small{font-size:16px;font-weight:500;color:var(--ink-dim);margin-left:2px}
+.plx .trust .t-label{font-size:15px;color:var(--ink-dim);margin-top:8px;line-height:1.6}
+.plx .deep .wrap{position:relative;z-index:1}
+.plx .cta-final .hero-ctas{justify-content:center}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (max-width:860px){.plx .plx-hero{padding:22px 0 52px}.plx .pl-hero-carousel,.plx .pl-hero-track{min-height:0}.plx .pl-hero-slide{position:relative;display:none;grid-template-columns:1fr;background:var(--white)}.plx .pl-hero-slide.is-active{display:grid}.plx .pl-hero-media{min-height:300px;aspect-ratio:16/10}.plx .pl-hero-copy{padding:34px 26px 58px;border-left:0}.plx .pl-hero-copy h1{font-size:38px}.plx .pl-hero-control{top:150px}.plx .pl-hero-dots{bottom:16px}.plx .trust{grid-template-columns:1fr 1fr}.plx .trust&gt;div{padding:20px 18px 18px}}
+@media (max-width:520px){.plx .pl-hero-carousel{border-radius:18px}.plx .pl-hero-media{min-height:240px}.plx .pl-hero-copy{padding:28px 22px 56px}.plx .pl-hero-control{width:36px;height:36px;top:120px}}
+@keyframes dotFill{to{transform:scaleX(1)}}
+.plx .reveal{opacity:1;transform:none}.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+&lt;/style&gt;
+
+&lt;div class=&quot;plx-hero&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;pl-hero-carousel reveal&quot; aria-roledescription=&quot;carousel&quot; aria-label=&quot;Pürland 首頁重點&quot;&gt;
+      &lt;div class=&quot;pl-hero-track&quot;&gt;
+        &lt;article class=&quot;pl-hero-slide is-active&quot; aria-label=&quot;1 / 3&quot;&gt;
+          &lt;figure class=&quot;pl-hero-media&quot;&gt;
+            &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/chip-gold-macro.jpg&quot; alt=&quot;Lifetune 金色矽晶芯片微距&quot;&gt;
+          &lt;/figure&gt;
+          &lt;div class=&quot;pl-hero-copy&quot;&gt;
+            &lt;div class=&quot;pl-hero-kicker&quot;&gt;PÜRLAND 嚴選引進 · 美國專利技術 LIFETUNE&lt;/div&gt;
+            &lt;h1&gt;不是阻擋，&lt;br&gt;而是&lt;span class=&quot;pl-grad&quot;&gt;調和&lt;/span&gt;&lt;/h1&gt;
+            &lt;p&gt;貼在手機、或放進空間裡的被動式環境配置裝置——不用電、不用 App，也不影響訊號。&lt;/p&gt;
+            &lt;p style=&quot;margin-top:12px;font-size:16.5px;line-height:1.7;color:var(--ink-dim)&quot;&gt;Lifetune 磁波調和器 · 為高連線密度的現代空間而設計。&lt;/p&gt;
+            &lt;div class=&quot;pl-hero-note&quot;&gt;調和不是屏蔽 · 不影響收訊 · 被動元件無需電源&lt;/div&gt;
+            &lt;div class=&quot;hero-ctas&quot;&gt;
+              &lt;a class=&quot;btn btn-dark&quot; href=&quot;https://suyi-cpu.github.io/pl-preview/tech.html&quot;&gt;認識運作原理&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;pl-hero-slide&quot; aria-label=&quot;2 / 3&quot;&gt;
+          &lt;figure class=&quot;pl-hero-media&quot;&gt;
+            &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/one/scene-ladyphone.jpg&quot; alt=&quot;日常使用貼有 Lifetune ONE 的手機&quot;&gt;
+          &lt;/figure&gt;
+          &lt;div class=&quot;pl-hero-copy&quot;&gt;
+            &lt;div class=&quot;pl-hero-kicker&quot;&gt;LIVE WITH TECHNOLOGY · 與科技完美共存&lt;/div&gt;
+            &lt;h1&gt;調和訊號，&lt;br&gt;保持連線&lt;/h1&gt;
+            &lt;p&gt;不需充電、不需 App，也不影響設備原有的連線功能——然後回到生活。&lt;/p&gt;
+            &lt;div class=&quot;hero-ctas&quot;&gt;
+              &lt;a class=&quot;btn btn-dark&quot; href=&quot;https://www.purland.com.tw/products&quot;&gt;依情境選擇產品&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;pl-hero-slide&quot; aria-label=&quot;3 / 3&quot;&gt;
+          &lt;figure class=&quot;pl-hero-media&quot;&gt;
+            &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/adopt-tb-hero.jpg&quot; alt=&quot;Aires Certified Space 場館導入視覺&quot;&gt;
+          &lt;/figure&gt;
+          &lt;div class=&quot;pl-hero-copy&quot;&gt;
+            &lt;div class=&quot;pl-hero-kicker&quot;&gt;VERIFIABLE · 可查證，是最好的說服&lt;/div&gt;
+            &lt;h1&gt;22 專利 · 33 年研究 · 全球導入&lt;/h1&gt;
+            &lt;p&gt;從專利號到 NBA 場館導入，每一項都可以離開這個網站自己查。&lt;/p&gt;
+            &lt;div class=&quot;hero-ctas&quot;&gt;
+              &lt;a class=&quot;btn btn-dark&quot; href=&quot;https://suyi-cpu.github.io/pl-preview/research.html&quot;&gt;看研究與專利&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/article&gt;
+      &lt;/div&gt;
+      &lt;button class=&quot;pl-hero-control pl-hero-prev&quot; type=&quot;button&quot; aria-label=&quot;上一張&quot;&gt;‹&lt;/button&gt;
+      &lt;button class=&quot;pl-hero-control pl-hero-next&quot; type=&quot;button&quot; aria-label=&quot;下一張&quot;&gt;›&lt;/button&gt;
+      &lt;div class=&quot;pl-hero-dots&quot; role=&quot;tablist&quot; aria-label=&quot;首頁輪播選擇&quot;&gt;
+        &lt;button class=&quot;pl-hero-dot is-active&quot; type=&quot;button&quot; aria-label=&quot;第 1 張&quot; aria-selected=&quot;true&quot;&gt;&lt;span&gt;1&lt;/span&gt;&lt;/button&gt;
+        &lt;button class=&quot;pl-hero-dot&quot; type=&quot;button&quot; aria-label=&quot;第 2 張&quot; aria-selected=&quot;false&quot;&gt;&lt;span&gt;2&lt;/span&gt;&lt;/button&gt;
+        &lt;button class=&quot;pl-hero-dot&quot; type=&quot;button&quot; aria-label=&quot;第 3 張&quot; aria-selected=&quot;false&quot;&gt;&lt;span&gt;3&lt;/span&gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;trust reveal&quot;&gt;
+      &lt;div&gt;&lt;div class=&quot;t-en&quot;&gt;Patents&lt;/div&gt;&lt;div class=&quot;t-num&quot;&gt;22&lt;small&gt;項&lt;/small&gt;&lt;/div&gt;&lt;div class=&quot;t-label&quot;&gt;全球授權專利&lt;/div&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;div class=&quot;t-en&quot;&gt;Research&lt;/div&gt;&lt;div class=&quot;t-num&quot;&gt;20+&lt;small&gt;年&lt;/small&gt;&lt;/div&gt;&lt;div class=&quot;t-label&quot;&gt;已發表研究脈絡&lt;/div&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;div class=&quot;t-en&quot;&gt;Peer-Reviewed&lt;/div&gt;&lt;div class=&quot;t-num&quot;&gt;9&lt;small&gt;篇&lt;/small&gt;&lt;/div&gt;&lt;div class=&quot;t-label&quot;&gt;同儕審查期刊發表&lt;/div&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;div class=&quot;t-en&quot;&gt;Users&lt;/div&gt;&lt;div class=&quot;t-num&quot;&gt;700,000+&lt;/div&gt;&lt;div class=&quot;t-label&quot;&gt;全球使用者&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+(function(){
+  var root=document.querySelector(&#x27;.plx-hero&#x27;); if(!root) return;
+  var box=root.closest(&#x27;.plx&#x27;); if(box) box.classList.add(&#x27;plx-js&#x27;);
+  var car=root.querySelector(&#x27;.pl-hero-carousel&#x27;); if(!car) return;
+  var slides=[].slice.call(car.querySelectorAll(&#x27;.pl-hero-slide&#x27;));
+  var dots=[].slice.call(car.querySelectorAll(&#x27;.pl-hero-dot&#x27;));
+  var prev=car.querySelector(&#x27;.pl-hero-prev&#x27;), next=car.querySelector(&#x27;.pl-hero-next&#x27;);
+  var i=0,timer=null,manual=false;
+  function show(n){ i=(n+slides.length)%slides.length;
+    slides.forEach(function(s,k){ var a=k===i; s.classList.toggle(&#x27;is-active&#x27;,a); s.setAttribute(&#x27;aria-hidden&#x27;,String(!a)); });
+    dots.forEach(function(d,k){ var a=k===i; d.classList.toggle(&#x27;is-active&#x27;,a); d.setAttribute(&#x27;aria-selected&#x27;,String(a)); }); }
+  function stop(){ if(timer){clearInterval(timer); timer=null;} }
+  function start(){ if(timer||manual) return; car.classList.remove(&#x27;is-paused&#x27;); timer=setInterval(function(){show(i+1);},5000); }
+  function pause(){ if(timer){ stop(); car.classList.add(&#x27;is-paused&#x27;); } }
+  function take(){ manual=true; stop(); car.classList.add(&#x27;is-paused&#x27;); }
+  car.addEventListener(&#x27;mouseenter&#x27;,pause); car.addEventListener(&#x27;mouseleave&#x27;,start);
+  car.addEventListener(&#x27;focusin&#x27;,pause); car.addEventListener(&#x27;focusout&#x27;,start);
+  if(prev) prev.addEventListener(&#x27;click&#x27;,function(){take();show(i-1);});
+  if(next) next.addEventListener(&#x27;click&#x27;,function(){take();show(i+1);});
+  dots.forEach(function(d,k){ d.addEventListener(&#x27;click&#x27;,function(){take();show(k);}); });
+  show(0); start();
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(&#x27;in&#x27;); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:&#x27;0px 0px -8% 0px&#x27;});
+  root.querySelectorAll(&#x27;.reveal&#x27;).forEach(function(el){io.observe(el);});
+  setTimeout(function(){ root.querySelectorAll(&#x27;.reveal:not(.in)&#x27;).forEach(function(el){el.classList.add(&#x27;in&#x27;);}); },2500);
+})();
+&lt;/script&gt;
+</pre>
+    </details>
+  </article>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var pre = document.getElementById(btn.dataset.target);
+    var text = pre.textContent;
+    function done(){ var o=btn.textContent; btn.textContent='✓ 已複製！去 Shopline 貼上'; btn.classList.add('done');
+      setTimeout(function(){ btn.textContent=o; btn.classList.remove('done'); }, 2600); }
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+    function fallback(){
+      var ta=document.createElement('textarea'); ta.value=text;
+      ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta);
+      ta.select(); try{ document.execCommand('copy'); done(); }catch(e){ alert('複製失敗，請手動全選複製'); }
+      document.body.removeChild(ta);
+    }
+  });
+});
+</script>
+</body>
+</html>
