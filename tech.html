@@ -240,6 +240,7 @@ html.js .reveal.in{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
 .line-qr{display:none}@media(min-width:900px){.line-qr{display:inline-flex;align-items:center;gap:13px;margin-top:22px;padding:10px 16px 10px 10px;background:#fff;border:1px solid #E4DAD2;border-radius:14px;text-align:left}}.line-qr img{width:66px;height:66px;display:block;border-radius:6px}.line-qr b{display:block;font-size:14px;font-weight:600;color:#2B2722;margin-bottom:3px}.line-qr span{font-size:12.5px;color:#645B52}
+@media(max-width:720px){.zoom-labels{display:none}.chip-img figcaption{margin-top:0}}
 </style>
 </head>
 <body>
@@ -279,7 +280,10 @@ html.js .reveal.in{opacity:1;transform:none}
       <a class="btn btn-ghost" href="https://lin.ee/0fagSFR">LINE 索取研究資料</a>
     </div>
     <figure class="hero-visual reveal">
-      <img src="assets/wave-summary-tech.svg" alt="調和過程圖解：左側雜亂波形進入，經蝕刻晶片的繞射、共振、相位干涉、電荷重分佈四種交互作用，右側輸出規律波形">
+      <picture>
+        <source media="(max-width:720px)" srcset="assets/wave-summary-tech-mobile.svg">
+        <img src="assets/wave-summary-tech.svg" alt="調和過程圖解：左側雜亂波形進入，經蝕刻晶片的繞射、共振、相位干涉、電荷重分佈四種交互作用，右側輸出規律波形">
+      </picture>
     </figure>
   </div>
 </div>
@@ -315,7 +319,10 @@ html.js .reveal.in{opacity:1;transform:none}
     </div>
     <div class="chip-duo reveal" style="grid-template-columns:1fr">
       <figure class="chip-img" style="margin-top:0">
-        <img src="assets/chip-zoom-stages.png" alt="同一枚晶片的三個尺度：晶片實照放大至自相似環形晶格，再放大至微米級蝕刻結構" loading="lazy" style="max-width:100%;width:100%;margin:0;display:block">
+        <picture>
+          <source media="(max-width:720px)" srcset="assets/chip-zoom-mobile.svg">
+          <img src="assets/chip-zoom-stages.png" alt="同一枚晶片的三個尺度：晶片實照放大至自相似環形晶格，再放大至微米級蝕刻結構" style="max-width:100%;width:100%;margin:0;display:block">
+        </picture>
         <div class="zoom-labels" aria-hidden="true">
           <span style="left:13.75%">01 · 晶片實照</span>
           <span style="left:45%">02 · 自相似環形晶格 · 蝕刻溝槽</span>
