@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>模擬 Shopline 環境測試｜Pürland 廣告落地頁（ONE）程式碼</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#EFEDEA;color:#333;font-family:Helvetica,Arial,sans-serif;font-size:16.8px;line-height:1.6}
+h1{font-size:33.6px;text-align:center!important;margin:1.2em 0;color:#111;font-weight:400}
+h2{font-size:26px;text-align:center;margin:1em 0;color:#111;font-weight:400}
+h3{font-size:20px;text-align:center;margin:.8em 0;color:#111;font-weight:400}
+p{margin:1em 0;text-align:justify;text-indent:2em;line-height:1.6}
+a{color:#1a5fd0;text-decoration:underline}
+img{border:3px solid #d33;max-width:100%}
+ul,ol{list-style:disc;padding-left:2em}
+table{border-collapse:separate;border-spacing:4px}
+td,th{border:1px solid #d33;padding:2px;text-align:center}
+.btn{background:#d33;color:#fff;padding:4px 8px;border-radius:0;font-size:13px}
+section{padding:0}
+.sl-bar{background:#222;color:#fff;padding:12px 20px;font-size:14px;text-align:center}
+.sl-nav{background:#fff;border-bottom:1px solid #ddd;padding:16px 20px;display:flex;gap:20px;align-items:center}
+.sl-nav b{font-size:19px}
+.sl-nav a{margin-left:auto;color:#1a5fd0}
+.sl-foot{background:#222;color:#bbb;padding:34px 20px;font-size:14px;text-align:center}
+.sim-sep{border:0;border-top:2px dashed #c33;margin:0}
+.sl-probe{background:#fff;border:2px solid #d33;padding:16px 20px}
+</style>
+</head>
+<body>
+<div class="sl-bar">模擬 Shopline 主題環境 — 這行與下方導覽列/頁尾都是「主題原生」，不該被我們的區塊影響</div>
+<div class="sl-nav"><b>Pürland（主題原生導覽）</b><a href="#">主題原生連結（應為藍色底線）</a></div>
+<div class="sl-probe">
+  <h1>主題原生 H1（應為 33.6px、置中、細體）</h1>
+  <p>主題原生段落：應保持 16.8px、兩端對齊、首行縮排兩字。<a href="#">原生連結</a>，以及 <span class="btn">原生 .btn（紅底小字）</span>。</p>
+</div>
+
+<!-- ══ 01-Hero與信任數字.html ══ -->
+<div class="plx">
+<style>
+.plx{--page:#E7DBD8;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;--ink-hi:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--brand-teal:#367C78;--gold:#cba654;--mint:#66bfa1;--line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);--shadow-card:0 2px 16px -8px rgba(16,22,20,.06);--hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);--radius-xl:14px;--radius-lg:12px;--radius-control:999px;--font-ui:"Noto Sans TC","PingFang TC","Helvetica Neue",Helvetica,Arial,sans-serif;--font-display:"Noto Sans TC","PingFang TC",sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);color:var(--ink-mid);font-family:var(--font-ui);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.plx section{padding:64px 0}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--brand-teal);text-decoration:none}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+.plx h1{font-weight:700;font-size:clamp(30px,4.4vw,46px);letter-spacing:.01em}
+.plx h2{font-weight:700;font-size:clamp(22px,2.8vw,30px)}
+.plx h3{font-weight:700;font-size:20px}
+.plx .eyebrow{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .wrap{max-width:1120px!important;margin:0 auto!important;padding:0 24px!important}
+.plx .btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;font-size:17px!important;font-weight:600!important;padding:13px 26px!important;border-radius:var(--radius-control)!important;transition:all .25s var(--ease)!important}
+.plx .btn-primary{background:var(--brand-teal)!important;color:#fff!important}
+.plx .btn-primary:hover{background:var(--surface-deep)!important;transform:translateY(-2px)!important}
+.plx .btn-ghost{border:1.5px solid var(--line)!important;color:var(--ink-hi)!important;background:transparent!important}
+.plx .btn-ghost:hover{border-color:var(--ink-dim)!important;transform:translateY(-2px)!important}
+.plx .lp-hero{background:var(--hero-grad)!important;padding:64px 0 56px!important;border-bottom:1px solid var(--line-2)!important}
+.plx .lp-hero-grid{display:grid!important;grid-template-columns:1.05fr .95fr!important;gap:52px!important;align-items:center!important}
+.plx .lp-hero h1{margin:16px 0 10px!important}
+.plx .lp-hero h1 em{font-style:normal!important;color:var(--brand-teal)!important}
+.plx .lp-hero .sub{font-family:var(--font-display)!important;font-weight:700!important;font-size:clamp(18px,2.2vw,22px)!important;color:var(--ink-hi)!important;margin-bottom:14px!important}
+.plx .lp-hero p.lede{max-width:500px!important;font-size:18px!important}
+.plx .price-row{display:flex!important;align-items:baseline!important;gap:14px!important;margin-top:24px!important;flex-wrap:wrap!important}
+.plx .price{font-family:var(--font-mono)!important;font-size:32px!important;font-weight:600!important;color:var(--ink-hi)!important}
+.plx .price-note{font-size:15px!important;color:var(--ink-dim)!important}
+.plx .coupon{display:inline-flex!important;align-items:center!important;gap:10px!important;margin-top:14px!important;padding:10px 16px!important;background:rgba(203,166,84,.12)!important;border:1px solid rgba(203,166,84,.45)!important;border-radius:12px!important;font-size:15.5px!important;color:var(--ink-hi)!important}
+.plx .coupon b{color:#8a6a1f!important}
+.plx .hero-ctas{display:flex!important;gap:14px!important;margin-top:22px!important;flex-wrap:wrap!important}
+.plx .assure{margin-top:16px!important;font-family:var(--font-mono)!important;font-size:clamp(10px,3.2vw,14px)!important;letter-spacing:.05em!important;color:var(--ink-dim)!important;white-space:nowrap!important}
+.plx .lp-hero-img{border-radius:var(--radius-xl)!important;overflow:hidden!important;border:1px solid var(--line)!important;box-shadow:var(--shadow-card)!important}
+.plx .trust{position:relative!important;display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:1px!important;margin-top:44px!important;background:var(--line-2)!important;border:1px solid var(--line-2)!important;border-radius:var(--radius-xl)!important;overflow:hidden!important;box-shadow:var(--shadow-card)!important}
+.plx .trust::before{content:""!important;position:absolute!important;top:0!important;left:0!important;right:0!important;height:3px!important;background:#C9A24E!important;z-index:1!important}
+.plx .trust>div{background:var(--surface-white)!important;padding:24px 22px 20px!important}
+.plx .trust .t-en{font-family:var(--font-mono)!important;font-size:12.5px!important;letter-spacing:.2em!important;color:var(--brand-teal)!important;text-transform:uppercase!important;margin-bottom:10px!important}
+.plx .trust .t-num{font-family:var(--font-mono)!important;font-size:28px!important;font-weight:600!important;color:var(--ink-hi)!important;line-height:1.1!important}
+.plx .trust .t-num small{font-size:15px!important;font-weight:500!important;color:var(--ink-dim)!important;margin-left:2px!important}
+.plx .trust .t-label{font-size:14.5px!important;color:var(--ink-dim)!important;margin-top:7px!important;line-height:1.6!important}
+@media (max-width:840px){.plx .lp-hero{padding:40px 0 44px!important}.plx .lp-hero-grid{grid-template-columns:1fr!important;gap:30px!important}.plx .trust{grid-template-columns:1fr 1fr!important}.plx .trust>div{padding:18px 16px 16px!important}}
+@media (max-width:520px){.plx .hero-ctas .btn{width:100%!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx table{border-collapse:collapse!important;border-spacing:0!important}
+.plx td,.plx th{border:0!important;background:transparent!important}
+.plx .btn{text-align:center!important}
+.plx summary{cursor:pointer}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+</style>
+
+<div class="lp-hero">
+  <div class="wrap">
+    <div class="lp-hero-grid">
+      <div>
+        <div class="eyebrow reveal">美國發明專利 US12239835B2 · LIFETUNE</div>
+        <h1 class="reveal">不是屏蔽訊號，<br>而是<em>調和環境</em></h1>
+        <div class="sub reveal">Lifetune ONE 磁波調和器 · 貼在最常用的那台裝置上</div>
+        <p class="lede reveal">筆電、手機、Wi-Fi 分享器——現代生活裡的連線裝置，比你數得還多。一枚 17.4 mm 的專利蝕刻矽晶芯片，把裝置周圍雜亂的電磁場，重新組織成有秩序的分佈。不用電、不影響訊號，貼上就完成。</p>
+        <div class="price-row reveal">
+          <span class="price">NT$2,980</span>
+          <span class="price-note">單入 · 附備用背膠 ×2 · 全店免運</span>
+        </div>
+        <div class="reveal"><span class="coupon">🎁 <span>新會員限定：加入會員領 <b>NT$200 優惠代碼</b>，首購即可折抵</span></span></div>
+        <div class="hero-ctas reveal">
+          <a class="btn btn-primary" href="https://www.purland.com.tw/products/lifetune-one">立即購買 Lifetune ONE</a>
+          <a class="btn btn-ghost" href="https://lin.ee/0fagSFR">LINE 諮詢</a>
+        </div>
+        <p class="assure reveal">全店免運 · 7 天鑑賞期 · 台灣在地售後</p>
+      </div>
+      <figure class="lp-hero-img reveal">
+        <img src="https://suyi-cpu.github.io/pl-preview/assets/one/hero.jpg" alt="Lifetune ONE 貼附於手機背面">
+      </figure>
+    </div>
+    <div class="trust reveal">
+      <div><div class="t-en">Patents</div><div class="t-num">22<small>項</small></div><div class="t-label">全球授權專利</div></div>
+      <div><div class="t-en">Research</div><div class="t-num">20+<small>年</small></div><div class="t-label">已發表研究脈絡</div></div>
+      <div><div class="t-en">Peer-Reviewed</div><div class="t-num">9<small>篇</small></div><div class="t-label">同儕審查期刊發表</div></div>
+      <div><div class="t-en">Users</div><div class="t-num">700,000+</div><div class="t-label">全球使用者</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+  var box=document.querySelectorAll('.plx');
+  box.forEach(function(b){ b.classList.add('plx-js'); });
+  var els=document.querySelectorAll('.plx .reveal');
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll('.plx .reveal:not(.in)').forEach(function(el){el.classList.add('in')}); },2500);
+})();
+</script>
+
+
+<hr class="sim-sep">
+
+<!-- ══ 02-調和不是屏蔽.html ══ -->
+<div class="plx">
+<style>
+.plx{--page:#E7DBD8;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;--ink-hi:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--brand-teal:#367C78;--gold:#cba654;--mint:#66bfa1;--line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);--shadow-card:0 2px 16px -8px rgba(16,22,20,.06);--hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);--radius-xl:14px;--radius-lg:12px;--radius-control:999px;--font-ui:"Noto Sans TC","PingFang TC","Helvetica Neue",Helvetica,Arial,sans-serif;--font-display:"Noto Sans TC","PingFang TC",sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);color:var(--ink-mid);font-family:var(--font-ui);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.plx section{padding:64px 0}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--brand-teal);text-decoration:none}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+.plx h1{font-weight:700;font-size:clamp(30px,4.4vw,46px);letter-spacing:.01em}
+.plx h2{font-weight:700;font-size:clamp(22px,2.8vw,30px)}
+.plx h3{font-weight:700;font-size:20px}
+.plx .eyebrow{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .sec-num{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important}
+.plx .sec-head .sec-num::before{content:""!important;display:inline-block!important;width:26px!important;height:2px!important;background:#C9A24E!important;margin-right:10px!important;vertical-align:middle!important}
+.plx .wrap{max-width:1120px!important;margin:0 auto!important;padding:0 24px!important}
+.plx section{padding:76px 0!important}
+.plx .sec-head{display:flex!important;align-items:baseline!important;gap:16px!important;border-top:1px solid var(--line)!important;padding-top:20px!important;margin-bottom:38px!important}
+.plx .sec-head h2{flex:1!important}
+.plx .vs-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:20px!important;margin-bottom:44px!important}
+.plx .vs{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;padding:28px!important;box-shadow:var(--shadow-card)!important}
+.plx .vs.is-mod{border-color:rgba(54,124,120,.45)!important;box-shadow:inset 0 3px 0 var(--brand-teal),var(--shadow-card)!important}
+.plx .vs .v-tag{font-family:var(--font-mono)!important;font-size:13px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .vs.is-mod .v-tag{color:var(--brand-teal)!important}
+.plx .vs h3{margin:10px 0 8px!important}
+.plx .vs p{font-size:16px!important;line-height:1.75!important}
+.plx .wave-summary{border:1px solid var(--line-2)!important;border-radius:var(--radius-xl)!important;overflow:hidden!important;box-shadow:var(--shadow-card)!important;background:var(--surface-white)!important}
+.plx .wave-summary img{width:100%!important;height:auto!important;display:block!important}
+.plx .step-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:20px!important;margin-top:44px!important}
+.plx .step{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;padding:26px!important;box-shadow:var(--shadow-card)!important}
+.plx .step .s-num{font-family:var(--font-mono)!important;font-size:22px!important;color:var(--brand-teal)!important}
+.plx .step h3{margin:12px 0 8px!important;font-size:19px!important}
+.plx .step p{font-size:16px!important;line-height:1.75!important}
+.plx .sem-band{display:grid!important;grid-template-columns:.9fr 1.1fr!important;gap:36px!important;align-items:center!important;margin-top:48px!important;background:var(--surface-deep)!important;border-radius:var(--radius-xl)!important;overflow:hidden!important}
+.plx .sem-band .sb-img{min-height:300px!important}
+.plx .sem-band .sb-img img{width:100%!important;height:100%!important;object-fit:cover!important}
+.plx .sem-band .sb-text{padding:38px 36px!important;color:#C4DCD2!important}
+.plx .sem-band .sb-text .eyebrow{color:#8FC7B4!important}
+.plx .sem-band .sb-text h3{color:#fff!important;font-size:clamp(19px,2.3vw,24px)!important;margin:12px 0 10px!important;line-height:1.45!important}
+.plx .sem-band .sb-text p{font-size:16px!important;line-height:1.8!important}
+.plx .sem-band .sb-stats{display:flex!important;gap:32px!important;margin-top:22px!important;flex-wrap:wrap!important}
+.plx .sem-band .sb-stats .s-num{font-family:var(--font-mono)!important;font-size:22px!important;color:#fff!important}
+.plx .sem-band .sb-stats .s-label{font-size:13.5px!important;color:#9FB7B0!important;margin-top:2px!important}
+.plx .mech-more{margin-top:26px!important;font-size:16px!important}
+@media (max-width:840px){.plx section{padding:52px 0!important}.plx .vs-grid{grid-template-columns:1fr!important}.plx .step-grid{grid-template-columns:1fr!important}.plx .sem-band{grid-template-columns:1fr!important}.plx .sem-band .sb-img{min-height:240px!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx table{border-collapse:collapse!important;border-spacing:0!important}
+.plx td,.plx th{border:0!important;background:transparent!important}
+.plx .btn{text-align:center!important}
+.plx summary{cursor:pointer}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+</style>
+
+<section id="mechanism">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">01 · 調和 ≠ 屏蔽</span>
+      <h2>兩種原理，兩種結果</h2>
+    </div>
+    <div class="vs-grid">
+      <div class="vs reveal">
+        <div class="v-tag">屏蔽 · Shielding</div>
+        <h3>把電磁波擋下來</h3>
+        <p>屏蔽的原理是阻擋電磁波本身——而訊號就是電磁波。場被擋住的同時，連線也一起被擋，這是屏蔽方案在原理上的兩難。</p>
+      </div>
+      <div class="vs is-mod reveal">
+        <div class="v-tag">調和 · Modulation</div>
+        <h3>重新組織場的結構</h3>
+        <p>調和不阻擋、不吸收。晶片以自身的幾何結構與周圍的場交互作用，把雜亂的場重新組織成有秩序的分佈——訊號照常收發，裝置照常連線。</p>
+      </div>
+    </div>
+    <figure class="wave-summary reveal">
+      <picture>
+        <source media="(max-width:720px)" srcset="https://suyi-cpu.github.io/pl-preview/assets/wave-summary-mobile.svg">
+        <img src="https://suyi-cpu.github.io/pl-preview/assets/wave-summary.svg" alt="不是阻擋，而是調和：雜亂波形經矽晶片的物理交互作用後，輸出為規律波形">
+      </picture>
+    </figure>
+    <div class="step-grid">
+      <div class="step reveal">
+        <div class="s-num">01</div>
+        <h3>感應</h3>
+        <p>晶片表面 4,084,101 個環形共振器，感應周圍裝置發出的電磁場。</p>
+      </div>
+      <div class="step reveal">
+        <div class="s-num">02</div>
+        <h3>再輻射與干涉</h3>
+        <p>晶片以自身的幾何結構再輻射，與原有的場相互干涉。</p>
+      </div>
+      <div class="step reveal">
+        <div class="s-num">03</div>
+        <h3>重組</h3>
+        <p>雜亂的場被重新組織成有秩序的分佈——總能量不變，訊號不受影響。</p>
+      </div>
+    </div>
+    <div class="sem-band reveal">
+      <div class="sb-img"><img src="https://suyi-cpu.github.io/pl-preview/assets/sem-circuit.jpg" alt="自相似環形晶格在電子顯微鏡下的結構影像" loading="lazy"></div>
+      <div class="sb-text">
+        <div class="eyebrow">UNDER THE MICROSCOPE · 看得見的工藝</div>
+        <h3>這道紋路不是裝飾，<br>它就是全部的機制</h3>
+        <p>中央那枚黑色矽晶片，用與半導體業同級的光刻製程蝕刻——0.2 µm 的狹縫，約為髮絲的 1/400。結構本身就是產品與環境電磁場互動的全部機制。</p>
+        <div class="sb-stats">
+          <div><div class="s-num">4,084,101</div><div class="s-label">環形共振器</div></div>
+          <div><div class="s-num">0.2 µm</div><div class="s-label">蝕刻寬度</div></div>
+          <div><div class="s-num">16S5G</div><div class="s-label">專利矽晶共振晶片</div></div>
+        </div>
+      </div>
+    </div>
+    <p class="mech-more reveal">完整的物理機制與建模結論，都在<a href="https://www.purland.com.tw/pages/how-it-works">技術頁「運作原理」</a>。</p>
+  </div>
+</section>
+</div>
+
+<script>
+(function(){
+  var box=document.querySelectorAll('.plx');
+  box.forEach(function(b){ b.classList.add('plx-js'); });
+  var els=document.querySelectorAll('.plx .reveal');
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll('.plx .reveal:not(.in)').forEach(function(el){el.classList.add('in')}); },2500);
+})();
+</script>
+
+
+<hr class="sim-sep">
+
+<!-- ══ 03-全球導入實績.html ══ -->
+<div class="plx">
+<style>
+.plx{--page:#E7DBD8;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;--ink-hi:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--brand-teal:#367C78;--gold:#cba654;--mint:#66bfa1;--line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);--shadow-card:0 2px 16px -8px rgba(16,22,20,.06);--hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);--radius-xl:14px;--radius-lg:12px;--radius-control:999px;--font-ui:"Noto Sans TC","PingFang TC","Helvetica Neue",Helvetica,Arial,sans-serif;--font-display:"Noto Sans TC","PingFang TC",sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);color:var(--ink-mid);font-family:var(--font-ui);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.plx section{padding:64px 0}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--brand-teal);text-decoration:none}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+.plx h1{font-weight:700;font-size:clamp(30px,4.4vw,46px);letter-spacing:.01em}
+.plx h2{font-weight:700;font-size:clamp(22px,2.8vw,30px)}
+.plx h3{font-weight:700;font-size:20px}
+.plx .sec-num{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important}
+.plx .sec-head .sec-num::before{content:""!important;display:inline-block!important;width:26px!important;height:2px!important;background:#C9A24E!important;margin-right:10px!important;vertical-align:middle!important}
+.plx .wrap{max-width:1120px!important;margin:0 auto!important;padding:0 24px!important}
+.plx section{padding:76px 0!important}
+.plx .sec-head{display:flex!important;align-items:baseline!important;gap:16px!important;border-top:1px solid var(--line)!important;padding-top:20px!important;margin-bottom:38px!important}
+.plx .sec-head h2{flex:1!important}
+.plx .adopt-feature{display:grid!important;grid-template-columns:1fr 1.25fr!important;background:var(--surface)!important;border:1px solid var(--line-2)!important;border-radius:var(--radius-xl)!important;overflow:hidden!important;box-shadow:var(--shadow-card)!important}
+.plx .adopt-feature .af-text{padding:36px 34px!important;display:flex!important;flex-direction:column!important;justify-content:center!important}
+.plx .adopt-feature .af-kicker{font-family:var(--font-mono)!important;font-size:15px!important;color:var(--brand-teal)!important;letter-spacing:.06em!important}
+.plx .adopt-feature .af-text h3{font-size:clamp(20px,2.4vw,25px)!important;line-height:1.4!important;margin:10px 0 12px!important}
+.plx .adopt-feature .af-text p{font-size:16px!important;line-height:1.8!important}
+.plx .adopt-feature .af-img{min-height:320px!important}
+.plx .adopt-feature .af-img img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important}
+.plx .adopt-mini{display:grid!important;grid-template-columns:1fr 1fr!important;gap:20px!important;margin-top:20px!important}
+.plx .am{background:var(--surface)!important;border:1px solid var(--line-2)!important;border-radius:var(--radius-xl)!important;padding:24px 26px!important;box-shadow:var(--shadow-card)!important}
+.plx .am .a-name{font-family:var(--font-mono)!important;font-size:16.5px!important;font-weight:600!important;color:var(--ink-hi)!important;letter-spacing:.02em!important}
+.plx .am p{font-size:15.5px!important;color:var(--ink-mid)!important;margin-top:8px!important;line-height:1.7!important}
+.plx .adopt-note{margin-top:24px!important;font-size:16px!important;color:var(--ink-dim)!important}
+.plx .adopt-note a{font-weight:600!important}
+@media (max-width:840px){.plx section{padding:52px 0!important}.plx .adopt-feature{grid-template-columns:1fr!important}.plx .adopt-feature .af-img{min-height:220px!important;order:-1!important}.plx .adopt-mini{grid-template-columns:1fr!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx table{border-collapse:collapse!important;border-spacing:0!important}
+.plx td,.plx th{border:0!important;background:transparent!important}
+.plx .btn{text-align:center!important}
+.plx summary{cursor:pointer}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+</style>
+
+<section id="adoption" style="background:var(--surface)!important;border-top:1px solid var(--line-2)!important;border-bottom:1px solid var(--line-2)!important">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02 · 哪些場域在用</span>
+      <h2>從 NBA 場館，<br>到航空公司貴賓室</h2>
+    </div>
+    <div class="adopt-feature reveal">
+      <div class="af-text">
+        <div class="af-kicker">TARGET CENTER · NBA 明尼蘇達灰狼隊主場</div>
+        <h3>全球第一座「EMF 電磁波友善」NBA 場館</h3>
+        <p>2025 年，灰狼隊主場 Target Center 正式取得 Aires 認證™——全場 Wi-Fi 連接點導入這項專利技術，為高人流運動空間的環境配置立下標準。這是史上第一次，有大型職業場館通過這套場域認證。</p>
+      </div>
+      <figure class="af-img"><img src="https://suyi-cpu.github.io/pl-preview/assets/adopt-tb-hero.jpg" alt="Lifetune 系列產品於灰狼隊主場，Aires Certified Space 標章" loading="lazy"></figure>
+    </div>
+    <div class="adopt-mini">
+      <div class="am reveal">
+        <div class="a-name">FIJI AIRWAYS · 斐濟航空</div>
+        <p>2026 年與技術原廠締結官方合作，技術導入 Premier Lounge 等高連線密度環境——航空業對機上與貴賓室設備的審查標準，本身就是一道門檻。</p>
+      </div>
+      <div class="am reveal">
+        <div class="a-name">UFC · WWE · 職業運動</div>
+        <p>技術原廠為 UFC 官方合作夥伴，並與 WWE、加拿大籃球協會等組織建立合作，多位 NBA、NHL、UFC 職業運動員亦有合作關係。</p>
+      </div>
+    </div>
+    <p class="adopt-note reveal">以上皆為公開可查的合作事實——從專利號到場館導入，每一項都可以離開這個網站自己查。<a href="https://www.purland.com.tw/pages/research">看研究與專利 →</a></p>
+  </div>
+</section>
+</div>
+
+<script>
+(function(){
+  var box=document.querySelectorAll('.plx');
+  box.forEach(function(b){ b.classList.add('plx-js'); });
+  var els=document.querySelectorAll('.plx .reveal');
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll('.plx .reveal:not(.in)').forEach(function(el){el.classList.add('in')}); },2500);
+})();
+</script>
+
+
+<hr class="sim-sep">
+
+<!-- ══ 04-產品與規格.html ══ -->
+<div class="plx">
+<style>
+.plx{--page:#E7DBD8;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;--ink-hi:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--brand-teal:#367C78;--gold:#cba654;--mint:#66bfa1;--line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);--shadow-card:0 2px 16px -8px rgba(16,22,20,.06);--hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);--radius-xl:14px;--radius-lg:12px;--radius-control:999px;--font-ui:"Noto Sans TC","PingFang TC","Helvetica Neue",Helvetica,Arial,sans-serif;--font-display:"Noto Sans TC","PingFang TC",sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);color:var(--ink-mid);font-family:var(--font-ui);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.plx section{padding:64px 0}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--brand-teal);text-decoration:none}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+.plx h1{font-weight:700;font-size:clamp(30px,4.4vw,46px);letter-spacing:.01em}
+.plx h2{font-weight:700;font-size:clamp(22px,2.8vw,30px)}
+.plx h3{font-weight:700;font-size:20px}
+.plx .sec-num{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important}
+.plx .sec-head .sec-num::before{content:""!important;display:inline-block!important;width:26px!important;height:2px!important;background:#C9A24E!important;margin-right:10px!important;vertical-align:middle!important}
+.plx .num{font-family:var(--font-mono)!important}
+.plx .wrap{max-width:1120px!important;margin:0 auto!important;padding:0 24px!important}
+.plx section{padding:76px 0!important}
+.plx .sec-head{display:flex!important;align-items:baseline!important;gap:16px!important;border-top:1px solid var(--line)!important;padding-top:20px!important;margin-bottom:38px!important}
+.plx .sec-head h2{flex:1!important}
+.plx .scene-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:16px!important;margin-bottom:44px!important}
+.plx .scene{border-radius:var(--radius-lg)!important;overflow:hidden!important;border:1px solid var(--line)!important;background:var(--surface)!important;box-shadow:var(--shadow-card)!important}
+.plx .scene .sc-img{aspect-ratio:1!important;overflow:hidden!important}
+.plx .scene img{width:100%!important;height:100%!important;object-fit:cover!important}
+.plx .scene figcaption{padding:11px 14px!important;font-family:var(--font-mono)!important;font-size:12.5px!important;letter-spacing:.14em!important;color:var(--ink-dim)!important;text-transform:uppercase!important}
+.plx .how-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:20px!important}
+.plx .how{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;padding:26px!important;box-shadow:var(--shadow-card)!important}
+.plx .how .h-num{font-family:var(--font-mono)!important;font-size:22px!important;color:var(--brand-teal)!important}
+.plx .how h3{margin:12px 0 8px!important;font-size:19px!important}
+.plx .how p{font-size:16px!important;line-height:1.75!important}
+.plx .how-note{margin-top:22px!important;font-size:15.5px!important;color:var(--ink-dim)!important;border-left:2px solid var(--line)!important;padding-left:16px!important;max-width:620px!important}
+.plx .spec-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:36px!important;align-items:start!important;margin-top:48px!important}
+.plx table.spec{width:100%!important;border-collapse:collapse!important;background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;overflow:hidden!important;box-shadow:var(--shadow-card)!important}
+.plx table.spec th,.plx table.spec td{text-align:left!important;padding:13px 18px!important;border-bottom:1px solid var(--line-2)!important;font-size:16px!important;vertical-align:top!important}
+.plx table.spec th{width:36%!important;font-weight:600!important;color:var(--ink-hi)!important;background:rgba(255,255,255,.4)!important}
+.plx table.spec tr:last-child th,.plx table.spec tr:last-child td{border-bottom:none!important}
+.plx .box-list{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;padding:26px!important;box-shadow:var(--shadow-card)!important}
+.plx .box-list h3{margin-bottom:12px!important;font-size:19px!important}
+.plx .box-list ul{list-style:none!important}
+.plx .box-list li{padding:9px 0!important;border-bottom:1px solid var(--line-2)!important;font-size:16px!important;display:flex!important;gap:10px!important}
+.plx .box-list li:last-child{border-bottom:none!important}
+.plx .box-list li::before{content:"—"!important;color:var(--brand-teal)!important}
+.plx .box-list .inc::before{content:"—"!important;color:var(--brand-teal)!important}
+.plx .box-list .chk::before{content:"✓"!important;color:var(--brand-teal)!important;font-weight:700!important}
+.plx .more-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:20px!important;margin-top:48px!important}
+.plx .more{display:flex!important;gap:18px!important;align-items:center!important;background:var(--surface)!important;border:1px solid var(--line-2)!important;border-radius:var(--radius-xl)!important;padding:18px 20px!important;box-shadow:var(--shadow-card)!important;transition:transform .3s var(--ease)!important}
+.plx .more:hover{transform:translateY(-3px)!important}
+.plx .more .m-img{width:84px!important;height:84px!important;border-radius:10px!important;overflow:hidden!important;flex-shrink:0!important;background:#F3EDE4!important}
+.plx .more .m-img img{width:100%!important;height:100%!important;object-fit:cover!important}
+.plx .more .m-name{font-family:var(--font-display)!important;font-weight:700!important;font-size:17.5px!important;color:var(--ink-hi)!important}
+.plx .more .m-meta{font-size:14.5px!important;color:var(--ink-dim)!important;margin-top:3px!important;line-height:1.6!important}
+.plx .more .m-link{font-size:15px!important;font-weight:600!important;margin-top:5px!important;display:inline-block!important}
+.plx .more-head{margin-top:48px!important;font-size:17.5px!important;font-weight:600!important;color:var(--ink-hi)!important}
+.plx .more-all{margin-top:18px!important;font-size:16px!important}
+.plx .more-all a{font-weight:600!important}
+@media (max-width:840px){.plx section{padding:52px 0!important}.plx .how-grid{grid-template-columns:1fr!important}.plx .scene-grid{grid-template-columns:1fr 1fr!important}.plx .spec-grid{grid-template-columns:1fr!important}.plx .more-grid{grid-template-columns:1fr!important}}
+@media (max-width:520px){.plx .scene-grid{grid-template-columns:1fr 1fr!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx table{border-collapse:collapse!important;border-spacing:0!important}
+.plx td,.plx th{border:0!important;background:transparent!important}
+.plx .btn{text-align:center!important}
+.plx summary{cursor:pointer}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+</style>
+
+<section id="product">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03 · LIFETUNE ONE</span>
+      <h2>貼在最常用的那台裝置上</h2>
+    </div>
+    <div class="scene-grid">
+      <figure class="scene reveal">
+        <div class="sc-img"><img src="https://suyi-cpu.github.io/pl-preview/assets/one/scene-ladyphone.jpg" alt="Lifetune ONE 貼附於手機" loading="lazy"></div>
+        <figcaption>手機 · Phone</figcaption>
+      </figure>
+      <figure class="scene reveal">
+        <div class="sc-img"><img src="https://suyi-cpu.github.io/pl-preview/assets/one/scene-ipad.jpg" alt="Lifetune ONE 貼附於平板" loading="lazy"></div>
+        <figcaption>平板 · Tablet</figcaption>
+      </figure>
+      <figure class="scene reveal">
+        <div class="sc-img"><img src="https://suyi-cpu.github.io/pl-preview/assets/one/scene-headset.jpg" alt="Lifetune ONE 貼附於耳機" loading="lazy"></div>
+        <figcaption>耳機 · Headset</figcaption>
+      </figure>
+      <figure class="scene reveal">
+        <div class="sc-img"><img src="https://suyi-cpu.github.io/pl-preview/assets/one/scene-bluephone.jpg" alt="Lifetune ONE 貼附於裝置背面" loading="lazy"></div>
+        <figcaption>筆電與其他 · More</figcaption>
+      </figure>
+    </div>
+    <div class="how-grid">
+      <div class="how reveal">
+        <div class="h-num">01</div>
+        <h3>清潔表面</h3>
+        <p>先清潔欲貼附的設備或保護殼表面，讓背膠發揮最佳附著力。</p>
+      </div>
+      <div class="how reveal">
+        <div class="h-num">02</div>
+        <h3>貼附並按壓 30 秒</h3>
+        <p>撕下背紙，貼在設備背面或保護殼「外側」，按壓約 30 秒確保穩固。</p>
+      </div>
+      <div class="how reveal">
+        <div class="h-num">03</div>
+        <h3>即刻作用</h3>
+        <p>貼上即開始運作，不需設定、不需開關——之後就不用再管它。</p>
+      </div>
+    </div>
+    <p class="how-note reveal">矽膠或粗糙紋理的保護殼會影響背膠附著力，建議直接貼在設備上；請避免三溫暖、泡湯等高溫高濕環境。換機沒問題——盒內附兩枚備用背膠貼紙。</p>
+    <div class="spec-grid">
+      <table class="spec reveal">
+        <tr><th>涵蓋直徑</th><td><span class="num">5.6 m</span>（開放空間）</td></tr>
+        <tr><th>產品尺寸</th><td><span class="num">17.4 mm</span>（0.68 in）</td></tr>
+        <tr><th>核心晶片</th><td>16S5G 專利蝕刻矽晶片</td></tr>
+        <tr><th>對應頻段</th><td><span class="num">24 Hz – 28 GHz</span>：藍牙、WiFi、3G、4G、LTE、5G 及一般家用電子產品</td></tr>
+        <tr><th>電源</th><td>無需電源 · 被動運作</td></tr>
+        <tr><th>工作溫度</th><td><span class="num">-50°C ~ +50°C</span></td></tr>
+        <tr><th>使用壽命</th><td>結構完整即持續作用</td></tr>
+        <tr><th>表面處理</th><td>聚合物保護塗層 · 防水 · 抗磨損</td></tr>
+      </table>
+      <div class="box-list reveal">
+        <h3>包裝內容物</h3>
+        <ul>
+          <li class="inc">ONE 本體 × 1</li>
+          <li class="inc">備用背膠貼紙 × 2（換機重貼用）</li>
+          <li class="inc">中文產品說明</li>
+        </ul>
+        <h3 style="margin-top:24px!important">為什麼可以放心買</h3>
+        <ul>
+          <li class="chk">運費全由我們吸收，不設門檻</li>
+          <li class="chk">收到後七天內可依規定辦理退貨</li>
+          <li class="chk">Pürland 嚴選引進，售後就在台灣</li>
+        </ul>
+      </div>
+    </div>
+    <p class="more-head reveal">想涵蓋的不只一台裝置？</p>
+    <div class="more-grid" style="margin-top:18px!important">
+      <a class="more reveal" href="https://www.purland.com.tw/products/lifetune-flex">
+        <div class="m-img"><img src="https://suyi-cpu.github.io/pl-preview/assets/product-flex.jpg" alt="Lifetune FLEX" loading="lazy"></div>
+        <div>
+          <div class="m-name">Lifetune FLEX</div>
+          <div class="m-meta">隨身配戴 · 跟著人移動 · 涵蓋直徑 12.8 m · NT$8,000</div>
+          <span class="m-link">查看 FLEX →</span>
+        </div>
+      </a>
+      <a class="more reveal" href="https://www.purland.com.tw/products/lifetune-zone">
+        <div class="m-img"><img src="https://suyi-cpu.github.io/pl-preview/assets/product-zone.jpg" alt="Lifetune ZONE" loading="lazy"></div>
+        <div>
+          <div class="m-name">Lifetune ZONE</div>
+          <div class="m-meta">以空間為單位 · 書房／車內 · 涵蓋直徑 28.3 m · NT$8,860</div>
+          <span class="m-link">查看 ZONE →</span>
+        </div>
+      </a>
+    </div>
+    <p class="more-all reveal">或者<a href="https://www.purland.com.tw/products">看完整產品系列 →</a></p>
+  </div>
+</section>
+</div>
+
+<script>
+(function(){
+  var box=document.querySelectorAll('.plx');
+  box.forEach(function(b){ b.classList.add('plx-js'); });
+  var els=document.querySelectorAll('.plx .reveal');
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll('.plx .reveal:not(.in)').forEach(function(el){el.classList.add('in')}); },2500);
+})();
+</script>
+
+
+<hr class="sim-sep">
+
+<!-- ══ 05-購買問答與免責.html ══ -->
+<div class="plx">
+<style>
+.plx{--page:#E7DBD8;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;--ink-hi:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--brand-teal:#367C78;--gold:#cba654;--mint:#66bfa1;--line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);--shadow-card:0 2px 16px -8px rgba(16,22,20,.06);--hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);--radius-xl:14px;--radius-lg:12px;--radius-control:999px;--font-ui:"Noto Sans TC","PingFang TC","Helvetica Neue",Helvetica,Arial,sans-serif;--font-display:"Noto Sans TC","PingFang TC",sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);color:var(--ink-mid);font-family:var(--font-ui);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.plx section{padding:64px 0}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--brand-teal);text-decoration:none}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+.plx h1{font-weight:700;font-size:clamp(30px,4.4vw,46px);letter-spacing:.01em}
+.plx h2{font-weight:700;font-size:clamp(22px,2.8vw,30px)}
+.plx h3{font-weight:700;font-size:20px}
+.plx .eyebrow{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .sec-num{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important}
+.plx .sec-head .sec-num::before{content:""!important;display:inline-block!important;width:26px!important;height:2px!important;background:#C9A24E!important;margin-right:10px!important;vertical-align:middle!important}
+.plx .wrap{max-width:1120px!important;margin:0 auto!important;padding:0 24px!important}
+.plx section{padding:76px 0!important}
+.plx .sec-head{display:flex!important;align-items:baseline!important;gap:16px!important;border-top:1px solid var(--line)!important;padding-top:20px!important;margin-bottom:38px!important}
+.plx .sec-head h2{flex:1!important}
+.plx .btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;font-size:17px!important;font-weight:600!important;padding:13px 26px!important;border-radius:var(--radius-control)!important;transition:all .25s var(--ease)!important}
+.plx .btn-primary{background:var(--brand-teal)!important;color:#fff!important}
+.plx .btn-primary:hover{background:var(--surface-deep)!important;transform:translateY(-2px)!important}
+.plx .btn-ghost{border:1.5px solid var(--line)!important;color:var(--ink-hi)!important;background:transparent!important}
+.plx .btn-ghost:hover{border-color:var(--ink-dim)!important;transform:translateY(-2px)!important}
+.plx .coupon{display:inline-flex!important;align-items:center!important;gap:10px!important;margin-top:14px!important;padding:10px 16px!important;background:rgba(203,166,84,.12)!important;border:1px solid rgba(203,166,84,.45)!important;border-radius:12px!important;font-size:15.5px!important;color:var(--ink-hi)!important}
+.plx .coupon b{color:#8a6a1f!important}
+.plx .hero-ctas{display:flex!important;gap:14px!important;margin-top:22px!important;flex-wrap:wrap!important}
+.plx .assure{margin-top:16px!important;font-family:var(--font-mono)!important;font-size:clamp(10px,3.2vw,14px)!important;letter-spacing:.05em!important;color:var(--ink-dim)!important;white-space:nowrap!important}
+.plx .offer{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;box-shadow:var(--shadow-card)!important;overflow:hidden!important;margin-bottom:56px!important}
+.plx .offer .of-head{padding:34px 36px 6px!important;text-align:center!important}
+.plx .offer .of-head h2{max-width:520px!important;margin:10px auto 6px!important}
+.plx .offer .of-price{font-family:var(--font-mono)!important;font-size:38px!important;font-weight:600!important;color:var(--ink-hi)!important;text-align:center!important;margin-top:14px!important}
+.plx .offer .of-price small{font-size:16px!important;font-weight:500!important;color:var(--ink-dim)!important;margin-left:6px!important}
+.plx .offer .of-coupon{display:flex!important;justify-content:center!important;padding:0 24px!important}
+.plx .offer .of-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:0!important;margin-top:26px!important;border-top:1px solid var(--line-2)!important}
+.plx .offer .of-col{padding:26px 32px!important}
+.plx .offer .of-col+.of-col{border-left:1px solid var(--line-2)!important}
+.plx .offer .of-col h3{font-size:17px!important;margin-bottom:12px!important}
+.plx .offer .of-col ul{list-style:none!important}
+.plx .offer .of-col li{padding:8px 0!important;font-size:16px!important;display:flex!important;gap:10px!important;border-bottom:1px solid var(--line-2)!important}
+.plx .offer .of-col li:last-child{border-bottom:none!important}
+.plx .offer .of-col .inc::before{content:"—"!important;color:var(--brand-teal)!important}
+.plx .offer .of-col .chk::before{content:"✓"!important;color:var(--brand-teal)!important;font-weight:700!important}
+.plx .offer .of-ctas{display:flex!important;gap:14px!important;justify-content:center!important;flex-wrap:wrap!important;padding:28px 24px 12px!important;border-top:1px solid var(--line-2)!important}
+.plx .offer .of-assure{text-align:center!important;padding:0 24px 30px!important}
+.plx .faq{max-width:760px!important}
+.plx details{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-lg)!important;margin-bottom:12px!important;box-shadow:var(--shadow-card)!important;overflow:hidden!important}
+.plx summary{cursor:pointer!important;padding:17px 22px!important;font-weight:600!important;color:var(--ink-hi)!important;font-size:17px!important;list-style:none!important;display:flex!important;justify-content:space-between!important;align-items:center!important;gap:14px!important}
+.plx summary::-webkit-details-marker{display:none!important}
+.plx summary::after{content:"+"!important;font-family:var(--font-mono)!important;font-size:20px!important;color:var(--ink-dim)!important;transition:transform .25s var(--ease)!important;flex-shrink:0!important}
+.plx details[open] summary::after{transform:rotate(45deg)!important;color:var(--brand-teal)!important}
+.plx details[open]{border-left:3px solid var(--brand-teal)!important}
+.plx details .a{padding:0 22px 20px!important;font-size:16.5px!important;line-height:1.8!important}
+.plx .cta-final{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;box-shadow:var(--shadow-card)!important;padding:52px 40px!important;text-align:center!important;margin-top:56px!important}
+.plx .cta-final h2{max-width:520px!important;margin:12px auto 8px!important}
+.plx .cta-final p{max-width:460px!important;margin:0 auto!important;font-size:17px!important}
+.plx .cta-final .hero-ctas{justify-content:center!important;margin-top:26px!important}
+.plx .legal{margin-top:44px!important;font-size:14px!important;line-height:1.8!important;color:var(--ink-dim)!important;max-width:760px!important}
+.plx .buybar{position:fixed!important;left:0!important;right:0!important;bottom:0!important;z-index:60!important;display:none!important;align-items:center!important;justify-content:space-between!important;gap:14px!important;padding:10px 16px calc(10px + env(safe-area-inset-bottom))!important;background:rgba(253,252,250,.97)!important;backdrop-filter:blur(12px)!important;border-top:1px solid var(--line)!important;box-shadow:0 -8px 30px rgba(16,22,20,.09)!important}
+.plx .buybar .bb-name{font-family:var(--font-display)!important;font-weight:700!important;font-size:16px!important;color:var(--ink-hi)!important;line-height:1.25!important}
+.plx .buybar .bb-price{font-family:var(--font-mono)!important;font-size:15px!important;color:var(--ink-mid)!important;margin-top:2px!important}
+.plx .buybar .bb-price .free{color:var(--brand-teal)!important;font-weight:600!important}
+.plx .buybar .bb-btn{flex-shrink:0!important;background:var(--ink-hi)!important;color:#fff!important;font-weight:600!important;font-size:16.5px!important;padding:12px 26px!important;border-radius:999px!important}
+@media (max-width:840px){.plx section{padding:52px 0!important}.plx .offer .of-grid{grid-template-columns:1fr!important}.plx .offer .of-col+.of-col{border-left:none!important;border-top:1px solid var(--line-2)!important}.plx .cta-final{padding:40px 22px!important}.plx .buybar{display:flex!important}.plx .lp-end{padding-bottom:96px!important}}
+@media (max-width:520px){.plx .hero-ctas .btn{width:100%!important}.plx .offer .of-ctas .btn{width:100%!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx table{border-collapse:collapse!important;border-spacing:0!important}
+.plx td,.plx th{border:0!important;background:transparent!important}
+.plx .btn{text-align:center!important}
+.plx summary{cursor:pointer}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+</style>
+
+<section id="buy" class="lp-end" style="background:var(--page)!important">
+  <div class="wrap">
+    <div class="offer reveal">
+      <div class="of-head">
+        <div class="eyebrow">04 · 下一步</div>
+        <h2>從最常用的那台裝置開始</h2>
+        <div class="of-price">NT$2,980<small>全店免運</small></div>
+      </div>
+      <div class="of-coupon"><span class="coupon">🎁 <span>新會員首購禮：<b>NT$200 折扣碼</b>，加入會員即可領取</span></span></div>
+      <div class="of-grid">
+        <div class="of-col">
+          <h3>盒內有什麼</h3>
+          <ul>
+            <li class="inc">本體單入 · 完整盒裝</li>
+            <li class="inc">兩枚備用背膠（換機可重貼）</li>
+            <li class="inc">中文使用說明</li>
+          </ul>
+        </div>
+        <div class="of-col">
+          <h3>購買保障</h3>
+          <ul>
+            <li class="chk">全店免運，無門檻</li>
+            <li class="chk">7 天鑑賞期，依消保法通訊交易規定</li>
+            <li class="chk">台灣在地售後 · LINE 真人諮詢</li>
+          </ul>
+        </div>
+      </div>
+      <div class="of-ctas">
+        <a class="btn btn-primary" href="https://www.purland.com.tw/products/lifetune-one">立即購買 Lifetune ONE</a>
+        <a class="btn btn-ghost" href="https://lin.ee/0fagSFR">還在比較？LINE 聊聊</a>
+      </div>
+      <p class="of-assure assure">今天下單 · 台灣出貨</p>
+    </div>
+
+    <div class="sec-head reveal">
+      <span class="sec-num">05 · 常見問答</span>
+      <h2>下單前，你可能想知道</h2>
+    </div>
+    <div class="faq">
+      <details class="reveal">
+        <summary>ONE 會影響手機訊號或裝置功能嗎？</summary>
+        <div class="a">不會。ONE 調整的是場的結構特性，不改變訊號的收發——裝置照常連線、照常運作。這也是「調和」與「屏蔽」在原理上的根本差異。</div>
+      </details>
+      <details class="reveal">
+        <summary>需要充電或更換電池嗎？</summary>
+        <div class="a">不需要。ONE 是被動元件，作用來自晶片的幾何結構本身，只要環境中存在電磁場即持續運作——沒有電源、開關或設定。</div>
+      </details>
+      <details class="reveal">
+        <summary>它沒有燈、沒有 App，我怎麼知道它在運作？</summary>
+        <div class="a">ONE 是被動元件，沒有燈號或應用程式。它的作用機制來自晶片幾何結構與場的物理交互作用——這套機制有 22 項全球專利與 9 篇同儕審查期刊發表可查，量測方法與研究清單都整理在<a href="https://www.purland.com.tw/pages/research">研究與專利頁</a>。</div>
+      </details>
+      <details class="reveal">
+        <summary>貼了 ONE 之後，手機殼還裝得上嗎？</summary>
+        <div class="a">ONE 可以貼在設備本體或保護殼外側。若貼在手機本體上，因 ONE 略有厚度，多數保護殼會裝不回去——日常有用殼的話，建議直接貼在殼的外側。矽膠或粗糙紋理的殼會影響附著力，不建議。</div>
+      </details>
+      <details class="reveal">
+        <summary>換手機了，可以撕下來重貼嗎？</summary>
+        <div class="a">可以。盒內附有兩枚備用背膠貼紙：取下 ONE、清潔新設備表面、換上新背膠、按壓貼緊即可。</div>
+      </details>
+      <details class="reveal">
+        <summary>可以退貨嗎？期限多久？</summary>
+        <div class="a">收到商品起有 7 天鑑賞期，依台灣消費者保護法通訊交易規定，鑑賞期內可辦理退貨。退貨時商品需保持完整（含本體、備用背膠與包裝）——鑑賞期是「檢查商品」的期間，非試用期。</div>
+      </details>
+      <details class="reveal">
+        <summary>一台裝置需要幾枚？家裡很多台怎麼辦？</summary>
+        <div class="a">一枚 ONE 對應一台小型裝置（手機、平板、路由器等）。如果想以整個房間或空間為單位配置，比較適合的是 ZONE 系列；隨身移動則是 FLEX。不確定的話，<a href="https://lin.ee/0fagSFR">用 LINE 告訴我們你的情境</a>，我們協助你比較。</div>
+      </details>
+    </div>
+
+    <div class="cta-final reveal">
+      <div class="eyebrow">READY WHEN YOU ARE</div>
+      <h2>數位生活照舊，<br>環境從今天開始有序</h2>
+      <p>NT$2,980 免運直送 · 七天鑑賞 · 新會員現折 NT$200</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://www.purland.com.tw/products/lifetune-one">立即購買 Lifetune ONE</a>
+        <a class="btn btn-ghost" href="https://lin.ee/0fagSFR">LINE 諮詢哪一款適合我</a>
+      </div>
+    </div>
+
+    <p class="legal">本產品為貼附於電子設備之物理性環境優化裝置，非醫療器材，不涉及診斷、治療、減輕或預防疾病之用途。所載數值為開放空間涵蓋直徑，實際情形依環境而異。© 2026 淨域未來有限公司 Pürland · 統編 93680657</p>
+  </div>
+
+  <div class="buybar" aria-hidden="false">
+    <div class="bb-info">
+      <div class="bb-name">ONE · NT$2,980</div>
+      <div class="bb-price"><span class="free">全店免運</span> · 新會員折 NT$200</div>
+    </div>
+    <a class="bb-btn" href="https://www.purland.com.tw/products/lifetune-one">立即購買</a>
+  </div>
+</section>
+</div>
+
+<script>
+(function(){
+  var box=document.querySelectorAll('.plx');
+  box.forEach(function(b){ b.classList.add('plx-js'); });
+  var els=document.querySelectorAll('.plx .reveal');
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll('.plx .reveal:not(.in)').forEach(function(el){el.classList.add('in')}); },2500);
+})();
+</script>
+
+
+<div class="sl-probe">
+  <h1>主題原生 H1（應為 33.6px、置中、細體）</h1>
+  <p>主題原生段落：應保持 16.8px、兩端對齊、首行縮排兩字。<a href="#">原生連結</a>，以及 <span class="btn">原生 .btn（紅底小字）</span>。</p>
+</div>
+<div class="sl-foot">主題原生頁尾 © Pürland</div>
+<script>
+var only = new URLSearchParams(location.search).get('only');
+if(only){
+  document.querySelectorAll('.plx').forEach(function(b,i){ if(i !== Number(only)-1) b.style.display='none'; });
+  document.querySelectorAll('.sim-sep').forEach(function(h){ h.style.display='none'; });
+}
+</script>
+</body>
+</html>

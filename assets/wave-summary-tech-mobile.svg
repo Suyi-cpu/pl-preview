@@ -22,26 +22,26 @@
 
   <g transform="translate(52 116)" font-family="Noto Sans TC, PingFang TC, Microsoft JhengHei, sans-serif">
     <rect x="0" y="-36" width="26" height="3" rx="1.5" fill="url(#mRightWave)"/>
-    <text x="38" y="-26" fill="#3D4743" font-size="21" font-weight="800" letter-spacing="1.2">四種交互作用<tspan fill="#7d8783" font-weight="600" font-size="19">｜同時運行於同一枚被動元件</tspan></text>
+    <text x="38" y="-26" fill="#3D4743" font-size="23" font-weight="800" letter-spacing="1.2">四種交互作用<tspan fill="#7d8783" font-weight="600" font-size="19">｜同時運行於同一枚被動元件</tspan></text>
     <g transform="translate(0 24)">
       <path d="M0 50C17 12 36 12 53 50S89 88 106 50" fill="none" stroke="#cba654" stroke-width="6" stroke-linecap="round"/>
       <path d="M30 18V82M76 18V82" stroke="#cba654" stroke-opacity=".72" stroke-width="3.4"/>
-      <text x="0" y="140" fill="#cba654" font-size="30" font-weight="900">繞射</text>
-      <text x="0" y="176" fill="#3D4743" font-size="23" font-weight="800">波遇結構，彎折前行。</text>
+      <text x="0" y="140" fill="#cba654" font-size="32" font-weight="900">繞射</text>
+      <text x="0" y="176" fill="#3D4743" font-size="25" font-weight="800">波遇結構，彎折前行。</text>
     </g>
     <g transform="translate(390 24)">
       <circle cx="52" cy="50" r="41" fill="none" stroke="#66bfa1" stroke-width="6"/>
       <circle cx="52" cy="50" r="24" fill="none" stroke="#66bfa1" stroke-width="4.5"/>
       <circle cx="52" cy="50" r="8" fill="#66bfa1"/>
-      <text x="0" y="140" fill="#66bfa1" font-size="30" font-weight="900">共振</text>
-      <text x="0" y="176" fill="#3D4743" font-size="23" font-weight="800">波與幾何，彼此互動。</text>
+      <text x="0" y="140" fill="#66bfa1" font-size="32" font-weight="900">共振</text>
+      <text x="0" y="176" fill="#3D4743" font-size="25" font-weight="800">波與幾何，彼此互動。</text>
     </g>
     <line x1="0" y1="228" x2="716" y2="228" stroke="#a9c9be" stroke-opacity=".45"/>
     <g transform="translate(0 268)">
       <path d="M0 56C19 12 41 12 60 56S101 100 120 56" fill="none" stroke="#459590" stroke-width="4.6"/>
       <path d="M0 56C19 100 41 100 60 56S101 12 120 56" fill="none" stroke="#8bd4d2" stroke-width="4.6"/>
-      <text x="0" y="146" fill="#459590" font-size="30" font-weight="900">相位干涉</text>
-      <text x="0" y="182" fill="#3D4743" font-size="23" font-weight="800">波疊加，呈現新狀態。</text>
+      <text x="0" y="146" fill="#459590" font-size="32" font-weight="900">相位干涉</text>
+      <text x="0" y="182" fill="#3D4743" font-size="25" font-weight="800">波疊加，呈現新狀態。</text>
     </g>
     <g transform="translate(390 268)">
       <circle cx="56" cy="52" r="42" fill="none" stroke="#7ca5d5" stroke-width="6"/>
@@ -49,17 +49,17 @@
         <circle cx="33" cy="37" r="6.5"/><circle cx="56" cy="31" r="6.5"/><circle cx="79" cy="37" r="6.5"/>
         <circle cx="33" cy="68" r="6.5"/><circle cx="56" cy="74" r="6.5"/><circle cx="79" cy="68" r="6.5"/>
       </g>
-      <text x="0" y="146" fill="#7ca5d5" font-size="30" font-weight="900">電荷重分布</text>
-      <text x="0" y="182" fill="#3D4743" font-size="23" font-weight="800">結構左右表面重新分布。</text>
+      <text x="0" y="146" fill="#7ca5d5" font-size="32" font-weight="900">電荷重分布</text>
+      <text x="0" y="182" fill="#3D4743" font-size="25" font-weight="800">結構左右表面重新分布。</text>
     </g>
   </g>
 
   <!-- 標籤：波形上方一行 -->
   <g font-family="Noto Sans TC, PingFang TC, Microsoft JhengHei, sans-serif">
-    <rect x="40" y="616" width="228" height="48" rx="24" fill="#FDFBF7" opacity=".78"/>
-    <text x="62" y="650" fill="#5C665F" font-size="24" font-weight="900">進入｜雜亂波形</text>
-    <rect x="518" y="616" width="262" height="48" rx="24" fill="#FDFBF7" opacity=".8"/>
-    <text x="540" y="650" fill="#459590" font-size="24" font-weight="900">輸出｜規律波形</text>
+    <rect x="40" y="766" width="252" height="54" rx="27" fill="#FDFBF7" opacity=".88"/>
+    <text x="64" y="804" fill="#5C665F" font-size="28" font-weight="900">進入｜雜亂波形</text>
+    <rect x="514" y="766" width="266" height="54" rx="27" fill="#FDFBF7" opacity=".9"/>
+    <text x="538" y="804" fill="#459590" font-size="28" font-weight="900">輸出｜規律波形</text>
   </g>
 
   <!-- 左：雜亂波形 -->

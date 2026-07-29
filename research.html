@@ -2,7 +2,6 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>研究與專利｜可查證，是最好的說服 — Pürland 淨域未來</title>
 <meta name="description" content="Lifetune 背後的研究與智財：橫跨 1992–2025，物理與工程驗證由外部機構執行，含美國專利 US12239835B2、WIPO 國際申請與 Springer 同行評審出版——每一項都可以自行查證。">
@@ -11,14 +10,14 @@
 <meta property="og:site_name" content="Pürland 淨域未來">
 <meta property="og:title" content="研究與專利｜可查證，是最好的說服 — Pürland">
 <meta property="og:description" content="22 專利、33 年研究、Springer 同行評審出版、NBA 場館導入——每一項都可以離開這個網站自己查。">
-<meta property="og:image" content="https://suyi-cpu.github.io/pl-preview/assets/og-research.jpg">
+<meta property="og:image" content="assets/og-research.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://www.purland.com.tw/pages/research">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="研究與專利｜可查證，是最好的說服">
 <meta name="twitter:description" content="22 專利、33 年研究——每一項都可以自己查。">
-<meta name="twitter:image" content="https://suyi-cpu.github.io/pl-preview/assets/og-research.jpg">
+<meta name="twitter:image" content="assets/og-research.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -132,6 +131,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(253,252,250,.85);backdro
 .bib{margin-top:40px;border-top:1px solid rgba(242,238,228,.14);padding-top:26px}
 .bib h3{color:#F2EEE4;margin-bottom:14px;font-size:17px}
 .bib li{list-style:none;font-family:var(--font-mono);font-size:14.5px;line-height:2;color:#8FC7B4}
+.bib a{color:#CDE8DD;border-bottom:1px solid rgba(205,232,221,.45);padding-bottom:1px;white-space:nowrap}
+.bib a:hover{border-bottom-color:#CDE8DD}
+.bib-note{margin-top:16px;font-size:13.5px;color:#7FA298;line-height:1.7}
 .ev-figs-kicker{font-family:var(--font-mono);font-size:13.5px;letter-spacing:.14em;color:#9FB7B0;text-transform:uppercase;margin-top:44px}
 .ev-figs{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:18px}
 .ev-figs figure{margin:0}
@@ -173,6 +175,25 @@ html.js .reveal.in{opacity:1;transform:none}
   .hero{padding:68px 0 56px}
   .honest{padding:30px 24px}
   .cta-final{padding:44px 24px}
+}
+@media (max-width:640px){
+  .hero-en{display:none}
+  .sec-head{display:block;padding-top:16px;margin-bottom:28px}
+  .sec-head .sec-num{display:block;margin-bottom:10px}
+  .researchers ul{grid-template-columns:1fr}
+  .researchers{padding:22px 20px}
+  /* 手機字體：中英混排的標籤改用內文字體、收窄字距（純英文的專利號/引文維持等寬體）*/
+  .eyebrow,.sec-num,.pat .p-tag,.inst .i-cc,.ev .e-tag,
+  .ev-figs-kicker,.ev-figs figcaption{
+    font-family:var(--font-ui);letter-spacing:.03em}
+  .eyebrow,.sec-num{font-size:13px;font-weight:600}
+  body{font-size:16.5px}
+  p,.honest p,.inst .i-desc,.pat .p-meta{line-height:1.9}
+  h1,h2,h3{line-height:1.34}
+  .trust{grid-template-columns:1fr;margin-top:34px}
+  .trust div{display:flex;align-items:baseline;gap:14px;padding:14px 18px}
+  .trust .t-num{font-size:21px;white-space:nowrap;flex:0 0 auto;min-width:58px}
+  .trust .t-label{margin-top:0;font-size:14.5px;line-height:1.55}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -217,7 +238,7 @@ html.js .reveal.in{opacity:1;transform:none}
     <div class="hero-en reveal">No adjectives. Just things you can look up.</div>
     <div class="hero-ctas reveal">
       <a class="btn btn-primary" href="#patents">看專利牆</a>
-      <a class="btn btn-ghost" href="https://lin.ee/0fagSFR">LINE 索取文獻出處清單</a>
+      <a class="btn btn-ghost" href="#evidence">看物理與工程驗證</a>
     </div>
     <div class="trust reveal">
       <div><div class="t-num">33 年</div><div class="t-label">連續研究<br>1992 – 2025</div></div>
@@ -258,7 +279,7 @@ html.js .reveal.in{opacity:1;transform:none}
         <a class="p-link" href="https://tsdr.uspto.gov/#caseNumber=7764771&caseType=US_REGISTRATION_NO&searchType=statusSearch" target="_blank" rel="noopener">在 USPTO 查證 →</a>
       </div>
     </div>
-    <p class="pat-note reveal">此外另有俄羅斯發明專利五項（No. 2231137、2217181、2284062、2308065、2312384）與歐盟設計專利四項（No. 005535515-0001 至 -0004），合計 22 項全球專利。完整清單歡迎來信索取。</p>
+    <p class="pat-note reveal">此外另有俄羅斯發明專利五項（No. 2231137、2217181、2284062、2308065、2312384）與歐盟設計專利四項（No. 005535515-0001 至 -0004），合計 22 項全球專利。</p>
   </div>
 </section>
 
@@ -383,9 +404,10 @@ html.js .reveal.in{opacity:1;transform:none}
       <ul>
         <li>Kopyltsov A.V., Serov I.N., Lukyanov G.N. — Nanotechnology, 2006, No. 4(8), pp. 44-49.</li>
         <li>Serov I.N., Lukyanov G.N., Kopyltsov A.V. — ENGECON Bulletin, Technical Sciences, 2007, 6(19), pp. 199-205.</li>
-        <li>Lukyanov G. et al. — Springer Lecture Notes in Networks and Systems, 2022.</li>
-        <li>US Patent US12239835B2 — granted 2025-03-04.</li>
+        <li>Lukyanov G. et al. — Springer, Lecture Notes in Networks and Systems, 2022. <a href="https://link.springer.com/chapter/10.1007/978-981-19-1607-6_7" target="_blank" rel="noopener">在 SpringerLink 查看 ↗</a></li>
+        <li>US Patent US12239835B2 — granted 2025-03-04. <a href="https://patents.google.com/patent/US12239835B2" target="_blank" rel="noopener">在 Google Patents 查看 ↗</a></li>
       </ul>
+      <p class="bib-note">上列前兩篇為俄文期刊原始出處，未提供公開連結；後兩項可直接點擊查證。</p>
     </div>
   </div>
 </div>
@@ -401,7 +423,7 @@ html.js .reveal.in{opacity:1;transform:none}
       <h3>因為我們寧可少說。</h3>
       <p>原廠的全球研究資料涵蓋多種領域，其中部分內容涉及較專業的量測設計與判讀。台灣法規對非醫療器材的廣告用語有明確規範，我們尊重這條界線，因此在這個網站上，僅主動呈現與產品結構、物理原理、儀器量測及工程設計相關的資料。</p>
       <p>這不是迴避，而是選品標準的延伸：把可查證的資料攤開，不做片段化摘要。</p>
-      <p>若您希望進一步了解，歡迎透過 LINE 索取物理與工程驗證類公開文獻的出處清單（期刊卷期與專利號），供您循學術管道自行查閱與判讀。</p>
+      <p>這一頁列出的期刊卷期與專利號，都可以直接循學術管道與專利資料庫自行查閱、自行判讀——我們不替你摘要結論。</p>
     </div>
   </div>
 </section>
@@ -412,11 +434,10 @@ html.js .reveal.in{opacity:1;transform:none}
     <div class="cta-final reveal">
       <div class="eyebrow">07 · 下一步</div>
       <h2>看完研究，<br>回來挑一款適合的</h2>
-      <p>同一項專利技術、五種情境形態；或者先把文獻要走，慢慢讀。</p>
+      <p>同一項專利技術、五種情境形態。</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="index.html#products">依情境選擇產品</a>
         <a class="btn btn-ghost" href="tech.html">回運作原理</a>
-        <a class="btn btn-ghost" href="https://lin.ee/0fagSFR">LINE 索取文獻出處清單</a>
       </div>
       <div class="line-qr" aria-hidden="true"><img src="assets/line-qr.svg" alt="" width="66" height="66"><div><b>用電腦看?</b><span>手機掃一下，直接加 LINE</span></div></div>
     </div>

@@ -2,7 +2,6 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pürland 淨域未來｜不是阻擋，而是調和 — Lifetune 磁波調和器</title>
 <meta name="description" content="Pürland 淨域未來嚴選引進美國專利技術 Lifetune 系列磁波調和器：專利蝕刻矽晶芯片，以繞射、共振、相位干涉與電荷重分佈四種物理交互作用調和環境電磁場。">
@@ -11,14 +10,14 @@
 <meta property="og:site_name" content="Pürland 淨域未來">
 <meta property="og:title" content="Pürland 淨域未來｜不是阻擋，而是調和">
 <meta property="og:description" content="Pürland 淨域未來嚴選 Lifetune 系列——專利蝕刻矽晶芯片，四種物理交互作用調和環境電磁場，每一項數字都可以離開這個網站自己查。">
-<meta property="og:image" content="https://suyi-cpu.github.io/pl-preview/assets/og-index.jpg">
+<meta property="og:image" content="assets/og-index.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://www.purland.com.tw/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Pürland 淨域未來｜不是阻擋，而是調和">
 <meta name="twitter:description" content="Pürland 淨域未來 · Lifetune 系列——可查證的環境調和。">
-<meta name="twitter:image" content="https://suyi-cpu.github.io/pl-preview/assets/og-index.jpg">
+<meta name="twitter:image" content="assets/og-index.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -120,6 +119,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(247,250,246,.82);backdro
 .pl-hero-copy{position:relative;display:flex;flex-direction:column;justify-content:center;padding:64px 58px;background:linear-gradient(135deg,rgba(247,242,237,.97),rgba(237,228,222,.93));border-left:1px solid rgba(255,255,255,.42)}
 .pl-hero-kicker{font-family:var(--font-mono);font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
 .pl-hero-copy h1{font-size:clamp(28px,3.8vw,42px);margin:20px 0 18px}
+.pl-hero-copy .hero-ctas{justify-content:center}
 .pl-hero-copy p{font-size:19px;line-height:1.85;color:var(--ink-mid)}
 .pl-hero-control{position:absolute;top:50%;z-index:5;width:42px;height:42px;border:1px solid rgba(255,255,255,.55);border-radius:999px;background:rgba(16,22,20,.28);color:#fff;font-size:24px;line-height:1;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(10px);transition:all .25s var(--ease)}
 .pl-hero-control:hover{background:rgba(20,77,67,.72);transform:translateY(-50%) scale(1.04)}
@@ -278,6 +278,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(247,250,246,.82);backdro
 .cta-final h2{max-width:560px;margin:16px auto 12px}
 .cta-final p{max-width:480px;margin:0 auto;font-size:17.5px}
 .cta-final .hero-ctas{justify-content:center}
+/* 購買保障小字：窄螢幕自動縮字級，保證不斷行 */
+.hero .assure,.cta-final .assure{margin-top:22px;font-family:var(--font-mono);font-size:clamp(10px,3.2vw,14.5px);letter-spacing:.05em;color:var(--ink-dim);white-space:nowrap}
+.hero .assure{margin-top:18px;text-align:center}
 
 footer{border-top:1px solid var(--hairline);padding:48px 0 60px;font-size:15.5px;color:var(--ink-dim);background:var(--white)}
 .foot{display:flex;gap:40px;flex-wrap:wrap;justify-content:space-between}
@@ -300,6 +303,7 @@ html.js .reveal.in{opacity:1;transform:none}
   .pl-hero-slide.is-active{display:grid}
   .pl-hero-media{min-height:300px;aspect-ratio:16/10}
   .pl-hero-copy{padding:34px 26px 58px;border-left:0}
+  .claim{display:none}
   .pl-hero-copy h1{font-size:38px}
   .pl-hero-control{top:150px}
   .pl-hero-dots{bottom:16px}
@@ -337,7 +341,7 @@ html.js .reveal.in{opacity:1;transform:none}
       <a href="research.html">研究與專利</a>
       <a href="#products">產品系列</a>
       <a href="#standards">選品標準</a>
-      <a class="nav-cta" href="#contact">諮詢適合的款式</a>
+      <a class="nav-cta" href="https://lin.ee/0fagSFR">LINE 諮詢</a>
     </nav>
     <button class="nav-burger" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
@@ -348,7 +352,7 @@ html.js .reveal.in{opacity:1;transform:none}
     <a href="research.html">研究與專利</a>
     <a href="#products">產品系列</a>
     <a href="#standards">選品標準</a>
-    <a class="nav-mobile-cta" href="#contact">諮詢適合的款式</a>
+    <a class="nav-mobile-cta" href="https://lin.ee/0fagSFR">LINE 諮詢</a>
   </nav>
 </header>
 
@@ -369,6 +373,7 @@ html.js .reveal.in{opacity:1;transform:none}
             <div class="pl-hero-note">調和不是屏蔽 · 不影響收訊 · 被動元件無需電源</div>
             <div class="hero-ctas">
               <a class="btn btn-dark" href="tech.html">認識運作原理</a>
+              <a class="btn btn-line" href="#products">依情境選擇產品</a>
             </div>
           </div>
         </article>
@@ -413,6 +418,7 @@ html.js .reveal.in{opacity:1;transform:none}
       <div><div class="t-en">Peer-Reviewed</div><div class="t-num">9<small>篇</small></div><div class="t-label">同儕審查期刊發表</div></div>
       <div><div class="t-en">Users</div><div class="t-num">700,000+</div><div class="t-label">全球使用者</div></div>
     </div>
+    <p class="assure reveal">全店免運 · 7 天鑑賞期 · 台灣在地售後</p>
   </div>
 </div>
 
@@ -498,13 +504,13 @@ html.js .reveal.in{opacity:1;transform:none}
 <section id="life" style="background:var(--warm);padding:96px 0">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">LIVE WITH TECHNOLOGY · 與科技完美共存</span>
-      <h2>調和訊號，保持連線——<br>然後回到生活</h2>
+      <span class="eyebrow">IN EVERYDAY SPACES · 就在日常空間裡</span>
+      <h2>不用插電、不用設定，<br>裝上之後就不用再管它</h2>
     </div>
     <div class="life-grid">
       <figure class="life reveal">
         <img src="assets/lifestyle-1.jpg" alt="日常工作場景中使用 Lifetune" loading="lazy">
-        <figcaption class="cap"><div class="c-main">與科技完美共存</div><div class="c-sub">Modulate · Stay Connected</div></figcaption>
+        <figcaption class="cap"><div class="c-main">工作時的那一台</div><div class="c-sub">At Your Desk</div></figcaption>
       </figure>
       <figure class="life reveal">
         <img src="assets/one/scene-ipad.jpg" alt="家庭平板使用場景" loading="lazy">
@@ -573,7 +579,7 @@ html.js .reveal.in{opacity:1;transform:none}
           <div class="scenario">單一裝置 · 固定位置</div>
           <h3>Lifetune ONE</h3>
           <p>貼附於手機、平板或筆電等單一裝置，適合最常伴隨在側的那一台。</p>
-          <div class="cover"><div><span class="num">5.6 m</span><small>開放空間涵蓋直徑</small></div><div class="prod-price"><span class="num">NT$2,980</span><small>全店免運</small></div></div>
+          <div class="cover"><div><small>開放空間涵蓋範圍</small><span class="num">直徑 5.6 m</span></div><div class="prod-price"><small>全店免運</small><span class="num">NT$2,980</span></div></div>
           <a class="p-link" href="one.html">查看 ONE →</a>
         </div>
       </div>
@@ -583,7 +589,7 @@ html.js .reveal.in{opacity:1;transform:none}
           <div class="scenario">隨身配戴</div>
           <h3>Lifetune FLEX</h3>
           <p>可配戴、可隨身攜帶的形態，適合移動中的日常——通勤、辦公、外出。</p>
-          <div class="cover"><div><span class="num">12.8 m</span><small>開放空間涵蓋直徑</small></div><div class="prod-price"><span class="num">NT$8,000</span><small>全店免運</small></div></div>
+          <div class="cover"><div><small>開放空間涵蓋範圍</small><span class="num">直徑 12.8 m</span></div><div class="prod-price"><small>全店免運</small><span class="num">NT$8,000</span></div></div>
           <a class="p-link" href="flex.html">查看 FLEX →</a>
         </div>
       </div>
@@ -593,7 +599,7 @@ html.js .reveal.in{opacity:1;transform:none}
           <div class="scenario">孩童 · 寵物 · 輕薄配適</div>
           <h3>Lifetune GO</h3>
           <p>輕薄小巧的配適形態，可繫於書包、鑰匙圈或寵物項圈。</p>
-          <div class="cover"><div><span class="num">9.8 m</span><small>開放空間涵蓋直徑</small></div><div class="prod-price"><span class="num">NT$7,760</span><small>全店免運</small></div></div>
+          <div class="cover"><div><small>開放空間涵蓋範圍</small><span class="num">直徑 9.8 m</span></div><div class="prod-price"><small>全店免運</small><span class="num">NT$7,760</span></div></div>
           <a class="p-link" href="go.html">查看 GO →</a>
         </div>
       </div>
@@ -603,7 +609,7 @@ html.js .reveal.in{opacity:1;transform:none}
           <div class="scenario">小型空間</div>
           <h3>Lifetune ZONE</h3>
           <p>放置於書房、車內或小型辦公空間，以空間為單位的配置選擇。</p>
-          <div class="cover"><div><span class="num">28.3 m</span><small>開放空間涵蓋直徑</small></div><div class="prod-price"><span class="num">NT$8,860</span><small>全店免運</small></div></div>
+          <div class="cover"><div><small>開放空間涵蓋範圍</small><span class="num">直徑 28.3 m</span></div><div class="prod-price"><small>全店免運</small><span class="num">NT$8,860</span></div></div>
           <a class="p-link" href="zone.html">查看 ZONE →</a>
         </div>
       </div>
@@ -613,7 +619,7 @@ html.js .reveal.in{opacity:1;transform:none}
           <div class="scenario">開放式大空間</div>
           <h3>Lifetune ZONE MAX</h3>
           <p>系列中涵蓋直徑最大的一款，適合客廳、工作室等開放式格局。</p>
-          <div class="cover"><div><span class="num">42.4 m</span><small>開放空間涵蓋直徑</small></div><div class="prod-price"><span class="num">NT$11,800</span><small>全店免運</small></div></div>
+          <div class="cover"><div><small>開放空間涵蓋範圍</small><span class="num">直徑 42.4 m</span></div><div class="prod-price"><small>全店免運</small><span class="num">NT$11,800</span></div></div>
           <a class="p-link" href="zonemax.html">查看 ZONE MAX →</a>
         </div>
       </div>
@@ -688,14 +694,14 @@ html.js .reveal.in{opacity:1;transform:none}
     <div class="cta-final reveal">
       <div class="eyebrow">06 · NEXT · 下一步</div>
       <h2>看見、查證、理解，<br>然後選擇</h2>
-      <p>告訴我們你的使用情境，我們協助你比較系列差異；也歡迎透過 LINE 索取專利與研究資料。</p>
+      <p>告訴我們你的使用情境，我們協助你比較系列差異。</p>
       <div class="hero-ctas">
         <a class="btn btn-dark" href="https://lin.ee/0fagSFR">LINE 諮詢哪一款適合我</a>
-        <a class="btn btn-line" href="https://lin.ee/0fagSFR">LINE 索取研究資料</a>
+        <a class="btn btn-line" href="research.html">看研究與專利</a>
         <a class="btn btn-line" href="https://www.purland.com.tw/products">瀏覽所有商品</a>
       </div>
       <div class="line-qr" aria-hidden="true"><img src="assets/line-qr.svg" alt="" width="66" height="66"><div><b>用電腦看?</b><span>手機掃一下，直接加 LINE</span></div></div>
-      <p style="margin-top:22px;font-family:var(--font-mono);font-size:14.5px;letter-spacing:.08em;color:var(--ink-dim)">全店免運 · 7 天鑑賞期 · 台灣在地售後</p>
+      <p class="assure">全店免運 · 7 天鑑賞期 · 台灣在地售後</p>
     </div>
   </div>
 </section>
@@ -810,7 +816,7 @@ if(picker){
     const key = recommend();
     if(key){
       const p = P[key];
-      resultEl.innerHTML = '<div class="pr-info"><div class="pr-rec">為你推薦</div><div class="pr-name">'+p.name+'</div><div class="pr-meta">'+p.scen+' · 涵蓋直徑 <span class="num">'+p.cov+'</span></div></div><div class="pr-cta"><span class="pr-price">'+p.price+'</span><a class="btn btn-dark" href="'+p.href+'">'+p.cta+' →</a><button class="picker-reset" type="button">重選</button></div>';
+      resultEl.innerHTML = '<div class="pr-info"><div class="pr-rec">為你推薦</div><div class="pr-name">'+p.name+'</div><div class="pr-meta">'+p.scen+' · 涵蓋範圍 直徑 <span class="num">'+p.cov+'</span></div></div><div class="pr-cta"><span class="pr-price">'+p.price+'</span><a class="btn btn-dark" href="'+p.href+'">'+p.cta+' →</a><button class="picker-reset" type="button">重選</button></div>';
       resultEl.classList.add('show');
       resultEl.querySelector('.picker-reset').addEventListener('click',reset);
     } else {

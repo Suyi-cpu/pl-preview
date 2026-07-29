@@ -2,7 +2,6 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>運作原理｜由幾何決定的物理 — Pürland 淨域未來</title>
 <meta name="description" content="Lifetune 的運作原理完整拆解：產品分層結構、4,084,101 個圓形共振器的矽晶芯片、繞射／共振／相位干涉／電荷重分佈四種物理交互作用，以及孤子態穩定的建模結論。">
@@ -11,14 +10,14 @@
 <meta property="og:site_name" content="Pürland 淨域未來">
 <meta property="og:title" content="運作原理｜由幾何決定的物理 — Pürland 淨域未來">
 <meta property="og:description" content="繞射／共振／相位干涉／電荷重分佈四種物理交互作用，運行於同一枚被動元件。4,084,101 個圓形共振器，蝕刻寬約 0.2µm。">
-<meta property="og:image" content="https://suyi-cpu.github.io/pl-preview/assets/og-tech.jpg">
+<meta property="og:image" content="assets/og-tech.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://www.purland.com.tw/pages/technology">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="運作原理｜由幾何決定的物理 — Pürland">
 <meta name="twitter:description" content="四種物理交互作用，運行於同一枚被動元件。">
-<meta name="twitter:image" content="https://suyi-cpu.github.io/pl-preview/assets/og-tech.jpg">
+<meta name="twitter:image" content="assets/og-tech.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -96,6 +95,23 @@ header{position:sticky;top:0;z-index:50;background:rgba(253,252,250,.85);backdro
 /* anatomy */
 .anatomy-svg{border:1px solid var(--line);border-radius:var(--radius-xl);overflow:hidden;background:var(--surface-white);box-shadow:var(--shadow-card)}
 .anatomy-svg img{width:100%;height:auto;display:block}
+/* 分層結構：桌機用原版橫式分解圖；手機改直式（標題→插畫→清單） */
+.anatomy-mobile{display:none}
+@media (max-width:720px){
+  .anatomy-desktop{display:none}
+  .anatomy-mobile{display:block;margin-top:20px}
+}
+.am-title{color:#fff;font-size:22px;margin-bottom:6px}
+.am-sub{color:#8FC7B4;font-size:15px;font-weight:600;margin-bottom:12px}
+.am-intro{color:#C4DCD2;font-size:15.5px;line-height:1.85}
+.am-illo{margin-top:20px;border-radius:var(--radius-xl);overflow:hidden;border:1px solid rgba(242,238,228,.14);background:#fff}
+.am-illo img{width:100%;height:auto;display:block}
+.anatomy{max-width:560px;margin-top:24px}
+.anatomy .al{position:relative;display:grid;grid-template-columns:44px 1fr;align-items:center;gap:16px;padding:16px 20px;background:rgba(255,255,255,.045);border:1px solid rgba(242,238,228,.1);border-left:3px solid var(--al);border-radius:12px}
+.anatomy .al + .al{margin-top:10px}
+.anatomy .al-n{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--al);color:var(--al);display:grid;place-items:center;font-family:var(--font-mono);font-size:15px;font-weight:600}
+.anatomy .al-name{color:#fff;font-weight:700;font-size:17px;line-height:1.4}
+.anatomy .al-sub{color:#9FB7B0;font-size:14px;margin-top:3px;line-height:1.55}
 .anatomy-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
 .anatomy-fig{background:var(--surface-white);border:1px solid var(--line);border-radius:var(--radius-xl);padding:36px;box-shadow:var(--shadow-card)}
 .layer-list{list-style:none}
@@ -235,6 +251,23 @@ html.js .reveal.in{opacity:1;transform:none}
   .hero{padding:68px 0 56px}
   .cta-final{padding:44px 24px}
 }
+@media (max-width:640px){
+  .hero-en{display:none}
+  .sec-head{display:block;padding-top:16px;margin-bottom:28px}
+  .sec-head .sec-num{display:block;margin-bottom:10px}
+  /* 手機字體：標籤改用內文字體、收窄字距，不再是等寬體混中文的違和感 */
+  .eyebrow,.sec-num,.pm-label,.deep .q-src,.deep .stats .s-label,
+  .deep .chip-img figcaption,.gold-macro figcaption,.gold-note .eyebrow{
+    font-family:var(--font-ui);letter-spacing:.03em}
+  .eyebrow,.sec-num{font-size:13px;font-weight:600}
+  /* 行距放寬，讓中文呼吸 */
+  body{font-size:16.5px}
+  p,.phys-plain,.gold-note p,.deep p.lede,.layer-list li{line-height:1.9}
+  h1,h2,h3{line-height:1.34}
+  .gold-text{gap:22px}
+  .deep .stats{gap:24px 20px;margin-top:32px}
+  .anatomy .al{padding:15px 18px}
+}
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}
   html{scroll-behavior:auto}
@@ -277,7 +310,7 @@ html.js .reveal.in{opacity:1;transform:none}
     <div class="hero-en reveal">Geometry-determined physics</div>
     <div class="hero-ctas reveal">
       <a class="btn btn-primary" href="#chip">從結構開始</a>
-      <a class="btn btn-ghost" href="https://lin.ee/0fagSFR">LINE 索取研究資料</a>
+      <a class="btn btn-ghost" href="research.html">看研究與專利</a>
     </div>
     <figure class="hero-visual reveal">
       <picture>
@@ -331,9 +364,25 @@ html.js .reveal.in{opacity:1;transform:none}
       </figure>
     </div>
     <p class="lede reveal" id="anatomy" style="margin-top:52px;padding-top:36px;border-top:1px solid rgba(242,238,228,.14)">把鏡頭拉遠——這枚晶片，是這樣被包進整個裝置的：</p>
-    <figure class="anatomy-svg reveal" style="margin-top:24px;border-color:rgba(242,238,228,.14)">
+    <!-- 桌機：原版橫式分解圖（標題＋清單＋插畫一體） -->
+    <figure class="anatomy-svg anatomy-desktop reveal" style="margin-top:24px;border-color:rgba(242,238,228,.14)">
       <img src="assets/anatomy-diagram.svg" alt="Lifetune 分層結構分解圖：ENIG 印刷電路板、矽晶圓共振晶片、聚合物層、黏著層">
     </figure>
+    <!-- 手機：直式排列（① 標題與說明 → ② 插畫 → ③ 分層清單） -->
+    <div class="anatomy-mobile reveal">
+      <h3 class="am-title">Lifetune 的分層結構</h3>
+      <p class="am-sub">從電路板到黏著層，一層一層拆開看</p>
+      <p class="am-intro">Lifetune 以被動式矽晶共振結構為核心。當環境電磁場接觸晶片表面的微米級蝕刻圖樣時，波會產生繞射、共振與相位疊加等物理互動，使局部場的分佈方式被重新安排——不需電源，也不影響設備原有的連線功能。</p>
+      <figure class="am-illo">
+        <img src="assets/anatomy-illustration.svg" alt="Lifetune 分層結構分解插畫：四層由外到內展開" loading="lazy">
+      </figure>
+      <div class="anatomy" role="list" aria-label="Lifetune 分層結構，由外到內共四層">
+        <div class="al" role="listitem" style="--al:var(--acc-diffraction)"><span class="al-n" aria-hidden="true">1</span><div class="al-b"><div class="al-name">PCB 印刷電路板</div><div class="al-sub">ENIG 化學鎳金處理</div></div></div>
+        <div class="al" role="listitem" style="--al:var(--acc-resonance)"><span class="al-n" aria-hidden="true">2</span><div class="al-b"><div class="al-name">矽晶圓共振晶片</div><div class="al-sub">一顆 16S5G AIRES 共振晶片</div></div></div>
+        <div class="al" role="listitem" style="--al:var(--acc-phase)"><span class="al-n" aria-hidden="true">3</span><div class="al-b"><div class="al-name">Polymer 高分子聚合物</div><div class="al-sub">封裝層</div></div></div>
+        <div class="al" role="listitem" style="--al:var(--acc-charge)"><span class="al-n" aria-hidden="true">4</span><div class="al-b"><div class="al-name">黏著層</div><div class="al-sub">貼附於裝置表面</div></div></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -444,18 +493,18 @@ html.js .reveal.in{opacity:1;transform:none}
     <div class="eyebrow reveal">05 · 建模結論 · SOLITON-LIKE STABILITY</div>
     <p class="quote reveal" style="margin-top:20px">「無論邊界條件如何改變，穩態解都保持穩定、呈孤子態——輸出場的形狀，不取決於入射輻射的特性。」</p>
     <p class="q-src reveal">二維與三維非穩態數學模型 · 6 mm 晶圓 · 2.4 GHz 入射條件</p>
-    <p class="lede reveal" style="margin-top:26px">白話說：不管環境場多混亂，這枚晶片輸出的場永遠長一個樣子——由它自己的幾何決定。這和石英振盪器是同一族原理：石英晶體以切割幾何決定輸出頻率，全世界每支手機、每台電腦裡都有一顆。相關建模與實驗發表於 2006–2022 年間的多篇論文，包括 Springer 出版的同行評審研究。</p>
+    <p class="lede reveal" style="margin-top:26px">白話說：不管環境場多混亂，這枚晶片輸出的場永遠長一個樣子——由它自己的幾何決定。這和石英振盪器是同一族原理：石英晶體以切割幾何決定輸出頻率，全世界每支手機、每台電腦裡都有一顆。相關建模與實驗發表於 2006–2022 年間的多篇同行評審論文。</p>
     <div class="hero-ctas reveal" style="margin-top:30px">
-      <a class="btn btn-ghost" style="border-color:rgba(242,238,228,.3);color:#F2EEE4;background:transparent" href="https://lin.ee/0fagSFR">LINE 索取完整建模文獻</a>
+      <a class="btn btn-ghost" style="border-color:rgba(242,238,228,.3);color:#F2EEE4;background:transparent" href="research.html#evidence">看物理與工程驗證 →</a>
     </div>
   </div>
 </div>
 
-<!-- 07 · 有效範圍 -->
+<!-- 07 · 涵蓋範圍 -->
 <section id="range">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="sec-num">06 · 有效範圍</span>
+      <span class="sec-num">06 · 涵蓋範圍</span>
       <h2>涵蓋直徑怎麼來的</h2>
     </div>
     <div class="range-grid">
@@ -517,7 +566,7 @@ html.js .reveal.in{opacity:1;transform:none}
       </details>
       <details class="reveal">
         <summary>這些原理有發表過嗎？</summary>
-        <div class="a">有。相關建模與實驗研究自 2006 年起發表於多篇期刊論文，包括 Springer Lecture Notes in Networks and Systems（2022，同行評審）；技術本身有美國專利 US12239835B2（2025 年授權）等多國專利。歡迎<a href="https://lin.ee/0fagSFR">用 LINE 索取文獻清單</a>自行查證。</div>
+        <div class="a">有。相關建模與實驗研究自 2006 年起發表於多篇期刊論文，包括 Springer Lecture Notes in Networks and Systems（2022，同行評審）；技術本身有美國專利 US12239835B2（2025 年授權）等多國專利。<a href="research.html#evidence">研究與專利頁</a>列出了期刊卷期與專利號，可自行查證。</div>
       </details>
     </div>
   </div>
@@ -533,7 +582,7 @@ html.js .reveal.in{opacity:1;transform:none}
       <div class="hero-ctas">
         <a class="btn btn-primary" href="index.html#products">依情境選擇產品</a>
         <a class="btn btn-ghost" href="one.html">看 Lifetune ONE</a>
-        <a class="btn btn-ghost" href="https://lin.ee/0fagSFR">LINE 索取研究資料</a>
+        <a class="btn btn-ghost" href="research.html">看研究與專利</a>
       </div>
       <div class="line-qr" aria-hidden="true"><img src="assets/line-qr.svg" alt="" width="66" height="66"><div><b>用電腦看?</b><span>手機掃一下，直接加 LINE</span></div></div>
     </div>

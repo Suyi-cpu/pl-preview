@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Pürland 研究與專利頁程式碼｜貼進 Shopline 用</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#F4EFEA;color:#2B2722;font-family:"Noto Sans TC","PingFang TC",-apple-system,sans-serif;line-height:1.75;padding:32px 20px 80px}
+.wrap{max-width:860px;margin:0 auto}
+h1{font-size:26px;font-weight:700;margin-bottom:6px}
+.lede{color:#645B52;font-size:15.5px;margin-bottom:8px}
+.steps{background:#fff;border:1px solid rgba(16,22,20,.1);border-radius:14px;padding:20px 24px;margin:20px 0 28px;font-size:15px}
+.steps h3{font-size:16px;margin-bottom:10px}
+.steps ol{margin-left:20px}
+.steps li{margin-bottom:7px}
+.warn{background:#FFF6E5;border-left:3px solid #C9A24E;padding:12px 16px;border-radius:8px;margin-top:14px;font-size:14.5px}
+.card{background:#fff;border:1px solid rgba(16,22,20,.1);border-radius:14px;padding:22px 24px;margin-bottom:18px;box-shadow:0 2px 16px -8px rgba(16,22,20,.08)}
+.card-head{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:start}
+.num{font-family:ui-monospace,Menlo,monospace;font-size:15px;font-weight:600;background:#367C78;color:#fff;width:38px;height:38px;border-radius:10px;display:grid;place-items:center}
+h2{font-size:19px;font-weight:700}
+.desc{font-size:14.5px;color:#42403A;margin-top:3px}
+.where{font-size:13.5px;color:#645B52;margin-top:6px}
+.fp{font-size:13px;color:#645B52;margin-top:8px;padding-top:8px;border-top:1px dashed rgba(16,22,20,.14)}
+.fp b{color:#367C78}
+.size{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#8A8078}
+.copy{background:#367C78;color:#fff;border:0;border-radius:999px;padding:12px 22px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .2s}
+.copy:hover{background:#144D43}
+.copy.done{background:#1D7A4F}
+.tick{margin-top:14px;font-size:14px;color:#645B52}
+.tick label{display:inline-flex;align-items:center;gap:7px;cursor:pointer}
+details{margin-top:16px;border-top:1px solid rgba(16,22,20,.07);padding-top:12px}
+summary{cursor:pointer;font-size:13.5px;color:#645B52}
+pre{background:#1C1A17;color:#D8D2C8;padding:16px;border-radius:10px;margin-top:10px;overflow:auto;max-height:280px;font-size:11.5px;line-height:1.5;white-space:pre-wrap;word-break:break-all}
+.done-all{background:#E7F3EC;border:1px solid #1D7A4F;color:#12603C;border-radius:12px;padding:14px 18px;margin-bottom:18px;font-size:15px;font-weight:600}
+@media(max-width:640px){.card-head{grid-template-columns:auto 1fr}.copy{grid-column:1/-1;width:100%;margin-top:10px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Pürland 研究與專利頁程式碼</h1>
+  <p class="lede">貼進 Shopline 頁面「研究與專利」（/pages/research）。這頁共 <b>3 塊</b>，按綠色按鈕複製，不用打開任何檔案。</p>
+
+  <div id="progress" class="done-all" style="display:none">✓ 3 塊全部貼完了</div>
+
+  <div class="steps">
+    <h3>怎麼用</h3>
+    <ol>
+      <li>按下面的 <b>「複製這段程式碼」</b>（按鈕變綠色就是複製好了）</li>
+      <li>到 Shopline 後台 →「網店設計」→ 進入 <b>Shopline 頁面「研究與專利」（/pages/research）</b></li>
+      <li>按 <b>「+ 元件」</b> → 選 <b>「客製化語法元件」</b>（更新既有的塊：點進該元件）</li>
+      <li>點進「語法」框，<b>先全選刪掉舊內容</b>，再按 <b>Cmd + V</b> 貼上</li>
+      <li>按 <b>「儲存」</b>，然後用右上角 <b>「預覽商店」</b> 看效果</li>
+      <li>貼好一塊就把該塊的 <b>「我貼好這塊了」</b> 打勾——3 塊全打勾才算完成</li>
+    </ol>
+    <div class="warn"><b>先不要按「發佈」。</b>儲存後先預覽確認沒問題，再決定要不要發佈上線。</div>
+    <div class="warn"><b>每塊開頭的樣式碼都長得一樣</b>（共用的顏色與字體設定），差別在後半段。用每張卡片的「認明這塊」那行來確認你複製到的是哪一塊。</div>
+  </div>
+
+  <article class="card">
+    <div class="card-head">
+      <span class="num">01</span>
+      <div>
+        <h2>導言與專利牆</h2>
+        <p class="desc">開頭大標＋22 項已授權全球專利的專利號清單（每一項都可自行查證）</p>
+        <p class="where"><b>位置：</b>這頁的第一個元件</p>
+        <p class="fp"><b>認明這塊：</b>RESEARCH &amp; PATENTS · 研究與專利 · 研究與專利， · 逐項附上出處　<span class="size">11.1 KB</span></p>
+        <p class="tick"><label><input type="checkbox" data-k="01"> 我貼好這塊了</label></p>
+      </div>
+      <button class="copy" data-target="code-01">複製這段程式碼</button>
+    </div>
+    <details>
+      <summary>看一眼程式碼（不用看也沒關係）</summary>
+      <pre id="code-01">&lt;div class=&quot;plx&quot;&gt;
+&lt;style&gt;
+.plx{--page:#E7DBD8;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;--ink-hi:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--brand-teal:#367C78;--acc-gold:#cba654;--acc-green:#66bfa1;--acc-purple:#7ca5d5;--line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);--shadow-card:0 2px 16px -8px rgba(16,22,20,.06);--hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);--radius-xl:14px;--radius-lg:12px;--radius-control:999px;--font-ui:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;--font-display:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);color:var(--ink-mid);font-family:var(--font-ui);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.plx section{padding:64px 0}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--brand-teal);text-decoration:none}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+.plx h1{font-weight:700;font-size:clamp(30px,4.4vw,44px);letter-spacing:.01em}
+.plx h2{font-weight:700;font-size:clamp(22px,2.8vw,31px)}
+.plx h3{font-weight:700;font-size:20px}
+.plx .eyebrow{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .sec-num{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important}
+.plx .sec-head .sec-num::before{content:&quot;&quot;!important;display:inline-block!important;width:26px!important;height:2px!important;background:#C9A24E!important;margin-right:10px!important;vertical-align:middle!important}
+.plx .wrap{max-width:1120px!important;margin:0 auto!important;padding:0 24px!important}
+.plx section{padding:84px 0!important}
+.plx .sec-head{display:flex!important;align-items:baseline!important;gap:16px!important;border-top:1px solid var(--line)!important;padding-top:20px!important;margin-bottom:42px!important}
+.plx .sec-head h2{flex:1!important}
+.plx .btn{display:inline-flex!important;align-items:center!important;gap:8px!important;font-size:17px!important;font-weight:600!important;padding:12px 24px!important;border-radius:var(--radius-control)!important;transition:all .25s var(--ease)!important}
+.plx .btn-primary{background:var(--brand-teal)!important;color:#fff!important}
+.plx .btn-primary:hover{background:var(--surface-deep)!important;transform:translateY(-2px)!important}
+.plx .btn-ghost{border:1.5px solid var(--line)!important;color:var(--ink-hi)!important;background:transparent!important}
+.plx .btn-ghost:hover{border-color:var(--ink-dim)!important;transform:translateY(-2px)!important}
+.plx .plx-hero{background:var(--hero-grad)!important;padding:100px 0 84px!important;border-bottom:1px solid var(--line-2)!important}
+.plx .plx-hero h1{margin:20px 0 16px!important;max-width:720px!important}
+.plx .plx-hero p.lede{max-width:600px!important;font-size:19.5px!important}
+.plx .hero-en{font-family:var(--font-mono)!important;font-size:15px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important;margin-top:14px!important;text-transform:uppercase!important}
+.plx .hero-ctas{display:flex!important;gap:14px!important;margin-top:32px!important;flex-wrap:wrap!important}
+.plx .trust{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:1px!important;background:var(--line-2)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;overflow:hidden!important;margin-top:56px!important;box-shadow:var(--shadow-card)!important}
+.plx .trust div{background:var(--surface)!important;padding:22px 24px!important}
+.plx .trust .t-num{font-family:var(--font-mono)!important;font-size:26px!important;font-weight:600!important;color:var(--ink-hi)!important}
+.plx .trust .t-label{font-size:15px!important;color:var(--ink-dim)!important;margin-top:4px!important;line-height:1.6!important}
+.plx .pat-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:20px!important}
+.plx .pat{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;padding:28px!important;box-shadow:var(--shadow-card)!important;display:flex!important;flex-direction:column!important;transition:transform .3s var(--ease)!important}
+.plx .pat:hover{transform:translateY(-4px)!important}
+.plx .pat .p-tag{font-family:var(--font-mono)!important;font-size:13.5px!important;letter-spacing:.14em!important;color:var(--acc-gold)!important;text-transform:uppercase!important}
+.plx .pat .p-no{font-family:var(--font-mono)!important;font-size:21px!important;color:var(--ink-hi)!important;margin:10px 0 4px!important;word-break:break-all!important}
+.plx .pat p{font-size:15.5px!important;line-height:1.7!important;margin-top:8px!important}
+.plx .pat .p-meta{margin-top:auto!important;padding-top:16px!important;font-family:var(--font-mono)!important;font-size:14px!important;color:var(--ink-dim)!important;line-height:1.8!important}
+.plx .pat a.p-link{margin-top:12px!important;font-size:15.5px!important;font-weight:600!important}
+.plx .pat-note{margin-top:26px!important;font-size:16px!important;color:var(--ink-dim)!important;border-left:2px solid var(--line)!important;padding-left:16px!important;max-width:640px!important}
+@media (max-width:840px){.plx section{padding:58px 0!important}.plx .trust{grid-template-columns:1fr 1fr!important}.plx .pat-grid{grid-template-columns:1fr!important}.plx .plx-hero{padding:68px 0 56px!important}}
+@media (max-width:640px){.plx .hero-en{display:none!important}.plx .sec-head{display:block!important;padding-top:16px!important;margin-bottom:28px!important}.plx .sec-head .sec-num{display:block!important;margin-bottom:10px!important}.plx .eyebrow,.plx .sec-num,.plx .pat .p-tag{font-family:var(--font-ui)!important;letter-spacing:.03em!important}.plx .eyebrow,.plx .sec-num{font-size:13px!important;font-weight:600!important}.plx p,.plx .pat .p-meta{line-height:1.9!important}.plx .trust{grid-template-columns:1fr!important;margin-top:34px!important}.plx .trust div{display:flex!important;align-items:baseline!important;gap:14px!important;padding:14px 18px!important}.plx .trust .t-num{font-size:21px!important;white-space:nowrap!important;flex:0 0 auto!important;min-width:58px!important}.plx .trust .t-label{margin-top:0!important;font-size:14.5px!important;line-height:1.55!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx table{border-collapse:collapse!important;border-spacing:0!important}
+.plx td,.plx th{border:0!important;background:transparent!important}
+.plx .btn{text-align:center!important}
+.plx summary{cursor:pointer}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;plx-hero&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;eyebrow reveal&quot;&gt;RESEARCH &amp;amp; PATENTS · 研究與專利&lt;/div&gt;
+    &lt;h1 class=&quot;reveal&quot;&gt;研究與專利，&lt;br&gt;逐項附上出處&lt;/h1&gt;
+    &lt;p class=&quot;lede reveal&quot;&gt;這一頁列的是專利號、機構全名、期刊出處與年份——每一項都附了出處，可自行查對。&lt;/p&gt;
+    &lt;div class=&quot;hero-en reveal&quot;&gt;No adjectives. Just things you can look up.&lt;/div&gt;
+    &lt;div class=&quot;hero-ctas reveal&quot;&gt;
+      &lt;a class=&quot;btn btn-primary&quot; href=&quot;#patents&quot;&gt;看專利牆&lt;/a&gt;
+      &lt;a class=&quot;btn btn-ghost&quot; href=&quot;#evidence&quot;&gt;看物理與工程驗證&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;trust reveal&quot;&gt;
+      &lt;div&gt;&lt;div class=&quot;t-num&quot;&gt;33 年&lt;/div&gt;&lt;div class=&quot;t-label&quot;&gt;連續研究&lt;br&gt;1992 – 2025&lt;/div&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;div class=&quot;t-num&quot;&gt;60+&lt;/div&gt;&lt;div class=&quot;t-label&quot;&gt;獨立研究&lt;br&gt;非原廠自行執行&lt;/div&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;div class=&quot;t-num&quot;&gt;30+&lt;/div&gt;&lt;div class=&quot;t-label&quot;&gt;獨立研究機構&lt;/div&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;div class=&quot;t-num&quot;&gt;14+&lt;/div&gt;&lt;div class=&quot;t-label&quot;&gt;國家&lt;br&gt;俄、立陶宛、加、美、德、法…&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 02 · 專利牆 --&gt;
+&lt;section id=&quot;patents&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head reveal&quot;&gt;
+      &lt;span class=&quot;sec-num&quot;&gt;02 · 專利牆&lt;/span&gt;
+      &lt;h2&gt;22 項已授權的&lt;br&gt;全球專利&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;pat-grid&quot;&gt;
+      &lt;div class=&quot;pat reveal&quot;&gt;
+        &lt;div class=&quot;p-tag&quot;&gt;US Patent · 發明專利&lt;/div&gt;
+        &lt;div class=&quot;p-no&quot;&gt;US 12,239,835 B2&lt;/div&gt;
+        &lt;p&gt;核心技術的美國發明專利。適用頻率 2.4 GHz – 28 GHz，涵蓋現行 WiFi 至 5G 毫米波頻段。&lt;/p&gt;
+        &lt;div class=&quot;p-meta&quot;&gt;授權日 2025-03-04&lt;br&gt;存續至 2040-12-13&lt;/div&gt;
+        &lt;a class=&quot;p-link&quot; href=&quot;https://patents.google.com/patent/US12239835B2&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;在 Google Patents 查證 →&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;pat reveal&quot;&gt;
+        &lt;div class=&quot;p-tag&quot;&gt;WIPO · 國際申請&lt;/div&gt;
+        &lt;div class=&quot;p-no&quot;&gt;WO 2021/064446&lt;/div&gt;
+        &lt;p&gt;世界智慧財產權組織（WIPO）國際專利申請，指定多個主要市場。&lt;/p&gt;
+        &lt;div class=&quot;p-meta&quot;&gt;PCT 國際公開&lt;/div&gt;
+        &lt;a class=&quot;p-link&quot; href=&quot;https://patents.google.com/patent/WO2021064446A1&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;在 Google Patents 查證 →&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;pat reveal&quot;&gt;
+        &lt;div class=&quot;p-tag&quot;&gt;USPTO · 註冊商標&lt;/div&gt;
+        &lt;div class=&quot;p-no&quot;&gt;Reg. 7,764,771&lt;/div&gt;
+        &lt;p&gt;LIFETUNE 為美國專利商標局註冊商標——你買到的名字本身，也有註冊號。&lt;/p&gt;
+        &lt;div class=&quot;p-meta&quot;&gt;註冊日 2025-04-22&lt;/div&gt;
+        &lt;a class=&quot;p-link&quot; href=&quot;https://tsdr.uspto.gov/#caseNumber=7764771&amp;caseType=US_REGISTRATION_NO&amp;searchType=statusSearch&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;在 USPTO 查證 →&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;pat-note reveal&quot;&gt;此外另有俄羅斯發明專利五項（No. 2231137、2217181、2284062、2308065、2312384）與歐盟設計專利四項（No. 005535515-0001 至 -0004），合計 22 項全球專利。&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+(function(){
+  var box=document.querySelectorAll(&#x27;.plx&#x27;);
+  box.forEach(function(b){ b.classList.add(&#x27;plx-js&#x27;); });
+  var els=document.querySelectorAll(&#x27;.plx .reveal&#x27;);
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(&#x27;in&#x27;); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:&#x27;0px 0px -8% 0px&#x27;});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll(&#x27;.plx .reveal:not(.in)&#x27;).forEach(function(el){el.classList.add(&#x27;in&#x27;)}); },2500);
+})();
+&lt;/script&gt;
+</pre>
+    </details>
+  </article>
+
+  <article class="card">
+    <div class="card-head">
+      <span class="num">02</span>
+      <div>
+        <h2>研究機構與導入實績</h2>
+        <p class="desc">執行研究的外部機構名單，接全球導入實績（NBA 場館、航空公司等場域認證）</p>
+        <p class="where"><b>位置：</b>接在 01 下面</p>
+        <p class="fp"><b>認明這塊：</b>03 · 研究機構 · 由外部機構執行 · 這些研究由外部機構獨立執行，非原廠自評。下面是其中具代表性的六間。　<span class="size">10.5 KB</span></p>
+        <p class="tick"><label><input type="checkbox" data-k="02"> 我貼好這塊了</label></p>
+      </div>
+      <button class="copy" data-target="code-02">複製這段程式碼</button>
+    </div>
+    <details>
+      <summary>看一眼程式碼（不用看也沒關係）</summary>
+      <pre id="code-02">&lt;div class=&quot;plx&quot;&gt;
+&lt;style&gt;
+.plx{--page:#E7DBD8;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;--ink-hi:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--brand-teal:#367C78;--acc-gold:#cba654;--acc-green:#66bfa1;--acc-purple:#7ca5d5;--line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);--shadow-card:0 2px 16px -8px rgba(16,22,20,.06);--hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);--radius-xl:14px;--radius-lg:12px;--radius-control:999px;--font-ui:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;--font-display:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);color:var(--ink-mid);font-family:var(--font-ui);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.plx section{padding:64px 0}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--brand-teal);text-decoration:none}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+.plx h1{font-weight:700;font-size:clamp(30px,4.4vw,44px);letter-spacing:.01em}
+.plx h2{font-weight:700;font-size:clamp(22px,2.8vw,31px)}
+.plx h3{font-weight:700;font-size:20px}
+.plx .sec-num{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important}
+.plx .sec-head .sec-num::before{content:&quot;&quot;!important;display:inline-block!important;width:26px!important;height:2px!important;background:#C9A24E!important;margin-right:10px!important;vertical-align:middle!important}
+.plx .wrap{max-width:1120px!important;margin:0 auto!important;padding:0 24px!important}
+.plx section{padding:84px 0!important}
+.plx .sec-head{display:flex!important;align-items:baseline!important;gap:16px!important;border-top:1px solid var(--line)!important;padding-top:20px!important;margin-bottom:42px!important}
+.plx .sec-head h2{flex:1!important}
+.plx .inst-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:20px!important}
+.plx .inst{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;padding:26px!important;box-shadow:var(--shadow-card)!important}
+.plx .inst .i-cc{font-family:var(--font-mono)!important;font-size:13.5px!important;letter-spacing:.14em!important;color:var(--brand-teal)!important;text-transform:uppercase!important}
+.plx .inst h3{margin:8px 0 6px!important;font-size:18.5px!important}
+.plx .inst p{font-size:15.5px!important;line-height:1.7!important}
+.plx .inst-note{margin-top:28px!important;font-size:16.5px!important;max-width:680px!important}
+.plx .researchers{margin-top:34px!important;background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;padding:26px 28px!important;box-shadow:var(--shadow-card)!important}
+.plx .researchers h3{margin-bottom:14px!important}
+.plx .researchers ul{list-style:none!important;display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:8px 24px!important}
+.plx .researchers li{font-size:15.5px!important;padding:8px 0!important;border-bottom:1px solid var(--line-2)!important}
+.plx .researchers .r-name{font-family:var(--font-mono)!important;color:var(--ink-hi)!important;display:block!important;font-size:15px!important;letter-spacing:.04em!important}
+@media (max-width:840px){.plx section{padding:58px 0!important}.plx .inst-grid{grid-template-columns:1fr!important}.plx .researchers ul{grid-template-columns:1fr 1fr!important}}
+@media (max-width:640px){.plx .sec-head{display:block!important;padding-top:16px!important;margin-bottom:28px!important}.plx .sec-head .sec-num{display:block!important;margin-bottom:10px!important}.plx .researchers ul{grid-template-columns:1fr!important}.plx .researchers{padding:22px 20px!important}.plx .sec-num,.plx .inst .i-cc{font-family:var(--font-ui)!important;letter-spacing:.03em!important}.plx .sec-num{font-size:13px!important;font-weight:600!important}.plx p{line-height:1.9!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx table{border-collapse:collapse!important;border-spacing:0!important}
+.plx td,.plx th{border:0!important;background:transparent!important}
+.plx .btn{text-align:center!important}
+.plx summary{cursor:pointer}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+&lt;/style&gt;
+
+&lt;section id=&quot;institutions&quot; style=&quot;background:var(--surface)!important;border-top:1px solid var(--line-2)!important;border-bottom:1px solid var(--line-2)!important&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head reveal&quot;&gt;
+      &lt;span class=&quot;sec-num&quot;&gt;03 · 研究機構&lt;/span&gt;
+      &lt;h2&gt;研究，&lt;br&gt;由外部機構執行&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;inst-note reveal&quot; style=&quot;margin-top:0!important;margin-bottom:36px!important&quot;&gt;這些研究由外部機構獨立執行，非原廠自評。下面是其中具代表性的六間。&lt;/p&gt;
+    &lt;div class=&quot;inst-grid&quot;&gt;
+      &lt;div class=&quot;inst reveal&quot;&gt;
+        &lt;div class=&quot;i-cc&quot;&gt;CA · 加拿大&lt;/div&gt;
+        &lt;h3&gt;Trent 大學&lt;/h3&gt;
+        &lt;p&gt;加拿大獨立大學，於 2015 年發表兩份對照設計的獨立研究。&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;inst reveal&quot;&gt;
+        &lt;div class=&quot;i-cc&quot;&gt;US · 拉斯維加斯&lt;/div&gt;
+        &lt;h3&gt;UFC Performance Institute&lt;/h3&gt;
+        &lt;p&gt;UFC（全球最大綜合格鬥賽事）的訓練與運動科學中心。技術原廠為 UFC 官方合作夥伴，於該中心進行獨立測試。&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;inst reveal&quot;&gt;
+        &lt;div class=&quot;i-cc&quot;&gt;UN ECOSOC · 國際 NGO&lt;/div&gt;
+        &lt;h3&gt;PACE 潔淨能源行星協會&lt;/h3&gt;
+        &lt;p&gt;具聯合國經濟社會理事會諮詢地位的 NGO，出具七份獨立專家審查報告。&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;inst reveal&quot;&gt;
+        &lt;div class=&quot;i-cc&quot;&gt;EU · 立陶宛&lt;/div&gt;
+        &lt;h3&gt;維爾紐斯格迪米納斯理工大學（VGTU）&lt;/h3&gt;
+        &lt;p&gt;立陶宛頂尖理工大學。執行三階段頻譜分析儀獨立實測，並共同發表 2018 年同行評審論文。&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;inst reveal&quot;&gt;
+        &lt;div class=&quot;i-cc&quot;&gt;SPRINGER · 同行評審&lt;/div&gt;
+        &lt;h3&gt;ITMO 大學&lt;/h3&gt;
+        &lt;p&gt;俄羅斯頂尖理工大學。其計算模擬研究於 2022 年發表於國際學術出版社 Springer 的系列叢書（同行評審）。&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;inst reveal&quot;&gt;
+        &lt;div class=&quot;i-cc&quot;&gt;諾貝爾得主創立 · 俄羅斯科學院&lt;/div&gt;
+        &lt;h3&gt;巴甫洛夫研究所&lt;/h3&gt;
+        &lt;p&gt;由諾貝爾獎得主巴甫洛夫創立，俄羅斯歷史最悠久的科學研究機構之一，亦在這項技術的獨立研究機構之列。&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;researchers reveal&quot;&gt;
+      &lt;h3&gt;具名研究者（節錄）&lt;/h3&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;span class=&quot;r-name&quot;&gt;LUKYANOV, G.&lt;/span&gt;ITMO 大學 · Springer 論文共同作者&lt;/li&gt;
+        &lt;li&gt;&lt;span class=&quot;r-name&quot;&gt;MICHROWSKI, A.&lt;/span&gt;PACE（聯合國 ECOSOC）· 七份獨立審查&lt;/li&gt;
+        &lt;li&gt;&lt;span class=&quot;r-name&quot;&gt;JUKNA, A.&lt;/span&gt;VGTU · 頻譜量測主持人&lt;/li&gt;
+        &lt;li&gt;&lt;span class=&quot;r-name&quot;&gt;KOPYLTSOV, A.&lt;/span&gt;聖彼得堡 GUAP／ETU · 建模研究&lt;/li&gt;
+        &lt;li&gt;&lt;span class=&quot;r-name&quot;&gt;DYUZHIKOVA, N.&lt;/span&gt;巴甫洛夫研究所&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- 04 · 全球導入實績 --&gt;
+&lt;section id=&quot;adoption&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head reveal&quot;&gt;
+      &lt;span class=&quot;sec-num&quot;&gt;04 · 全球導入實績&lt;/span&gt;
+      &lt;h2&gt;認證的對象，&lt;br&gt;是一整個空間&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;inst-grid&quot;&gt;
+      &lt;div class=&quot;inst reveal&quot;&gt;
+        &lt;div class=&quot;i-cc&quot;&gt;2025 · 美國明尼蘇達&lt;/div&gt;
+        &lt;h3&gt;全球首座認證職業運動場館&lt;/h3&gt;
+        &lt;p&gt;灰狼隊主場 Target Center 成為全球第一座 Aires Certified Space 職業場館：技術整合於場館 Wi-Fi 連接點與高人流區域，並設立第一間 Aires Certified 選秀室；2026 年 3 月以「EMF-friendly NBA 賽事」規格迎戰拓荒者。&lt;/p&gt;
+        &lt;p style=&quot;margin-top:10px!important&quot;&gt;&lt;a href=&quot;https://www.prnewswire.com/news-releases/a-fan-experience-first-minnesota-timberwolves-and-aires-tech-launch-pioneering-emf-friendly-venue-tech-302379811.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; style=&quot;font-weight:600!important;font-size:15px!important&quot;&gt;PRNewswire 新聞稿 →&lt;/a&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;inst reveal&quot;&gt;
+        &lt;div class=&quot;i-cc&quot;&gt;職業運動組織&lt;/div&gt;
+        &lt;h3&gt;UFC 官方合作夥伴&lt;/h3&gt;
+        &lt;p&gt;2024 年 UFC 309 前夕雙方共同舉辦《The Next Frontier of UFC Training and Performance》研討會；另與 WWE、加拿大籃球協會、NASCAR 車手建立合作，多位 NBA、NHL、UFC 職業運動員為合作運動員。&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;inst reveal&quot;&gt;
+        &lt;div class=&quot;i-cc&quot;&gt;航空業 · 2026&lt;/div&gt;
+        &lt;h3&gt;斐濟航空官方合作&lt;/h3&gt;
+        &lt;p&gt;2026 年 5 月宣布官方合作，技術導入 Fiji Airways Premier Lounge 等高連線密度環境——航空業對機上與貴賓室設備的審查標準，本身就是一道門檻。&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;inst-note reveal&quot; style=&quot;margin-top:26px!important;font-size:15.5px!important;color:var(--ink-dim)!important&quot;&gt;以上均為可公開查證之合作與導入事實，不構成產品功效宣稱。&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+(function(){
+  var box=document.querySelectorAll(&#x27;.plx&#x27;);
+  box.forEach(function(b){ b.classList.add(&#x27;plx-js&#x27;); });
+  var els=document.querySelectorAll(&#x27;.plx .reveal&#x27;);
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(&#x27;in&#x27;); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:&#x27;0px 0px -8% 0px&#x27;});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll(&#x27;.plx .reveal:not(.in)&#x27;).forEach(function(el){el.classList.add(&#x27;in&#x27;)}); },2500);
+})();
+&lt;/script&gt;
+</pre>
+    </details>
+  </article>
+
+  <article class="card">
+    <div class="card-head">
+      <span class="num">03</span>
+      <div>
+        <h2>物理驗證與原則聲明</h2>
+        <p class="desc">物理與工程驗證流的研究清單，接「為什麼這一頁沒有更多研究」的原則聲明與 CTA</p>
+        <p class="where"><b>位置：</b>接在 02 下面，頁尾之前</p>
+        <p class="fp"><b>認明這塊：</b>05 · 物理與工程驗證 · 量測的是場的分佈， · 不是場的強度　<span class="size">14.2 KB</span></p>
+        <p class="tick"><label><input type="checkbox" data-k="03"> 我貼好這塊了</label></p>
+      </div>
+      <button class="copy" data-target="code-03">複製這段程式碼</button>
+    </div>
+    <details>
+      <summary>看一眼程式碼（不用看也沒關係）</summary>
+      <pre id="code-03">&lt;div class=&quot;plx&quot;&gt;
+&lt;style&gt;
+.plx{--page:#E7DBD8;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;--ink-hi:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--brand-teal:#367C78;--acc-gold:#cba654;--acc-green:#66bfa1;--acc-purple:#7ca5d5;--line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);--shadow-card:0 2px 16px -8px rgba(16,22,20,.06);--hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);--radius-xl:14px;--radius-lg:12px;--radius-control:999px;--font-ui:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;--font-display:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);color:var(--ink-mid);font-family:var(--font-ui);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.plx section{padding:64px 0}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--brand-teal);text-decoration:none}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+.plx h1{font-weight:700;font-size:clamp(30px,4.4vw,44px);letter-spacing:.01em}
+.plx h2{font-weight:700;font-size:clamp(22px,2.8vw,31px)}
+.plx h3{font-weight:700;font-size:20px}
+.plx .deep :focus-visible{outline-color:#8FC7B4!important}
+.plx .eyebrow{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .sec-num{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important}
+.plx .sec-head .sec-num::before{content:&quot;&quot;!important;display:inline-block!important;width:26px!important;height:2px!important;background:#C9A24E!important;margin-right:10px!important;vertical-align:middle!important}
+.plx .wrap{max-width:1120px!important;margin:0 auto!important;padding:0 24px!important}
+.plx section{padding:84px 0!important}
+.plx .sec-head{display:flex!important;align-items:baseline!important;gap:16px!important;border-top:1px solid var(--line)!important;padding-top:20px!important;margin-bottom:42px!important}
+.plx .sec-head h2{flex:1!important}
+.plx .btn{display:inline-flex!important;align-items:center!important;gap:8px!important;font-size:17px!important;font-weight:600!important;padding:12px 24px!important;border-radius:var(--radius-control)!important;transition:all .25s var(--ease)!important}
+.plx .btn-primary{background:var(--brand-teal)!important;color:#fff!important}
+.plx .btn-primary:hover{background:var(--surface-deep)!important;transform:translateY(-2px)!important}
+.plx .btn-ghost{border:1.5px solid var(--line)!important;color:var(--ink-hi)!important;background:transparent!important}
+.plx .btn-ghost:hover{border-color:var(--ink-dim)!important;transform:translateY(-2px)!important}
+.plx .hero-ctas{display:flex!important;gap:14px!important;margin-top:32px!important;flex-wrap:wrap!important}
+.plx .deep{background:var(--surface-deep)!important;color:#EAF3EF!important;padding:84px 0!important}
+.plx .deep h2{color:#FFFFFF!important}
+.plx .deep .eyebrow{color:#8FC7B4!important}
+.plx .deep p.lede{max-width:640px!important;font-size:18px!important;color:#C4DCD2!important;margin-top:14px!important}
+.plx .ev-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:20px!important;margin-top:40px!important}
+.plx .ev{background:rgba(242,238,228,.06)!important;border:1px solid rgba(242,238,228,.14)!important;border-radius:var(--radius-xl)!important;padding:26px!important}
+.plx .ev .e-tag{font-family:var(--font-mono)!important;font-size:13.5px!important;letter-spacing:.14em!important;color:#9FB7B0!important;text-transform:uppercase!important}
+.plx .ev h3{color:#F2EEE4!important;margin:10px 0 8px!important;font-size:18.5px!important}
+.plx .ev p{font-size:15.5px!important;line-height:1.75!important;color:#C4DCD2!important}
+.plx .bib{margin-top:40px!important;border-top:1px solid rgba(242,238,228,.14)!important;padding-top:26px!important}
+.plx .bib h3{color:#F2EEE4!important;margin-bottom:14px!important;font-size:17px!important}
+.plx .bib li{list-style:none!important;font-family:var(--font-mono)!important;font-size:14.5px!important;line-height:2!important;color:#8FC7B4!important}
+.plx .bib a{color:#CDE8DD!important;border-bottom:1px solid rgba(205,232,221,.45)!important;padding-bottom:1px!important;white-space:nowrap!important}
+.plx .bib a:hover{border-bottom-color:#CDE8DD!important}
+.plx .bib-note{margin-top:16px!important;font-size:13.5px!important;color:#7FA298!important;line-height:1.7!important}
+.plx .ev-figs-kicker{font-family:var(--font-mono)!important;font-size:13.5px!important;letter-spacing:.14em!important;color:#9FB7B0!important;text-transform:uppercase!important;margin-top:44px!important}
+.plx .ev-figs{display:grid!important;grid-template-columns:1fr 1fr!important;gap:20px!important;margin-top:18px!important}
+.plx .ev-figs figure{margin:0!important}
+.plx .ev-figs .ev-fig-img{background:#fff!important;border:1px solid rgba(242,238,228,.16)!important;border-radius:var(--radius-xl)!important;overflow:hidden!important}
+.plx .ev-figs .ev-fig-img img{width:100%!important;height:auto!important;display:block!important}
+.plx .ev-figs figcaption{font-family:var(--font-mono)!important;font-size:13px!important;letter-spacing:.06em!important;color:#9FB7B0!important;margin-top:12px!important;text-align:center!important}
+.plx .honest{background:var(--surface)!important;border:1px solid var(--line)!important;border-left:4px solid var(--brand-teal)!important;border-radius:var(--radius-xl)!important;padding:40px 44px!important;box-shadow:var(--shadow-card)!important;max-width:860px!important}
+.plx .honest h3{font-size:21px!important;margin-bottom:14px!important}
+.plx .honest p{font-size:17px!important;line-height:1.9!important;margin-bottom:12px!important}
+.plx .honest p:last-child{margin-bottom:0!important}
+.plx .cta-final{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;box-shadow:var(--shadow-card)!important;padding:60px 48px!important;text-align:center!important}
+.plx .cta-final h2{max-width:560px!important;margin:14px auto 10px!important}
+.plx .cta-final p{max-width:500px!important;margin:0 auto!important;font-size:17px!important}
+.plx .cta-final .hero-ctas{justify-content:center!important;margin-top:28px!important}
+.plx .line-qr{display:none!important}
+.plx .line-qr img{width:66px!important;height:66px!important;display:block!important;border-radius:6px!important}
+.plx .line-qr b{display:block!important;font-size:14px!important;font-weight:600!important;color:#2B2722!important;margin-bottom:3px!important}
+.plx .line-qr span{font-size:12.5px!important;color:#645B52!important}
+@media (max-width:620px){.plx .ev-figs{grid-template-columns:1fr!important}}
+@media (max-width:840px){.plx section{padding:58px 0!important}.plx .ev-grid{grid-template-columns:1fr!important}.plx .honest{padding:30px 24px!important}.plx .cta-final{padding:44px 24px!important}}
+@media (max-width:640px){.plx .sec-head{display:block!important;padding-top:16px!important;margin-bottom:28px!important}.plx .sec-head .sec-num{display:block!important;margin-bottom:10px!important}.plx .eyebrow,.plx .sec-num,.plx .ev .e-tag,.plx .ev-figs-kicker,.plx .ev-figs figcaption{font-family:var(--font-ui)!important;letter-spacing:.03em!important}.plx .eyebrow,.plx .sec-num{font-size:13px!important;font-weight:600!important}.plx p,.plx .honest p{line-height:1.9!important}}
+@media(min-width:900px){.plx .line-qr{display:inline-flex!important;align-items:center!important;gap:13px!important;margin-top:22px!important;padding:10px 16px 10px 10px!important;background:#fff!important;border:1px solid #E4DAD2!important;border-radius:14px!important;text-align:left!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx table{border-collapse:collapse!important;border-spacing:0!important}
+.plx td,.plx th{border:0!important;background:transparent!important}
+.plx .btn{text-align:center!important}
+.plx summary{cursor:pointer}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;deep&quot; id=&quot;evidence&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;eyebrow reveal&quot;&gt;05 · 物理與工程驗證&lt;/div&gt;
+    &lt;h2 class=&quot;reveal&quot; style=&quot;margin-top:14px!important&quot;&gt;量測的是場的分佈，&lt;br&gt;不是場的強度&lt;/h2&gt;
+    &lt;p class=&quot;lede reveal&quot;&gt;物理與工程驗證流累計 15+ 份研究——以頻譜分析儀、計算模擬與熱成像，量測場的空間分佈與裝置本身。這也是為什麼一般 RF 檢測器讀不到變化：它量的是強度，而強度本來就不該變。&lt;/p&gt;
+    &lt;div class=&quot;ev-grid&quot;&gt;
+      &lt;div class=&quot;ev reveal&quot;&gt;
+        &lt;div class=&quot;e-tag&quot;&gt;Peer-Reviewed · 2022&lt;/div&gt;
+        &lt;h3&gt;Springer 同行評審出版&lt;/h3&gt;
+        &lt;p&gt;計算電磁模擬研究發表於 Springer《Lecture Notes in Networks and Systems》，由 ITMO 大學研究團隊執行（Lukyanov 等人）。&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;ev reveal&quot;&gt;
+        &lt;div class=&quot;e-tag&quot;&gt;Spectrum Analysis · 三階段&lt;/div&gt;
+        &lt;h3&gt;VGTU 頻譜分析儀實測&lt;/h3&gt;
+        &lt;p&gt;立陶宛 VGTU 以頻譜分析儀進行三階段獨立量測，記錄到平均 27% 的場強空間重分佈——儀器讀數，不是問卷。&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;ev reveal&quot;&gt;
+        &lt;div class=&quot;e-tag&quot;&gt;Modeling · 2006–2022&lt;/div&gt;
+        &lt;h3&gt;建模與實驗系列論文&lt;/h3&gt;
+        &lt;p&gt;自 2006 年起的建模系列（Nanotechnology 2006、ENGECON 2007 等）：二維與三維非穩態模型，結論為輸出場呈孤子態穩定——形狀由晶片幾何決定。&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;ev-figs-kicker reveal&quot;&gt;共振器影像 · RESONATOR IMAGERY&lt;/div&gt;
+    &lt;div class=&quot;ev-figs reveal&quot;&gt;
+      &lt;figure&gt;
+        &lt;div class=&quot;ev-fig-img&quot;&gt;&lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/chip-gold.jpg&quot; alt=&quot;共振場的相干響應影像：金色發光的鱗片狀圓頂&quot; loading=&quot;lazy&quot;&gt;&lt;/div&gt;
+        &lt;figcaption&gt;共振場的相干響應影像&lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;figure&gt;
+        &lt;div class=&quot;ev-fig-img&quot;&gt;&lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/chip-etch.jpg&quot; alt=&quot;圓形繞射晶格圖樣：由中心向外放射的同心環點陣&quot; loading=&quot;lazy&quot;&gt;&lt;/div&gt;
+        &lt;figcaption&gt;圓形繞射晶格圖樣&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;bib reveal&quot;&gt;
+      &lt;h3&gt;參考文獻（節錄）&lt;/h3&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Kopyltsov A.V., Serov I.N., Lukyanov G.N. — Nanotechnology, 2006, No. 4(8), pp. 44-49.&lt;/li&gt;
+        &lt;li&gt;Serov I.N., Lukyanov G.N., Kopyltsov A.V. — ENGECON Bulletin, Technical Sciences, 2007, 6(19), pp. 199-205.&lt;/li&gt;
+        &lt;li&gt;Lukyanov G. et al. — Springer, Lecture Notes in Networks and Systems, 2022. &lt;a href=&quot;https://link.springer.com/chapter/10.1007/978-981-19-1607-6_7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;在 SpringerLink 查看 ↗&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;US Patent US12239835B2 — granted 2025-03-04. &lt;a href=&quot;https://patents.google.com/patent/US12239835B2&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;在 Google Patents 查看 ↗&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;p class=&quot;bib-note&quot;&gt;上列前兩篇為俄文期刊原始出處，未提供公開連結；後兩項可直接點擊查證。&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 05 · 誠實聲明 --&gt;
+&lt;section id=&quot;honest&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head reveal&quot;&gt;
+      &lt;span class=&quot;sec-num&quot;&gt;06 · 我們的原則&lt;/span&gt;
+      &lt;h2&gt;為什麼這一頁沒有更多研究？&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;honest reveal&quot;&gt;
+      &lt;h3&gt;因為我們寧可少說。&lt;/h3&gt;
+      &lt;p&gt;原廠的全球研究資料涵蓋多種領域，其中部分內容涉及較專業的量測設計與判讀。台灣法規對非醫療器材的廣告用語有明確規範，我們尊重這條界線，因此在這個網站上，僅主動呈現與產品結構、物理原理、儀器量測及工程設計相關的資料。&lt;/p&gt;
+      &lt;p&gt;這不是迴避，而是選品標準的延伸：把可查證的資料攤開，不做片段化摘要。&lt;/p&gt;
+      &lt;p&gt;這一頁列出的期刊卷期與專利號，都可以直接循學術管道與專利資料庫自行查閱、自行判讀——我們不替你摘要結論。&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- 06 · CTA --&gt;
+&lt;section id=&quot;next&quot; style=&quot;padding-top:0!important&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;cta-final reveal&quot;&gt;
+      &lt;div class=&quot;eyebrow&quot;&gt;07 · 下一步&lt;/div&gt;
+      &lt;h2&gt;看完研究，&lt;br&gt;回來挑一款適合的&lt;/h2&gt;
+      &lt;p&gt;同一項專利技術、五種情境形態。&lt;/p&gt;
+      &lt;div class=&quot;hero-ctas&quot;&gt;
+        &lt;a class=&quot;btn btn-primary&quot; href=&quot;https://www.purland.com.tw/products&quot;&gt;依情境選擇產品&lt;/a&gt;
+        &lt;a class=&quot;btn btn-ghost&quot; href=&quot;https://www.purland.com.tw/pages/how-it-works&quot;&gt;回運作原理&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;line-qr&quot; aria-hidden=&quot;true&quot;&gt;&lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/line-qr.svg&quot; alt=&quot;&quot; width=&quot;66&quot; height=&quot;66&quot;&gt;&lt;div&gt;&lt;b&gt;用電腦看?&lt;/b&gt;&lt;span&gt;手機掃一下，直接加 LINE&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+(function(){
+  var box=document.querySelectorAll(&#x27;.plx&#x27;);
+  box.forEach(function(b){ b.classList.add(&#x27;plx-js&#x27;); });
+  var els=document.querySelectorAll(&#x27;.plx .reveal&#x27;);
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(&#x27;in&#x27;); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:&#x27;0px 0px -8% 0px&#x27;});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll(&#x27;.plx .reveal:not(.in)&#x27;).forEach(function(el){el.classList.add(&#x27;in&#x27;)}); },2500);
+})();
+&lt;/script&gt;
+</pre>
+    </details>
+  </article>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var pre = document.getElementById(btn.dataset.target);
+    var text = pre.textContent;
+    function done(){ var o=btn.textContent; btn.textContent='✓ 已複製！去 Shopline 貼上'; btn.classList.add('done');
+      setTimeout(function(){ btn.textContent=o; btn.classList.remove('done'); }, 2600); }
+    function fallback(){
+      var ta=document.createElement('textarea'); ta.value=text;
+      ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta);
+      ta.select(); try{ document.execCommand('copy'); done(); }catch(e){ alert('複製失敗，請手動全選複製'); }
+      document.body.removeChild(ta);
+    }
+    if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(text).then(done, fallback); }
+    else { fallback(); }
+  });
+});
+// 貼好了打勾（存在瀏覽器，重整不會掉）
+var KEY='plx-done-'+location.pathname, state=JSON.parse(localStorage.getItem(KEY)||'{}');
+var boxes=[].slice.call(document.querySelectorAll('.tick input'));
+function sync(){
+  var all=boxes.every(function(b){return b.checked});
+  document.getElementById('progress').style.display = all ? 'block' : 'none';
+  localStorage.setItem(KEY, JSON.stringify(state));
+}
+boxes.forEach(function(b){
+  b.checked = !!state[b.dataset.k];
+  b.addEventListener('change', function(){ state[b.dataset.k]=b.checked; sync(); });
+});
+sync();
+</script>
+</body>
+</html>

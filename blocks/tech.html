@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Pürland 運作原理頁程式碼｜貼進 Shopline 用</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#F4EFEA;color:#2B2722;font-family:"Noto Sans TC","PingFang TC",-apple-system,sans-serif;line-height:1.75;padding:32px 20px 80px}
+.wrap{max-width:860px;margin:0 auto}
+h1{font-size:26px;font-weight:700;margin-bottom:6px}
+.lede{color:#645B52;font-size:15.5px;margin-bottom:8px}
+.steps{background:#fff;border:1px solid rgba(16,22,20,.1);border-radius:14px;padding:20px 24px;margin:20px 0 28px;font-size:15px}
+.steps h3{font-size:16px;margin-bottom:10px}
+.steps ol{margin-left:20px}
+.steps li{margin-bottom:7px}
+.warn{background:#FFF6E5;border-left:3px solid #C9A24E;padding:12px 16px;border-radius:8px;margin-top:14px;font-size:14.5px}
+.card{background:#fff;border:1px solid rgba(16,22,20,.1);border-radius:14px;padding:22px 24px;margin-bottom:18px;box-shadow:0 2px 16px -8px rgba(16,22,20,.08)}
+.card-head{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:start}
+.num{font-family:ui-monospace,Menlo,monospace;font-size:15px;font-weight:600;background:#367C78;color:#fff;width:38px;height:38px;border-radius:10px;display:grid;place-items:center}
+h2{font-size:19px;font-weight:700}
+.desc{font-size:14.5px;color:#42403A;margin-top:3px}
+.where{font-size:13.5px;color:#645B52;margin-top:6px}
+.fp{font-size:13px;color:#645B52;margin-top:8px;padding-top:8px;border-top:1px dashed rgba(16,22,20,.14)}
+.fp b{color:#367C78}
+.size{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#8A8078}
+.copy{background:#367C78;color:#fff;border:0;border-radius:999px;padding:12px 22px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .2s}
+.copy:hover{background:#144D43}
+.copy.done{background:#1D7A4F}
+.tick{margin-top:14px;font-size:14px;color:#645B52}
+.tick label{display:inline-flex;align-items:center;gap:7px;cursor:pointer}
+details{margin-top:16px;border-top:1px solid rgba(16,22,20,.07);padding-top:12px}
+summary{cursor:pointer;font-size:13.5px;color:#645B52}
+pre{background:#1C1A17;color:#D8D2C8;padding:16px;border-radius:10px;margin-top:10px;overflow:auto;max-height:280px;font-size:11.5px;line-height:1.5;white-space:pre-wrap;word-break:break-all}
+.done-all{background:#E7F3EC;border:1px solid #1D7A4F;color:#12603C;border-radius:12px;padding:14px 18px;margin-bottom:18px;font-size:15px;font-weight:600}
+@media(max-width:640px){.card-head{grid-template-columns:auto 1fr}.copy{grid-column:1/-1;width:100%;margin-top:10px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Pürland 運作原理頁程式碼</h1>
+  <p class="lede">貼進 Shopline 頁面「運作原理」（/pages/how-it-works）。這頁共 <b>4 塊</b>，按綠色按鈕複製，不用打開任何檔案。</p>
+
+  <div id="progress" class="done-all" style="display:none">✓ 4 塊全部貼完了</div>
+
+  <div class="steps">
+    <h3>怎麼用</h3>
+    <ol>
+      <li>按下面的 <b>「複製這段程式碼」</b>（按鈕變綠色就是複製好了）</li>
+      <li>到 Shopline 後台 →「網店設計」→ 進入 <b>Shopline 頁面「運作原理」（/pages/how-it-works）</b></li>
+      <li>按 <b>「+ 元件」</b> → 選 <b>「客製化語法元件」</b>（更新既有的塊：點進該元件）</li>
+      <li>點進「語法」框，<b>先全選刪掉舊內容</b>，再按 <b>Cmd + V</b> 貼上</li>
+      <li>按 <b>「儲存」</b>，然後用右上角 <b>「預覽商店」</b> 看效果</li>
+      <li>貼好一塊就把該塊的 <b>「我貼好這塊了」</b> 打勾——4 塊全打勾才算完成</li>
+    </ol>
+    <div class="warn"><b>先不要按「發佈」。</b>儲存後先預覽確認沒問題，再決定要不要發佈上線。</div>
+    <div class="warn"><b>每塊開頭的樣式碼都長得一樣</b>（共用的顏色與字體設定），差別在後半段。用每張卡片的「認明這塊」那行來確認你複製到的是哪一塊。</div>
+  </div>
+
+  <article class="card">
+    <div class="card-head">
+      <span class="num">01</span>
+      <div>
+        <h2>導言與晶片結構</h2>
+        <p class="desc">開頭大標＋調和過程圖解，接晶片結構（金天線微距、蝕刻參數、分層結構）</p>
+        <p class="where"><b>位置：</b>這頁的第一個元件</p>
+        <p class="fp"><b>認明這塊：</b>TECHNOLOGY · 運作原理 · 雜亂的電磁波， · 如何被調和成有序？　<span class="size">18.8 KB</span></p>
+        <p class="tick"><label><input type="checkbox" data-k="01"> 我貼好這塊了</label></p>
+      </div>
+      <button class="copy" data-target="code-01">複製這段程式碼</button>
+    </div>
+    <details>
+      <summary>看一眼程式碼（不用看也沒關係）</summary>
+      <pre id="code-01">&lt;div class=&quot;plx&quot;&gt;
+&lt;style&gt;
+.plx{--page:#E7DBD8;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;--ink-hi:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--brand-teal:#367C78;--acc-diffraction:#cba654;--acc-resonance:#66bfa1;--acc-phase:#459590;--acc-charge:#7ca5d5;--line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);--shadow-card:0 2px 16px -8px rgba(16,22,20,.06);--hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);--radius-xl:14px;--radius-lg:12px;--radius-md:10px;--radius-control:999px;--font-ui:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;--font-display:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);color:var(--ink-mid);font-family:var(--font-ui);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.plx section{padding:64px 0}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--brand-teal);text-decoration:none}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+.plx h1{font-weight:700;font-size:clamp(30px,4.4vw,44px);letter-spacing:.01em}
+.plx h2{font-weight:700;font-size:clamp(22px,2.8vw,31px)}
+.plx h3{font-weight:700;font-size:20px}
+.plx .deep :focus-visible{outline-color:#8FC7B4!important}
+.plx .eyebrow{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .wrap{max-width:1120px!important;margin:0 auto!important;padding:0 24px!important}
+.plx .btn{display:inline-flex!important;align-items:center!important;gap:8px!important;font-size:17px!important;font-weight:600!important;padding:12px 24px!important;border-radius:var(--radius-control)!important;transition:all .25s var(--ease)!important}
+.plx .btn-primary{background:var(--brand-teal)!important;color:#fff!important}
+.plx .btn-primary:hover{background:var(--surface-deep)!important;transform:translateY(-2px)!important}
+.plx .btn-ghost{border:1.5px solid var(--line)!important;color:var(--ink-hi)!important;background:transparent!important}
+.plx .btn-ghost:hover{border-color:var(--ink-dim)!important;transform:translateY(-2px)!important}
+.plx .plx-hero{background:var(--hero-grad)!important;padding:100px 0 84px!important;border-bottom:1px solid var(--line-2)!important}
+.plx .plx-hero h1{margin:20px 0 16px!important;max-width:720px!important}
+.plx .plx-hero p.lede{max-width:600px!important;font-size:19.5px!important}
+.plx .hero-en{font-family:var(--font-mono)!important;font-size:15px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important;margin-top:14px!important;text-transform:uppercase!important}
+.plx .hero-visual{margin-top:52px!important;border-radius:var(--radius-xl)!important;overflow:hidden!important;border:1px solid var(--line)!important;background:#fff!important;box-shadow:0 18px 60px rgba(16,22,20,.08)!important}
+.plx .hero-visual img{width:100%!important;height:auto!important;display:block!important}
+.plx .hero-ctas{display:flex!important;gap:14px!important;margin-top:32px!important;flex-wrap:wrap!important}
+.plx .anatomy-svg{border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;overflow:hidden!important;background:var(--surface-white)!important;box-shadow:var(--shadow-card)!important}
+.plx .anatomy-svg img{width:100%!important;height:auto!important;display:block!important}
+.plx .anatomy-mobile{display:none!important}
+.plx .am-title{color:#fff!important;font-size:22px!important;margin-bottom:6px!important}
+.plx .am-sub{color:#8FC7B4!important;font-size:15px!important;font-weight:600!important;margin-bottom:12px!important}
+.plx .am-intro{color:#C4DCD2!important;font-size:15.5px!important;line-height:1.85!important}
+.plx .am-illo{margin-top:20px!important;border-radius:var(--radius-xl)!important;overflow:hidden!important;border:1px solid rgba(242,238,228,.14)!important;background:#fff!important}
+.plx .am-illo img{width:100%!important;height:auto!important;display:block!important}
+.plx .anatomy{max-width:560px!important;margin-top:24px!important}
+.plx .anatomy .al{position:relative!important;display:grid!important;grid-template-columns:44px 1fr!important;align-items:center!important;gap:16px!important;padding:16px 20px!important;background:rgba(255,255,255,.045)!important;border:1px solid rgba(242,238,228,.1)!important;border-left:3px solid var(--al)!important;border-radius:12px!important}
+.plx .anatomy .al + .al{margin-top:10px!important}
+.plx .anatomy .al-n{width:34px!important;height:34px!important;border-radius:50%!important;border:1.5px solid var(--al)!important;color:var(--al)!important;display:grid!important;place-items:center!important;font-family:var(--font-mono)!important;font-size:15px!important;font-weight:600!important}
+.plx .anatomy .al-name{color:#fff!important;font-weight:700!important;font-size:17px!important;line-height:1.4!important}
+.plx .anatomy .al-sub{color:#9FB7B0!important;font-size:14px!important;margin-top:3px!important;line-height:1.55!important}
+.plx .deep{background:var(--surface-deep)!important;color:#EAF3EF!important;padding:84px 0!important}
+.plx .deep h2{color:#FFFFFF!important}
+.plx .deep .eyebrow{color:#8FC7B4!important}
+.plx .deep p.lede{max-width:640px!important;font-size:18px!important;color:#C4DCD2!important;margin-top:14px!important}
+.plx .deep .stats{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:28px!important;margin-top:40px!important}
+.plx .deep .stats .s-num{font-family:var(--font-mono)!important;font-size:26px!important;color:#FFFFFF!important}
+.plx .deep .stats .s-label{font-size:15px!important;color:#9FB7B0!important;margin-top:4px!important;line-height:1.6!important}
+.plx .chip-duo{display:grid!important;grid-template-columns:1fr 1fr!important;gap:22px!important;margin-top:48px!important}
+.plx .deep .chip-img{margin-top:48px!important;border-radius:var(--radius-xl)!important;overflow:hidden!important;border:1px solid rgba(242,238,228,.14)!important;background:#FFF!important;text-align:center!important}
+.plx .deep .chip-img img{max-width:400px!important;margin:36px auto 8px!important}
+.plx .deep .chip-img figcaption{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important;text-transform:uppercase!important;padding:0 20px 26px!important}
+.plx .deep .zoom-labels{position:relative!important;height:56px!important;margin-top:12px!important}
+.plx .deep .zoom-labels span{position:absolute!important;top:0!important;transform:translateX(-50%)!important;font-family:var(--font-mono)!important;font-size:13.5px!important;letter-spacing:.08em!important;color:var(--ink-dim)!important;white-space:nowrap!important;text-align:center!important;line-height:1.5!important}
+.plx .deep .zoom-labels span small{display:block!important;font-size:12px!important;letter-spacing:.04em!important;color:var(--brand-teal)!important;margin-top:3px!important}
+.plx .gold-note{display:grid!important;grid-template-columns:.85fr 1.15fr!important;gap:44px!important;margin-top:44px!important;padding-top:36px!important;border-top:1px solid rgba(242,238,228,.14)!important;align-items:center!important}
+.plx .gold-macro{border-radius:var(--radius-xl)!important;overflow:hidden!important;border:1px solid rgba(242,238,228,.14)!important}
+.plx .gold-macro img{width:100%!important;height:auto!important;display:block!important}
+.plx .gold-macro figcaption{font-family:var(--font-mono)!important;font-size:13.5px!important;letter-spacing:.12em!important;color:#8FC7B4!important;text-transform:uppercase!important;padding:12px 4px 0!important;text-align:center!important}
+.plx .gold-text{display:flex!important;flex-direction:column!important;gap:28px!important}
+.plx .gold-note .eyebrow{margin-bottom:12px!important}
+.plx .gold-note p{font-size:16.5px!important;line-height:1.85!important;color:#C4DCD2!important}
+@media (max-width:720px){.plx .anatomy-desktop{display:none!important}.plx .anatomy-mobile{display:block!important;margin-top:20px!important}}
+@media (max-width:840px){.plx .chip-duo{grid-template-columns:1fr!important}}
+@media (max-width:520px){.plx .deep .zoom-labels span{font-size:11px!important;letter-spacing:0!important}.plx .deep .zoom-labels span small{font-size:9.5px!important}}
+@media (max-width:840px){.plx .gold-note{grid-template-columns:1fr!important;gap:28px!important}}
+@media (max-width:840px){.plx .deep .stats{grid-template-columns:1fr 1fr!important}.plx .plx-hero{padding:68px 0 56px!important}}
+@media (max-width:640px){.plx .hero-en{display:none!important}.plx .eyebrow,.plx .deep .stats .s-label,.plx .deep .chip-img figcaption,.plx .gold-macro figcaption,.plx .gold-note .eyebrow{font-family:var(--font-ui)!important;letter-spacing:.03em!important}.plx .eyebrow{font-size:13px!important;font-weight:600!important}.plx p,.plx .gold-note p,.plx .deep p.lede{line-height:1.9!important}.plx .gold-text{gap:22px!important}.plx .deep .stats{gap:24px 20px!important;margin-top:32px!important}.plx .anatomy .al{padding:15px 18px!important}}
+@media(max-width:720px){.plx .zoom-labels{display:none!important}.plx .chip-img figcaption{margin-top:0!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx table{border-collapse:collapse!important;border-spacing:0!important}
+.plx td,.plx th{border:0!important;background:transparent!important}
+.plx .btn{text-align:center!important}
+.plx summary{cursor:pointer}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;plx-hero&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;eyebrow reveal&quot;&gt;TECHNOLOGY · 運作原理&lt;/div&gt;
+    &lt;h1 class=&quot;reveal&quot;&gt;雜亂的電磁波，&lt;br&gt;如何被調和成有序？&lt;/h1&gt;
+    &lt;p class=&quot;lede reveal&quot;&gt;答案藏在幾何裡——一枚蝕刻了 4,084,101 個圓形共振器的矽晶片，以四種同時運作的物理交互作用，重新安排場的結構。這一頁把過程拆開給你看。&lt;/p&gt;
+    &lt;div class=&quot;hero-en reveal&quot;&gt;Geometry-determined physics&lt;/div&gt;
+    &lt;div class=&quot;hero-ctas reveal&quot;&gt;
+      &lt;a class=&quot;btn btn-primary&quot; href=&quot;#chip&quot;&gt;從結構開始&lt;/a&gt;
+      &lt;a class=&quot;btn btn-ghost&quot; href=&quot;https://www.purland.com.tw/pages/research&quot;&gt;看研究與專利&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;figure class=&quot;hero-visual reveal&quot;&gt;
+      &lt;picture&gt;
+        &lt;source media=&quot;(max-width:720px)&quot; srcset=&quot;https://suyi-cpu.github.io/pl-preview/assets/wave-summary-tech-mobile.svg&quot;&gt;
+        &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/wave-summary-tech.svg&quot; alt=&quot;調和過程圖解：左側雜亂波形進入，經蝕刻晶片的繞射、共振、相位干涉、電荷重分佈四種交互作用，右側輸出規律波形&quot;&gt;
+      &lt;/picture&gt;
+    &lt;/figure&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 02 · 晶片（分層結構已併入本段末，作為「拉遠鏡頭」）--&gt;
+&lt;div class=&quot;deep&quot; id=&quot;chip&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;eyebrow reveal&quot;&gt;02 · 晶片結構&lt;/div&gt;
+    &lt;h2 class=&quot;reveal&quot; style=&quot;margin-top:14px!important&quot;&gt;電磁場物理學，&lt;br&gt;精工蝕刻於矽晶之上&lt;/h2&gt;
+    &lt;div class=&quot;gold-note reveal&quot; style=&quot;margin-top:36px!important;padding-top:0!important;border-top:none!important&quot;&gt;
+      &lt;figure class=&quot;gold-macro&quot;&gt;
+        &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/chip-gold-macro.jpg&quot; alt=&quot;金共振天線微距照：金色環形蝕刻圖樣為共振天線，中央深色方塊為矽晶片，畫面另可見第二枚晶片&quot; loading=&quot;lazy&quot;&gt;
+        &lt;figcaption&gt;金共振天線與矽晶片 · 微距 · 畫面可見兩枚晶片&lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;div class=&quot;gold-text&quot;&gt;
+        &lt;div&gt;
+          &lt;div class=&quot;eyebrow&quot; style=&quot;color:var(--acc-diffraction)!important&quot;&gt;金共振天線 · WHY GOLD&lt;/div&gt;
+          &lt;p&gt;畫面中金色環形圖樣即為共振天線，以金浸製程鍍成。選用黃金是純工程考量：&lt;strong style=&quot;color:#fff!important&quot;&gt;導電性佳、電阻低&lt;/strong&gt;，振動損耗少、效率高；且&lt;strong style=&quot;color:#fff!important&quot;&gt;不易氧化、耐久&lt;/strong&gt;，能長時間維持穩定。當電磁波遇上金屬導線會產生&lt;strong style=&quot;color:#fff!important&quot;&gt;感應電流&lt;/strong&gt;，電流再輻射出新的波，與原波干涉後使中央晶片附近的場增強——&lt;strong style=&quot;color:#fff!important&quot;&gt;但總能量不變&lt;/strong&gt;，這也是它不影響訊號的原因之一。&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;div class=&quot;eyebrow&quot; style=&quot;color:var(--acc-resonance)!important&quot;&gt;晶片數量 · PER PRODUCT&lt;/div&gt;
+          &lt;p&gt;中央深色方塊即為矽晶片——畫面右上另可見第二枚。不同產品搭載不同數量的共振晶片：&lt;strong style=&quot;color:#fff!important&quot;&gt;ONE、GO 各一片，FLEX、ZONE 各兩片，ZONE MAX 四片&lt;/strong&gt;。晶片數量是各款涵蓋直徑不同的來源之一。&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;lede reveal&quot; style=&quot;margin-top:48px!important;padding-top:36px!important;border-top:1px solid rgba(242,238,228,.14)!important&quot;&gt;Lifetune 的晶片與一般微處理器使用同等級的光刻設備製造，但目的完全不同：一般晶片用電路運算資訊；它以純幾何結構與環境電磁場交互作用。晶圓表面以自相似環形晶格圖樣蝕刻出環形溝槽——這個圖樣本身，就是全部的機制。&lt;/p&gt;
+    &lt;p class=&quot;lede reveal&quot; style=&quot;margin-top:16px!important&quot;&gt;0.2 微米的蝕刻精度，對應的是半導體業&lt;strong style=&quot;color:#fff!important&quot;&gt;自 1990 年代後期就成熟量產&lt;/strong&gt;的製程節點（DUV 深紫外光刻）。換句話說，這不是實驗性工藝，而是經過數十年驗證、業界標準的製造技術。&lt;/p&gt;
+    &lt;div class=&quot;stats reveal&quot;&gt;
+      &lt;div&gt;&lt;div class=&quot;s-num&quot;&gt;4,084,101&lt;/div&gt;&lt;div class=&quot;s-label&quot;&gt;圓形共振器&lt;br&gt;單一晶片&lt;/div&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;div class=&quot;s-num&quot;&gt;0.2 µm&lt;/div&gt;&lt;div class=&quot;s-label&quot;&gt;蝕刻狹縫寬度&lt;br&gt;約髮絲的 1/400&lt;/div&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;div class=&quot;s-num&quot;&gt;0.6 µm&lt;/div&gt;&lt;div class=&quot;s-label&quot;&gt;溝槽深度&lt;br&gt;依原廠規格&lt;/div&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;div class=&quot;s-num&quot;&gt;16S5G&lt;/div&gt;&lt;div class=&quot;s-label&quot;&gt;ONE · GO · FLEX · ZONE&lt;br&gt;ZONE MAX 為 64P1S5G&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;chip-duo reveal&quot; style=&quot;grid-template-columns:1fr!important&quot;&gt;
+      &lt;figure class=&quot;chip-img&quot; style=&quot;margin-top:0!important&quot;&gt;
+        &lt;picture&gt;
+          &lt;source media=&quot;(max-width:720px)&quot; srcset=&quot;https://suyi-cpu.github.io/pl-preview/assets/chip-zoom-mobile.svg&quot;&gt;
+          &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/chip-zoom-stages.png&quot; alt=&quot;同一枚晶片的三個尺度：晶片實照放大至自相似環形晶格，再放大至微米級蝕刻結構&quot; style=&quot;max-width:100%!important;width:100%!important;margin:0!important;display:block!important&quot;&gt;
+        &lt;/picture&gt;
+        &lt;div class=&quot;zoom-labels&quot; aria-hidden=&quot;true&quot;&gt;
+          &lt;span style=&quot;left:13.75%!important&quot;&gt;01 · 晶片實照&lt;/span&gt;
+          &lt;span style=&quot;left:45%!important&quot;&gt;02 · 自相似環形晶格 · 蝕刻溝槽&lt;/span&gt;
+          &lt;span style=&quot;left:79.2%!important&quot;&gt;03 · 微米級蝕刻結構&lt;small&gt;溝槽寬 0.2 µm ≈ 髮絲的 1/400&lt;/small&gt;&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;lede reveal&quot; id=&quot;anatomy&quot; style=&quot;margin-top:52px!important;padding-top:36px!important;border-top:1px solid rgba(242,238,228,.14)!important&quot;&gt;把鏡頭拉遠——這枚晶片，是這樣被包進整個裝置的：&lt;/p&gt;
+    &lt;!-- 桌機：原版橫式分解圖（標題＋清單＋插畫一體） --&gt;
+    &lt;figure class=&quot;anatomy-svg anatomy-desktop reveal&quot; style=&quot;margin-top:24px!important;border-color:rgba(242,238,228,.14)!important&quot;&gt;
+      &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/anatomy-diagram.svg&quot; alt=&quot;Lifetune 分層結構分解圖：ENIG 印刷電路板、矽晶圓共振晶片、聚合物層、黏著層&quot;&gt;
+    &lt;/figure&gt;
+    &lt;!-- 手機：直式排列（① 標題與說明 → ② 插畫 → ③ 分層清單） --&gt;
+    &lt;div class=&quot;anatomy-mobile reveal&quot;&gt;
+      &lt;h3 class=&quot;am-title&quot;&gt;Lifetune 的分層結構&lt;/h3&gt;
+      &lt;p class=&quot;am-sub&quot;&gt;從電路板到黏著層，一層一層拆開看&lt;/p&gt;
+      &lt;p class=&quot;am-intro&quot;&gt;Lifetune 以被動式矽晶共振結構為核心。當環境電磁場接觸晶片表面的微米級蝕刻圖樣時，波會產生繞射、共振與相位疊加等物理互動，使局部場的分佈方式被重新安排——不需電源，也不影響設備原有的連線功能。&lt;/p&gt;
+      &lt;figure class=&quot;am-illo&quot;&gt;
+        &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/anatomy-illustration.svg&quot; alt=&quot;Lifetune 分層結構分解插畫：四層由外到內展開&quot; loading=&quot;lazy&quot;&gt;
+      &lt;/figure&gt;
+      &lt;div class=&quot;anatomy&quot; role=&quot;list&quot; aria-label=&quot;Lifetune 分層結構，由外到內共四層&quot;&gt;
+        &lt;div class=&quot;al&quot; role=&quot;listitem&quot; style=&quot;--al:var(--acc-diffraction)!important&quot;&gt;&lt;span class=&quot;al-n&quot; aria-hidden=&quot;true&quot;&gt;1&lt;/span&gt;&lt;div class=&quot;al-b&quot;&gt;&lt;div class=&quot;al-name&quot;&gt;PCB 印刷電路板&lt;/div&gt;&lt;div class=&quot;al-sub&quot;&gt;ENIG 化學鎳金處理&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;al&quot; role=&quot;listitem&quot; style=&quot;--al:var(--acc-resonance)!important&quot;&gt;&lt;span class=&quot;al-n&quot; aria-hidden=&quot;true&quot;&gt;2&lt;/span&gt;&lt;div class=&quot;al-b&quot;&gt;&lt;div class=&quot;al-name&quot;&gt;矽晶圓共振晶片&lt;/div&gt;&lt;div class=&quot;al-sub&quot;&gt;一顆 16S5G AIRES 共振晶片&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;al&quot; role=&quot;listitem&quot; style=&quot;--al:var(--acc-phase)!important&quot;&gt;&lt;span class=&quot;al-n&quot; aria-hidden=&quot;true&quot;&gt;3&lt;/span&gt;&lt;div class=&quot;al-b&quot;&gt;&lt;div class=&quot;al-name&quot;&gt;Polymer 高分子聚合物&lt;/div&gt;&lt;div class=&quot;al-sub&quot;&gt;封裝層&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;al&quot; role=&quot;listitem&quot; style=&quot;--al:var(--acc-charge)!important&quot;&gt;&lt;span class=&quot;al-n&quot; aria-hidden=&quot;true&quot;&gt;4&lt;/span&gt;&lt;div class=&quot;al-b&quot;&gt;&lt;div class=&quot;al-name&quot;&gt;黏著層&lt;/div&gt;&lt;div class=&quot;al-sub&quot;&gt;貼附於裝置表面&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+(function(){
+  var box=document.querySelectorAll(&#x27;.plx&#x27;);
+  box.forEach(function(b){ b.classList.add(&#x27;plx-js&#x27;); });
+  var els=document.querySelectorAll(&#x27;.plx .reveal&#x27;);
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(&#x27;in&#x27;); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:&#x27;0px 0px -8% 0px&#x27;});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll(&#x27;.plx .reveal:not(.in)&#x27;).forEach(function(el){el.classList.add(&#x27;in&#x27;)}); },2500);
+})();
+&lt;/script&gt;
+</pre>
+    </details>
+  </article>
+
+  <article class="card">
+    <div class="card-head">
+      <span class="num">02</span>
+      <div>
+        <h2>四種交互作用</h2>
+        <p class="desc">繞射／共振／相位干涉／電荷重分佈四種物理，各自的完整說明與白話對照</p>
+        <p class="where"><b>位置：</b>接在 01 下面</p>
+        <p class="fp"><b>認明這塊：</b>03 · 四種交互作用 · 四種教科書等級的物理， · 同時運作於一枚晶片　<span class="size">13.5 KB</span></p>
+        <p class="tick"><label><input type="checkbox" data-k="02"> 我貼好這塊了</label></p>
+      </div>
+      <button class="copy" data-target="code-02">複製這段程式碼</button>
+    </div>
+    <details>
+      <summary>看一眼程式碼（不用看也沒關係）</summary>
+      <pre id="code-02">&lt;div class=&quot;plx&quot;&gt;
+&lt;style&gt;
+.plx{--page:#E7DBD8;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;--ink-hi:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--brand-teal:#367C78;--acc-diffraction:#cba654;--acc-resonance:#66bfa1;--acc-phase:#459590;--acc-charge:#7ca5d5;--line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);--shadow-card:0 2px 16px -8px rgba(16,22,20,.06);--hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);--radius-xl:14px;--radius-lg:12px;--radius-md:10px;--radius-control:999px;--font-ui:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;--font-display:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);color:var(--ink-mid);font-family:var(--font-ui);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.plx section{padding:64px 0}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--brand-teal);text-decoration:none}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+.plx h1{font-weight:700;font-size:clamp(30px,4.4vw,44px);letter-spacing:.01em}
+.plx h2{font-weight:700;font-size:clamp(22px,2.8vw,31px)}
+.plx h3{font-weight:700;font-size:20px}
+.plx .sec-num{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important}
+.plx .sec-head .sec-num::before{content:&quot;&quot;!important;display:inline-block!important;width:26px!important;height:2px!important;background:#C9A24E!important;margin-right:10px!important;vertical-align:middle!important}
+.plx .wrap{max-width:1120px!important;margin:0 auto!important;padding:0 24px!important}
+.plx section{padding:84px 0!important}
+.plx .sec-head{display:flex!important;align-items:baseline!important;gap:16px!important;border-top:1px solid var(--line)!important;padding-top:20px!important;margin-bottom:42px!important}
+.plx .sec-head h2{flex:1!important}
+.plx .phys-list{display:flex!important;flex-direction:column!important;border-bottom:1px solid var(--line)!important}
+.plx .phys-row{display:grid!important;grid-template-columns:minmax(190px,.34fr) 1fr!important;gap:44px!important;padding:44px 0!important;border-top:1px solid var(--line)!important;align-items:start!important}
+.plx .phys-head{position:relative!important;padding-left:22px!important}
+.plx .phys-head::before{content:&quot;&quot;!important;position:absolute!important;left:0!important;top:6px!important;bottom:6px!important;width:3px!important;border-radius:2px!important;background:var(--pc)!important}
+.plx .phys-kicker{font-family:var(--font-mono)!important;font-size:13px!important;letter-spacing:.14em!important;color:var(--pc)!important;text-transform:uppercase!important}
+.plx .phys-head h3{font-size:27px!important;margin:12px 0 10px!important}
+.plx .phys-tag{font-family:var(--font-mono)!important;font-size:13px!important;letter-spacing:.04em!important;color:var(--ink-dim)!important}
+.plx .phys-plain{font-size:17px!important;line-height:1.95!important;color:var(--ink-mid)!important}
+.plx .phys-precise{margin-top:20px!important;background:none!important;border:0!important;box-shadow:none!important;border-radius:0!important;overflow:visible!important}
+.plx .phys-precise[open]{border-left:0!important}
+.plx .phys-precise summary{cursor:pointer!important;list-style:none!important;display:inline-flex!important;align-items:center!important;gap:9px!important;font-family:var(--font-mono)!important;font-size:13.5px!important;letter-spacing:.06em!important;color:var(--brand-teal)!important;padding:4px 0!important;transition:color .2s var(--ease)!important}
+.plx .phys-precise summary::-webkit-details-marker{display:none!important}
+.plx .phys-precise summary::after{content:none!important}
+.plx .phys-precise summary::before{content:&quot;＋&quot;!important;font-size:16px!important;line-height:1!important;width:14px!important;text-align:center!important}
+.plx .phys-precise[open] summary::before{content:&quot;－&quot;!important}
+.plx .phys-precise summary:hover{color:var(--surface-deep)!important}
+.plx .phys-precise .p-mech{font-size:15.5px!important;line-height:1.9!important;color:var(--ink-mid)!important;margin-top:14px!important;padding:20px 22px!important;background:var(--page)!important;border:1px solid var(--line-2)!important;border-radius:12px!important}
+.plx .phys-precise .pm-label{font-family:var(--font-mono)!important;font-size:12px!important;letter-spacing:.12em!important;color:var(--ink-dim)!important;text-transform:uppercase!important;display:block!important;margin-bottom:9px!important}
+.plx details{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-lg)!important;margin-bottom:12px!important;box-shadow:var(--shadow-card)!important;overflow:hidden!important}
+.plx summary{cursor:pointer!important;padding:18px 22px!important;font-weight:600!important;color:var(--ink-hi)!important;font-size:17.5px!important;list-style:none!important;display:flex!important;justify-content:space-between!important;align-items:center!important}
+.plx summary::-webkit-details-marker{display:none!important}
+.plx summary::after{content:&quot;+&quot;!important;font-family:var(--font-mono)!important;font-size:20px!important;color:var(--ink-dim)!important;transition:transform .25s var(--ease)!important}
+.plx details[open] summary::after{transform:rotate(45deg)!important;color:var(--brand-teal)!important}
+.plx details[open]{border-left:3px solid var(--brand-teal)!important}
+@media (max-width:840px){.plx section{padding:58px 0!important}.plx .phys-row{grid-template-columns:1fr!important;gap:16px!important;padding:34px 0!important}.plx .phys-head h3{font-size:24px!important}}
+@media (max-width:640px){.plx .sec-head{display:block!important;padding-top:16px!important;margin-bottom:28px!important}.plx .sec-head .sec-num{display:block!important;margin-bottom:10px!important}.plx .sec-num,.plx .pm-label{font-family:var(--font-ui)!important;letter-spacing:.03em!important}.plx .sec-num{font-size:13px!important;font-weight:600!important}.plx p,.plx .phys-plain{line-height:1.9!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx table{border-collapse:collapse!important;border-spacing:0!important}
+.plx td,.plx th{border:0!important;background:transparent!important}
+.plx .btn{text-align:center!important}
+.plx summary{cursor:pointer}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+&lt;/style&gt;
+
+&lt;section id=&quot;physics&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head reveal&quot;&gt;
+      &lt;span class=&quot;sec-num&quot;&gt;03 · 四種交互作用&lt;/span&gt;
+      &lt;h2&gt;四種教科書等級的物理，&lt;br&gt;同時運作於一枚晶片&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;phys-list&quot;&gt;
+      &lt;div class=&quot;phys-row reveal&quot; style=&quot;--pc:var(--acc-diffraction)!important&quot;&gt;
+        &lt;div class=&quot;phys-head&quot;&gt;
+          &lt;div class=&quot;phys-kicker&quot;&gt;01 · Diffraction&lt;/div&gt;
+          &lt;h3&gt;繞射&lt;/h3&gt;
+          &lt;div class=&quot;phys-tag&quot;&gt;類比 · 幾何迷宮&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;phys-body&quot;&gt;
+          &lt;p class=&quot;phys-plain&quot;&gt;晶片表面刻著微米級的幾何迷宮。環境裡的電磁波——不管是 5G、Wi-Fi 還是藍牙——一碰到這個結構，就像水流遇到岩石，自然彎折、擴散開來（這就是繞射）。原本集中在某個方向的場，被這道幾何攤開成更寬、更有秩序的分佈。而且圖樣在大大小小的尺度上重複，所以單單一枚晶片，就能同時對整個無線頻段作用。&lt;/p&gt;
+          &lt;details class=&quot;phys-precise&quot;&gt;
+            &lt;summary&gt;精確原理定義&lt;/summary&gt;
+            &lt;div class=&quot;p-mech&quot;&gt;&lt;span class=&quot;pm-label&quot;&gt;Diffraction · 精確原文&lt;/span&gt;晶片表面的碎形圖樣是一組微米級的「障礙與開口陣列」。電磁波與它相遇時依幾何繞射，集中在特定方向的場能被重新分佈到更寬、更有組織的空間圖樣——如同光柵把白光展開成光譜。因為圖樣在多個尺度上自相似，單一元件就能對整個無線頻段同時作用。&lt;/div&gt;
+          &lt;/details&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;phys-row reveal&quot; style=&quot;--pc:var(--acc-resonance)!important&quot;&gt;
+        &lt;div class=&quot;phys-head&quot;&gt;
+          &lt;div class=&quot;phys-kicker&quot;&gt;02 · Resonance&lt;/div&gt;
+          &lt;h3&gt;共振&lt;/h3&gt;
+          &lt;div class=&quot;phys-tag&quot;&gt;類比 · 俄羅斯娃娃&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;phys-body&quot;&gt;
+          &lt;p class=&quot;phys-plain&quot;&gt;傳統天線很大，而且一支通常只對一種頻率有反應。這枚晶片把大大小小的碎形圖案，像俄羅斯娃娃一樣層層嵌套、微縮在表面——小圖案對應高頻、大圖案對應低頻。所以它不需要電力、也不需要切換，就能同時對生活裡各種頻率的電磁波產生共振、自動對上頻率。這也是為什麼碎形天線早就取代了伸縮天線，進到全球數十億支手機裡。&lt;/p&gt;
+          &lt;details class=&quot;phys-precise&quot;&gt;
+            &lt;summary&gt;精確原理定義&lt;/summary&gt;
+            &lt;div class=&quot;p-mech&quot;&gt;&lt;span class=&quot;pm-label&quot;&gt;Resonance · 精確原文&lt;/span&gt;傳統天線只在一個長度對應的頻率上共振；碎形天線的圖樣在多尺度重複——小結構對高頻、大結構對低頻——因此單一元件同時對 ELF 到 WiFi、行動通訊、藍牙全頻段呈現共振回應，不需要調頻。這正是碎形天線取代伸縮天線、進入全球數十億支手機的同一個原理。&lt;/div&gt;
+          &lt;/details&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;phys-row reveal&quot; style=&quot;--pc:var(--acc-phase)!important&quot;&gt;
+        &lt;div class=&quot;phys-head&quot;&gt;
+          &lt;div class=&quot;phys-kicker&quot;&gt;03 · Phase Interference&lt;/div&gt;
+          &lt;h3&gt;相位干涉&lt;/h3&gt;
+          &lt;div class=&quot;phys-tag&quot;&gt;類比 · 降噪耳機&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;phys-body&quot;&gt;
+          &lt;p class=&quot;phys-plain&quot;&gt;你可能聽過主動降噪耳機：偵測到噪音，就發出一道反向聲波去中和它——這是為什麼可以降噪的原理。這枚晶片的結果類似：把雜亂的場梳理得更規律，但做法略有不同。它不插電、不偵測、也不發射任何反向訊號。它只用晶片上的幾何軌道，讓進來的波彼此疊加、重新排列成更有秩序的場型。降噪耳機靠「主動抵消」，它靠「被動的幾何」。&lt;/p&gt;
+          &lt;details class=&quot;phys-precise&quot;&gt;
+            &lt;summary&gt;精確原理定義&lt;/summary&gt;
+            &lt;div class=&quot;p-mech&quot;&gt;&lt;span class=&quot;pm-label&quot;&gt;Phase Interference · 精確原文&lt;/span&gt;晶片經繞射與共振產生的結構化輸出場向外傳播，與環境中連續變動的場疊加——某些區域建設性干涉、某些區域破壞性干涉，淨效果是局部場型被重塑：變異性降低、相干性提高。這是純被動的過程：不感測、不主動發出抵銷訊號，輸出場的形狀完全由幾何決定。&lt;/div&gt;
+          &lt;/details&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;phys-row reveal&quot; style=&quot;--pc:var(--acc-charge)!important&quot;&gt;
+        &lt;div class=&quot;phys-head&quot;&gt;
+          &lt;div class=&quot;phys-kicker&quot;&gt;04 · Charge Redistribution&lt;/div&gt;
+          &lt;h3&gt;電荷重分佈&lt;/h3&gt;
+          &lt;div class=&quot;phys-tag&quot;&gt;類比 · 微地形導流&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;phys-body&quot;&gt;
+          &lt;p class=&quot;phys-plain&quot;&gt;最後一步發生在矽晶片本身。矽是半導體，對電場特別敏感。當環境的電磁場作用在晶片上，裡面的電荷會像聽到指揮一樣，在微米級的溝槽裡重新排列、形成電位差；累積到一定程度，電流就沿最短路徑流動，再感應出一道向外傳播的場。關鍵是：這道輸出場的形狀，完全由溝槽的幾何決定，跟原本那些雜亂電磁波長什麼樣子無關——所以不管環境多亂，輸出永遠是同一種規律結構。&lt;/p&gt;
+          &lt;details class=&quot;phys-precise&quot;&gt;
+            &lt;summary&gt;精確原理定義&lt;/summary&gt;
+            &lt;div class=&quot;p-mech&quot;&gt;&lt;span class=&quot;pm-label&quot;&gt;Charge Redistribution · 精確原文&lt;/span&gt;環境電磁場對晶圓內的載流子施力，電荷在較薄的溝槽區域密集聚集；相鄰溝槽間形成電位差，達到臨界值時電流沿最短路徑流動，感應出向外傳播的電場——其特性由溝槽的碎形幾何決定，與入射場的特性無關。這與 MOS-FET 電晶體同源，是半導體物理的入門章節，應用於全新的幾何配置。&lt;/div&gt;
+          &lt;/details&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+(function(){
+  var box=document.querySelectorAll(&#x27;.plx&#x27;);
+  box.forEach(function(b){ b.classList.add(&#x27;plx-js&#x27;); });
+  var els=document.querySelectorAll(&#x27;.plx .reveal&#x27;);
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(&#x27;in&#x27;); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:&#x27;0px 0px -8% 0px&#x27;});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll(&#x27;.plx .reveal:not(.in)&#x27;).forEach(function(el){el.classList.add(&#x27;in&#x27;)}); },2500);
+})();
+&lt;/script&gt;
+</pre>
+    </details>
+  </article>
+
+  <article class="card">
+    <div class="card-head">
+      <span class="num">03</span>
+      <div>
+        <h2>會不會影響收訊與建模結論</h2>
+        <p class="desc">四種交互作用如何協同運作、為什麼不影響訊號強度，接建模結論引言帶</p>
+        <p class="where"><b>位置：</b>接在 02 下面</p>
+        <p class="fp"><b>認明這塊：</b>04 · 會不會影響收訊 · 調和場的結構， · 不動訊號的強度　<span class="size">11.6 KB</span></p>
+        <p class="tick"><label><input type="checkbox" data-k="03"> 我貼好這塊了</label></p>
+      </div>
+      <button class="copy" data-target="code-03">複製這段程式碼</button>
+    </div>
+    <details>
+      <summary>看一眼程式碼（不用看也沒關係）</summary>
+      <pre id="code-03">&lt;div class=&quot;plx&quot;&gt;
+&lt;style&gt;
+.plx{--page:#E7DBD8;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;--ink-hi:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--brand-teal:#367C78;--acc-diffraction:#cba654;--acc-resonance:#66bfa1;--acc-phase:#459590;--acc-charge:#7ca5d5;--line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);--shadow-card:0 2px 16px -8px rgba(16,22,20,.06);--hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);--radius-xl:14px;--radius-lg:12px;--radius-md:10px;--radius-control:999px;--font-ui:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;--font-display:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);color:var(--ink-mid);font-family:var(--font-ui);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.plx section{padding:64px 0}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--brand-teal);text-decoration:none}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+.plx h1{font-weight:700;font-size:clamp(30px,4.4vw,44px);letter-spacing:.01em}
+.plx h2{font-weight:700;font-size:clamp(22px,2.8vw,31px)}
+.plx h3{font-weight:700;font-size:20px}
+.plx .deep :focus-visible{outline-color:#8FC7B4!important}
+.plx .eyebrow{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .sec-num{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important}
+.plx .sec-head .sec-num::before{content:&quot;&quot;!important;display:inline-block!important;width:26px!important;height:2px!important;background:#C9A24E!important;margin-right:10px!important;vertical-align:middle!important}
+.plx .wrap{max-width:1120px!important;margin:0 auto!important;padding:0 24px!important}
+.plx section{padding:84px 0!important}
+.plx .sec-head{display:flex!important;align-items:baseline!important;gap:16px!important;border-top:1px solid var(--line)!important;padding-top:20px!important;margin-bottom:42px!important}
+.plx .sec-head h2{flex:1!important}
+.plx .btn{display:inline-flex!important;align-items:center!important;gap:8px!important;font-size:17px!important;font-weight:600!important;padding:12px 24px!important;border-radius:var(--radius-control)!important;transition:all .25s var(--ease)!important}
+.plx .btn-ghost{border:1.5px solid var(--line)!important;color:var(--ink-hi)!important;background:transparent!important}
+.plx .btn-ghost:hover{border-color:var(--ink-dim)!important;transform:translateY(-2px)!important}
+.plx .hero-ctas{display:flex!important;gap:14px!important;margin-top:32px!important;flex-wrap:wrap!important}
+.plx .deep{background:var(--surface-deep)!important;color:#EAF3EF!important;padding:84px 0!important}
+.plx .deep h2{color:#FFFFFF!important}
+.plx .deep .eyebrow{color:#8FC7B4!important}
+.plx .deep p.lede{max-width:640px!important;font-size:18px!important;color:#C4DCD2!important;margin-top:14px!important}
+.plx .deep .quote{font-family:var(--font-display)!important;font-weight:700!important;font-size:clamp(20px,2.8vw,28px)!important;color:#F2EEE4!important;max-width:760px!important;line-height:1.55!important}
+.plx .deep .q-src{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.14em!important;color:#9FB7B0!important;margin-top:18px!important;text-transform:uppercase!important}
+.plx .flow-note{margin-top:28px!important;font-size:16.5px!important;color:var(--ink-mid)!important;max-width:680px!important}
+.plx .chain-lede{font-size:16.5px!important;color:var(--ink-mid)!important;max-width:660px!important;margin-bottom:20px!important}
+.plx .chain{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:12px 14px!important;margin-bottom:8px!important}
+.plx .chain-step{font-size:15.5px!important;color:var(--ink-mid)!important;background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:999px!important;padding:11px 22px!important;box-shadow:var(--shadow-card)!important}
+.plx .chain-step b{color:var(--ink-hi)!important;font-weight:700!important}
+.plx .chain-arrow{font-family:var(--font-mono)!important;font-weight:700!important;color:var(--brand-teal)!important;font-size:18px!important}
+.plx .invariants{margin-top:44px!important;border-top:1px solid var(--line)!important;padding-top:36px!important}
+.plx .invariants .inv-head p{font-size:17px!important;max-width:640px!important;margin-top:12px!important}
+.plx .inv-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:22px!important;margin-top:28px!important}
+.plx .inv-grid&gt;div{background:var(--surface-white)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;padding:26px!important;box-shadow:var(--shadow-card)!important}
+.plx .inv-num{font-family:var(--font-mono)!important;font-size:28px!important;font-weight:600!important;color:var(--brand-teal)!important;line-height:1!important}
+.plx .inv-grid h3{margin:14px 0 6px!important;font-size:19px!important}
+.plx .inv-grid p{font-size:16px!important;line-height:1.7!important}
+.plx .inv-foot{margin-top:26px!important;font-size:16.5px!important;color:var(--ink-mid)!important;max-width:720px!important;border-left:2px solid var(--brand-teal)!important;padding-left:16px!important}
+@media (max-width:520px){.plx .chain-arrow{transform:rotate(90deg)!important}.plx .chain{flex-direction:column!important;align-items:flex-start!important;gap:8px!important}}
+@media (max-width:840px){.plx .inv-grid{grid-template-columns:1fr!important}}
+@media (max-width:840px){.plx section{padding:58px 0!important}}
+@media (max-width:640px){.plx .sec-head{display:block!important;padding-top:16px!important;margin-bottom:28px!important}.plx .sec-head .sec-num{display:block!important;margin-bottom:10px!important}.plx .eyebrow,.plx .sec-num,.plx .deep .q-src{font-family:var(--font-ui)!important;letter-spacing:.03em!important}.plx .eyebrow,.plx .sec-num{font-size:13px!important;font-weight:600!important}.plx p,.plx .deep p.lede{line-height:1.9!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx table{border-collapse:collapse!important;border-spacing:0!important}
+.plx td,.plx th{border:0!important;background:transparent!important}
+.plx .btn{text-align:center!important}
+.plx summary{cursor:pointer}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+&lt;/style&gt;
+
+&lt;section id=&quot;together&quot; style=&quot;background:var(--surface)!important;border-top:1px solid var(--line-2)!important;border-bottom:1px solid var(--line-2)!important&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head reveal&quot;&gt;
+      &lt;span class=&quot;sec-num&quot;&gt;04 · 會不會影響收訊&lt;/span&gt;
+      &lt;h2&gt;調和場的結構，&lt;br&gt;不動訊號的強度&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;chain-lede reveal&quot;&gt;前面四種交互作用不是各自獨立的步驟，而是一條鏈——同時運行於同一枚被動元件：&lt;/p&gt;
+    &lt;div class=&quot;chain reveal&quot;&gt;
+      &lt;span class=&quot;chain-step&quot;&gt;&lt;b&gt;共振&lt;/b&gt; · 耦合&lt;/span&gt;
+      &lt;span class=&quot;chain-arrow&quot;&gt;→&lt;/span&gt;
+      &lt;span class=&quot;chain-step&quot;&gt;&lt;b&gt;電荷重分佈&lt;/b&gt; · 生成&lt;/span&gt;
+      &lt;span class=&quot;chain-arrow&quot;&gt;→&lt;/span&gt;
+      &lt;span class=&quot;chain-step&quot;&gt;&lt;b&gt;繞射&lt;/b&gt; · 分佈&lt;/span&gt;
+      &lt;span class=&quot;chain-arrow&quot;&gt;→&lt;/span&gt;
+      &lt;span class=&quot;chain-step&quot;&gt;&lt;b&gt;相位干涉&lt;/b&gt; · 重塑&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;flow-note reveal&quot;&gt;碎形幾何跨全頻段與環境電磁場耦合，驅動矽晶圓內的電荷生成結構化輸出場，再經繞射與相位干涉重塑局部場型。淨結果：裝置周圍的局部電磁環境比原本更相干、更有組織——「有組織」不是修辭，指的是輸出場呈規律交替的極大與極小分佈，形狀由晶片幾何決定。&lt;/p&gt;
+
+    &lt;div class=&quot;invariants reveal&quot;&gt;
+      &lt;div class=&quot;inv-head&quot;&gt;
+        &lt;p&gt;那對你的手機呢？環境場的分佈改變後，接收器解碼所需的條件，沒有一項被破壞：&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;inv-grid&quot;&gt;
+        &lt;div&gt;&lt;div class=&quot;inv-num&quot;&gt;01&lt;/div&gt;&lt;h3&gt;頻率不變&lt;/h3&gt;&lt;p&gt;繞射與干涉都是線性過程，不改變載波頻率——接收端仍鎖定在同一頻道。&lt;/p&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;div class=&quot;inv-num&quot;&gt;02&lt;/div&gt;&lt;h3&gt;能量重新分佈，而非吸收&lt;/h3&gt;&lt;p&gt;干涉改變的是能量在空間中的分佈，總量不被吸收消耗——這正是它與「屏蔽／吸收」的根本差異，也是頻譜實測「場強空間重分佈」的物理含義。&lt;/p&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;div class=&quot;inv-num&quot;&gt;03&lt;/div&gt;&lt;h3&gt;擾動小於日常環境&lt;/h3&gt;&lt;p&gt;一面牆、一隻手造成的多路徑相移，都遠大於一枚被動晶片；而現代接收器本來就靠導頻即時等化這類擾動——這是通訊系統的日常，不是例外。&lt;/p&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;inv-foot&quot;&gt;頻率沒變、能量沒被吸收、擾動又在接收器天生的處理範圍內——所以裝置照常連線運作。「屏蔽」與「吸收」靠削弱訊號達到效果；這項技術改變的是場的結構，不是訊號的強度。&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- 06 · 建模結論 --&gt;
+&lt;div class=&quot;deep&quot; id=&quot;model&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;eyebrow reveal&quot;&gt;05 · 建模結論 · SOLITON-LIKE STABILITY&lt;/div&gt;
+    &lt;p class=&quot;quote reveal&quot; style=&quot;margin-top:20px!important&quot;&gt;「無論邊界條件如何改變，穩態解都保持穩定、呈孤子態——輸出場的形狀，不取決於入射輻射的特性。」&lt;/p&gt;
+    &lt;p class=&quot;q-src reveal&quot;&gt;二維與三維非穩態數學模型 · 6 mm 晶圓 · 2.4 GHz 入射條件&lt;/p&gt;
+    &lt;p class=&quot;lede reveal&quot; style=&quot;margin-top:26px!important&quot;&gt;白話說：不管環境場多混亂，這枚晶片輸出的場永遠長一個樣子——由它自己的幾何決定。這和石英振盪器是同一族原理：石英晶體以切割幾何決定輸出頻率，全世界每支手機、每台電腦裡都有一顆。相關建模與實驗發表於 2006–2022 年間的多篇同行評審論文。&lt;/p&gt;
+    &lt;div class=&quot;hero-ctas reveal&quot; style=&quot;margin-top:30px!important&quot;&gt;
+      &lt;a class=&quot;btn btn-ghost&quot; style=&quot;border-color:rgba(242,238,228,.3)!important;color:#F2EEE4!important;background:transparent!important&quot; href=&quot;https://www.purland.com.tw/pages/research#evidence&quot;&gt;看物理與工程驗證 →&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+(function(){
+  var box=document.querySelectorAll(&#x27;.plx&#x27;);
+  box.forEach(function(b){ b.classList.add(&#x27;plx-js&#x27;); });
+  var els=document.querySelectorAll(&#x27;.plx .reveal&#x27;);
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(&#x27;in&#x27;); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:&#x27;0px 0px -8% 0px&#x27;});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll(&#x27;.plx .reveal:not(.in)&#x27;).forEach(function(el){el.classList.add(&#x27;in&#x27;)}); },2500);
+})();
+&lt;/script&gt;
+</pre>
+    </details>
+  </article>
+
+  <article class="card">
+    <div class="card-head">
+      <span class="num">04</span>
+      <div>
+        <h2>涵蓋範圍與技術問答</h2>
+        <p class="desc">涵蓋直徑怎麼算出來的＋五款系列對照表，接六題技術問答與最後的 CTA</p>
+        <p class="where"><b>位置：</b>接在 03 下面，頁尾之前</p>
+        <p class="fp"><b>認明這塊：</b>06 · 涵蓋範圍 · 涵蓋直徑怎麼來的 · 由三個變數決定　<span class="size">14.5 KB</span></p>
+        <p class="tick"><label><input type="checkbox" data-k="04"> 我貼好這塊了</label></p>
+      </div>
+      <button class="copy" data-target="code-04">複製這段程式碼</button>
+    </div>
+    <details>
+      <summary>看一眼程式碼（不用看也沒關係）</summary>
+      <pre id="code-04">&lt;div class=&quot;plx&quot;&gt;
+&lt;style&gt;
+.plx{--page:#E7DBD8;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;--ink-hi:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--brand-teal:#367C78;--acc-diffraction:#cba654;--acc-resonance:#66bfa1;--acc-phase:#459590;--acc-charge:#7ca5d5;--line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);--shadow-card:0 2px 16px -8px rgba(16,22,20,.06);--hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);--radius-xl:14px;--radius-lg:12px;--radius-md:10px;--radius-control:999px;--font-ui:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;--font-display:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);color:var(--ink-mid);font-family:var(--font-ui);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.plx section{padding:64px 0}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--brand-teal);text-decoration:none}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+.plx h1{font-weight:700;font-size:clamp(30px,4.4vw,44px);letter-spacing:.01em}
+.plx h2{font-weight:700;font-size:clamp(22px,2.8vw,31px)}
+.plx h3{font-weight:700;font-size:20px}
+.plx .eyebrow{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .sec-num{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important}
+.plx .sec-head .sec-num::before{content:&quot;&quot;!important;display:inline-block!important;width:26px!important;height:2px!important;background:#C9A24E!important;margin-right:10px!important;vertical-align:middle!important}
+.plx .num{font-family:var(--font-mono)!important}
+.plx .wrap{max-width:1120px!important;margin:0 auto!important;padding:0 24px!important}
+.plx section{padding:84px 0!important}
+.plx .sec-head{display:flex!important;align-items:baseline!important;gap:16px!important;border-top:1px solid var(--line)!important;padding-top:20px!important;margin-bottom:42px!important}
+.plx .sec-head h2{flex:1!important}
+.plx .btn{display:inline-flex!important;align-items:center!important;gap:8px!important;font-size:17px!important;font-weight:600!important;padding:12px 24px!important;border-radius:var(--radius-control)!important;transition:all .25s var(--ease)!important}
+.plx .btn-primary{background:var(--brand-teal)!important;color:#fff!important}
+.plx .btn-primary:hover{background:var(--surface-deep)!important;transform:translateY(-2px)!important}
+.plx .btn-ghost{border:1.5px solid var(--line)!important;color:var(--ink-hi)!important;background:transparent!important}
+.plx .btn-ghost:hover{border-color:var(--ink-dim)!important;transform:translateY(-2px)!important}
+.plx .hero-ctas{display:flex!important;gap:14px!important;margin-top:32px!important;flex-wrap:wrap!important}
+.plx .range-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:44px!important;align-items:start!important}
+.plx .range-card{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;padding:30px!important;box-shadow:var(--shadow-card)!important}
+.plx .range-card h3{margin-bottom:12px!important}
+.plx .range-card p{font-size:16.5px!important;line-height:1.8!important}
+.plx .range-card ul{list-style:none!important;margin-top:14px!important}
+.plx .range-card li{padding:10px 0!important;border-bottom:1px solid var(--line-2)!important;font-size:16.5px!important;display:flex!important;gap:10px!important}
+.plx .range-card li:last-child{border-bottom:none!important}
+.plx .range-card li::before{content:&quot;—&quot;!important;color:var(--brand-teal)!important}
+.plx table.range{width:100%!important;border-collapse:collapse!important;margin-top:16px!important}
+.plx table.range td,.plx table.range th{padding:11px 4px!important;font-size:16px!important;text-align:left!important;border-bottom:1px solid var(--line-2)!important}
+.plx table.range th{font-family:var(--font-mono)!important;font-size:13.5px!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:var(--ink-dim)!important;font-weight:500!important}
+.plx table.range td .num{font-size:17px!important;color:var(--ink-hi)!important}
+.plx table.range tr:last-child td{border-bottom:none!important}
+.plx .footnote{margin-top:22px!important;font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.12em!important;color:var(--ink-dim)!important}
+.plx .faq{max-width:760px!important}
+.plx details{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-lg)!important;margin-bottom:12px!important;box-shadow:var(--shadow-card)!important;overflow:hidden!important}
+.plx summary{cursor:pointer!important;padding:18px 22px!important;font-weight:600!important;color:var(--ink-hi)!important;font-size:17.5px!important;list-style:none!important;display:flex!important;justify-content:space-between!important;align-items:center!important}
+.plx summary::-webkit-details-marker{display:none!important}
+.plx summary::after{content:&quot;+&quot;!important;font-family:var(--font-mono)!important;font-size:20px!important;color:var(--ink-dim)!important;transition:transform .25s var(--ease)!important}
+.plx details[open] summary::after{transform:rotate(45deg)!important;color:var(--brand-teal)!important}
+.plx details[open]{border-left:3px solid var(--brand-teal)!important}
+.plx details .a{padding:0 22px 20px!important;font-size:16.5px!important;line-height:1.8!important}
+.plx .cta-final{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;box-shadow:var(--shadow-card)!important;padding:60px 48px!important;text-align:center!important}
+.plx .cta-final h2{max-width:560px!important;margin:14px auto 10px!important}
+.plx .cta-final p{max-width:500px!important;margin:0 auto!important;font-size:17px!important}
+.plx .cta-final .hero-ctas{justify-content:center!important;margin-top:28px!important}
+.plx .line-qr{display:none!important}
+.plx .line-qr img{width:66px!important;height:66px!important;display:block!important;border-radius:6px!important}
+.plx .line-qr b{display:block!important;font-size:14px!important;font-weight:600!important;color:#2B2722!important;margin-bottom:3px!important}
+.plx .line-qr span{font-size:12.5px!important;color:#645B52!important}
+@media (max-width:840px){.plx section{padding:58px 0!important}.plx .range-grid{grid-template-columns:1fr!important}.plx .cta-final{padding:44px 24px!important}}
+@media (max-width:640px){.plx .sec-head{display:block!important;padding-top:16px!important;margin-bottom:28px!important}.plx .sec-head .sec-num{display:block!important;margin-bottom:10px!important}.plx .eyebrow,.plx .sec-num{font-family:var(--font-ui)!important;letter-spacing:.03em!important}.plx .eyebrow,.plx .sec-num{font-size:13px!important;font-weight:600!important}.plx p{line-height:1.9!important}}
+@media(min-width:900px){.plx .line-qr{display:inline-flex!important;align-items:center!important;gap:13px!important;margin-top:22px!important;padding:10px 16px 10px 10px!important;background:#fff!important;border:1px solid #E4DAD2!important;border-radius:14px!important;text-align:left!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx table{border-collapse:collapse!important;border-spacing:0!important}
+.plx td,.plx th{border:0!important;background:transparent!important}
+.plx .btn{text-align:center!important}
+.plx summary{cursor:pointer}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+&lt;/style&gt;
+
+&lt;section id=&quot;range&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head reveal&quot;&gt;
+      &lt;span class=&quot;sec-num&quot;&gt;06 · 涵蓋範圍&lt;/span&gt;
+      &lt;h2&gt;涵蓋直徑怎麼來的&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;range-grid&quot;&gt;
+      &lt;div class=&quot;range-card reveal&quot;&gt;
+        &lt;h3&gt;由三個變數決定&lt;/h3&gt;
+        &lt;p&gt;每款 Lifetune 的涵蓋直徑不是行銷數字，而是依物理變數計算的量值：&lt;/p&gt;
+        &lt;ul&gt;
+          &lt;li&gt;天線的表面積&lt;/li&gt;
+          &lt;li&gt;矽晶共振晶片的尺寸與數量&lt;/li&gt;
+          &lt;li&gt;與場源的距離（強度隨距離遞減）&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p style=&quot;margin-top:14px!important&quot;&gt;晶片越大、數量越多，輸出場延伸的範圍越廣——這就是系列間涵蓋直徑差異的全部原因。形態不同、情境不同，沒有等級之分。&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;range-card reveal&quot;&gt;
+        &lt;h3&gt;系列涵蓋直徑&lt;/h3&gt;
+        &lt;table class=&quot;range&quot;&gt;
+          &lt;thead&gt;&lt;tr&gt;&lt;th&gt;系列&lt;/th&gt;&lt;th&gt;涵蓋直徑&lt;/th&gt;&lt;th&gt;共振晶片&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;&lt;td&gt;ONE&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;num&quot;&gt;5.6 m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;1 片&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;GO&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;num&quot;&gt;9.8 m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;1 片&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;FLEX&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;num&quot;&gt;12.8 m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;2 片&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;ZONE&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;num&quot;&gt;28.3 m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;2 片&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;ZONE MAX&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;num&quot;&gt;42.4 m&lt;/span&gt;&lt;/td&gt;&lt;td&gt;4 片&lt;/td&gt;&lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+        &lt;p class=&quot;footnote&quot;&gt;數值為開放空間涵蓋直徑 · 不分等級&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- 08 · 技術問答 --&gt;
+&lt;section id=&quot;faq&quot; style=&quot;background:var(--surface)!important;border-top:1px solid var(--line-2)!important;border-bottom:1px solid var(--line-2)!important&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head reveal&quot;&gt;
+      &lt;span class=&quot;sec-num&quot;&gt;07 · 技術問答&lt;/span&gt;
+      &lt;h2&gt;深入一點的技術問題&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;faq&quot;&gt;
+      &lt;details class=&quot;reveal&quot;&gt;
+        &lt;summary&gt;會影響 WiFi 或手機訊號強度嗎？&lt;/summary&gt;
+        &lt;div class=&quot;a&quot;&gt;不會。晶片調整的是場的結構特性（相干性、偏振、干涉圖樣），不改變訊號振幅——手機正常連線、WiFi 正常廣播，對訊號強度零影響經獨立測試確認。&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details class=&quot;reveal&quot;&gt;
+        &lt;summary&gt;為什麼一定要用矽？&lt;/summary&gt;
+        &lt;div class=&quot;a&quot;&gt;矽是半導體，載流子的活動性介於導體與絕緣體之間——剛好落在讓碎形幾何能驅動「一致且可控的電荷重分佈」的區間。導體反應太廣，會抹掉幾何精度；絕緣體完全不反應。矽的晶體結構同時為奈米級蝕刻圖樣提供了高度有序的載體。&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details class=&quot;reveal&quot;&gt;
+        &lt;summary&gt;碎形幾何是造型還是功能？&lt;/summary&gt;
+        &lt;div class=&quot;a&quot;&gt;純功能。自相似圖樣在多尺度同時重複，讓單一小元件能：跨全頻段呈現共振回應、承接現代無線技術的完整頻率範圍、驅動精確分佈的電荷重分佈過程。非碎形的幾何只能對窄頻段作用，做不出這種寬頻多機制效果。&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details class=&quot;reveal&quot;&gt;
+        &lt;summary&gt;用 RF 電磁波檢測器測得到它的作用嗎？&lt;/summary&gt;
+        &lt;div class=&quot;a&quot;&gt;測不到，而且這是預期中的結果——RF 檢測器量測的是場強度，而這項技術不改變強度，改變的是場的結構特性（相干性、偏振、干涉圖樣）。檢測器量的是另一個變數。能量測到變化的是頻譜分析儀這類設備，量的是場的空間分佈——量測紀錄見&lt;a href=&quot;https://www.purland.com.tw/pages/research#evidence&quot;&gt;研究與專利頁的物理與工程驗證&lt;/a&gt;。&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details class=&quot;reveal&quot;&gt;
+        &lt;summary&gt;需要電源嗎？會「用完」嗎？&lt;/summary&gt;
+        &lt;div class=&quot;a&quot;&gt;不需要電源——它是被動元件，環境中存在電磁場即運作。作用來自晶片的物理幾何結構，所以也沒有「用完」的概念：結構保持完整，作用就持續。&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details class=&quot;reveal&quot;&gt;
+        &lt;summary&gt;這些原理有發表過嗎？&lt;/summary&gt;
+        &lt;div class=&quot;a&quot;&gt;有。相關建模與實驗研究自 2006 年起發表於多篇期刊論文，包括 Springer Lecture Notes in Networks and Systems（2022，同行評審）；技術本身有美國專利 US12239835B2（2025 年授權）等多國專利。&lt;a href=&quot;https://www.purland.com.tw/pages/research#evidence&quot;&gt;研究與專利頁&lt;/a&gt;列出了期刊卷期與專利號，可自行查證。&lt;/div&gt;
+      &lt;/details&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- 09 · CTA --&gt;
+&lt;section id=&quot;next&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;cta-final reveal&quot;&gt;
+      &lt;div class=&quot;eyebrow&quot;&gt;09 · 下一步&lt;/div&gt;
+      &lt;h2&gt;原理看完了，&lt;br&gt;選一個適合你的形態&lt;/h2&gt;
+      &lt;p&gt;同一枚晶片技術、五種情境形態。依你的裝置、空間與移動習慣選擇。&lt;/p&gt;
+      &lt;div class=&quot;hero-ctas&quot;&gt;
+        &lt;a class=&quot;btn btn-primary&quot; href=&quot;https://www.purland.com.tw/products&quot;&gt;依情境選擇產品&lt;/a&gt;
+        &lt;a class=&quot;btn btn-ghost&quot; href=&quot;https://www.purland.com.tw/products/lifetune-one&quot;&gt;看 Lifetune ONE&lt;/a&gt;
+        &lt;a class=&quot;btn btn-ghost&quot; href=&quot;https://www.purland.com.tw/pages/research&quot;&gt;看研究與專利&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;line-qr&quot; aria-hidden=&quot;true&quot;&gt;&lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/line-qr.svg&quot; alt=&quot;&quot; width=&quot;66&quot; height=&quot;66&quot;&gt;&lt;div&gt;&lt;b&gt;用電腦看?&lt;/b&gt;&lt;span&gt;手機掃一下，直接加 LINE&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+(function(){
+  var box=document.querySelectorAll(&#x27;.plx&#x27;);
+  box.forEach(function(b){ b.classList.add(&#x27;plx-js&#x27;); });
+  var els=document.querySelectorAll(&#x27;.plx .reveal&#x27;);
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(&#x27;in&#x27;); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:&#x27;0px 0px -8% 0px&#x27;});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll(&#x27;.plx .reveal:not(.in)&#x27;).forEach(function(el){el.classList.add(&#x27;in&#x27;)}); },2500);
+})();
+&lt;/script&gt;
+</pre>
+    </details>
+  </article>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var pre = document.getElementById(btn.dataset.target);
+    var text = pre.textContent;
+    function done(){ var o=btn.textContent; btn.textContent='✓ 已複製！去 Shopline 貼上'; btn.classList.add('done');
+      setTimeout(function(){ btn.textContent=o; btn.classList.remove('done'); }, 2600); }
+    function fallback(){
+      var ta=document.createElement('textarea'); ta.value=text;
+      ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta);
+      ta.select(); try{ document.execCommand('copy'); done(); }catch(e){ alert('複製失敗，請手動全選複製'); }
+      document.body.removeChild(ta);
+    }
+    if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(text).then(done, fallback); }
+    else { fallback(); }
+  });
+});
+// 貼好了打勾（存在瀏覽器，重整不會掉）
+var KEY='plx-done-'+location.pathname, state=JSON.parse(localStorage.getItem(KEY)||'{}');
+var boxes=[].slice.call(document.querySelectorAll('.tick input'));
+function sync(){
+  var all=boxes.every(function(b){return b.checked});
+  document.getElementById('progress').style.display = all ? 'block' : 'none';
+  localStorage.setItem(KEY, JSON.stringify(state));
+}
+boxes.forEach(function(b){
+  b.checked = !!state[b.dataset.k];
+  b.addEventListener('change', function(){ state[b.dataset.k]=b.checked; sync(); });
+});
+sync();
+</script>
+</body>
+</html>

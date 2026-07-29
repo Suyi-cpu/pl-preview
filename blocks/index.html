@@ -22,6 +22,9 @@ h1{font-size:26px;font-weight:700;margin-bottom:6px}
 h2{font-size:19px;font-weight:700}
 .desc{font-size:14.5px;color:#42403A;margin-top:3px}
 .where{font-size:13.5px;color:#645B52;margin-top:6px}
+.fp{font-size:13px;color:#645B52;margin-top:8px;padding-top:8px;border-top:1px dashed rgba(16,22,20,.14)}
+.fp b{color:#367C78}
+.size{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#8A8078}
 .copy{background:#367C78;color:#fff;border:0;border-radius:999px;padding:12px 22px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .2s}
 .copy:hover{background:#144D43}
 .copy.done{background:#1D7A4F}
@@ -46,6 +49,7 @@ pre{background:#1C1A17;color:#D8D2C8;padding:16px;border-radius:10px;margin-top:
       <li>按 <b>「儲存」</b>，然後用右上角 <b>「預覽商店」</b> 看效果</li>
     </ol>
     <div class="warn"><b>先不要按「發佈」。</b>儲存後先預覽確認沒問題，再決定要不要發佈上線。</div>
+    <div class="warn"><b>01 區請重貼一次。</b>先前那版有個樣式 bug（按鈕間距、段落行距會被 Shopline 主題壓掉），已修好。六塊建議照順序 01→06 一塊一塊貼、貼一塊預覽一次。</div>
   </div>
 
   <article class="card">
@@ -55,6 +59,7 @@ pre{background:#1C1A17;color:#D8D2C8;padding:16px;border-radius:10px;margin-top:
         <h2>Hero 輪播區</h2>
         <p class="desc">首頁最上方：3 張輪播（不是阻擋而是調和／調和訊號保持連線／22 專利）＋下方信任數字列</p>
         <p class="where"><b>位置：</b>放在「頁首」下方，第一個內容元件</p>
+        <p class="fp"><b>認明這塊：</b>PÜRLAND 嚴選引進 · 美國專利技術 LIFETUNE · 不是阻擋， · Lifetune 磁波調和器 · 為高連線密度的現代空間而設計。　<span class="size">17.7 KB</span></p>
       </div>
       <button class="copy" data-target="code-01">複製這段程式碼</button>
     </div>
@@ -62,113 +67,89 @@ pre{background:#1C1A17;color:#D8D2C8;padding:16px;border-radius:10px;margin-top:
       <summary>看一眼程式碼（不用看也沒關係）</summary>
       <pre id="code-01">&lt;div class=&quot;plx&quot;&gt;
 &lt;style&gt;
-.plx{--bg:#E7DBD8;--warm:#EFE6DF;--gold:#cba654;--white:#FFFFFF;--ink:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--teal:#367C78;--teal-deep:#144D43;--grad:#C9A24E;--hairline:rgba(16,22,20,.1);--hairline-soft:rgba(16,22,20,.06);--font-ui:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;--font-display:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);font-family:var(--font-ui);color:var(--ink-mid);font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased}
+.plx{--bg:#E7DBD8;--warm:#EFE6DF;--gold:#cba654;--white:#FFFFFF;--ink:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--teal:#367C78;--teal-deep:#144D43;--grad:#C9A24E;--grad-soft:rgba(201,162,78,.12);--hairline:rgba(16,22,20,.1);--hairline-soft:rgba(16,22,20,.06);--radius:16px;--font-ui:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;--font-display:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);font-family:var(--font-ui);color:var(--ink-mid);font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased}
 .plx *{margin:0;padding:0;box-sizing:border-box}
 .plx img{max-width:100%;display:block}
 .plx a{color:var(--teal);text-decoration:none}
 .plx h1,.plx h2,.plx h3{font-family:var(--font-display);color:var(--ink);line-height:1.24}
 .plx h1{font-weight:700;font-size:clamp(32px,4.6vw,50px);letter-spacing:.005em}
-.plx .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
-.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
-.plx h1{font-weight:700;font-size:clamp(32px,4.6vw,50px);letter-spacing:.005em}
 .plx h2{font-weight:700;font-size:clamp(24px,3vw,34px)}
 .plx h3{font-weight:700;font-size:21px}
 .plx .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
-.plx .btn{display:inline-flex;align-items:center;gap:8px;font-size:17.5px;font-weight:600;padding:14px 28px;border-radius:999px;transition:all .25s var(--ease)}
-.plx .btn-dark{background:var(--teal);color:#fff}
-.plx .btn-dark:hover{background:var(--teal-deep);transform:translateY(-2px)}
-.plx .btn-line{border:1.5px solid var(--hairline);color:var(--ink);background:transparent}
-.plx .btn-line:hover{border-color:var(--ink);transform:translateY(-2px)}
-.plx .plx-hero{position:relative;padding:32px 0 64px;background:linear-gradient(180deg,#EDE3DD 0%,#EAE0DA 60%,#E7DBD8 100%);overflow:hidden}
-.plx .plx-hero::before{content:&quot;&quot;;position:absolute;top:-240px;right:-180px;width:760px;height:760px;border-radius:50%;
-  background:radial-gradient(circle at 42% 42%,rgba(201,162,78,.16),rgba(69,149,144,.10) 48%,transparent 72%);
-  pointer-events:none;filter:blur(2px);}
-.plx .plx-hero::after{content:&quot;&quot;;position:absolute;bottom:-280px;left:-220px;width:660px;height:660px;border-radius:50%;
-  background:radial-gradient(circle at 60% 40%,rgba(69,149,144,.10),rgba(201,162,78,.10) 55%,transparent 70%);
-  pointer-events:none;}
-.plx .plx-hero .wrap{position:relative;z-index:1}
-.plx .plx-hero h1 em,.plx .pl-grad{font-style:normal;color:var(--teal)}
-.plx .plx-hero-ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
-.plx .pl-hero-carousel{position:relative;min-height:600px;border-radius:28px;overflow:hidden;background:#101614;box-shadow:0 28px 80px rgba(16,22,20,.12)}
-.plx .pl-hero-track{position:relative;min-height:600px}
-.plx .pl-hero-slide{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr);align-items:stretch;opacity:0;pointer-events:none;transition:opacity .7s var(--ease)}
-.plx .pl-hero-slide.is-active{opacity:1;pointer-events:auto;z-index:1}
-.plx .pl-hero-media{position:relative;min-height:600px;overflow:hidden;background:#101614}
-.plx .pl-hero-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.96) contrast(1.04)}
-.plx .pl-hero-media::after{content:&quot;&quot;;position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,22,20,.18),rgba(16,22,20,.02) 45%,rgba(16,22,20,.32))}
-.plx .pl-hero-slide:first-child .pl-hero-media::after{background:linear-gradient(90deg,rgba(16,22,20,.06),rgba(16,22,20,.26) 58%,rgba(16,22,20,.58))}
-.plx .pl-hero-copy{position:relative;display:flex;flex-direction:column;justify-content:center;padding:64px 58px;background:linear-gradient(135deg,rgba(247,242,237,.97),rgba(237,228,222,.93));border-left:1px solid rgba(255,255,255,.42)}
-.plx .pl-hero-kicker{font-family:var(--font-mono);font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
-.plx .pl-hero-copy h1{font-size:clamp(28px,3.8vw,42px);margin:20px 0 18px}
-.plx .pl-hero-copy p{font-size:19px;line-height:1.85;color:var(--ink-mid)}
-.plx .pl-hero-control{position:absolute;top:50%;z-index:5;width:42px;height:42px;border:1px solid rgba(255,255,255,.55);border-radius:999px;background:rgba(16,22,20,.28);color:#fff;font-size:24px;line-height:1;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(10px);transition:all .25s var(--ease)}
-.plx .pl-hero-control:hover{background:rgba(20,77,67,.72);transform:translateY(-50%) scale(1.04)}
-.plx .pl-hero-prev{left:18px;transform:translateY(-50%)}
-.plx .pl-hero-next{right:18px;transform:translateY(-50%)}
-.plx .pl-hero-dots{position:absolute;left:50%;bottom:22px;z-index:6;display:flex;gap:10px;transform:translateX(-50%);padding:8px 10px;border-radius:999px;background:rgba(16,22,20,.28);backdrop-filter:blur(10px)}
-.plx .pl-hero-dot{width:9px;height:9px;border:0;border-radius:999px;background:rgba(255,255,255,.54);cursor:pointer;transition:all .25s var(--ease)}
-.plx .pl-hero-dot.is-active{width:28px;background:rgba(255,255,255,.38);position:relative;overflow:hidden}
-.plx .pl-hero-dot.is-active::after{content:&quot;&quot;;position:absolute;inset:0;border-radius:999px;background:#fff;transform-origin:left;transform:scaleX(0);animation:dotFill 5s linear forwards}
-.plx .pl-hero-carousel.is-paused .pl-hero-dot.is-active::after{animation-play-state:paused}
-.plx .pl-hero-dot span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.plx .pl-hero-note{font-family:var(--font-mono);font-size:14.5px;letter-spacing:.14em;color:var(--ink-dim);margin-top:14px;text-transform:uppercase}
-.plx .trust{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:64px;background:var(--hairline-soft);border:1px solid var(--hairline-soft);border-radius:var(--radius);overflow:hidden;box-shadow:0 18px 60px rgba(16,22,20,.06)}
-.plx .trust::before{content:&quot;&quot;;position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);z-index:1}
-.plx .trust&gt;div{background:var(--white);padding:28px 26px 24px}
-.plx .trust .t-en{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;margin-bottom:12px}
-.plx .trust .t-num{font-family:var(--font-mono);font-size:30px;font-weight:600;color:var(--ink);line-height:1.1}
-.plx .trust .t-num small{font-size:16px;font-weight:500;color:var(--ink-dim);margin-left:2px}
-.plx .trust .t-label{font-size:15px;color:var(--ink-dim);margin-top:8px;line-height:1.6}
-.plx .deep .wrap{position:relative;z-index:1}
-.plx .cta-final .hero-ctas{justify-content:center}
+.plx section{padding:64px 0}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx .wrap{max-width:1160px!important;margin:0 auto!important;padding:0 28px!important}
+.plx .btn{display:inline-flex!important;align-items:center!important;gap:8px!important;font-size:17.5px!important;font-weight:600!important;padding:14px 28px!important;border-radius:999px!important;transition:all .25s var(--ease)!important}
+.plx .btn-dark{background:var(--teal)!important;color:#fff!important}
+.plx .btn-dark:hover{background:var(--teal-deep)!important;transform:translateY(-2px)!important}
+.plx .btn-line{border:1.5px solid var(--hairline)!important;color:var(--ink)!important;background:transparent!important}
+.plx .btn-line:hover{border-color:var(--ink)!important;transform:translateY(-2px)!important}
+.plx .plx-hero{position:relative!important;padding:32px 0 64px!important;background:linear-gradient(180deg,#EDE3DD 0%,#EAE0DA 60%,#E7DBD8 100%)!important;overflow:hidden!important}
+.plx .plx-hero::before{content:&quot;&quot;!important;position:absolute!important;top:-240px!important;right:-180px!important;width:760px!important;height:760px!important;border-radius:50%!important;background:radial-gradient(circle at 42% 42%,rgba(201,162,78,.16),rgba(69,149,144,.10) 48%,transparent 72%)!important;pointer-events:none!important;filter:blur(2px)!important}
+.plx .plx-hero::after{content:&quot;&quot;!important;position:absolute!important;bottom:-280px!important;left:-220px!important;width:660px!important;height:660px!important;border-radius:50%!important;background:radial-gradient(circle at 60% 40%,rgba(69,149,144,.10),rgba(201,162,78,.10) 55%,transparent 70%)!important;pointer-events:none!important}
+.plx .plx-hero .wrap{position:relative!important;z-index:1!important}
+.plx .plx-hero h1 em,.plx .pl-grad{font-style:normal!important;color:var(--teal)!important}
+.plx .hero-ctas{display:flex!important;gap:14px!important;margin-top:34px!important;flex-wrap:wrap!important}
+.plx .pl-hero-carousel{position:relative!important;min-height:600px!important;border-radius:28px!important;overflow:hidden!important;background:#101614!important;box-shadow:0 28px 80px rgba(16,22,20,.12)!important}
+.plx .pl-hero-track{position:relative!important;min-height:600px!important}
+.plx .pl-hero-slide{position:absolute!important;inset:0!important;display:grid!important;grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr)!important;align-items:stretch!important;opacity:0!important;pointer-events:none!important;transition:opacity .7s var(--ease)!important}
+.plx .pl-hero-slide.is-active{opacity:1!important;pointer-events:auto!important;z-index:1!important}
+.plx .pl-hero-media{position:relative!important;min-height:600px!important;overflow:hidden!important;background:#101614!important}
+.plx .pl-hero-media img{width:100%!important;height:100%!important;object-fit:cover!important;filter:saturate(.96) contrast(1.04)!important}
+.plx .pl-hero-media::after{content:&quot;&quot;!important;position:absolute!important;inset:0!important;background:linear-gradient(90deg,rgba(16,22,20,.18),rgba(16,22,20,.02) 45%,rgba(16,22,20,.32))!important}
+.plx .pl-hero-slide:first-child .pl-hero-media::after{background:linear-gradient(90deg,rgba(16,22,20,.06),rgba(16,22,20,.26) 58%,rgba(16,22,20,.58))!important}
+.plx .pl-hero-copy{position:relative!important;display:flex!important;flex-direction:column!important;justify-content:center!important;padding:64px 58px!important;background:linear-gradient(135deg,rgba(247,242,237,.97),rgba(237,228,222,.93))!important;border-left:1px solid rgba(255,255,255,.42)!important}
+.plx .pl-hero-kicker{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--teal)!important}
+.plx .pl-hero-copy h1{font-size:clamp(28px,3.8vw,42px)!important;margin:20px 0 18px!important}
+.plx .pl-hero-copy .hero-ctas{justify-content:center!important}
+.plx .pl-hero-copy p{font-size:19px!important;line-height:1.85!important;color:var(--ink-mid)!important}
+.plx .pl-hero-control{position:absolute!important;top:50%!important;z-index:5!important;width:42px!important;height:42px!important;border:1px solid rgba(255,255,255,.55)!important;border-radius:999px!important;background:rgba(16,22,20,.28)!important;color:#fff!important;font-size:24px!important;line-height:1!important;display:grid!important;place-items:center!important;cursor:pointer!important;backdrop-filter:blur(10px)!important;transition:all .25s var(--ease)!important}
+.plx .pl-hero-control:hover{background:rgba(20,77,67,.72)!important;transform:translateY(-50%) scale(1.04)!important}
+.plx .pl-hero-prev{left:18px!important;transform:translateY(-50%)!important}
+.plx .pl-hero-next{right:18px!important;transform:translateY(-50%)!important}
+.plx .pl-hero-dots{position:absolute!important;left:50%!important;bottom:22px!important;z-index:6!important;display:flex!important;gap:10px!important;transform:translateX(-50%)!important;padding:8px 10px!important;border-radius:999px!important;background:rgba(16,22,20,.28)!important;backdrop-filter:blur(10px)!important}
+.plx .pl-hero-dot{width:9px!important;height:9px!important;border:0!important;border-radius:999px!important;background:rgba(255,255,255,.54)!important;cursor:pointer!important;transition:all .25s var(--ease)!important}
+.plx .pl-hero-dot.is-active{width:28px!important;background:rgba(255,255,255,.38)!important;position:relative!important;overflow:hidden!important}
+.plx .pl-hero-dot.is-active::after{content:&quot;&quot;!important;position:absolute!important;inset:0!important;border-radius:999px!important;background:#fff!important;transform-origin:left!important;transform:scaleX(0)!important;animation:dotFill 5s linear forwards!important}
+.plx .pl-hero-carousel.is-paused .pl-hero-dot.is-active::after{animation-play-state:paused!important}
+.plx .pl-hero-dot span{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important}
+.plx .pl-hero-note{font-family:var(--font-mono)!important;font-size:14.5px!important;letter-spacing:.14em!important;color:var(--ink-dim)!important;margin-top:14px!important;text-transform:uppercase!important}
+.plx .trust{position:relative!important;display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:1px!important;margin-top:64px!important;background:var(--hairline-soft)!important;border:1px solid var(--hairline-soft)!important;border-radius:var(--radius)!important;overflow:hidden!important;box-shadow:0 18px 60px rgba(16,22,20,.06)!important}
+.plx .trust::before{content:&quot;&quot;!important;position:absolute!important;top:0!important;left:0!important;right:0!important;height:3px!important;background:var(--grad)!important;z-index:1!important}
+.plx .trust&gt;div{background:var(--white)!important;padding:28px 26px 24px!important}
+.plx .trust .t-en{font-family:var(--font-mono)!important;font-size:12.5px!important;letter-spacing:.2em!important;color:var(--teal)!important;text-transform:uppercase!important;margin-bottom:12px!important}
+.plx .trust .t-num{font-family:var(--font-mono)!important;font-size:30px!important;font-weight:600!important;color:var(--ink)!important;line-height:1.1!important}
+.plx .trust .t-num small{font-size:16px!important;font-weight:500!important;color:var(--ink-dim)!important;margin-left:2px!important}
+.plx .trust .t-label{font-size:15px!important;color:var(--ink-dim)!important;margin-top:8px!important;line-height:1.6!important}
+.plx .plx-hero .assure{margin-top:22px!important;font-family:var(--font-mono)!important;font-size:clamp(10px,3.2vw,14.5px)!important;letter-spacing:.05em!important;color:var(--ink-dim)!important;white-space:nowrap!important}
+.plx .plx-hero .assure{margin-top:18px!important;text-align:center!important}
+@media (max-width:860px){.plx .plx-hero{padding:22px 0 52px!important}.plx .pl-hero-carousel,.plx .pl-hero-track{min-height:0!important}.plx .pl-hero-slide{position:relative!important;display:none!important;grid-template-columns:1fr!important;background:var(--white)!important}.plx .pl-hero-slide.is-active{display:grid!important}.plx .pl-hero-media{min-height:300px!important;aspect-ratio:16/10!important}.plx .pl-hero-copy{padding:34px 26px 58px!important;border-left:0!important}.plx .pl-hero-copy h1{font-size:38px!important}.plx .pl-hero-control{top:150px!important}.plx .pl-hero-dots{bottom:16px!important}.plx .trust{grid-template-columns:1fr 1fr!important}.plx .trust&gt;div{padding:20px 18px 18px!important}}
+@media (max-width:520px){.plx .pl-hero-carousel{border-radius:18px!important}.plx .pl-hero-media{min-height:240px!important}.plx .pl-hero-copy{padding:28px 22px 56px!important}.plx .pl-hero-control{width:36px!important;height:36px!important;top:120px!important}}
+@keyframes dotFill{to{transform:scaleX(1)}}
+.plx .reveal{opacity:1;transform:none}
 .plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
 .plx.plx-js .reveal.in{opacity:1;transform:none}
-@media (max-width:860px){.plx .plx-hero{padding:22px 0 52px}.plx .pl-hero-carousel,.plx .pl-hero-track{min-height:0}.plx .pl-hero-slide{position:relative;display:none;grid-template-columns:1fr;background:var(--white)}.plx .pl-hero-slide.is-active{display:grid}.plx .pl-hero-media{min-height:300px;aspect-ratio:16/10}.plx .pl-hero-copy{padding:34px 26px 58px;border-left:0}.plx .pl-hero-copy h1{font-size:38px}.plx .pl-hero-control{top:150px}.plx .pl-hero-dots{bottom:16px}.plx .trust{grid-template-columns:1fr 1fr}.plx .trust&gt;div{padding:20px 18px 18px}}
-@media (max-width:520px){.plx .pl-hero-carousel{border-radius:18px}.plx .pl-hero-media{min-height:240px}.plx .pl-hero-copy{padding:28px 22px 56px}.plx .pl-hero-control{width:36px;height:36px;top:120px}}
-@keyframes dotFill{to{transform:scaleX(1)}}
-.plx .reveal{opacity:1;transform:none}.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}.plx.plx-js .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
-
 /* ══ 防 Shopline 主題覆寫（勿刪）══ */
 .plx{text-align:left}
-.plx p{margin:0;line-height:1.85;text-align:left;font-size:inherit}
-.plx h1,.plx h2,.plx h3{text-align:left;margin:0;letter-spacing:.005em}
-.plx .pl-hero-copy h1{margin:20px 0 18px;font-size:clamp(28px,3.8vw,42px)!important;font-weight:700!important;line-height:1.3!important;color:var(--ink)!important}
-.plx .pl-hero-copy p{font-size:19px;line-height:1.85;color:var(--ink-mid)}
-.plx .pl-hero-kicker{text-align:left;color:var(--teal)!important}
+/* text-align 用 inherit：既壓掉主題的 center/justify，又讓 .cta-final 這類自己置中的區塊仍然置中 */
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;line-height:1.85!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
 .plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx .btn{font-size:17px!important;line-height:1.4!important;padding:13px 26px!important;text-align:center!important}
 .plx .btn-dark,.plx a.btn-dark,.plx a.btn-dark:visited{background:var(--teal)!important;color:#fff!important;border:0!important;text-decoration:none!important}
 .plx .btn-dark:hover{background:var(--teal-deep)!important;color:#fff!important}
-.plx .pl-hero-note{text-align:left}
-.plx .trust .t-num{color:var(--ink)!important}
-.plx .trust .t-en{color:var(--teal)!important}
-.plx .trust .t-label,.plx .pl-hero-note{color:var(--ink-dim)!important}
-.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
-.plx ul,.plx ol{list-style:none}
-
-/* ══ 護罩 v2：行距/間距上鎖（勿刪）══ */
-.plx .pl-hero-copy p{font-size:19px!important;line-height:1.8!important;margin:0!important;text-align:left!important}
-.plx p.pl-hero-sub{margin-top:12px!important;font-size:16.5px!important;line-height:1.7!important;color:var(--ink-dim)!important}
-.plx .pl-hero-kicker{font-size:14px!important;line-height:1.6!important;margin:0!important;text-align:left!important}
-.plx .pl-hero-copy h1{margin:18px 0 16px!important;text-align:left!important}
-.plx .pl-hero-note{margin-top:14px!important;font-size:14.5px!important;line-height:1.7!important;text-align:left!important}
-.plx .hero-ctas{margin-top:26px!important;gap:14px!important}
-.plx .btn{font-size:17px!important;line-height:1.4!important;padding:13px 26px!important}
-.plx .trust .t-en{font-size:12.5px!important;line-height:1.5!important;margin:0 0 12px!important}
-.plx .trust .t-num{font-size:30px!important;line-height:1.1!important;margin:0!important}
-.plx .trust .t-label{font-size:15px!important;line-height:1.6!important;margin:8px 0 0!important}
-@media(min-width:861px){.plx .pl-hero-copy{padding:44px 48px!important}}
-
-/* ══ 護罩 v3：鎖 padding/縮排 ＋ 手機版排版（勿刪）══ */
-.plx p,.plx h1,.plx h2,.plx h3,.plx .pl-hero-kicker,.plx .pl-hero-note{padding:0!important;text-indent:0!important}
+.plx .btn-line,.plx a.btn-line,.plx a.btn-line:visited{color:var(--ink)!important;background:transparent!important;text-decoration:none!important}
+.plx .eyebrow,.plx .sec-num{color:var(--ink-dim)!important}
+.plx .deep,.plx .deep p,.plx .deep h2,.plx .deep h3{color:#EAF3EF!important}
+.plx .deep h2{color:#fff!important}
 .plx .kwrap{white-space:nowrap}
 @media(max-width:860px){
-  .plx .pl-hero-kicker{font-size:12.5px!important;letter-spacing:.1em!important;line-height:1.8!important}
-  .plx .pl-hero-copy{padding:30px 24px 64px!important}
-  .plx .pl-hero-copy p{font-size:17.5px!important;line-height:1.85!important}
-  .plx p.pl-hero-sub{font-size:15.5px!important}
-  .plx .pl-hero-note{font-size:13px!important;letter-spacing:.05em!important;line-height:1.9!important;margin-top:16px!important}
-  .plx .hero-ctas{margin-top:22px!important}
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
 }
 &lt;/style&gt;
 
@@ -178,22 +159,23 @@ pre{background:#1C1A17;color:#D8D2C8;padding:16px;border-radius:10px;margin-top:
       &lt;div class=&quot;pl-hero-track&quot;&gt;
         &lt;article class=&quot;pl-hero-slide is-active&quot; aria-label=&quot;1 / 3&quot;&gt;
           &lt;figure class=&quot;pl-hero-media&quot;&gt;
-            &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/shopline/hero-1.jpg&quot; alt=&quot;Lifetune 金色矽晶芯片微距&quot;&gt;
+            &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/chip-gold-macro.jpg&quot; alt=&quot;Lifetune 金色矽晶芯片微距&quot;&gt;
           &lt;/figure&gt;
           &lt;div class=&quot;pl-hero-copy&quot;&gt;
-            &lt;div class=&quot;pl-hero-kicker&quot;&gt;PÜRLAND 嚴選引進 · &lt;span class=&quot;kwrap&quot;&gt;美國專利技術 LIFETUNE&lt;/span&gt;&lt;/div&gt;
+            &lt;div class=&quot;pl-hero-kicker&quot;&gt;PÜRLAND 嚴選引進 · 美國專利技術 LIFETUNE&lt;/div&gt;
             &lt;h1&gt;不是阻擋，&lt;br&gt;而是&lt;span class=&quot;pl-grad&quot;&gt;調和&lt;/span&gt;&lt;/h1&gt;
             &lt;p&gt;貼在手機、或放進空間裡的被動式環境配置裝置——不用電、不用 App，也不影響訊號。&lt;/p&gt;
-            &lt;p class=&quot;pl-hero-sub&quot;&gt;Lifetune 磁波調和器 · 為高連線密度的現代空間而設計。&lt;/p&gt;
-            &lt;div class=&quot;pl-hero-note&quot;&gt;&lt;span class=&quot;kwrap&quot;&gt;調和不是屏蔽&lt;/span&gt; · &lt;span class=&quot;kwrap&quot;&gt;不影響收訊&lt;/span&gt; · &lt;span class=&quot;kwrap&quot;&gt;被動元件無需電源&lt;/span&gt;&lt;/div&gt;
+            &lt;p style=&quot;margin-top:12px!important;font-size:16.5px!important;line-height:1.7!important;color:var(--ink-dim)!important&quot;&gt;Lifetune 磁波調和器 · 為高連線密度的現代空間而設計。&lt;/p&gt;
+            &lt;div class=&quot;pl-hero-note&quot;&gt;調和不是屏蔽 · 不影響收訊 · 被動元件無需電源&lt;/div&gt;
             &lt;div class=&quot;hero-ctas&quot;&gt;
               &lt;a class=&quot;btn btn-dark&quot; href=&quot;https://suyi-cpu.github.io/pl-preview/tech.html&quot;&gt;認識運作原理&lt;/a&gt;
+              &lt;a class=&quot;btn btn-line&quot; href=&quot;https://www.purland.com.tw/products&quot;&gt;依情境選擇產品&lt;/a&gt;
             &lt;/div&gt;
           &lt;/div&gt;
         &lt;/article&gt;
         &lt;article class=&quot;pl-hero-slide&quot; aria-label=&quot;2 / 3&quot;&gt;
           &lt;figure class=&quot;pl-hero-media&quot;&gt;
-            &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/shopline/hero-2.jpg&quot; alt=&quot;日常使用貼有 Lifetune ONE 的手機&quot;&gt;
+            &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/one/scene-ladyphone.jpg&quot; alt=&quot;日常使用貼有 Lifetune ONE 的手機&quot;&gt;
           &lt;/figure&gt;
           &lt;div class=&quot;pl-hero-copy&quot;&gt;
             &lt;div class=&quot;pl-hero-kicker&quot;&gt;LIVE WITH TECHNOLOGY · 與科技完美共存&lt;/div&gt;
@@ -206,7 +188,7 @@ pre{background:#1C1A17;color:#D8D2C8;padding:16px;border-radius:10px;margin-top:
         &lt;/article&gt;
         &lt;article class=&quot;pl-hero-slide&quot; aria-label=&quot;3 / 3&quot;&gt;
           &lt;figure class=&quot;pl-hero-media&quot;&gt;
-            &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/shopline/hero-3.jpg&quot; alt=&quot;Aires Certified Space 場館導入視覺&quot;&gt;
+            &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/adopt-tb-hero.jpg&quot; alt=&quot;Aires Certified Space 場館導入視覺&quot;&gt;
           &lt;/figure&gt;
           &lt;div class=&quot;pl-hero-copy&quot;&gt;
             &lt;div class=&quot;pl-hero-kicker&quot;&gt;VERIFIABLE · 可查證，是最好的說服&lt;/div&gt;
@@ -232,6 +214,7 @@ pre{background:#1C1A17;color:#D8D2C8;padding:16px;border-radius:10px;margin-top:
       &lt;div&gt;&lt;div class=&quot;t-en&quot;&gt;Peer-Reviewed&lt;/div&gt;&lt;div class=&quot;t-num&quot;&gt;9&lt;small&gt;篇&lt;/small&gt;&lt;/div&gt;&lt;div class=&quot;t-label&quot;&gt;同儕審查期刊發表&lt;/div&gt;&lt;/div&gt;
       &lt;div&gt;&lt;div class=&quot;t-en&quot;&gt;Users&lt;/div&gt;&lt;div class=&quot;t-num&quot;&gt;700,000+&lt;/div&gt;&lt;div class=&quot;t-label&quot;&gt;全球使用者&lt;/div&gt;&lt;/div&gt;
     &lt;/div&gt;
+    &lt;p class=&quot;assure reveal&quot;&gt;全店免運 · 7 天鑑賞期 · 台灣在地售後&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -258,9 +241,847 @@ pre{background:#1C1A17;color:#D8D2C8;padding:16px;border-radius:10px;margin-top:
   if(next) next.addEventListener(&#x27;click&#x27;,function(){take();show(i+1);});
   dots.forEach(function(d,k){ d.addEventListener(&#x27;click&#x27;,function(){take();show(k);}); });
   show(0); start();
+})();
+&lt;/script&gt;
+&lt;script&gt;
+(function(){
+  var box=document.querySelectorAll(&#x27;.plx&#x27;);
+  box.forEach(function(b){ b.classList.add(&#x27;plx-js&#x27;); });
+  var els=document.querySelectorAll(&#x27;.plx .reveal&#x27;);
+  if(!els.length) return;
   var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(&#x27;in&#x27;); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:&#x27;0px 0px -8% 0px&#x27;});
-  root.querySelectorAll(&#x27;.reveal&#x27;).forEach(function(el){io.observe(el);});
-  setTimeout(function(){ root.querySelectorAll(&#x27;.reveal:not(.in)&#x27;).forEach(function(el){el.classList.add(&#x27;in&#x27;);}); },2500);
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll(&#x27;.plx .reveal:not(.in)&#x27;).forEach(function(el){el.classList.add(&#x27;in&#x27;);}); },2500);
+})();
+&lt;/script&gt;
+</pre>
+    </details>
+  </article>
+
+  <article class="card">
+    <div class="card-head">
+      <span class="num">02</span>
+      <div>
+        <h2>研究溯源</h2>
+        <p class="desc">二十年研究脈絡時間軸：1990s 軍用雷達 → 2012 走向市場 → 2020 5G 世代 → 至今，末尾接「專利號與完整研究地圖」按鈕</p>
+        <p class="where"><b>位置：</b>接在 01 下面</p>
+        <p class="fp"><b>認明這塊：</b>02 · RESEARCH LINEAGE · 研究溯源 · 二十年累積， · 一條研究脈絡　<span class="size">9.2 KB</span></p>
+      </div>
+      <button class="copy" data-target="code-02">複製這段程式碼</button>
+    </div>
+    <details>
+      <summary>看一眼程式碼（不用看也沒關係）</summary>
+      <pre id="code-02">&lt;div class=&quot;plx&quot;&gt;
+&lt;style&gt;
+.plx{--bg:#E7DBD8;--warm:#EFE6DF;--gold:#cba654;--white:#FFFFFF;--ink:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--teal:#367C78;--teal-deep:#144D43;--grad:#C9A24E;--grad-soft:rgba(201,162,78,.12);--hairline:rgba(16,22,20,.1);--hairline-soft:rgba(16,22,20,.06);--radius:16px;--font-ui:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;--font-display:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);font-family:var(--font-ui);color:var(--ink-mid);font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--teal);text-decoration:none}
+.plx h1,.plx h2,.plx h3{font-family:var(--font-display);color:var(--ink);line-height:1.24}
+.plx h1{font-weight:700;font-size:clamp(32px,4.6vw,50px);letter-spacing:.005em}
+.plx h2{font-weight:700;font-size:clamp(24px,3vw,34px)}
+.plx h3{font-weight:700;font-size:21px}
+.plx .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+.plx section{padding:64px 0}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx .eyebrow{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.18em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .wrap{max-width:1160px!important;margin:0 auto!important;padding:0 28px!important}
+.plx .sec-head{margin-bottom:56px!important}
+.plx .sec-head .eyebrow{display:block!important;margin-bottom:18px!important}
+.plx .sec-head .eyebrow::before{content:&quot;&quot;!important;display:inline-block!important;width:28px!important;height:2px!important;background:var(--grad)!important;margin-right:12px!important;vertical-align:middle!important}
+.plx .btn{display:inline-flex!important;align-items:center!important;gap:8px!important;font-size:17.5px!important;font-weight:600!important;padding:14px 28px!important;border-radius:999px!important;transition:all .25s var(--ease)!important}
+.plx .btn-dark{background:var(--teal)!important;color:#fff!important}
+.plx .btn-dark:hover{background:var(--teal-deep)!important;transform:translateY(-2px)!important}
+.plx .hero-ctas{display:flex!important;gap:14px!important;margin-top:34px!important;flex-wrap:wrap!important}
+.plx .claim{max-width:760px!important;font-family:var(--font-display)!important;font-weight:700!important;font-size:clamp(19px,2.3vw,24px)!important;color:var(--ink)!important;line-height:1.55!important;margin-bottom:56px!important}
+.plx .claim em{font-style:normal!important;color:var(--teal)!important}
+.plx .timeline{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:0!important}
+.plx .tl-item{padding:28px 28px 28px 0!important;border-top:2px solid var(--hairline)!important}
+.plx .tl-item+ .tl-item{padding-left:28px!important}
+.plx .tl-year{font-family:var(--font-mono)!important;font-size:15px!important;letter-spacing:.16em!important;color:var(--teal)!important}
+.plx .tl-item h3{margin:12px 0 8px!important;font-size:19px!important}
+.plx .tl-item p{font-size:16px!important;line-height:1.75!important}
+.plx .chip-duo{display:grid!important;grid-template-columns:1fr 1fr!important;gap:24px!important;margin-top:72px!important}
+.plx .chip-duo figure{border-radius:var(--radius)!important;overflow:hidden!important;background:var(--white)!important;border:1px solid var(--hairline-soft)!important;text-align:center!important}
+.plx .chip-duo img{max-width:340px!important;width:80%!important;margin:36px auto 6px!important}
+.plx .chip-duo figcaption{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important;text-transform:uppercase!important;padding:0 20px 28px!important}
+.plx .researchers{margin-top:26px!important;font-family:var(--font-mono)!important;font-size:14.5px!important;letter-spacing:.1em!important;color:var(--ink-dim)!important}
+@media (max-width:860px){.plx .claim{display:none!important}.plx .timeline{grid-template-columns:1fr 1fr!important}.plx .tl-item{padding-right:18px!important}}
+@media (max-width:520px){.plx .timeline{grid-template-columns:1fr!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+/* text-align 用 inherit：既壓掉主題的 center/justify，又讓 .cta-final 這類自己置中的區塊仍然置中 */
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;line-height:1.85!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx .btn{font-size:17px!important;line-height:1.4!important;padding:13px 26px!important;text-align:center!important}
+.plx .btn-dark,.plx a.btn-dark,.plx a.btn-dark:visited{background:var(--teal)!important;color:#fff!important;border:0!important;text-decoration:none!important}
+.plx .btn-dark:hover{background:var(--teal-deep)!important;color:#fff!important}
+.plx .btn-line,.plx a.btn-line,.plx a.btn-line:visited{color:var(--ink)!important;background:transparent!important;text-decoration:none!important}
+.plx .eyebrow,.plx .sec-num{color:var(--ink-dim)!important}
+.plx .deep,.plx .deep p,.plx .deep h2,.plx .deep h3{color:#EAF3EF!important}
+.plx .deep h2{color:#fff!important}
+.plx .kwrap{white-space:nowrap}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+/* ══ 原始設計的 !important（權重最高，勿刪）══ */
+
+@media (max-width:860px){.plx.plx.plx .tl-item{padding-left:0!important}}
+&lt;/style&gt;
+
+&lt;section id=&quot;lineage&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head reveal&quot;&gt;
+      &lt;span class=&quot;eyebrow&quot;&gt;02 · RESEARCH LINEAGE · 研究溯源&lt;/span&gt;
+      &lt;h2&gt;二十年累積，&lt;br&gt;一條研究脈絡&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;claim reveal&quot;&gt;Twenty years of published physics and engineering research — &lt;em&gt;a research lineage you can trace.&lt;/em&gt;&lt;/p&gt;
+    &lt;div class=&quot;timeline&quot;&gt;
+      &lt;div class=&quot;tl-item reveal&quot;&gt;
+        &lt;div class=&quot;tl-year&quot;&gt;1990s 末&lt;/div&gt;
+        &lt;h3&gt;源於軍用雷達的工程研究&lt;/h3&gt;
+        &lt;p&gt;俄羅斯的研究團隊針對軍用雷達站的高強度電磁環境，展開結構性工程研究，奠定碎形共振幾何的技術基礎。&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;tl-item reveal&quot;&gt;
+        &lt;div class=&quot;tl-year&quot;&gt;2012&lt;/div&gt;
+        &lt;h3&gt;從實驗室走向消費市場&lt;/h3&gt;
+        &lt;p&gt;研究成果於 2012 年起商業化，技術從實驗設備走入消費產品，並展開跨國專利佈局——研究資料隨專利文件公開可查。&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;tl-item reveal&quot;&gt;
+        &lt;div class=&quot;tl-year&quot;&gt;2020&lt;/div&gt;
+        &lt;h3&gt;5G 世代的 Lifetune 系列&lt;/h3&gt;
+        &lt;p&gt;矽晶芯片蝕刻寬度約 0.2 微米——約為髮絲的四百分之一。單一晶片上共 4,084,101 個圓形共振器，以光刻設備於矽晶圓表面蝕刻而成。&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;tl-item reveal&quot;&gt;
+        &lt;div class=&quot;tl-year&quot;&gt;至今&lt;/div&gt;
+        &lt;h3&gt;持續發表、持續累積&lt;/h3&gt;
+        &lt;p&gt;累計 22 項全球專利（美國、PCT、俄羅斯、加拿大）與超過二十年的已發表物理與工程研究，研發投入逾 2,000 萬美元。&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- 2026-07-20 海狸決定：晶片雙圖＋具名研究者自首頁移除（保留程式碼備援，要恢復解除此註解即可）
+    &lt;div class=&quot;chip-duo reveal&quot;&gt;
+      &lt;figure&gt;
+        &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/chip-gold.jpg&quot; alt=&quot;Aires 矽晶共振晶片實照&quot;&gt;
+        &lt;figcaption&gt;Aires Silicon Resonator · 晶片實照&lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;figure&gt;
+        &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/chip-etch.jpg&quot; alt=&quot;自相似蝕刻結構俯視圖&quot;&gt;
+        &lt;figcaption&gt;Etched Pattern · 自相似蝕刻結構 · &lt;span style=&quot;text-transform:none!important&quot;&gt;0.2 µm&lt;/span&gt;&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;researchers reveal&quot;&gt;具名研究者：KOPYLTSOV · LUKYANOV · KORSHUNOV&lt;/p&gt;
+    --&gt;
+    &lt;div class=&quot;hero-ctas reveal&quot; style=&quot;margin-top:34px!important&quot;&gt;
+      &lt;a class=&quot;btn btn-dark&quot; href=&quot;https://suyi-cpu.github.io/pl-preview/research.html&quot;&gt;專利號與完整研究地圖 →&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+(function(){
+  var box=document.querySelectorAll(&#x27;.plx&#x27;);
+  box.forEach(function(b){ b.classList.add(&#x27;plx-js&#x27;); });
+  var els=document.querySelectorAll(&#x27;.plx .reveal&#x27;);
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(&#x27;in&#x27;); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:&#x27;0px 0px -8% 0px&#x27;});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll(&#x27;.plx .reveal:not(.in)&#x27;).forEach(function(el){el.classList.add(&#x27;in&#x27;);}); },2500);
+})();
+&lt;/script&gt;
+</pre>
+    </details>
+  </article>
+
+  <article class="card">
+    <div class="card-head">
+      <span class="num">03</span>
+      <div>
+        <h2>四種交互作用</h2>
+        <p class="desc">「不是阻擋，而是調和」波形示意圖（繞射／共振／相位干涉／電荷重分布），下接深綠色引言帶</p>
+        <p class="where"><b>位置：</b>接在 02 下面</p>
+        <p class="fp"><b>認明這塊：</b>03 · FOUR INTERACTIONS · 四種交互作用 · 完整機制、分層結構、晶片參數與「孤子態穩定」的建模結論——都在技術頁 · 完整運作原理 →　<span class="size">7.9 KB</span></p>
+      </div>
+      <button class="copy" data-target="code-03">複製這段程式碼</button>
+    </div>
+    <details>
+      <summary>看一眼程式碼（不用看也沒關係）</summary>
+      <pre id="code-03">&lt;div class=&quot;plx&quot;&gt;
+&lt;style&gt;
+.plx{--bg:#E7DBD8;--warm:#EFE6DF;--gold:#cba654;--white:#FFFFFF;--ink:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--teal:#367C78;--teal-deep:#144D43;--grad:#C9A24E;--grad-soft:rgba(201,162,78,.12);--hairline:rgba(16,22,20,.1);--hairline-soft:rgba(16,22,20,.06);--radius:16px;--font-ui:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;--font-display:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);font-family:var(--font-ui);color:var(--ink-mid);font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--teal);text-decoration:none}
+.plx h1,.plx h2,.plx h3{font-family:var(--font-display);color:var(--ink);line-height:1.24}
+.plx h1{font-weight:700;font-size:clamp(32px,4.6vw,50px);letter-spacing:.005em}
+.plx h2{font-weight:700;font-size:clamp(24px,3vw,34px)}
+.plx h3{font-weight:700;font-size:21px}
+.plx .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+.plx section{padding:64px 0}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx .deep :focus-visible{outline-color:#8FC7B4!important}
+.plx .eyebrow{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.18em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .wrap{max-width:1160px!important;margin:0 auto!important;padding:0 28px!important}
+.plx .sec-head{margin-bottom:56px!important}
+.plx .sec-head .eyebrow{display:block!important;margin-bottom:18px!important}
+.plx .sec-head .eyebrow::before{content:&quot;&quot;!important;display:inline-block!important;width:28px!important;height:2px!important;background:var(--grad)!important;margin-right:12px!important;vertical-align:middle!important}
+.plx .hairline-top{border-top:1px solid var(--hairline)!important}
+.plx .btn{display:inline-flex!important;align-items:center!important;gap:8px!important;font-size:17.5px!important;font-weight:600!important;padding:14px 28px!important;border-radius:999px!important;transition:all .25s var(--ease)!important}
+.plx .btn-line{border:1.5px solid var(--hairline)!important;color:var(--ink)!important;background:transparent!important}
+.plx .btn-line:hover{border-color:var(--ink)!important;transform:translateY(-2px)!important}
+.plx .hero-ctas{display:flex!important;gap:14px!important;margin-top:34px!important;flex-wrap:wrap!important}
+.plx .physics-note{margin-top:40px!important;font-size:16.5px!important;color:var(--ink-dim)!important;max-width:640px!important}
+.plx .wave-summary{border:1px solid var(--hairline-soft)!important;border-radius:var(--radius)!important;overflow:hidden!important;box-shadow:0 18px 60px rgba(16,22,20,.08)!important}
+.plx .wave-summary img{width:100%!important;height:auto!important;display:block!important}
+.plx .deep{position:relative!important;background:var(--teal-deep)!important;color:#EAF3EF!important;padding:96px 0!important;overflow:hidden!important}
+.plx .deep::before{content:&quot;&quot;!important;position:absolute!important;inset:0!important;background:linear-gradient(120deg,rgba(201,162,78,.12),transparent 40%,rgba(69,149,144,.14))!important;pointer-events:none!important}
+.plx .deep .wrap{position:relative!important;z-index:1!important}
+.plx .deep .eyebrow{color:#8FC7B4!important}
+.plx .deep .quote{font-family:var(--font-display)!important;font-weight:700!important;font-size:clamp(22px,2.9vw,30px)!important;color:#FFFFFF!important;max-width:800px!important;line-height:1.5!important;margin-top:14px!important}
+.plx .deep p.lede{max-width:640px!important;font-size:18px!important;color:#C4DCD2!important;margin-top:20px!important}
+
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+/* text-align 用 inherit：既壓掉主題的 center/justify，又讓 .cta-final 這類自己置中的區塊仍然置中 */
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;line-height:1.85!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx .btn{font-size:17px!important;line-height:1.4!important;padding:13px 26px!important;text-align:center!important}
+.plx .btn-dark,.plx a.btn-dark,.plx a.btn-dark:visited{background:var(--teal)!important;color:#fff!important;border:0!important;text-decoration:none!important}
+.plx .btn-dark:hover{background:var(--teal-deep)!important;color:#fff!important}
+.plx .btn-line,.plx a.btn-line,.plx a.btn-line:visited{color:var(--ink)!important;background:transparent!important;text-decoration:none!important}
+.plx .eyebrow,.plx .sec-num{color:var(--ink-dim)!important}
+.plx .deep,.plx .deep p,.plx .deep h2,.plx .deep h3{color:#EAF3EF!important}
+.plx .deep h2{color:#fff!important}
+.plx .kwrap{white-space:nowrap}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+&lt;/style&gt;
+
+&lt;section id=&quot;physics&quot; class=&quot;hairline-top&quot; style=&quot;background:var(--white)!important&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head reveal&quot; style=&quot;margin-bottom:32px!important&quot;&gt;
+      &lt;span class=&quot;eyebrow&quot;&gt;03 · FOUR INTERACTIONS · 四種交互作用&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;figure class=&quot;wave-summary reveal&quot;&gt;
+      &lt;picture&gt;
+        &lt;source media=&quot;(max-width:720px)&quot; srcset=&quot;https://suyi-cpu.github.io/pl-preview/assets/wave-summary-mobile.svg&quot;&gt;
+        &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/wave-summary.svg&quot; alt=&quot;不是阻擋，而是調和：雜亂波形經矽晶片的繞射、共振、相位干涉、電荷重分佈四種交互作用後，輸出為規律波形&quot;&gt;
+      &lt;/picture&gt;
+    &lt;/figure&gt;
+    &lt;p class=&quot;physics-note reveal&quot; style=&quot;font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.06em!important;margin-top:20px!important;max-width:none!important&quot;&gt;完整機制、分層結構、晶片參數與「孤子態穩定」的建模結論——都在技術頁&lt;/p&gt;
+    &lt;div class=&quot;hero-ctas reveal&quot; style=&quot;margin-top:28px!important&quot;&gt;
+      &lt;a class=&quot;btn btn-line&quot; href=&quot;https://suyi-cpu.github.io/pl-preview/tech.html&quot;&gt;完整運作原理 →&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- deep band --&gt;
+&lt;div class=&quot;deep&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;eyebrow reveal&quot;&gt;FIELD COHERENCE · 場的秩序&lt;/div&gt;
+    &lt;p class=&quot;quote reveal&quot;&gt;「它不試圖移除電磁場，而是在場的物理規則之內，重新安排場的組織方式。」&lt;/p&gt;
+    &lt;p class=&quot;lede reveal&quot;&gt;這是「調和」在物理語言中的精確含義——也是它與阻擋、屏蔽、吸收在原理上的根本差異。&lt;/p&gt;
+    &lt;p class=&quot;reveal&quot; style=&quot;margin-top:26px!important;font-family:var(--font-mono)!important;font-size:14.5px!important;letter-spacing:.14em!important;color:#8FC7B4!important;text-transform:uppercase!important&quot;&gt;&quot;Energy can be redirected and reorganized without being blocked.&quot; — 原廠技術文件&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 生活風格帶 --&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+(function(){
+  var box=document.querySelectorAll(&#x27;.plx&#x27;);
+  box.forEach(function(b){ b.classList.add(&#x27;plx-js&#x27;); });
+  var els=document.querySelectorAll(&#x27;.plx .reveal&#x27;);
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(&#x27;in&#x27;); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:&#x27;0px 0px -8% 0px&#x27;});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll(&#x27;.plx .reveal:not(.in)&#x27;).forEach(function(el){el.classList.add(&#x27;in&#x27;);}); },2500);
+})();
+&lt;/script&gt;
+</pre>
+    </details>
+  </article>
+
+  <article class="card">
+    <div class="card-head">
+      <span class="num">04</span>
+      <div>
+        <h2>生活情境與場域認證</h2>
+        <p class="desc">兩張生活風格圖，接 Aires Certified Spaces 場域導入（Target Center NBA 場館、斐濟航空、UFC/WWE）</p>
+        <p class="where"><b>位置：</b>接在 03 下面</p>
+        <p class="fp"><b>認明這塊：</b>IN EVERYDAY SPACES · 就在日常空間裡 · 不用插電、不用設定， · 裝上之後就不用再管它　<span class="size">13.7 KB</span></p>
+      </div>
+      <button class="copy" data-target="code-04">複製這段程式碼</button>
+    </div>
+    <details>
+      <summary>看一眼程式碼（不用看也沒關係）</summary>
+      <pre id="code-04">&lt;div class=&quot;plx&quot;&gt;
+&lt;style&gt;
+.plx{--bg:#E7DBD8;--warm:#EFE6DF;--gold:#cba654;--white:#FFFFFF;--ink:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--teal:#367C78;--teal-deep:#144D43;--grad:#C9A24E;--grad-soft:rgba(201,162,78,.12);--hairline:rgba(16,22,20,.1);--hairline-soft:rgba(16,22,20,.06);--radius:16px;--font-ui:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;--font-display:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);font-family:var(--font-ui);color:var(--ink-mid);font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--teal);text-decoration:none}
+.plx h1,.plx h2,.plx h3{font-family:var(--font-display);color:var(--ink);line-height:1.24}
+.plx h1{font-weight:700;font-size:clamp(32px,4.6vw,50px);letter-spacing:.005em}
+.plx h2{font-weight:700;font-size:clamp(24px,3vw,34px)}
+.plx h3{font-weight:700;font-size:21px}
+.plx .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+.plx section{padding:64px 0}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx .eyebrow{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.18em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .wrap{max-width:1160px!important;margin:0 auto!important;padding:0 28px!important}
+.plx .sec-head{margin-bottom:56px!important}
+.plx .sec-head .eyebrow{display:block!important;margin-bottom:18px!important}
+.plx .sec-head .eyebrow::before{content:&quot;&quot;!important;display:inline-block!important;width:28px!important;height:2px!important;background:var(--grad)!important;margin-right:12px!important;vertical-align:middle!important}
+.plx .adoption{padding:72px 0!important}
+.plx .adopt-grid{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:24px!important;margin-top:24px!important}
+.plx .adopt-card{border-radius:var(--radius)!important;overflow:hidden!important;background:var(--white)!important;border:1px solid var(--hairline-soft)!important;display:flex!important;flex-direction:column!important}
+.plx .adopt-card summary{cursor:pointer!important;list-style:none!important;display:flex!important;flex-direction:column!important}
+.plx .adopt-card summary::-webkit-details-marker{display:none!important}
+.plx .adopt-card .a-more{font-family:var(--font-mono)!important;font-size:13.5px!important;letter-spacing:.14em!important;color:var(--teal)!important;padding:0 22px 18px!important;text-transform:uppercase!important}
+.plx .adopt-card[open] .a-more .plus::before{content:&quot;−&quot;!important}
+.plx .adopt-card .a-more .plus::before{content:&quot;＋&quot;!important}
+.plx .adopt-card .a-detail{padding:18px 22px 24px!important;border-top:1px solid var(--hairline-soft)!important;font-size:15.5px!important;line-height:1.8!important;color:var(--ink-mid)!important}
+.plx .adopt-card .a-detail img{border-radius:10px!important;margin:14px 0!important}
+.plx .adopt-card .a-detail a{font-weight:600!important;font-size:15px!important;display:inline-block!important;margin-right:16px!important;margin-top:8px!important}
+.plx .adopt-card .a-img{aspect-ratio:16/10!important;overflow:hidden!important;background:#EFEAE2!important}
+.plx .adopt-card .a-img img{width:100%!important;height:100%!important;object-fit:cover!important}
+.plx .adopt-card .a-body{padding:18px 22px 22px!important}
+.plx .adopt-card .a-name{font-family:var(--font-mono)!important;font-size:18px!important;font-weight:600!important;color:var(--ink)!important;letter-spacing:.02em!important}
+.plx .adopt-card .a-label{font-size:15px!important;color:var(--ink-dim)!important;margin-top:6px!important;line-height:1.65!important}
+.plx .adopt-note{margin-top:26px!important;font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.12em!important;color:var(--ink-dim)!important}
+.plx .adopt-feature{display:grid!important;grid-template-columns:1fr 1.25fr!important;background:var(--white)!important;border:1px solid var(--hairline-soft)!important;border-radius:var(--radius)!important;overflow:hidden!important;margin-top:30px!important}
+.plx .adopt-feature .af-text{padding:40px 36px!important;display:flex!important;flex-direction:column!important;justify-content:center!important}
+.plx .adopt-feature .af-text h3{font-size:clamp(20px,2.4vw,26px)!important;line-height:1.4!important;margin:10px 0 14px!important}
+.plx .adopt-feature .af-text p{font-size:16.5px!important;line-height:1.85!important}
+.plx .adopt-feature .af-links{margin-top:18px!important}
+.plx .adopt-feature .af-links a{font-weight:600!important;font-size:15.5px!important;margin-right:18px!important}
+.plx .adopt-feature .af-img{min-height:340px!important}
+.plx .adopt-feature .af-img img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important}
+.plx .std-lede{max-width:660px!important;margin-bottom:52px!important;font-size:19px!important}
+.plx .life-grid{display:grid!important;grid-template-columns:1.25fr .75fr!important;gap:22px!important}
+.plx .life{position:relative!important;border-radius:20px!important;overflow:hidden!important;min-height:420px!important}
+.plx .life img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;transition:transform .7s var(--ease)!important}
+.plx .life:hover img{transform:scale(1.035)!important}
+.plx .life .cap{position:absolute!important;left:26px!important;bottom:22px!important;z-index:2!important;color:#fff!important}
+.plx .life .cap .c-main{font-family:var(--font-display)!important;font-weight:700!important;font-size:clamp(20px,2.4vw,28px)!important;text-shadow:0 2px 18px rgba(0,0,0,.35)!important}
+.plx .life .cap .c-sub{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;text-transform:uppercase!important;opacity:.9!important;margin-top:6px!important;text-shadow:0 1px 12px rgba(0,0,0,.4)!important}
+.plx .life::after{content:&quot;&quot;!important;position:absolute!important;inset:0!important;background:linear-gradient(to top,rgba(16,22,20,.42),transparent 55%)!important}
+@media (max-width:860px){.plx .adopt-feature{grid-template-columns:1fr!important}.plx .adopt-feature .af-img{min-height:240px!important;order:-1!important}}
+@media (max-width:860px){.plx .life-grid{grid-template-columns:1fr!important}.plx .life{min-height:300px!important}}
+@media (max-width:860px){.plx .adopt-grid{grid-template-columns:1fr!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+/* text-align 用 inherit：既壓掉主題的 center/justify，又讓 .cta-final 這類自己置中的區塊仍然置中 */
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;line-height:1.85!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx .btn{font-size:17px!important;line-height:1.4!important;padding:13px 26px!important;text-align:center!important}
+.plx .btn-dark,.plx a.btn-dark,.plx a.btn-dark:visited{background:var(--teal)!important;color:#fff!important;border:0!important;text-decoration:none!important}
+.plx .btn-dark:hover{background:var(--teal-deep)!important;color:#fff!important}
+.plx .btn-line,.plx a.btn-line,.plx a.btn-line:visited{color:var(--ink)!important;background:transparent!important;text-decoration:none!important}
+.plx .eyebrow,.plx .sec-num{color:var(--ink-dim)!important}
+.plx .deep,.plx .deep p,.plx .deep h2,.plx .deep h3{color:#EAF3EF!important}
+.plx .deep h2{color:#fff!important}
+.plx .kwrap{white-space:nowrap}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+&lt;/style&gt;
+
+&lt;section id=&quot;life&quot; style=&quot;background:var(--warm)!important;padding:96px 0!important&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head reveal&quot;&gt;
+      &lt;span class=&quot;eyebrow&quot;&gt;IN EVERYDAY SPACES · 就在日常空間裡&lt;/span&gt;
+      &lt;h2&gt;不用插電、不用設定，&lt;br&gt;裝上之後就不用再管它&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;life-grid&quot;&gt;
+      &lt;figure class=&quot;life reveal&quot;&gt;
+        &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/lifestyle-1.jpg&quot; alt=&quot;日常工作場景中使用 Lifetune&quot; loading=&quot;lazy&quot;&gt;
+        &lt;figcaption class=&quot;cap&quot;&gt;&lt;div class=&quot;c-main&quot;&gt;工作時的那一台&lt;/div&gt;&lt;div class=&quot;c-sub&quot;&gt;At Your Desk&lt;/div&gt;&lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;figure class=&quot;life reveal&quot;&gt;
+        &lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/one/scene-ipad.jpg&quot; alt=&quot;家庭平板使用場景&quot; loading=&quot;lazy&quot;&gt;
+        &lt;figcaption class=&quot;cap&quot;&gt;&lt;div class=&quot;c-main&quot;&gt;隨身輕鬆帶&lt;/div&gt;&lt;div class=&quot;c-sub&quot;&gt;Everyday · Effortless&lt;/div&gt;&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- 全球導入實績 --&gt;
+&lt;section id=&quot;adoption&quot; class=&quot;adoption&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head reveal&quot; style=&quot;margin-bottom:18px!important&quot;&gt;
+      &lt;span class=&quot;eyebrow&quot;&gt;AIRES CERTIFIED SPACES · 場域認證&lt;/span&gt;
+      &lt;h2&gt;從 NBA 場館，&lt;br&gt;到航空公司貴賓室&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;std-lede reveal&quot; style=&quot;margin-bottom:10px!important&quot;&gt;Wi-Fi、手機與智慧裝置，讓現代空間佈滿高密度的電磁訊號。Aires Certified Spaces 是原廠為這類高連線密度空間建立的場域認證標準——整個空間依標準完成環境配置、通過驗證，才能掛牌。下面這些場館拿到的不是一批產品，是讓整座空間通過了這套標準。&lt;/p&gt;
+    &lt;div class=&quot;adopt-feature reveal&quot;&gt;
+      &lt;div class=&quot;af-text&quot;&gt;
+        &lt;div class=&quot;a-name&quot; style=&quot;font-family:var(--font-mono)!important;font-size:16px!important;color:var(--teal)!important;letter-spacing:.06em!important&quot;&gt;TARGET CENTER · 2025 · 運動 × 科技的大事紀&lt;/div&gt;
+        &lt;h3&gt;Target Center 成為全球第一座「EMF 電磁波友善」NBA 場館&lt;/h3&gt;
+        &lt;p&gt;這是史上第一次，有大型職業場館正式取得 Aires 認證™——NBA 明尼蘇達灰狼隊主場 Target Center，全場 Wi-Fi 連接點都導入這項專利技術，為高人流運動空間的環境配置立下全新標準。灰狼隊並設立了第一間 Aires Certified 選秀室；2026 年 3 月主場迎戰拓荒者之戰，更以「EMF-friendly NBA 賽事」規格舉辦。&lt;/p&gt;
+        &lt;div class=&quot;af-links&quot;&gt;
+          &lt;a href=&quot;https://www.prnewswire.com/news-releases/a-fan-experience-first-minnesota-timberwolves-and-aires-tech-launch-pioneering-emf-friendly-venue-tech-302379811.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;PRNewswire 新聞稿 →&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;figure class=&quot;af-img&quot;&gt;&lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/adopt-tb-hero.jpg&quot; alt=&quot;Lifetune 系列產品於灰狼隊主場，Aires Certified Space 標章&quot; loading=&quot;lazy&quot;&gt;&lt;/figure&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;adopt-grid reveal&quot;&gt;
+      &lt;details class=&quot;adopt-card&quot;&gt;
+        &lt;summary&gt;
+          &lt;div class=&quot;a-img&quot;&gt;&lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/adopt-fiji.jpg&quot; alt=&quot;Fiji Airways × Aires 官方合作&quot; loading=&quot;lazy&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;a-body&quot;&gt;&lt;div class=&quot;a-name&quot;&gt;FIJI AIRWAYS&lt;/div&gt;&lt;div class=&quot;a-label&quot;&gt;官方合作——將 EMF-friendly 的環境配置概念帶入航空旅程與貴賓室&lt;/div&gt;&lt;/div&gt;
+          &lt;div class=&quot;a-more&quot;&gt;&lt;span class=&quot;plus&quot;&gt;&lt;/span&gt; 展開詳情&lt;/div&gt;
+        &lt;/summary&gt;
+        &lt;div class=&quot;a-detail&quot;&gt;
+          2026 年 5 月，Fiji Airways 與技術原廠締結官方合作，技術已導入 Fiji Airways Premier Lounge 等高連線密度環境，作為旅程場域配置的一部分——航空業對機上與貴賓室設備的審查標準，本身就是一道門檻。
+        &lt;/div&gt;
+      &lt;/details&gt;
+      &lt;details class=&quot;adopt-card&quot;&gt;
+        &lt;summary&gt;
+          &lt;div class=&quot;a-img&quot;&gt;&lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/adopt-tb-court.jpg&quot; alt=&quot;Aires 與灰狼隊代表於訓練館對談&quot; loading=&quot;lazy&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;a-body&quot;&gt;&lt;div class=&quot;a-name&quot;&gt;UFC · WWE · 職業運動&lt;/div&gt;&lt;div class=&quot;a-label&quot;&gt;技術原廠為 UFC（全球最大綜合格鬥賽事）官方合作夥伴；另與 WWE、加拿大籃球協會等組織建立合作。&lt;/div&gt;&lt;/div&gt;
+          &lt;div class=&quot;a-more&quot;&gt;&lt;span class=&quot;plus&quot;&gt;&lt;/span&gt; 展開詳情&lt;/div&gt;
+        &lt;/summary&gt;
+        &lt;div class=&quot;a-detail&quot;&gt;
+          2024 年 11 月 UFC 309 前夕，原廠與 UFC 於拉斯維加斯共同舉辦《The Next Frontier of UFC Training and Performance》研討會；官方素材亦提及該技術進入 UFC Performance Institute 的訓練與高強度表現環境。合作版圖另含 WWE、加拿大籃球協會、NASCAR 車手 Chad Finchum，以及多位 NBA、NHL、UFC 職業運動員。
+        &lt;/div&gt;
+      &lt;/details&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;adopt-note reveal&quot;&gt;完整合作與導入紀錄 · 詳見&lt;a href=&quot;https://suyi-cpu.github.io/pl-preview/research.html#adoption&quot;&gt;研究與專利頁&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+(function(){
+  var box=document.querySelectorAll(&#x27;.plx&#x27;);
+  box.forEach(function(b){ b.classList.add(&#x27;plx-js&#x27;); });
+  var els=document.querySelectorAll(&#x27;.plx .reveal&#x27;);
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(&#x27;in&#x27;); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:&#x27;0px 0px -8% 0px&#x27;});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll(&#x27;.plx .reveal:not(.in)&#x27;).forEach(function(el){el.classList.add(&#x27;in&#x27;);}); },2500);
+})();
+&lt;/script&gt;
+</pre>
+    </details>
+  </article>
+
+  <article class="card">
+    <div class="card-head">
+      <span class="num">05</span>
+      <div>
+        <h2>產品系列與選擇器</h2>
+        <p class="desc">五款產品卡（涵蓋直徑＋價格＋連到商品頁）＋「三題幫你選」互動選擇器</p>
+        <p class="where"><b>位置：</b>接在 04 下面——這塊最重要，直接導購</p>
+        <p class="fp"><b>認明這塊：</b>04 · THE LINEUP · 產品系列 · 依使用情境選擇， · 不分等級　<span class="size">16.3 KB</span></p>
+      </div>
+      <button class="copy" data-target="code-05">複製這段程式碼</button>
+    </div>
+    <details>
+      <summary>看一眼程式碼（不用看也沒關係）</summary>
+      <pre id="code-05">&lt;div class=&quot;plx&quot;&gt;
+&lt;style&gt;
+.plx{--bg:#E7DBD8;--warm:#EFE6DF;--gold:#cba654;--white:#FFFFFF;--ink:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--teal:#367C78;--teal-deep:#144D43;--grad:#C9A24E;--grad-soft:rgba(201,162,78,.12);--hairline:rgba(16,22,20,.1);--hairline-soft:rgba(16,22,20,.06);--radius:16px;--font-ui:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;--font-display:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);font-family:var(--font-ui);color:var(--ink-mid);font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--teal);text-decoration:none}
+.plx h1,.plx h2,.plx h3{font-family:var(--font-display);color:var(--ink);line-height:1.24}
+.plx h1{font-weight:700;font-size:clamp(32px,4.6vw,50px);letter-spacing:.005em}
+.plx h2{font-weight:700;font-size:clamp(24px,3vw,34px)}
+.plx h3{font-weight:700;font-size:21px}
+.plx .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+.plx section{padding:64px 0}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx .eyebrow{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.18em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .num{font-family:var(--font-mono)!important}
+.plx .wrap{max-width:1160px!important;margin:0 auto!important;padding:0 28px!important}
+.plx .sec-head{margin-bottom:56px!important}
+.plx .sec-head .eyebrow{display:block!important;margin-bottom:18px!important}
+.plx .sec-head .eyebrow::before{content:&quot;&quot;!important;display:inline-block!important;width:28px!important;height:2px!important;background:var(--grad)!important;margin-right:12px!important;vertical-align:middle!important}
+.plx .hairline-top{border-top:1px solid var(--hairline)!important}
+.plx .prod-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:34px 28px!important}
+.plx .prod{display:flex!important;flex-direction:column!important}
+.plx .prod .ph{aspect-ratio:1!important;overflow:hidden!important;border-radius:var(--radius)!important;background:#F3EDE4!important}
+.plx .prod .ph img{width:100%!important;height:100%!important;object-fit:cover!important;transition:transform .6s var(--ease)!important}
+.plx .prod:hover .ph img{transform:scale(1.045)!important}
+.plx .prod .pd{padding:20px 4px 0!important}
+.plx .prod .scenario{font-family:var(--font-mono)!important;font-size:13.5px!important;letter-spacing:.16em!important;color:var(--teal)!important;text-transform:uppercase!important}
+.plx .prod h3{margin:8px 0 4px!important;font-size:21px!important}
+.plx .prod p{font-size:16px!important;line-height:1.7!important}
+.plx .prod .cover{margin-top:12px!important;display:flex!important;justify-content:space-between!important;align-items:flex-end!important;gap:14px!important;font-family:var(--font-mono)!important;font-size:21px!important;color:var(--ink)!important}
+.plx .prod .cover small{font-size:13.5px!important;letter-spacing:.1em!important;color:var(--ink-dim)!important;display:block!important;margin-top:2px!important}
+.plx .prod .cover .prod-price{text-align:right!important;line-height:1.2!important}
+.plx .prod .cover .prod-price .num{font-size:20px!important;font-weight:600!important;color:var(--ink)!important}
+.plx .prod .p-link{margin-top:12px!important;font-size:16.5px!important;font-weight:600!important;display:inline-flex!important;align-items:center!important;gap:6px!important}
+.plx .footnote{margin-top:34px!important;font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.12em!important;color:var(--ink-dim)!important}
+.plx .picker{margin-top:44px!important;background:var(--white)!important;border:1px solid var(--hairline-soft)!important;border-radius:var(--radius)!important;padding:36px 34px!important;box-shadow:0 18px 60px rgba(16,22,20,.05)!important}
+.plx .picker-head{margin-bottom:26px!important}
+.plx .picker-head .scenario{font-family:var(--font-mono)!important;font-size:13.5px!important;letter-spacing:.16em!important;color:var(--teal)!important;text-transform:uppercase!important}
+.plx .picker-head h3{margin-top:8px!important;font-size:clamp(20px,2.4vw,26px)!important}
+.plx .picker-q{margin-bottom:22px!important}
+.plx .picker-q.is-hidden{display:none!important}
+.plx .pq-label{font-size:16px!important;font-weight:600!important;color:var(--ink)!important;margin-bottom:12px!important}
+.plx .pq-opts{display:flex!important;flex-wrap:wrap!important;gap:10px!important}
+.plx .pq-opt{font-family:var(--font-ui)!important;font-size:16px!important;font-weight:500!important;color:var(--ink-mid)!important;background:transparent!important;border:1px solid var(--hairline)!important;border-radius:999px!important;padding:10px 20px!important;cursor:pointer!important;transition:all .2s var(--ease)!important}
+.plx .pq-opt:hover{border-color:var(--ink)!important;color:var(--ink)!important}
+.plx .pq-opt.is-sel{background:var(--ink)!important;border-color:var(--ink)!important;color:#fff!important}
+.plx .picker-result{margin-top:28px!important;padding-top:26px!important;border-top:1px solid var(--hairline)!important;display:none!important;align-items:center!important;justify-content:space-between!important;gap:20px!important;flex-wrap:wrap!important}
+.plx .picker-result.show{display:flex!important}
+@media (max-width:520px){.plx .picker{padding:28px 22px!important}.plx .picker-result{align-items:flex-start!important}}
+@media (max-width:860px){.plx .prod-grid{grid-template-columns:1fr!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+/* text-align 用 inherit：既壓掉主題的 center/justify，又讓 .cta-final 這類自己置中的區塊仍然置中 */
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;line-height:1.85!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx .btn{font-size:17px!important;line-height:1.4!important;padding:13px 26px!important;text-align:center!important}
+.plx .btn-dark,.plx a.btn-dark,.plx a.btn-dark:visited{background:var(--teal)!important;color:#fff!important;border:0!important;text-decoration:none!important}
+.plx .btn-dark:hover{background:var(--teal-deep)!important;color:#fff!important}
+.plx .btn-line,.plx a.btn-line,.plx a.btn-line:visited{color:var(--ink)!important;background:transparent!important;text-decoration:none!important}
+.plx .eyebrow,.plx .sec-num{color:var(--ink-dim)!important}
+.plx .deep,.plx .deep p,.plx .deep h2,.plx .deep h3{color:#EAF3EF!important}
+.plx .deep h2{color:#fff!important}
+.plx .kwrap{white-space:nowrap}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+&lt;/style&gt;
+
+&lt;section id=&quot;products&quot; class=&quot;hairline-top&quot; style=&quot;background:var(--white)!important&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head reveal&quot;&gt;
+      &lt;span class=&quot;eyebrow&quot;&gt;04 · THE LINEUP · 產品系列&lt;/span&gt;
+      &lt;h2&gt;依使用情境選擇，&lt;br&gt;不分等級&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;prod-grid&quot;&gt;
+      &lt;div class=&quot;prod reveal&quot;&gt;
+        &lt;div class=&quot;ph&quot;&gt;&lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/product-one.jpg&quot; alt=&quot;Lifetune ONE 貼附於手機背面&quot; loading=&quot;lazy&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;pd&quot;&gt;
+          &lt;div class=&quot;scenario&quot;&gt;單一裝置 · 固定位置&lt;/div&gt;
+          &lt;h3&gt;Lifetune ONE&lt;/h3&gt;
+          &lt;p&gt;貼附於手機、平板或筆電等單一裝置，適合最常伴隨在側的那一台。&lt;/p&gt;
+          &lt;div class=&quot;cover&quot;&gt;&lt;div&gt;&lt;small&gt;開放空間涵蓋範圍&lt;/small&gt;&lt;span class=&quot;num&quot;&gt;直徑 5.6 m&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;prod-price&quot;&gt;&lt;small&gt;全店免運&lt;/small&gt;&lt;span class=&quot;num&quot;&gt;NT$2,980&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;a class=&quot;p-link&quot; href=&quot;https://suyi-cpu.github.io/pl-preview/one.html&quot;&gt;查看 ONE →&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;prod reveal&quot;&gt;
+        &lt;div class=&quot;ph&quot;&gt;&lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/product-flex.jpg&quot; alt=&quot;Lifetune FLEX 隨身配戴&quot; loading=&quot;lazy&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;pd&quot;&gt;
+          &lt;div class=&quot;scenario&quot;&gt;隨身配戴&lt;/div&gt;
+          &lt;h3&gt;Lifetune FLEX&lt;/h3&gt;
+          &lt;p&gt;可配戴、可隨身攜帶的形態，適合移動中的日常——通勤、辦公、外出。&lt;/p&gt;
+          &lt;div class=&quot;cover&quot;&gt;&lt;div&gt;&lt;small&gt;開放空間涵蓋範圍&lt;/small&gt;&lt;span class=&quot;num&quot;&gt;直徑 12.8 m&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;prod-price&quot;&gt;&lt;small&gt;全店免運&lt;/small&gt;&lt;span class=&quot;num&quot;&gt;NT$8,000&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;a class=&quot;p-link&quot; href=&quot;https://suyi-cpu.github.io/pl-preview/flex.html&quot;&gt;查看 FLEX →&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;prod reveal&quot;&gt;
+        &lt;div class=&quot;ph&quot;&gt;&lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/product-go.jpg&quot; alt=&quot;Lifetune GO 輕薄配適&quot; loading=&quot;lazy&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;pd&quot;&gt;
+          &lt;div class=&quot;scenario&quot;&gt;孩童 · 寵物 · 輕薄配適&lt;/div&gt;
+          &lt;h3&gt;Lifetune GO&lt;/h3&gt;
+          &lt;p&gt;輕薄小巧的配適形態，可繫於書包、鑰匙圈或寵物項圈。&lt;/p&gt;
+          &lt;div class=&quot;cover&quot;&gt;&lt;div&gt;&lt;small&gt;開放空間涵蓋範圍&lt;/small&gt;&lt;span class=&quot;num&quot;&gt;直徑 9.8 m&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;prod-price&quot;&gt;&lt;small&gt;全店免運&lt;/small&gt;&lt;span class=&quot;num&quot;&gt;NT$7,760&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;a class=&quot;p-link&quot; href=&quot;https://suyi-cpu.github.io/pl-preview/go.html&quot;&gt;查看 GO →&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;prod reveal&quot;&gt;
+        &lt;div class=&quot;ph&quot;&gt;&lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/product-zone.jpg&quot; alt=&quot;Lifetune ZONE 置於室內空間&quot; loading=&quot;lazy&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;pd&quot;&gt;
+          &lt;div class=&quot;scenario&quot;&gt;小型空間&lt;/div&gt;
+          &lt;h3&gt;Lifetune ZONE&lt;/h3&gt;
+          &lt;p&gt;放置於書房、車內或小型辦公空間，以空間為單位的配置選擇。&lt;/p&gt;
+          &lt;div class=&quot;cover&quot;&gt;&lt;div&gt;&lt;small&gt;開放空間涵蓋範圍&lt;/small&gt;&lt;span class=&quot;num&quot;&gt;直徑 28.3 m&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;prod-price&quot;&gt;&lt;small&gt;全店免運&lt;/small&gt;&lt;span class=&quot;num&quot;&gt;NT$8,860&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;a class=&quot;p-link&quot; href=&quot;https://suyi-cpu.github.io/pl-preview/zone.html&quot;&gt;查看 ZONE →&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;prod reveal&quot;&gt;
+        &lt;div class=&quot;ph&quot;&gt;&lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/product-zonemax.jpg&quot; alt=&quot;Lifetune ZONE MAX 置於開放空間&quot; loading=&quot;lazy&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;pd&quot;&gt;
+          &lt;div class=&quot;scenario&quot;&gt;開放式大空間&lt;/div&gt;
+          &lt;h3&gt;Lifetune ZONE MAX&lt;/h3&gt;
+          &lt;p&gt;系列中涵蓋直徑最大的一款，適合客廳、工作室等開放式格局。&lt;/p&gt;
+          &lt;div class=&quot;cover&quot;&gt;&lt;div&gt;&lt;small&gt;開放空間涵蓋範圍&lt;/small&gt;&lt;span class=&quot;num&quot;&gt;直徑 42.4 m&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;prod-price&quot;&gt;&lt;small&gt;全店免運&lt;/small&gt;&lt;span class=&quot;num&quot;&gt;NT$11,800&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;a class=&quot;p-link&quot; href=&quot;https://suyi-cpu.github.io/pl-preview/zonemax.html&quot;&gt;查看 ZONE MAX →&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;footnote reveal&quot;&gt;數值為開放空間涵蓋直徑 · 不分等級&lt;/p&gt;
+
+    &lt;!-- A7 幫我選 三題選擇器（純前端，取代原第六張卡的 mailto） --&gt;
+    &lt;div class=&quot;picker reveal&quot; id=&quot;picker&quot;&gt;
+      &lt;div class=&quot;picker-head&quot;&gt;
+        &lt;div class=&quot;scenario&quot;&gt;不確定從哪一款開始？&lt;/div&gt;
+        &lt;h3&gt;三題，幫你對到適合的那一款&lt;/h3&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;picker-q&quot; data-q=&quot;1&quot;&gt;
+        &lt;div class=&quot;pq-label&quot;&gt;Q1 · 你想涵蓋的是？&lt;/div&gt;
+        &lt;div class=&quot;pq-opts&quot;&gt;
+          &lt;button class=&quot;pq-opt&quot; type=&quot;button&quot; data-v=&quot;one&quot;&gt;一台裝置&lt;/button&gt;
+          &lt;button class=&quot;pq-opt&quot; type=&quot;button&quot; data-v=&quot;wear&quot;&gt;隨身移動&lt;/button&gt;
+          &lt;button class=&quot;pq-opt&quot; type=&quot;button&quot; data-v=&quot;space&quot;&gt;一個空間&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;picker-q is-hidden&quot; data-q=&quot;2&quot;&gt;
+        &lt;div class=&quot;pq-label&quot;&gt;Q2 · 空間大小？&lt;/div&gt;
+        &lt;div class=&quot;pq-opts&quot;&gt;
+          &lt;button class=&quot;pq-opt&quot; type=&quot;button&quot; data-v=&quot;small&quot;&gt;小 · 書房／車內／單人桌&lt;/button&gt;
+          &lt;button class=&quot;pq-opt&quot; type=&quot;button&quot; data-v=&quot;large&quot;&gt;大 · 客廳／工作室／開放格局&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;picker-q is-hidden&quot; data-q=&quot;3&quot;&gt;
+        &lt;div class=&quot;pq-label&quot;&gt;Q3 · 主要給誰用？&lt;/div&gt;
+        &lt;div class=&quot;pq-opts&quot;&gt;
+          &lt;button class=&quot;pq-opt&quot; type=&quot;button&quot; data-v=&quot;self&quot;&gt;自己&lt;/button&gt;
+          &lt;button class=&quot;pq-opt&quot; type=&quot;button&quot; data-v=&quot;kidpet&quot;&gt;孩童／寵物&lt;/button&gt;
+          &lt;button class=&quot;pq-opt&quot; type=&quot;button&quot; data-v=&quot;family&quot;&gt;全家&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;picker-result&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+(function(){
+  var picker=document.getElementById(&#x27;picker&#x27;); if(!picker) return;
+  var ans={}, P={
+    one:{name:&#x27;Lifetune ONE&#x27;,scen:&#x27;單一裝置 · 固定位置&#x27;,cov:&#x27;5.6 m&#x27;,price:&#x27;NT$2,980&#x27;,href:&#x27;https://www.purland.com.tw/products/lifetune-one&#x27;,cta:&#x27;查看 ONE&#x27;},
+    flex:{name:&#x27;Lifetune FLEX&#x27;,scen:&#x27;隨身配戴&#x27;,cov:&#x27;12.8 m&#x27;,price:&#x27;NT$8,000&#x27;,href:&#x27;https://www.purland.com.tw/products/lifetune-flex&#x27;,cta:&#x27;查看 FLEX&#x27;},
+    go:{name:&#x27;Lifetune GO&#x27;,scen:&#x27;孩童 · 寵物 · 輕薄&#x27;,cov:&#x27;9.8 m&#x27;,price:&#x27;NT$7,760&#x27;,href:&#x27;https://www.purland.com.tw/products/lifetune-go&#x27;,cta:&#x27;查看 GO&#x27;},
+    zone:{name:&#x27;Lifetune ZONE&#x27;,scen:&#x27;小型空間&#x27;,cov:&#x27;28.3 m&#x27;,price:&#x27;NT$8,860&#x27;,href:&#x27;https://www.purland.com.tw/products/lifetune-zone&#x27;,cta:&#x27;查看 ZONE&#x27;},
+    zonemax:{name:&#x27;Lifetune ZONE MAX&#x27;,scen:&#x27;開放式大空間&#x27;,cov:&#x27;42.4 m&#x27;,price:&#x27;NT$11,800&#x27;,href:&#x27;https://www.purland.com.tw/products/lifetune-zone-max&#x27;,cta:&#x27;查看 ZONE MAX&#x27;}
+  };
+  var q2=picker.querySelector(&#x27;[data-q=&quot;2&quot;]&#x27;), q3=picker.querySelector(&#x27;[data-q=&quot;3&quot;]&#x27;), resultEl=picker.querySelector(&#x27;.picker-result&#x27;);
+  function recommend(){
+    if(ans[1]===&#x27;one&#x27;) return &#x27;one&#x27;;
+    if(ans[1]===&#x27;wear&#x27;) return ans[3]?(ans[3]===&#x27;kidpet&#x27;?&#x27;go&#x27;:&#x27;flex&#x27;):null;
+    if(ans[1]===&#x27;space&#x27;) return ans[2]?(ans[2]===&#x27;large&#x27;?&#x27;zonemax&#x27;:&#x27;zone&#x27;):null;
+    return null;
+  }
+  function reset(){ for(var k in ans) delete ans[k];
+    picker.querySelectorAll(&#x27;.pq-opt&#x27;).forEach(function(b){b.classList.remove(&#x27;is-sel&#x27;);});
+    q2.classList.add(&#x27;is-hidden&#x27;); q3.classList.add(&#x27;is-hidden&#x27;); resultEl.classList.remove(&#x27;show&#x27;); }
+  function render(){
+    q2.classList.toggle(&#x27;is-hidden&#x27;, ans[1]!==&#x27;space&#x27;);
+    q3.classList.toggle(&#x27;is-hidden&#x27;, ans[1]!==&#x27;wear&#x27;);
+    var key=recommend();
+    if(key){ var p=P[key];
+      resultEl.innerHTML=&#x27;&lt;div class=&quot;pr-info&quot;&gt;&lt;div class=&quot;pr-rec&quot;&gt;為你推薦&lt;/div&gt;&lt;div class=&quot;pr-name&quot;&gt;&#x27;+p.name+&#x27;&lt;/div&gt;&lt;div class=&quot;pr-meta&quot;&gt;&#x27;+p.scen+&#x27; · 涵蓋範圍 直徑 &lt;span class=&quot;num&quot;&gt;&#x27;+p.cov+&#x27;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;pr-cta&quot;&gt;&lt;span class=&quot;pr-price&quot;&gt;&#x27;+p.price+&#x27;&lt;/span&gt;&lt;a class=&quot;btn btn-dark&quot; href=&quot;&#x27;+p.href+&#x27;&quot;&gt;&#x27;+p.cta+&#x27; →&lt;/a&gt;&lt;button class=&quot;picker-reset&quot; type=&quot;button&quot;&gt;重選&lt;/button&gt;&lt;/div&gt;&#x27;;
+      resultEl.classList.add(&#x27;show&#x27;);
+      resultEl.querySelector(&#x27;.picker-reset&#x27;).addEventListener(&#x27;click&#x27;,reset);
+    } else { resultEl.classList.remove(&#x27;show&#x27;); }
+  }
+  picker.querySelectorAll(&#x27;.pq-opt&#x27;).forEach(function(btn){
+    btn.addEventListener(&#x27;click&#x27;,function(){
+      var q=btn.closest(&#x27;[data-q]&#x27;).dataset.q, v=btn.dataset.v;
+      btn.parentNode.querySelectorAll(&#x27;.pq-opt&#x27;).forEach(function(b){b.classList.remove(&#x27;is-sel&#x27;);});
+      btn.classList.add(&#x27;is-sel&#x27;); ans[q]=v;
+      if(q===&#x27;1&#x27;){ delete ans[2]; delete ans[3];
+        picker.querySelectorAll(&#x27;[data-q=&quot;2&quot;] .pq-opt,[data-q=&quot;3&quot;] .pq-opt&#x27;).forEach(function(b){b.classList.remove(&#x27;is-sel&#x27;);}); }
+      render();
+    });
+  });
+})();
+&lt;/script&gt;
+&lt;script&gt;
+(function(){
+  var box=document.querySelectorAll(&#x27;.plx&#x27;);
+  box.forEach(function(b){ b.classList.add(&#x27;plx-js&#x27;); });
+  var els=document.querySelectorAll(&#x27;.plx .reveal&#x27;);
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(&#x27;in&#x27;); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:&#x27;0px 0px -8% 0px&#x27;});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll(&#x27;.plx .reveal:not(.in)&#x27;).forEach(function(el){el.classList.add(&#x27;in&#x27;);}); },2500);
+})();
+&lt;/script&gt;
+</pre>
+    </details>
+  </article>
+
+  <article class="card">
+    <div class="card-head">
+      <span class="num">06</span>
+      <div>
+        <h2>選品標準與 CTA</h2>
+        <p class="desc">Pürland 三步驟選品標準（溯源／比較／把關）＋最後的 LINE 諮詢 CTA 卡（含 QR code）</p>
+        <p class="where"><b>位置：</b>接在 05 下面，頁尾之前</p>
+        <p class="fp"><b>認明這塊：</b>05 · OUR STANDARDS · Pürland 選品標準 · 替你多做一層理解、 · 比較與把關　<span class="size">9.8 KB</span></p>
+      </div>
+      <button class="copy" data-target="code-06">複製這段程式碼</button>
+    </div>
+    <details>
+      <summary>看一眼程式碼（不用看也沒關係）</summary>
+      <pre id="code-06">&lt;div class=&quot;plx&quot;&gt;
+&lt;style&gt;
+.plx{--bg:#E7DBD8;--warm:#EFE6DF;--gold:#cba654;--white:#FFFFFF;--ink:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--teal:#367C78;--teal-deep:#144D43;--grad:#C9A24E;--grad-soft:rgba(201,162,78,.12);--hairline:rgba(16,22,20,.1);--hairline-soft:rgba(16,22,20,.06);--radius:16px;--font-ui:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;--font-display:&quot;Noto Sans TC&quot;,&quot;PingFang TC&quot;,sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);font-family:var(--font-ui);color:var(--ink-mid);font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--teal);text-decoration:none}
+.plx h1,.plx h2,.plx h3{font-family:var(--font-display);color:var(--ink);line-height:1.24}
+.plx h1{font-weight:700;font-size:clamp(32px,4.6vw,50px);letter-spacing:.005em}
+.plx h2{font-weight:700;font-size:clamp(24px,3vw,34px)}
+.plx h3{font-weight:700;font-size:21px}
+.plx .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+.plx section{padding:64px 0}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx .eyebrow{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.18em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .wrap{max-width:1160px!important;margin:0 auto!important;padding:0 28px!important}
+.plx .sec-head{margin-bottom:56px!important}
+.plx .sec-head .eyebrow{display:block!important;margin-bottom:18px!important}
+.plx .sec-head .eyebrow::before{content:&quot;&quot;!important;display:inline-block!important;width:28px!important;height:2px!important;background:var(--grad)!important;margin-right:12px!important;vertical-align:middle!important}
+.plx .hairline-top{border-top:1px solid var(--hairline)!important}
+.plx .btn{display:inline-flex!important;align-items:center!important;gap:8px!important;font-size:17.5px!important;font-weight:600!important;padding:14px 28px!important;border-radius:999px!important;transition:all .25s var(--ease)!important}
+.plx .btn-dark{background:var(--teal)!important;color:#fff!important}
+.plx .btn-dark:hover{background:var(--teal-deep)!important;transform:translateY(-2px)!important}
+.plx .btn-line{border:1.5px solid var(--hairline)!important;color:var(--ink)!important;background:transparent!important}
+.plx .btn-line:hover{border-color:var(--ink)!important;transform:translateY(-2px)!important}
+.plx .hero-ctas{display:flex!important;gap:14px!important;margin-top:34px!important;flex-wrap:wrap!important}
+.plx .std-lede{max-width:660px!important;margin-bottom:52px!important;font-size:19px!important}
+.plx .std-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:0!important}
+.plx .std{padding:28px 28px 0 0!important;border-top:2px solid var(--hairline)!important}
+.plx .std+ .std{padding-left:28px!important}
+.plx .std .s-num{font-family:var(--font-mono)!important;font-size:15px!important;letter-spacing:.16em!important;color:var(--teal)!important}
+.plx .std h3{margin:14px 0 8px!important;font-size:19.5px!important}
+.plx .std p{font-size:16px!important;line-height:1.75!important}
+.plx .cta-final{position:relative!important;background:var(--white)!important;border:1px solid var(--hairline-soft)!important;border-radius:24px!important;padding:80px 48px!important;text-align:center!important;overflow:hidden!important}
+.plx .cta-final::before{content:&quot;&quot;!important;position:absolute!important;top:-160px!important;left:50%!important;transform:translateX(-50%)!important;width:640px!important;height:420px!important;background:radial-gradient(ellipse at center,rgba(201,162,78,.14),transparent 65%)!important;pointer-events:none!important}
+.plx .cta-final&gt;*{position:relative!important}
+.plx .cta-final h2{max-width:560px!important;margin:16px auto 12px!important}
+.plx .cta-final p{max-width:480px!important;margin:0 auto!important;font-size:17.5px!important}
+.plx .cta-final .hero-ctas{justify-content:center!important}
+.plx .cta-final .assure{margin-top:22px!important;font-family:var(--font-mono)!important;font-size:clamp(10px,3.2vw,14.5px)!important;letter-spacing:.05em!important;color:var(--ink-dim)!important;white-space:nowrap!important}
+.plx .line-qr{display:none!important}
+.plx .line-qr img{width:66px!important;height:66px!important;display:block!important;border-radius:6px!important}
+.plx .line-qr b{display:block!important;font-size:14px!important;font-weight:600!important;color:#2B2722!important;margin-bottom:3px!important}
+.plx .line-qr span{font-size:12.5px!important;color:#645B52!important}
+@media (max-width:860px){.plx .std-grid{grid-template-columns:1fr!important}.plx .cta-final{padding:52px 24px!important}}
+@media(min-width:900px){.plx .line-qr{display:inline-flex!important;align-items:center!important;gap:13px!important;margin-top:22px!important;padding:10px 16px 10px 10px!important;background:#fff!important;border:1px solid #E4DAD2!important;border-radius:14px!important;text-align:left!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+/* text-align 用 inherit：既壓掉主題的 center/justify，又讓 .cta-final 這類自己置中的區塊仍然置中 */
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;line-height:1.85!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx .btn{font-size:17px!important;line-height:1.4!important;padding:13px 26px!important;text-align:center!important}
+.plx .btn-dark,.plx a.btn-dark,.plx a.btn-dark:visited{background:var(--teal)!important;color:#fff!important;border:0!important;text-decoration:none!important}
+.plx .btn-dark:hover{background:var(--teal-deep)!important;color:#fff!important}
+.plx .btn-line,.plx a.btn-line,.plx a.btn-line:visited{color:var(--ink)!important;background:transparent!important;text-decoration:none!important}
+.plx .eyebrow,.plx .sec-num{color:var(--ink-dim)!important}
+.plx .deep,.plx .deep p,.plx .deep h2,.plx .deep h3{color:#EAF3EF!important}
+.plx .deep h2{color:#fff!important}
+.plx .kwrap{white-space:nowrap}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+/* ══ 原始設計的 !important（權重最高，勿刪）══ */
+
+@media (max-width:860px){.plx.plx.plx .std{padding-left:0!important}}
+&lt;/style&gt;
+
+&lt;section id=&quot;standards&quot; class=&quot;hairline-top&quot; style=&quot;background:var(--warm)!important&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head reveal&quot;&gt;
+      &lt;span class=&quot;eyebrow&quot;&gt;05 · OUR STANDARDS · Pürland 選品標準&lt;/span&gt;
+      &lt;h2&gt;替你多做一層理解、&lt;br&gt;比較與把關&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;std-lede reveal&quot;&gt;Pürland 淨域未來相信，現代生活不該在便利與自然之間二選一。我們深入研究產品背後的技術與公開資料，為現代居家與 3C 使用情境，提供更有覺察、更細緻的環境配置選擇。&lt;/p&gt;
+    &lt;div class=&quot;std-grid&quot;&gt;
+      &lt;div class=&quot;std reveal&quot;&gt;
+        &lt;div class=&quot;s-num&quot;&gt;STEP 01 — 溯源&lt;/div&gt;
+        &lt;h3&gt;技術資料與專利查證&lt;/h3&gt;
+        &lt;p&gt;逐項研究產品背後的技術文件、專利資訊與公開研究內容，確認每一項宣稱都有可查證的來源。&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;std reveal&quot;&gt;
+        &lt;div class=&quot;s-num&quot;&gt;STEP 02 — 比較&lt;/div&gt;
+        &lt;h3&gt;同類產品橫向評比&lt;/h3&gt;
+        &lt;p&gt;從設計、穩定度、便利性與資料透明度四個維度，與同類產品進行比較，選出經得起檢視的方案。&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;std reveal&quot;&gt;
+        &lt;div class=&quot;s-num&quot;&gt;STEP 03 — 把關&lt;/div&gt;
+        &lt;h3&gt;符合理念才引進&lt;/h3&gt;
+        &lt;p&gt;只精選符合 Pürland 選品理念的產品推薦給顧客——讓每一次選擇，都建立在理解之上。&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- 06 · CTA --&gt;
+&lt;section id=&quot;contact&quot; style=&quot;padding-top:40px!important&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;cta-final reveal&quot;&gt;
+      &lt;div class=&quot;eyebrow&quot;&gt;06 · NEXT · 下一步&lt;/div&gt;
+      &lt;h2&gt;看見、查證、理解，&lt;br&gt;然後選擇&lt;/h2&gt;
+      &lt;p&gt;告訴我們你的使用情境，我們協助你比較系列差異。&lt;/p&gt;
+      &lt;div class=&quot;hero-ctas&quot;&gt;
+        &lt;a class=&quot;btn btn-dark&quot; href=&quot;https://lin.ee/0fagSFR&quot;&gt;LINE 諮詢哪一款適合我&lt;/a&gt;
+        &lt;a class=&quot;btn btn-line&quot; href=&quot;https://suyi-cpu.github.io/pl-preview/research.html&quot;&gt;看研究與專利&lt;/a&gt;
+        &lt;a class=&quot;btn btn-line&quot; href=&quot;https://www.purland.com.tw/products&quot;&gt;瀏覽所有商品&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;line-qr&quot; aria-hidden=&quot;true&quot;&gt;&lt;img src=&quot;https://suyi-cpu.github.io/pl-preview/assets/line-qr.svg&quot; alt=&quot;&quot; width=&quot;66&quot; height=&quot;66&quot;&gt;&lt;div&gt;&lt;b&gt;用電腦看?&lt;/b&gt;&lt;span&gt;手機掃一下，直接加 LINE&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;p class=&quot;assure&quot;&gt;全店免運 · 7 天鑑賞期 · 台灣在地售後&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+(function(){
+  var box=document.querySelectorAll(&#x27;.plx&#x27;);
+  box.forEach(function(b){ b.classList.add(&#x27;plx-js&#x27;); });
+  var els=document.querySelectorAll(&#x27;.plx .reveal&#x27;);
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(&#x27;in&#x27;); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:&#x27;0px 0px -8% 0px&#x27;});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll(&#x27;.plx .reveal:not(.in)&#x27;).forEach(function(el){el.classList.add(&#x27;in&#x27;);}); },2500);
 })();
 &lt;/script&gt;
 </pre>
