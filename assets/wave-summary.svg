@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="2160" height="1080" viewBox="0 0 1400 700" role="img" aria-labelledby="title desc">
-  <title id="title">Purland Lifetune 不是阻擋，而是調和。</title>
+  <title id="title">Purland Lifetune 不是屏蔽，而是調和。</title>
   <desc id="desc">左側呈現雜亂電磁波，經過中央 Lifetune Zone 產品後，右側轉為優化後的規律波型。</desc>
   <defs>
     <linearGradient id="waveBg" x1="0" x2="1" y1="0" y2="1">
@@ -36,7 +36,7 @@
 
   <g transform="translate(44 92)">
     <text x="0" y="0" fill="#101614" font-family="Noto Sans TC, PingFang TC, Microsoft JhengHei, sans-serif" font-size="78" font-weight="900">
-      <tspan x="0" dy="0">不是阻擋。</tspan>
+      <tspan x="0" dy="0">不是屏蔽。</tspan>
       <tspan x="0" dy="86" fill="#459590">而是調和。</tspan>
     </text>
       <rect x="4" y="132" width="30" height="3" rx="1.5" fill="url(#rightWave)"/>
