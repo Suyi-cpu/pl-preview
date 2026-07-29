@@ -18,29 +18,29 @@
 
   <rect width="2048" height="1024" fill="#fff"/>
 
-  <text x="125" y="140" font-family="-apple-system, BlinkMacSystemFont, 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif" font-size="72" font-weight="400" fill="#070707" ><tspan x="125" dy="0">Lifetune 的分層結構</tspan></text>
-  <text x="126" y="206" font-family="-apple-system, BlinkMacSystemFont, 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif" font-size="32" font-weight="700" fill="#070707" ><tspan x="126" dy="0">從電路板到黏著層，一層一層拆開看</tspan></text>
-  <text x="126" y="258" font-family="-apple-system, BlinkMacSystemFont, 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif" font-size="31" font-weight="400" fill="#070707" ><tspan x="126" dy="0">Lifetune 以被動式矽晶共振結構為核心。當環境電磁場</tspan><tspan x="126" dy="45">接觸晶片表面的微米級蝕刻圖樣時，波會產生繞射、共振</tspan><tspan x="126" dy="45">與相位疊加等物理互動，使局部場的分佈方式被重新安排</tspan><tspan x="126" dy="45">——不需電源，也不影響設備原有的連線功能。</tspan></text>
+  
+  
+  
 
   
-    <circle cx="168" cy="568" r="42" fill="#8e986a"/>
-    <text x="168" y="587" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif" font-size="62" font-weight="300" fill="#fff">1</text>
-    <text x="246" y="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif" font-size="30" font-weight="400" fill="#070707" ><tspan x="246" dy="0">PCB 印刷電路板</tspan><tspan x="246" dy="39">ENIG 化學鎳金處理</tspan></text>
+    
+    
+    
   
   
-    <circle cx="168" cy="704" r="42" fill="#9aafa4"/>
-    <text x="168" y="723" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif" font-size="62" font-weight="300" fill="#fff">2</text>
-    <text x="246" y="713" font-family="-apple-system, BlinkMacSystemFont, 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif" font-size="30" font-weight="400" fill="#070707" ><tspan x="246" dy="0">一顆 16S5G AIRES 矽晶圓共振晶片</tspan></text>
+    
+    
+    
   
   
-    <circle cx="168" cy="831" r="42" fill="#a78376"/>
-    <text x="168" y="850" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif" font-size="62" font-weight="300" fill="#fff">3</text>
-    <text x="246" y="840" font-family="-apple-system, BlinkMacSystemFont, 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif" font-size="30" font-weight="400" fill="#070707" ><tspan x="246" dy="0">Polymer 高分子聚合物</tspan></text>
+    
+    
+    
   
   
-    <circle cx="168" cy="957" r="42" fill="#304346"/>
-    <text x="168" y="976" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif" font-size="62" font-weight="300" fill="#fff">4</text>
-    <text x="246" y="966" font-family="-apple-system, BlinkMacSystemFont, 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif" font-size="30" font-weight="400" fill="#070707" ><tspan x="246" dy="0">黏著層</tspan></text>
+    
+    
+    
   
 
   <g id="diagram" fill="none" stroke-linecap="round" stroke-linejoin="round">
