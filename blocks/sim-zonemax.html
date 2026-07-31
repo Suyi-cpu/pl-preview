@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>模擬 Shopline 環境測試｜Pürland Lifetune ZONE MAX 產品頁程式碼</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#EFEDEA;color:#333;font-family:Helvetica,Arial,sans-serif;font-size:16.8px;line-height:1.6}
+h1{font-size:33.6px;text-align:center!important;margin:1.2em 0;color:#111;font-weight:400}
+h2{font-size:26px;text-align:center;margin:1em 0;color:#111;font-weight:400}
+h3{font-size:20px;text-align:center;margin:.8em 0;color:#111;font-weight:400}
+p{margin:1em 0;text-align:justify;text-indent:2em;line-height:1.6}
+a{color:#1a5fd0;text-decoration:underline}
+img{border:3px solid #d33;max-width:100%}
+ul,ol{list-style:disc;padding-left:2em}
+table{border-collapse:separate;border-spacing:4px}
+td,th{border:1px solid #d33;padding:2px;text-align:center}
+.btn{background:#d33;color:#fff;padding:4px 8px;border-radius:0;font-size:13px}
+section{padding:0}
+.sl-bar{background:#222;color:#fff;padding:12px 20px;font-size:14px;text-align:center}
+.sl-nav{background:#fff;border-bottom:1px solid #ddd;padding:16px 20px;display:flex;gap:20px;align-items:center}
+.sl-nav b{font-size:19px}
+.sl-nav a{margin-left:auto;color:#1a5fd0}
+.sl-foot{background:#222;color:#bbb;padding:34px 20px;font-size:14px;text-align:center}
+.sim-sep{border:0;border-top:2px dashed #c33;margin:0}
+.sl-probe{background:#fff;border:2px solid #d33;padding:16px 20px}
+</style>
+</head>
+<body>
+<div class="sl-bar">模擬 Shopline 主題環境 — 這行與下方導覽列/頁尾都是「主題原生」，不該被我們的區塊影響</div>
+<div class="sl-nav"><b>Pürland（主題原生導覽）</b><a href="#">主題原生連結（應為藍色底線）</a></div>
+<div class="sl-probe">
+  <h1>主題原生 H1（應為 33.6px、置中、細體）</h1>
+  <p>主題原生段落：應保持 16.8px、兩端對齊、首行縮排兩字。<a href="#">原生連結</a>，以及 <span class="btn">原生 .btn（紅底小字）</span>。</p>
+</div>
+
+<!-- ══ 01-Hero與使用情境.html ══ -->
+<div class="plx">
+<style>
+.plx{--page:#E7DBD8;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;--ink-hi:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--brand-teal:#367C78;--acc-diffraction:#cba654;--acc-resonance:#66bfa1;--acc-phase:#459590;--acc-charge:#7ca5d5;--line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);--shadow-card:0 2px 16px -8px rgba(16,22,20,.06);--hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);--radius-xl:14px;--radius-lg:12px;--radius-md:10px;--radius-control:999px;--font-ui:"Noto Sans TC","PingFang TC","Helvetica Neue",Helvetica,Arial,sans-serif;--font-display:"Noto Sans TC","PingFang TC",sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);color:var(--ink-mid);font-family:var(--font-ui);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.plx section{padding:64px 0}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--brand-teal);text-decoration:none}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+.plx h1{font-weight:700;font-size:clamp(28px,4vw,42px);letter-spacing:.01em}
+.plx h2{font-weight:700;font-size:clamp(22px,2.8vw,30px)}
+.plx h3{font-weight:700;font-size:20px}
+.plx .eyebrow{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .sec-num{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important}
+.plx .sec-head .sec-num::before{content:""!important;display:inline-block!important;width:26px!important;height:2px!important;background:#C9A24E!important;margin-right:10px!important;vertical-align:middle!important}
+.plx .wrap{max-width:1120px!important;margin:0 auto!important;padding:0 24px!important}
+.plx section{padding:80px 0!important}
+.plx .sec-head{display:flex!important;align-items:baseline!important;gap:16px!important;border-top:1px solid var(--line)!important;padding-top:20px!important;margin-bottom:40px!important}
+.plx .sec-head h2{flex:1!important}
+.plx .btn{display:inline-flex!important;align-items:center!important;gap:8px!important;font-size:17px!important;font-weight:600!important;padding:12px 24px!important;border-radius:var(--radius-control)!important;transition:all .25s var(--ease)!important}
+.plx .btn-primary{background:var(--brand-teal)!important;color:#fff!important}
+.plx .btn-primary:hover{background:var(--surface-deep)!important;transform:translateY(-2px)!important}
+.plx .btn-ghost{border:1.5px solid var(--line)!important;color:var(--ink-hi)!important;background:transparent!important}
+.plx .btn-ghost:hover{border-color:var(--ink-dim)!important;transform:translateY(-2px)!important}
+.plx .plx-hero{background:var(--hero-grad)!important;padding:84px 0 76px!important;border-bottom:1px solid var(--line-2)!important}
+.plx .hero-grid{display:grid!important;grid-template-columns:1.05fr .95fr!important;gap:56px!important;align-items:center!important}
+.plx .plx-hero h1{margin:18px 0 6px!important}
+.plx .plx-hero .sub{font-family:var(--font-display)!important;font-weight:700!important;font-size:clamp(19px,2.4vw,24px)!important;color:var(--ink-hi)!important;margin-bottom:16px!important}
+.plx .plx-hero p.lede{max-width:480px!important;font-size:18px!important}
+.plx .price-row{display:flex!important;align-items:baseline!important;gap:14px!important;margin-top:26px!important}
+.plx .price{font-family:var(--font-mono)!important;font-size:32px!important;font-weight:600!important;color:var(--ink-hi)!important}
+.plx .price-note{font-size:15px!important;color:var(--ink-dim)!important}
+.plx .hero-ctas{display:flex!important;gap:14px!important;margin-top:22px!important;flex-wrap:wrap!important}
+.plx .hero-img{border-radius:var(--radius-xl)!important;overflow:hidden!important;border:1px solid var(--line)!important;box-shadow:var(--shadow-card)!important}
+.plx .hero-chips{display:flex!important;gap:10px!important;margin-top:20px!important;flex-wrap:wrap!important}
+.plx .chip{font-family:var(--font-mono)!important;font-size:13.5px!important;letter-spacing:.12em!important;color:var(--ink-dim)!important;border:1px solid var(--line)!important;padding:5px 12px!important;border-radius:999px!important;background:rgba(255,255,255,.35)!important}
+.plx .sem-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:24px!important}
+.plx .box-list{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;padding:28px!important;box-shadow:var(--shadow-card)!important}
+.plx .box-list h3{margin-bottom:14px!important}
+.plx .box-list li{list-style:none!important;padding:10px 0!important;border-bottom:1px solid var(--line-2)!important;font-size:16.5px!important;display:flex!important;gap:10px!important}
+.plx .box-list li:last-child{border-bottom:none!important}
+.plx .box-list li::before{content:"—"!important;color:var(--brand-teal)!important}
+.plx section[id],.plx figure[id],.plx div[id]{scroll-margin-top:92px!important}
+@media (max-width:720px){.plx .sem-grid{grid-template-columns:1fr!important}}
+@media (max-width:840px){.plx section{padding:56px 0!important}.plx .hero-grid{grid-template-columns:1fr!important;gap:32px!important}}
+@media (max-width:720px){.plx .eyebrow{font-size:11.5px!important;letter-spacing:.08em!important;line-height:1.7!important;word-break:keep-all!important;overflow-wrap:anywhere!important}.plx .sec-head .eyebrow::before{width:20px!important;margin-right:9px!important}.plx section[id],.plx figure[id],.plx div[id]{scroll-margin-top:84px!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx table{border-collapse:collapse!important;border-spacing:0!important}
+.plx td,.plx th{border:0!important;background:transparent!important}
+.plx .btn{text-align:center!important}
+.plx summary{cursor:pointer}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+</style>
+
+<div class="plx-hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow reveal">開放式大空間 · 置於空間</div>
+      <h1 class="reveal">Lifetune ZONE MAX</h1>
+      <div class="sub reveal">不是屏蔽，而是調和——涵蓋最廣的一枚</div>
+      <p class="lede reveal">120.7 mm 的專利蝕刻矽晶片，系列中涵蓋最廣。被動運作、無需電源、不影響訊號，為開放式格局而設計——客廳、開放辦公室、挑高空間，一枚涵蓋 42.4 公尺開放空間。</p>
+      <div class="price-row reveal">
+        <span class="price">NT$11,800</span>
+        <span class="price-note">涵蓋直徑 42.4 m · 開放空間</span>
+      </div>
+      <div class="hero-ctas reveal">
+        <a class="btn btn-primary" href="https://www.purland.com.tw/products/lifetune-zone-max">購買 ZONE MAX</a>
+        <a class="btn btn-ghost" href="#specs">查看規格與內容物</a>
+      </div>
+      <div class="hero-chips reveal">
+        <span class="chip">被動元件 · 無需電源</span>
+        <span class="chip">擺放即作用</span>
+        <span class="chip">24 Hz – 28 GHz</span>
+      </div>
+    </div>
+    <figure class="hero-img reveal">
+      <img src="https://suyi-cpu.github.io/pl-preview/assets/product-zonemax.jpg" alt="Lifetune ZONE MAX 金色蝕刻長方片">
+    </figure>
+  </div>
+</div>
+
+<!-- 02 · 使用情境 -->
+<section id="scenes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02 · 使用情境</span>
+      <h2>一枚涵蓋一整個開放空間</h2>
+    </div>
+    <div class="sem-grid">
+      <figure class="hero-img reveal" style="margin:0!important">
+        <img src="https://suyi-cpu.github.io/pl-preview/assets/candidates/zonemax/Maxcomputer.jpg" alt="Lifetune ZONE MAX 置於筆電旁，顯示尺度" loading="lazy">
+      </figure>
+      <div class="box-list reveal" style="align-self:center!important">
+        <h3>常見的擺放與配戴</h3>
+        <ul>
+          <li>客廳、開放式起居空間</li>
+          <li>開放辦公室與共享工作區</li>
+          <li>挑高、樓中樓格局</li>
+          <li>工作室與大坪數空間</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<script>
+(function(){
+  var box=document.querySelectorAll('.plx');
+  box.forEach(function(b){ b.classList.add('plx-js'); });
+  var els=document.querySelectorAll('.plx .reveal');
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll('.plx .reveal:not(.in)').forEach(function(el){el.classList.add('in')}); },2500);
+})();
+</script>
+
+
+<hr class="sim-sep">
+
+<!-- ══ 02-適合誰與核心價值.html ══ -->
+<div class="plx">
+<style>
+.plx{--page:#E7DBD8;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;--ink-hi:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--brand-teal:#367C78;--acc-diffraction:#cba654;--acc-resonance:#66bfa1;--acc-phase:#459590;--acc-charge:#7ca5d5;--line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);--shadow-card:0 2px 16px -8px rgba(16,22,20,.06);--hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);--radius-xl:14px;--radius-lg:12px;--radius-md:10px;--radius-control:999px;--font-ui:"Noto Sans TC","PingFang TC","Helvetica Neue",Helvetica,Arial,sans-serif;--font-display:"Noto Sans TC","PingFang TC",sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);color:var(--ink-mid);font-family:var(--font-ui);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.plx section{padding:64px 0}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--brand-teal);text-decoration:none}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+.plx h1{font-weight:700;font-size:clamp(28px,4vw,42px);letter-spacing:.01em}
+.plx h2{font-weight:700;font-size:clamp(22px,2.8vw,30px)}
+.plx h3{font-weight:700;font-size:20px}
+.plx .sec-num{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important}
+.plx .sec-head .sec-num::before{content:""!important;display:inline-block!important;width:26px!important;height:2px!important;background:#C9A24E!important;margin-right:10px!important;vertical-align:middle!important}
+.plx .wrap{max-width:1120px!important;margin:0 auto!important;padding:0 24px!important}
+.plx section{padding:80px 0!important}
+.plx .sec-head{display:flex!important;align-items:baseline!important;gap:16px!important;border-top:1px solid var(--line)!important;padding-top:20px!important;margin-bottom:40px!important}
+.plx .sec-head h2{flex:1!important}
+.plx .who-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:18px!important}
+.plx .who{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;padding:28px!important;box-shadow:var(--shadow-card)!important}
+.plx .who .w-num{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--brand-teal)!important}
+.plx .who h3{margin:10px 0 8px!important}
+.plx .who p{font-size:16px!important;line-height:1.75!important}
+.plx .val-band{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:1px!important;background:var(--line-2)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;overflow:hidden!important;box-shadow:var(--shadow-card)!important}
+.plx .val-band div{background:var(--surface)!important;padding:24px!important}
+.plx .val-band h3{font-size:18px!important;margin-bottom:6px!important}
+.plx .val-band p{font-size:15.5px!important;line-height:1.7!important;color:var(--ink-mid)!important}
+.plx .who-grid.c3{grid-template-columns:repeat(3,1fr)!important}
+.plx section[id],.plx div[id]{scroll-margin-top:92px!important}
+@media (max-width:840px){.plx .who-grid{grid-template-columns:1fr 1fr!important}}
+@media (max-width:520px){.plx .who-grid{grid-template-columns:1fr!important}}
+@media (max-width:840px){.plx section{padding:56px 0!important}.plx .who-grid{grid-template-columns:1fr!important}.plx .val-band{grid-template-columns:1fr 1fr!important}}
+@media(max-width:840px){.plx .who-grid.c3{grid-template-columns:1fr!important}}
+@media (max-width:720px){.plx section[id],.plx div[id]{scroll-margin-top:84px!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx table{border-collapse:collapse!important;border-spacing:0!important}
+.plx td,.plx th{border:0!important;background:transparent!important}
+.plx .btn{text-align:center!important}
+.plx summary{cursor:pointer}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+</style>
+
+<section id="who" style="background:var(--surface)!important;border-top:1px solid var(--line-2)!important;border-bottom:1px solid var(--line-2)!important">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03 · 誰適合 ZONE MAX</span>
+      <h2>這一款，是為誰設計的</h2>
+    </div>
+    <div class="who-grid c3">
+      <div class="who reveal">
+        <div class="w-num">🛋 開放式格局的家</div>
+        <h3>一枚覆蓋整個開放區</h3>
+        <p>客餐廚連在一起、沒有隔間的開放式格局，用小尺寸得放好幾枚。ZONE MAX 一枚涵蓋 42.4 公尺，覆蓋整個開放區。</p>
+      </div>
+      <div class="who reveal">
+        <div class="w-num">🏢 辦公室與工作室</div>
+        <h3>裝置密度最高的地方</h3>
+        <p>開放辦公室、共享工作區——人多、裝置密、訊號雜。ZONE MAX 是系列裡為這種大範圍、高密度環境而設計的一款。</p>
+      </div>
+      <div class="who reveal">
+        <div class="w-num">📐 挑高與大坪數空間</div>
+        <h3>小尺寸涵蓋不足時</h3>
+        <p>挑高、樓中樓、大坪數——這些空間用一般尺寸涵蓋不夠。ZONE MAX 提供系列中最廣的涵蓋範圍。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · 核心價值 -->
+<section id="values">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">04 · 核心價值</span>
+      <h2>擺上／掛上即作用，此後不用管它</h2>
+    </div>
+    <div class="val-band reveal">
+      <div><h3>被動運作</h3><p>不阻擋、不發射、不需電源——作用來自晶片幾何與環境場的交互作用，環境中有電磁場就持續運作。</p></div>
+      <div><h3>不影響訊號</h3><p>裝置照常連線，不改變訊號的收發。</p></div>
+      <div><h3>結構即壽命</h3><p>只要晶片結構保持完整，就持續作用——沒有「效期」這回事。</p></div>
+      <div><h3>可立、可壁掛、可展示</h3><p>搭配選購橡木 Multi Mount，平放、立起或壁掛都行，自由融入空間。</p></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<script>
+(function(){
+  var box=document.querySelectorAll('.plx');
+  box.forEach(function(b){ b.classList.add('plx-js'); });
+  var els=document.querySelectorAll('.plx .reveal');
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll('.plx .reveal:not(.in)').forEach(function(el){el.classList.add('in')}); },2500);
+})();
+</script>
+
+
+<hr class="sim-sep">
+
+<!-- ══ 03-核心技術與使用方式.html ══ -->
+<div class="plx">
+<style>
+.plx{--page:#E7DBD8;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;--ink-hi:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--brand-teal:#367C78;--acc-diffraction:#cba654;--acc-resonance:#66bfa1;--acc-phase:#459590;--acc-charge:#7ca5d5;--line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);--shadow-card:0 2px 16px -8px rgba(16,22,20,.06);--hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);--radius-xl:14px;--radius-lg:12px;--radius-md:10px;--radius-control:999px;--font-ui:"Noto Sans TC","PingFang TC","Helvetica Neue",Helvetica,Arial,sans-serif;--font-display:"Noto Sans TC","PingFang TC",sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);color:var(--ink-mid);font-family:var(--font-ui);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.plx section{padding:64px 0}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--brand-teal);text-decoration:none}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+.plx h1{font-weight:700;font-size:clamp(28px,4vw,42px);letter-spacing:.01em}
+.plx h2{font-weight:700;font-size:clamp(22px,2.8vw,30px)}
+.plx h3{font-weight:700;font-size:20px}
+.plx .deep :focus-visible{outline-color:#8FC7B4!important}
+.plx .eyebrow{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .sec-num{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important}
+.plx .sec-head .sec-num::before{content:""!important;display:inline-block!important;width:26px!important;height:2px!important;background:#C9A24E!important;margin-right:10px!important;vertical-align:middle!important}
+.plx .wrap{max-width:1120px!important;margin:0 auto!important;padding:0 24px!important}
+.plx section{padding:80px 0!important}
+.plx .sec-head{display:flex!important;align-items:baseline!important;gap:16px!important;border-top:1px solid var(--line)!important;padding-top:20px!important;margin-bottom:40px!important}
+.plx .sec-head h2{flex:1!important}
+.plx .deep{background:var(--surface-deep)!important;color:#EAF3EF!important;padding:76px 0!important}
+.plx .deep h2{color:#FFFFFF!important}
+.plx .deep .eyebrow{color:#8FC7B4!important}
+.plx .deep p.lede{max-width:620px!important;font-size:18px!important;color:#C4DCD2!important;margin-top:14px!important}
+.plx .deep .stats{display:flex!important;gap:44px!important;margin-top:34px!important;flex-wrap:wrap!important}
+.plx .deep .stats .s-num{font-family:var(--font-mono)!important;font-size:28px!important;color:#FFFFFF!important}
+.plx .deep .stats .s-label{font-size:15px!important;color:#9FB7B0!important;margin-top:2px!important}
+.plx .deep .chip-img{margin-top:44px!important;border-radius:var(--radius-xl)!important;overflow:hidden!important;border:1px solid rgba(242,238,228,.14)!important}
+.plx .anatomy-note{margin-top:30px!important;font-size:16px!important;color:#9FB7B0!important;border-left:2px solid rgba(242,238,228,.2)!important;padding-left:16px!important;max-width:560px!important}
+.plx .how-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:20px!important}
+.plx .how{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;padding:28px!important;box-shadow:var(--shadow-card)!important}
+.plx .how .h-num{font-family:var(--font-mono)!important;font-size:22px!important;color:var(--brand-teal)!important}
+.plx .how h3{margin:12px 0 8px!important;font-size:19px!important}
+.plx .how p{font-size:16px!important;line-height:1.75!important}
+.plx .how-note{margin-top:24px!important;font-size:15.5px!important;color:var(--ink-dim)!important;border-left:2px solid var(--line)!important;padding-left:16px!important;max-width:560px!important}
+.plx section[id],.plx div[id]{scroll-margin-top:92px!important}
+@media (max-width:840px){.plx section{padding:56px 0!important}.plx .how-grid{grid-template-columns:1fr!important}}
+@media (max-width:720px){.plx .eyebrow{font-size:11.5px!important;letter-spacing:.08em!important;line-height:1.7!important;word-break:keep-all!important;overflow-wrap:anywhere!important}.plx .sec-head .eyebrow::before{width:20px!important;margin-right:9px!important}.plx section[id],.plx div[id]{scroll-margin-top:84px!important}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx table{border-collapse:collapse!important;border-spacing:0!important}
+.plx td,.plx th{border:0!important;background:transparent!important}
+.plx .btn{text-align:center!important}
+.plx summary{cursor:pointer}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+</style>
+
+<div class="deep" id="tech">
+  <div class="wrap">
+    <div class="eyebrow reveal">05 · 核心技術 · THE CHIP INSIDE</div>
+    <h2 class="reveal" style="margin-top:14px!important">每一款 Lifetune，<br>核心都是同一枚晶片</h2>
+    <p class="lede reveal">全系列共用同一項專利蝕刻技術；ZONE MAX 為涵蓋最廣的一款，搭載 64P1S5G 矽晶共振晶片（系列其餘型號為 16S5G）。以與半導體業同級的光刻製程，在矽晶表面蝕刻出自相似環形結構，作用完全來自幾何本身。</p>
+    <div class="stats reveal">
+      <div><div class="s-num">64P1S5G</div><div class="s-label">專利矽晶共振晶片</div></div>
+      <div><div class="s-num">24 Hz – 28 GHz</div><div class="s-label">對應頻段</div></div>
+      <div><div class="s-num">0</div><div class="s-label">無需電源 · 被動運作</div></div>
+    </div>
+    <div class="chip-img reveal"><img src="https://suyi-cpu.github.io/pl-preview/assets/chip-gold-macro.jpg" alt="Lifetune 專利蝕刻矽晶芯片特寫" loading="lazy"></div>
+    <p class="anatomy-note reveal">完整的物理機制與晶片結構——繞射、共振、相位干涉與電荷重分佈四種交互作用——請見<a href="https://www.purland.com.tw/pages/how-it-works" style="color:#9FB7B0!important">運作原理頁</a>。</p>
+  </div>
+</div>
+
+<!-- 06 · 使用方式 -->
+<section id="how" style="background:var(--surface)!important;border-top:1px solid var(--line-2)!important;border-bottom:1px solid var(--line-2)!important">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">06 · 擺放方式</span>
+      <h2>擺著就作用，不必設定</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how reveal">
+        <div class="h-num">01</div>
+        <h3>選空間中央位置</h3>
+        <p>放在開放空間較central的位置，讓涵蓋範圍均勻分佈。</p>
+      </div>
+      <div class="how reveal">
+        <div class="h-num">02</div>
+        <h3>平放、立起或壁掛</h3>
+        <p>可直接平放，或搭配選購的橡木 Multi Mount 立起、壁掛、展示。</p>
+      </div>
+      <div class="how reveal">
+        <div class="h-num">03</div>
+        <h3>即刻作用</h3>
+        <p>無需設定、無需插電——擺著就持續運作。</p>
+      </div>
+    </div>
+    <p class="how-note reveal">ZONE MAX 為室內擺放設計；輕量、可獨立站立並自由重新擺放。搭配選購的歐洲橡木 Multi Mount 可立可掛。</p>
+  </div>
+</section>
+</div>
+
+<script>
+(function(){
+  var box=document.querySelectorAll('.plx');
+  box.forEach(function(b){ b.classList.add('plx-js'); });
+  var els=document.querySelectorAll('.plx .reveal');
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll('.plx .reveal:not(.in)').forEach(function(el){el.classList.add('in')}); },2500);
+})();
+</script>
+
+
+<hr class="sim-sep">
+
+<!-- ══ 04-規格比較與問答.html ══ -->
+<div class="plx">
+<style>
+.plx{--page:#E7DBD8;--surface:#FFFFFF;--surface-white:#FFFFFF;--surface-deep:#144D43;--ink-hi:#2B2722;--ink-mid:#42403A;--ink-dim:#645B52;--brand-teal:#367C78;--acc-diffraction:#cba654;--acc-resonance:#66bfa1;--acc-phase:#459590;--acc-charge:#7ca5d5;--line:rgba(16,22,20,.1);--line-2:rgba(16,22,20,.05);--shadow-card:0 2px 16px -8px rgba(16,22,20,.06);--hero-grad:linear-gradient(115deg,#FFFFFF 30%,#F2F7F3 55%,#E9F1F4 75%,#E6F2EC);--radius-xl:14px;--radius-lg:12px;--radius-md:10px;--radius-control:999px;--font-ui:"Noto Sans TC","PingFang TC","Helvetica Neue",Helvetica,Arial,sans-serif;--font-display:"Noto Sans TC","PingFang TC",sans-serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1);color:var(--ink-mid);font-family:var(--font-ui);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.plx section{padding:64px 0}
+.plx *{margin:0;padding:0;box-sizing:border-box}
+.plx img{max-width:100%;display:block}
+.plx a{color:var(--brand-teal);text-decoration:none}
+.plx :focus-visible{outline:2px solid #144D43;outline-offset:3px;border-radius:3px}
+.plx h1,h2,h3{font-family:var(--font-display);color:var(--ink-hi);line-height:1.28}
+.plx h1{font-weight:700;font-size:clamp(28px,4vw,42px);letter-spacing:.01em}
+.plx h2{font-weight:700;font-size:clamp(22px,2.8vw,30px)}
+.plx h3{font-weight:700;font-size:20px}
+.plx .eyebrow{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;text-transform:uppercase!important;color:var(--ink-dim)!important}
+.plx .sec-num{font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.16em!important;color:var(--ink-dim)!important}
+.plx .sec-head .sec-num::before{content:""!important;display:inline-block!important;width:26px!important;height:2px!important;background:#C9A24E!important;margin-right:10px!important;vertical-align:middle!important}
+.plx .num{font-family:var(--font-mono)!important}
+.plx .wrap{max-width:1120px!important;margin:0 auto!important;padding:0 24px!important}
+.plx section{padding:80px 0!important}
+.plx .sec-head{display:flex!important;align-items:baseline!important;gap:16px!important;border-top:1px solid var(--line)!important;padding-top:20px!important;margin-bottom:40px!important}
+.plx .sec-head h2{flex:1!important}
+.plx .btn{display:inline-flex!important;align-items:center!important;gap:8px!important;font-size:17px!important;font-weight:600!important;padding:12px 24px!important;border-radius:var(--radius-control)!important;transition:all .25s var(--ease)!important}
+.plx .btn-primary{background:var(--brand-teal)!important;color:#fff!important}
+.plx .btn-primary:hover{background:var(--surface-deep)!important;transform:translateY(-2px)!important}
+.plx .btn-ghost{border:1.5px solid var(--line)!important;color:var(--ink-hi)!important;background:transparent!important}
+.plx .btn-ghost:hover{border-color:var(--ink-dim)!important;transform:translateY(-2px)!important}
+.plx .hero-ctas{display:flex!important;gap:14px!important;margin-top:22px!important;flex-wrap:wrap!important}
+.plx .spec-compare{border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;overflow:hidden!important;background:var(--surface-white)!important;box-shadow:var(--shadow-card)!important}
+.plx .sc-head{display:grid!important;grid-template-columns:minmax(190px,1.3fr) 118px minmax(230px,2fr) 132px!important;gap:22px!important;padding:16px 26px!important;background:var(--ink-hi)!important;color:#fff!important;font-family:var(--font-mono)!important;font-size:13px!important;letter-spacing:.14em!important;text-transform:uppercase!important}
+.plx .sc-row{display:grid!important;grid-template-columns:minmax(190px,1.3fr) 118px minmax(230px,2fr) 132px!important;gap:22px!important;padding:22px 26px!important;align-items:center!important;border-top:1px solid var(--line-2)!important;transition:background .25s var(--ease)!important}
+.plx .sc-row:hover{background:#F3ECE4!important}
+.plx .sc-row.is-one{background:color-mix(in srgb,var(--brand-teal) 7%,transparent)!important;box-shadow:inset 3px 0 0 var(--brand-teal)!important}
+.plx .sc-prod{display:flex!important;gap:14px!important;align-items:baseline!important}
+.plx .sc-rank{font-family:var(--font-mono)!important;font-size:14px!important;color:var(--ink-dim)!important;flex-shrink:0!important}
+.plx .sc-name{font-family:var(--font-display)!important;font-weight:700!important;font-size:18px!important;color:var(--ink-hi)!important}
+.plx .sc-badge{font-family:var(--font-mono)!important;font-size:12px!important;letter-spacing:.06em!important;background:var(--brand-teal)!important;color:#fff!important;padding:2px 7px!important;border-radius:999px!important;margin-left:8px!important;vertical-align:middle!important}
+.plx .sc-scenario{font-size:14.5px!important;color:var(--ink-dim)!important;margin-top:4px!important;line-height:1.5!important}
+.plx .sc-dim{font-size:15px!important;color:var(--ink-mid)!important;line-height:1.5!important}
+.plx .sc-dim .num{font-family:var(--font-mono)!important;font-size:17px!important;color:var(--ink-hi)!important}
+.plx .sc-dim small{font-size:13px!important;color:var(--ink-dim)!important}
+.plx .sc-covnum{font-family:var(--font-mono)!important;font-size:17px!important;color:var(--ink-dim)!important;margin-bottom:9px!important}
+.plx .sc-covnum .num{font-size:25px!important;color:var(--ink-hi)!important;font-weight:600!important}
+.plx .sc-bar{height:6px!important;border-radius:999px!important;background:rgba(16,22,20,.07)!important;overflow:hidden!important}
+.plx .sc-bar i{display:block!important;height:100%!important;width:var(--w)!important;border-radius:999px!important;background:#459590!important}
+.plx .sc-row.is-one .sc-bar i{background:#2F6E64!important;position:relative!important}
+.plx .sc-row.is-one .sc-bar i::after{content:""!important;position:absolute!important;inset:0!important;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent)!important;animation:scShimmer 2.6s var(--ease) infinite!important}
+.plx .sc-meta{display:flex!important;flex-direction:column!important;gap:10px!important;align-items:flex-start!important}
+.plx .sc-water{font-family:var(--font-mono)!important;font-size:13px!important;letter-spacing:.05em!important;padding:3px 11px!important;border-radius:999px!important;border:1px solid var(--line)!important;white-space:nowrap!important}
+.plx .sc-water.is-splash{color:var(--brand-teal)!important;border-color:color-mix(in srgb,var(--brand-teal) 42%,transparent)!important}
+.plx .sc-water.is-indoor{color:var(--ink-dim)!important}
+.plx .sc-link{font-size:15px!important;font-weight:600!important}
+.plx .review-box{background:var(--surface-white)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;padding:40px 44px!important;box-shadow:var(--shadow-card)!important;max-width:820px!important}
+.plx .rv-placeholder{font-size:17.5px!important;color:var(--ink-mid)!important;padding-bottom:20px!important;border-bottom:1px solid var(--line-2)!important;margin-bottom:20px!important}
+.plx .rv-note{font-size:15.5px!important;line-height:1.85!important;color:var(--ink-dim)!important}
+.plx .spec-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:44px!important;align-items:start!important}
+.plx table.spec{width:100%!important;border-collapse:collapse!important;background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;overflow:hidden!important;box-shadow:var(--shadow-card)!important}
+.plx table.spec th,.plx table.spec td{text-align:left!important;padding:14px 20px!important;border-bottom:1px solid var(--line-2)!important;font-size:16.5px!important;vertical-align:top!important}
+.plx table.spec th{width:34%!important;font-weight:600!important;color:var(--ink-hi)!important;background:rgba(255,255,255,.4)!important}
+.plx table.spec td .num{font-size:17px!important}
+.plx table.spec tr:last-child th,.plx table.spec tr:last-child td{border-bottom:none!important}
+.plx .box-list{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;padding:28px!important;box-shadow:var(--shadow-card)!important}
+.plx .box-list h3{margin-bottom:14px!important}
+.plx .box-list li{list-style:none!important;padding:10px 0!important;border-bottom:1px solid var(--line-2)!important;font-size:16.5px!important;display:flex!important;gap:10px!important}
+.plx .box-list li:last-child{border-bottom:none!important}
+.plx .box-list li::before{content:"—"!important;color:var(--brand-teal)!important}
+.plx .footnote{margin-top:22px!important;font-family:var(--font-mono)!important;font-size:14px!important;letter-spacing:.12em!important;color:var(--ink-dim)!important}
+.plx .faq{max-width:760px!important}
+.plx details{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-lg)!important;margin-bottom:12px!important;box-shadow:var(--shadow-card)!important;overflow:hidden!important}
+.plx summary{cursor:pointer!important;padding:18px 22px!important;font-weight:600!important;color:var(--ink-hi)!important;font-size:17.5px!important;list-style:none!important;display:flex!important;justify-content:space-between!important;align-items:center!important;transition:background .2s var(--ease)!important}
+.plx summary::-webkit-details-marker{display:none!important}
+.plx summary::after{content:"+"!important;font-family:var(--font-mono)!important;font-size:20px!important;color:var(--ink-dim)!important;transition:transform .25s var(--ease)!important}
+.plx details[open] summary::after{transform:rotate(45deg)!important;color:var(--brand-teal)!important}
+.plx details[open]{border-left:3px solid var(--brand-teal)!important}
+.plx details .a{padding:0 22px 20px!important;font-size:16.5px!important;line-height:1.8!important}
+.plx .cta-final{background:var(--surface)!important;border:1px solid var(--line)!important;border-radius:var(--radius-xl)!important;box-shadow:var(--shadow-card)!important;padding:60px 48px!important;text-align:center!important}
+.plx .cta-final h2{max-width:520px!important;margin:14px auto 10px!important}
+.plx .cta-final p{max-width:460px!important;margin:0 auto!important;font-size:17px!important}
+.plx .cta-final .hero-ctas{justify-content:center!important;margin-top:28px!important}
+.plx .buybar{position:fixed!important;left:0!important;right:0!important;bottom:0!important;z-index:60!important;display:none!important;align-items:center!important;justify-content:space-between!important;gap:14px!important;padding:11px 18px calc(11px + env(safe-area-inset-bottom))!important;background:rgba(253,252,250,.97)!important;backdrop-filter:blur(12px)!important;border-top:1px solid var(--line)!important;box-shadow:0 -8px 30px rgba(16,22,20,.09)!important;transform:translateY(120%)!important;transition:transform .34s var(--ease)!important}
+.plx .buybar.show{transform:none!important}
+.plx .buybar .bb-info{min-width:0!important}
+.plx .buybar .bb-name{font-family:var(--font-display)!important;font-weight:700!important;font-size:16.5px!important;color:var(--ink-hi)!important;line-height:1.25!important}
+.plx .buybar .bb-price{font-family:var(--font-mono)!important;font-size:15.5px!important;color:var(--ink-mid)!important;margin-top:3px!important}
+.plx .buybar .bb-price .free{color:var(--brand-teal)!important;font-weight:600!important}
+.plx .buybar .bb-btn{flex-shrink:0!important;background:var(--ink-hi)!important;color:#fff!important;font-weight:600!important;font-size:17px!important;padding:12px 28px!important;border-radius:999px!important;transition:background .2s var(--ease)!important}
+.plx .buybar .bb-btn:hover{background:var(--surface-deep)!important}
+.plx .line-qr{display:none!important}
+.plx .line-qr img{width:66px!important;height:66px!important;display:block!important;border-radius:6px!important}
+.plx .line-qr b{display:block!important;font-size:14px!important;font-weight:600!important;color:#2B2722!important;margin-bottom:3px!important}
+.plx .line-qr span{font-size:12.5px!important;color:#645B52!important}
+.plx section[id],.plx div[id]{scroll-margin-top:92px!important}
+@media(max-width:760px){.plx .sc-head{display:none!important}.plx .sc-row{grid-template-columns:1fr 1fr!important;gap:14px 20px!important;padding:22px 20px!important}.plx .sc-prod{grid-column:1/-1!important}.plx .sc-cover{grid-column:1/-1!important;order:5!important}.plx .sc-meta{flex-direction:row!important;align-items:center!important;gap:16px!important}}
+@media (max-width:720px){.plx .review-box{padding:28px 24px!important}}
+@media (max-width:840px){.plx section{padding:56px 0!important}.plx .buybar{display:flex!important}.plx .spec-grid{grid-template-columns:1fr!important}.plx .cta-final{padding:44px 24px!important}}
+@media(min-width:900px){.plx .line-qr{display:inline-flex!important;align-items:center!important;gap:13px!important;margin-top:22px!important;padding:10px 16px 10px 10px!important;background:#fff!important;border:1px solid #E4DAD2!important;border-radius:14px!important;text-align:left!important}}
+@media (max-width:720px){.plx .eyebrow{font-size:11.5px!important;letter-spacing:.08em!important;line-height:1.7!important;word-break:keep-all!important;overflow-wrap:anywhere!important}.plx .sec-head .eyebrow::before{width:20px!important;margin-right:9px!important}.plx section[id],.plx div[id]{scroll-margin-top:84px!important}}
+@keyframes scShimmer{0%{transform:translateX(-100%)}60%,100%{transform:translateX(320%)}}
+.plx .reveal{opacity:1;transform:none}
+.plx.plx-js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.plx.plx-js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.plx *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* ══ 防 Shopline 主題覆寫（勿刪）══ */
+.plx{text-align:left}
+.plx p,.plx h1,.plx h2,.plx h3,.plx li,.plx td,.plx th{padding:0!important;text-indent:0!important;text-align:inherit!important}
+.plx p{margin:0!important;font-size:inherit}
+.plx h1,.plx h2,.plx h3{margin:0!important}
+.plx a{text-decoration:none!important}
+.plx ul,.plx ol{list-style:none}
+.plx img{border:0!important;box-shadow:none!important;max-width:100%!important}
+.plx table{border-collapse:collapse!important;border-spacing:0!important}
+.plx td,.plx th{border:0!important;background:transparent!important}
+.plx .btn{text-align:center!important}
+.plx summary{cursor:pointer}
+@media(max-width:860px){
+  .plx section{padding:48px 0}
+  .plx .wrap{padding:0 22px}
+}
+</style>
+
+<section id="specs">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">07 · 規格與內容物</span>
+      <h2>可查證的數字</h2>
+    </div>
+    <div class="spec-grid">
+      <table class="spec reveal">
+        <tr><th>涵蓋直徑</th><td><span class='num'>42.4 m</span>（開放空間 · 139 ft）</td></tr>
+        <tr><th>產品尺寸</th><td><span class='num'>120.7 × 63.5 × 2 mm</span></td></tr>
+        <tr><th>核心晶片</th><td>64P1S5G 專利矽晶共振晶片</td></tr>
+        <tr><th>對應頻段</th><td><span class='num'>24 Hz – 28 GHz</span>：藍牙、WiFi、3G、4G、LTE、5G 及一般家用電子產品</td></tr>
+        <tr><th>電源</th><td>無需電源 · 被動運作</td></tr>
+        <tr><th>使用方式</th><td>置於空間即作用，可平放／立起／壁掛</td></tr>
+        <tr><th>使用壽命</th><td>結構完整即持續作用</td></tr>
+        <tr><th>選購配件</th><td>Multi Mount 歐洲手工橡木立座（可立／壁掛／展示）</td></tr>
+        <tr><th>使用環境</th><td>室內用</td></tr>
+      </table>
+      <div class="box-list reveal">
+        <h3>包裝內容物</h3>
+        <ul>
+          <li>Lifetune ZONE MAX 本體 × 1</li>
+          <li>中文產品說明</li>
+          <li>（可另購 Multi Mount 橡木立座）</li>
+        </ul>
+        <h3 style="margin-top:26px!important">品質與保障</h3>
+        <ul>
+          <li>全店免運，無門檻</li>
+          <li>7 天鑑賞期，依消保法通訊交易規定（鑑賞期為檢查商品之期間，非試用期）</li>
+          <li>Pürland 嚴選引進 · 台灣在地售後</li>
+        </ul>
+      </div>
+    </div>
+    <p class="footnote reveal">數值為開放空間涵蓋直徑 · 不分等級</p>
+  </div>
+</section>
+
+<!-- 08 · 系列比較 -->
+<section id="compare" style="background:var(--surface)!important;border-top:1px solid var(--line-2)!important;border-bottom:1px solid var(--line-2)!important">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">08 · 系列比較</span>
+      <h2>依情境選擇，不分等級</h2>
+    </div>
+    <div class="spec-compare reveal">
+      <div class="sc-head">
+        <span>產品 · 情境</span><span>尺寸</span><span>涵蓋直徑（開放空間）</span><span>防水 · 選購</span>
+      </div>
+      <div class="sc-row" style="--w:13.4%!important">
+        <div class="sc-prod"><div class="sc-rank">01</div><div><div class="sc-name">Lifetune ONE</div><div class="sc-scenario">單一裝置 · 固定位置 · 貼附</div></div></div>
+        <div class="sc-dim"><span class="num">17.4</span><br><small>直徑</small></div>
+        <div class="sc-cover"><div class="sc-covnum"><span class="num">5.6</span> m</div><div class="sc-bar"><i></i></div></div>
+        <div class="sc-meta"><span class="sc-water is-splash">日常防潑水</span><a class="sc-link" href="https://www.purland.com.tw/products/lifetune-one">查看 →</a></div>
+      </div>
+      <div class="sc-row" style="--w:23.4%!important">
+        <div class="sc-prod"><div class="sc-rank">02</div><div><div class="sc-name">Lifetune GO</div><div class="sc-scenario">孩童 · 寵物 · 輕薄配戴</div></div></div>
+        <div class="sc-dim"><span class="num">30×30</span> mm</div>
+        <div class="sc-cover"><div class="sc-covnum"><span class="num">9.8</span> m</div><div class="sc-bar"><i></i></div></div>
+        <div class="sc-meta"><span class="sc-water is-splash">日常防潑水</span><a class="sc-link" href="https://www.purland.com.tw/products/lifetune-go">查看 →</a></div>
+      </div>
+      <div class="sc-row" style="--w:30.6%!important">
+        <div class="sc-prod"><div class="sc-rank">03</div><div><div class="sc-name">Lifetune FLEX</div><div class="sc-scenario">隨身配戴 · 可攜帶</div></div></div>
+        <div class="sc-dim"><span class="num">34.8×34.8</span> mm</div>
+        <div class="sc-cover"><div class="sc-covnum"><span class="num">12.8</span> m</div><div class="sc-bar"><i></i></div></div>
+        <div class="sc-meta"><span class="sc-water is-splash">日常防潑水</span><a class="sc-link" href="https://www.purland.com.tw/products/lifetune-flex">查看 →</a></div>
+      </div>
+      <div class="sc-row" style="--w:67%!important">
+        <div class="sc-prod"><div class="sc-rank">04</div><div><div class="sc-name">Lifetune ZONE</div><div class="sc-scenario">小型空間 · 置於空間</div></div></div>
+        <div class="sc-dim"><span class="num">53×53</span> mm</div>
+        <div class="sc-cover"><div class="sc-covnum"><span class="num">28.3</span> m</div><div class="sc-bar"><i></i></div></div>
+        <div class="sc-meta"><span class="sc-water is-indoor">室內用</span><a class="sc-link" href="https://www.purland.com.tw/products/lifetune-zone">查看 →</a></div>
+      </div>
+      <div class="sc-row is-one" style="--w:100%!important">
+        <div class="sc-prod"><div class="sc-rank">05</div><div><div class="sc-name">Lifetune ZONE MAX<span class="sc-badge">本頁</span></div><div class="sc-scenario">開放式大空間 · 置於空間</div></div></div>
+        <div class="sc-dim"><span class="num">120.7×63.5</span> mm</div>
+        <div class="sc-cover"><div class="sc-covnum"><span class="num">42.4</span> m</div><div class="sc-bar"><i></i></div></div>
+        <div class="sc-meta"><span class="sc-water is-indoor">室內用</span><a class="sc-link" href="https://www.purland.com.tw/products/lifetune-zone-max">本頁商品</a></div>
+      </div>
+    </div>
+    <p class="footnote reveal">數值為開放空間涵蓋直徑 · 不分等級</p>
+  </div>
+</section>
+
+<!-- 09 · FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">09 · 常見問答</span>
+      <h2>你可能想知道</h2>
+    </div>
+    <div class="faq">
+      <details class="reveal">
+        <summary>運費怎麼算？</summary>
+        <div class="a">全店免運，無門檻——不論金額、不分件數，運費都由我們吸收。</div>
+      </details>
+      <details class="reveal">
+        <summary>可以退貨嗎？期限多久？</summary>
+        <div class="a">收到商品起有 7 天鑑賞期，依台灣消費者保護法通訊交易規定，鑑賞期內可辦理退貨。退貨時商品需保持完整——鑑賞期是「檢查商品」的期間，非試用期。</div>
+      </details>
+      <details class="reveal">
+        <summary>ZONE MAX 要放在哪？</summary>
+        <div class="a">放在開放空間較中央的位置，涵蓋較均勻。可平放，或用選購的橡木 Multi Mount 立起或壁掛。</div>
+      </details>
+      <details class="reveal">
+        <summary>要插電或充電嗎？</summary>
+        <div class="a">不需要。ZONE MAX 是被動元件，擺著就作用，環境中有電磁場即持續運作。</div>
+      </details>
+      <details class="reveal">
+        <summary>多大的空間適合 ZONE MAX？</summary>
+        <div class="a">ZONE MAX 涵蓋 42.4 公尺開放空間，為開放式大格局、挑高、大坪數與辦公室而設計。若是一般居家房間，ZONE（28.3 m）通常就夠。</div>
+      </details>
+      <details class="reveal">
+        <summary>會影響 WiFi 或電子裝置嗎？</summary>
+        <div class="a">不會。ZONE MAX 調整的是空間裡場的結構特性，不改變任何裝置的訊號收發。</div>
+      </details>
+      <details class="reveal">
+        <summary>跟 ZONE 主要差在哪？</summary>
+        <div class="a">差在涵蓋範圍與尺寸：ZONE 28.3 公尺、適合小型空間；ZONE MAX 42.4 公尺、為開放式大空間設計。不確定的話，<a href="https://lin.ee/0fagSFR">用 LINE 告訴我們你的空間</a>。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 09b · 評論 -->
+<section id="reviews" style="background:var(--surface)!important;border-top:1px solid var(--line-2)!important;border-bottom:1px solid var(--line-2)!important">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">10 · 使用者怎麼說 · REVIEWS</span>
+      <h2>真實訂單評價</h2>
+    </div>
+    <div class="review-box reveal">
+      <p class="rv-placeholder">🛒 此區串接 Shopline 評論模組，顯示經授權的真實訂單評價。</p>
+      <p class="rv-note">本平台評論經人工審核；<strong>涉及醫療或健康效果之內容恕不顯示</strong>。評價僅反映個別使用者對外觀、質感與使用便利性的主觀感受，不代表產品具醫療用途或人體療效。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · CTA -->
+<section id="buy" style="padding-top:20px!important">
+  <div class="wrap">
+    <div class="cta-final reveal">
+      <div class="eyebrow">11 · 下一步</div>
+      <h2>開放式大空間，<br>一枚就涵蓋</h2>
+      <p>NT$11,800 · 全店免運 · 7 天鑑賞期</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://www.purland.com.tw/products/lifetune-zone-max">購買 ZONE MAX</a>
+        <a class="btn btn-ghost" href="#compare">比較系列差異</a>
+        <a class="btn btn-ghost" href="https://lin.ee/0fagSFR">LINE 諮詢哪一款適合我</a>
+      </div>
+      <div class="line-qr" aria-hidden="true"><img src="https://suyi-cpu.github.io/pl-preview/assets/line-qr.svg" alt="" width="66" height="66"><div><b>用電腦看?</b><span>手機掃一下，直接加 LINE</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- sticky 購買列 -->
+<div class="buybar" id="buybar" aria-hidden="true">
+  <div class="bb-info">
+    <div class="bb-name">Lifetune ZONE MAX · NT$11,800</div>
+    <div class="bb-price"><span class="free">全店免運</span> · 7 天鑑賞期</div>
+  </div>
+  <a class="bb-btn" href="https://www.purland.com.tw/products/lifetune-zone-max">購買</a>
+</div>
+</div>
+
+<script>
+(function(){
+  var box=document.querySelectorAll('.plx');
+  box.forEach(function(b){ b.classList.add('plx-js'); });
+  var els=document.querySelectorAll('.plx .reveal');
+  if(!els.length) return;
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){ document.querySelectorAll('.plx .reveal:not(.in)').forEach(function(el){el.classList.add('in')}); },2500);
+})();
+</script>
+
+
+<div class="sl-probe">
+  <h1>主題原生 H1（應為 33.6px、置中、細體）</h1>
+  <p>主題原生段落：應保持 16.8px、兩端對齊、首行縮排兩字。<a href="#">原生連結</a>，以及 <span class="btn">原生 .btn（紅底小字）</span>。</p>
+</div>
+<div class="sl-foot">主題原生頁尾 © Pürland</div>
+<script>
+var only = new URLSearchParams(location.search).get('only');
+if(only){
+  document.querySelectorAll('.plx').forEach(function(b,i){ if(i !== Number(only)-1) b.style.display='none'; });
+  document.querySelectorAll('.sim-sep').forEach(function(h){ h.style.display='none'; });
+}
+</script>
+</body>
+</html>
