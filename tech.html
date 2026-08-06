@@ -277,6 +277,8 @@ html.js .reveal.in{opacity:1;transform:none}
 
 
 
+
+
 /* === MOBILE-TYPE-FIX 2026-07-30 begin === */
 /* 錨點跳轉不被 sticky header 吃掉（header 桌機 76 / 手機 69px） */
 section[id],figure[id],div[id]{scroll-margin-top:92px}
@@ -289,6 +291,12 @@ section[id],figure[id],div[id]{scroll-margin-top:92px}
   .trust .t-label{font-size:14px;line-height:1.55;word-break:keep-all}
   .trust .t-num{font-size:28px}
   section[id],figure[id],div[id]{scroll-margin-top:84px}
+}
+@media (max-width:760px){
+  /* 章節標題原本是 flex 水平排列（編號在左、標題在右），窄螢幕會把 h2 擠成半寬硬斷行。
+     改直排：編號一行、標題一行。index.html 的 .sec-head 不是 flex，不受影響。 */
+  .sec-head{flex-direction:column;align-items:flex-start;gap:9px}
+  .sec-head h2{flex:none;width:100%}
 }
 @media (max-width:520px){
   /* index-tech 沒有漢堡選單，窄螢幕導覽列會撐爆；其他頁 720px 已隱藏 nav-links，此段對它們無作用 */
